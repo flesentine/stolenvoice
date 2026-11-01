@@ -164,7 +164,7 @@ html=html.replace('event=>{if(harmonyOpen)', 'event=>{if(hiveOpen){event.prevent
 html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMessage(restoreFocus=true){\n if(hiveOpen&&restoreFocus){closeHive();return}\n if(!restoreFocus)resetHive();');
 html=html.replace(' if(harmonyOpen&&!event.isComposing)', ' if(hiveOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();hiveKey(event);return}\n if(harmonyOpen&&!event.isComposing)');
 html=html.replace('function walkTick(){','function walkTick(){\n if(touchWalkTick())return;');
-html=html.replace('startOpening();',()=>read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
+html=html.replace('startOpening();',()=>read('game/mobile-keyboard.js')+'\n'+read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
 require('./lib/write-standalone.cjs')(path.join(root,'stolen-voice.html'),html,[
  'command','saveGame','restoreGame','showHive','showMillSluice',
  'swimmingShoreRoute','startPrologue','finishGame'

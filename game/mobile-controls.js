@@ -20,7 +20,7 @@ function installMobileControls(){
  if(!mobile.matches)return;
  const form=document.querySelector('#form'),shell=document.querySelector('.shell');
  const controls=document.createElement('nav');controls.className='mobile-controls';controls.setAttribute('aria-label','Touch game controls');
- const makeButton=(label,action,parent=controls)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',()=>{action();sync()});parent.append(button);return button};
+ const makeButton=(label,action,parent=controls)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',()=>{keyboard.hide();action();sync()});parent.append(button);return button};
  input.placeholder='Type a command…';input.setAttribute('enterkeyhint','send');input.setAttribute('autocorrect','off');
  const go=makeButton('Go',()=>form.requestSubmit(),form);
  const next=makeButton('Continue',()=>{
@@ -35,6 +35,7 @@ function installMobileControls(){
  const actions=[['Items',()=>command('inventory')],['Help',()=>command('help')],['Save',()=>saveGame()],['Restore',()=>restoreGame()]].map(([label,fn])=>makeButton(label,()=>{input.blur();if(playing&&!popupOpen&&!menuOpen){stopWalking();fn()}}));
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Tap a destination to walk. Type commands below.';controls.append(tip);shell.append(controls);
+ const keyboard=installMobileKeyboard(input,form,shell);
  const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
  const resize=()=>{
@@ -54,7 +55,7 @@ function installMobileControls(){
   const rect=c.getBoundingClientRect(),px=(event.clientX-rect.left)*320/rect.width,py=(event.clientY-rect.top)*200/rect.height;
   if(py>=176){stopWalking();input.focus();return}
   if(py<8)return;
-  event.preventDefault();input.blur();stopWalking();
+  event.preventDefault();keyboard.hide();stopWalking();
   touchDestination={x:Math.max(4,Math.min(316,px)),y:(py-8)/.7};walkDirection='touch';walkTick();
   if(walkDirection)walkTimer=setInterval(walkTick,speedTiming().walk);
  });
