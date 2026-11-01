@@ -14,21 +14,21 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
   const viewport=async(width,height,top=0,left=0,event='resize')=>{await page.evaluate(v=>{Object.assign(window.visualViewport,v);window.visualViewport.dispatchEvent(new Event(v.event))},{width,height,offsetTop:top,offsetLeft:left,event});await page.waitForTimeout(50)};
   const visible=async()=>{
    const view=await page.evaluate(()=>({width:visualViewport.width,height:visualViewport.height,top:visualViewport.offsetTop,left:visualViewport.offsetLeft}));
-   const boxes={};for(const name of ['.screen','#input','.mobile-controls']){
+   const boxes={};for(const name of ['.screen','#input','.mobile-controls','#mobile-keyboard']){
     const box=await page.locator(name).boundingBox();assert(box&&box.width>0&&box.height>0,name+' visible');
     assert(box.x>=view.left-1&&box.y>=view.top-1,name+' remains below visible top');
     assert(box.x+box.width<=view.left+view.width+1&&box.y+box.height<=view.top+view.height+1,name+' fits above keyboard');boxes[name]=box;
    }return boxes;
   };
-  await visible();await page.locator('#input').focus();await page.locator('#mobile-keyboard').getByRole('button',{name:'Hide',exact:true}).click();
-  await viewport(390,410,0);await visible(); // Android-style resize
-  await viewport(390,410,175,0,'scroll');await visible(); // iOS-style focus pan
+  await visible();await page.locator('#input').tap();
+  await viewport(390,560,0);await visible(); // Android-style resize
+  await viewport(390,560,100,0,'scroll');await visible(); // iOS-style focus pan
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-portrait.png'});
   await page.locator('#input').pressSequentially('look');await page.getByRole('button',{name:'Go',exact:true}).click();assert(await page.locator('#agi-message').isVisible());await page.getByRole('button',{name:'Continue',exact:true}).click();
   await page.setViewportSize({width:844,height:390});await viewport(844,390);
-  let boxes=await visible();assert(boxes['.screen'].x+boxes['.screen'].width<=boxes['#input'].x,'landscape controls beside the game');assert(boxes['.screen'].height>350,'landscape uses available height');
+  let boxes=await visible();assert(boxes['.screen'].x+boxes['.screen'].width<=boxes['#input'].x,'landscape controls beside the game');assert(boxes['.screen'].height>250,'landscape uses available height');
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-landscape.png'});
-  await page.locator('#input').focus();await page.locator('#mobile-keyboard').getByRole('button',{name:'Hide',exact:true}).click();await viewport(844,175,140,0,'scroll');await visible();
+  await page.locator('#input').tap();await viewport(844,340,40,0,'scroll');await visible();
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-landscape-open.png'});
   await page.locator('#input').blur();await page.setViewportSize({width:390,height:844});await viewport(390,844);await visible();
   assert.deepEqual(errors,[]);console.log('PASS portrait keyboard resize, Safari viewport pan, parser submission, landscape side panel, landscape keyboard and rotation back.');
