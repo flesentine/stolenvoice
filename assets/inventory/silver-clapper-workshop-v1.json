@@ -1,0 +1,222 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "silver clapper",
+  "room": "inventory",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/inventory/inventory-reference-v1.png",
+  "spriteRegion": [
+    64,
+    64,
+    32,
+    28
+  ],
+  "notes": "Hand-authored line-and-fill redraw of generated reference. Native pixels; no raster sampling.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Silver loop",
+      "points": [
+        [
+          78,
+          66
+        ],
+        [
+          81,
+          66
+        ],
+        [
+          82,
+          69
+        ],
+        [
+          81,
+          72
+        ],
+        [
+          80,
+          74
+        ],
+        [
+          78,
+          73
+        ],
+        [
+          77,
+          70
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Loop opening",
+      "points": [
+        [
+          79,
+          68
+        ],
+        [
+          80,
+          68
+        ],
+        [
+          81,
+          70
+        ],
+        [
+          80,
+          72
+        ],
+        [
+          79,
+          71
+        ],
+        [
+          78,
+          69
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Clapper shaft",
+      "points": [
+        [
+          79,
+          73
+        ],
+        [
+          81,
+          73
+        ],
+        [
+          81,
+          83
+        ],
+        [
+          79,
+          84
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Shaft light",
+      "points": [
+        [
+          79,
+          74
+        ],
+        [
+          79,
+          82
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Pear shaped striker",
+      "points": [
+        [
+          79,
+          82
+        ],
+        [
+          81,
+          82
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          83,
+          89
+        ],
+        [
+          81,
+          91
+        ],
+        [
+          78,
+          90
+        ],
+        [
+          77,
+          87
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Striker shadow",
+      "points": [
+        [
+          81,
+          84
+        ],
+        [
+          83,
+          87
+        ],
+        [
+          81,
+          89
+        ],
+        [
+          79,
+          89
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Silver gleam",
+      "points": [
+        [
+          79,
+          84
+        ],
+        [
+          78,
+          86
+        ],
+        [
+          78,
+          87
+        ]
+      ],
+      "color": 15
+    }
+  ]
+}

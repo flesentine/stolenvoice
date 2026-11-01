@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),path=require('path');let h=fs.readFileSync(path.join(__dirname,'check-expanded-adventure.cjs'),'utf8');h=h.slice(0,h.indexOf("check('Eight rooms"));const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+'\nglobalThis.benchQA={boot};',s);const boot=s.benchQA.boot,base=boot();base.start();base.game.saveGame();const key=base.game.key,save=JSON.parse(base.storage.get(key));
+function at(x,y){const a=boot(new Map([[key,JSON.stringify({...save,room:2,player:{x,y,step:1,facing:'back'}})]]));a.start();a.game.restoreGame();while(a.game.state.popupOpen)a.game.closeMessage();return a}
+const front=at(130,194);for(let i=0;i<8;i++)front.game.movePlayer(0,-3);assert.equal(front.game.state.player.y,188);for(const y of [180,181,182,183,184,185,186])assert.equal(front.game.canStand(130,y,2),false,'solid front row '+y);assert.equal(front.game.canStand(130,187,2),true);
+const left=at(100,184);for(let i=0;i<8;i++)left.game.movePlayer(5,0);assert.equal(left.game.state.player.x,110);
+const right=at(219,184);for(let i=0;i<8;i++)right.game.movePlayer(-5,0);assert.equal(right.game.state.player.x,209);
+const sweep=at(100,184);sweep.game.movePlayer(120,0);assert.equal(sweep.game.state.player.x,100,'cannot jump completely across footprint');
+const diagonal=at(110,190);diagonal.game.movePlayer(10,-10);assert(diagonal.game.canStand(diagonal.game.state.player.x,diagonal.game.state.player.y,2));assert.equal(diagonal.game.state.player.y,190,'diagonal slides outside bench');
+const historical=at(130,185);assert.equal(historical.game.state.player.x,160);assert.equal(historical.game.state.player.y,212,'old save inside blocker uses safe spawn');
+console.log('PASS bench front/side boundaries, no one-pixel gap, swept movement, diagonal sliding and old-save recovery.');

@@ -1,0 +1,32 @@
+Use case: stylized-concept.
+Asset type: tightly specified animation model sheet for MANUAL Sierra AGI/EGA tracing, not finished in-game art.
+REFERENCE ROLE: the attached current game sheet establishes ONLY Rosella's identity, colors, clothing and wooden barrel. Its animation has bad stretched anatomy: DO NOT COPY its distorted poses. Design new anatomically coherent poses.
+CHARACTER: exactly the same clearly ADULT, approximately 25-year-old blonde fairytale princess in every panel. Simple shoulder-length yellow hair, tiny face, short-sleeved white blouse, dark royal-blue fitted bodice, plain long periwinkle-blue skirt, brown flat shoes. Adult proportions, stylized game head, not a child, not chibi. Modest opaque white linen shorts/underlayer remain in place during upside-down slapstick; no nudity. Bare legs may be visible from upper thighs to shoes when the skirt falls toward her shoulders or bunches in the climb. Neutral physical-comedy presentation.
+TRACEABILITY: 1980s AGI-style flat silhouette design. Imagine each standing figure will be hand traced to a 16-screen-pixel-wide by 40-screen-pixel-tall sprite, with double-width native AGI pixels. Draw enlarged crisp flat-color stencils with only a handful of connected shapes. One simple selective black contour, no doubled outlines. No gradients, no light effects, no texture, no photorealism, no dithering, no anti-aliased painterly edges. Large simple clean connected regions. No detailed fingers: tiny connected mitten hands. No fine hair strands. No jewelry, laces, elaborate folds or ornament.
+PALETTE: only solid #ffff55 hair, #ff5555 skin, #ffffff blouse and linen, #0000aa bodice and sparse skirt edges, #5555ff skirt, #aa5500 shoes/barrel wood/manure, #aaaaaa iron hoops, #000000 selective outlines and opening. Background one flat solid magenta #ff00ff, including all gutters. No shadows on background.
+INVARIANTS: fixed camera and scale throughout; same head volume, same torso length, same upper-arm/forearm lengths, same thigh/shin lengths, same shoes. Elbows and knees bend; limbs must NEVER telescope or elongate to reach a target. Use a crouch, hip bend, grip release or body rotation when needed. A raised skirt changes ONLY CLOTH, not torso or leg length. Never stretch the dress to bridge a gap. Feet remain connected through ankle, calf, knee, thigh to hips. Hands attached through wrist, forearm, elbow and shoulder, no extra arms.
+PROP: one sturdy round open wooden garden barrel in every panel, exactly same position/scale, two gray hoops, dark oval opening, separate wooden lid propped behind the RIGHT rim. Barrel rim is about the standing woman's upper-chest height; standing at its LEFT her head rises above the rim. Barrel remains upright and unchanged; never tips or warps. Three-quarter side view with enough visible oval opening for clearly readable entry and emergence. Screen LEFT-to-RIGHT action: Rosella starts LEFT of barrel and leans toward RIGHT into it; she later climbs out back to its LEFT. Same floor baseline in every panel. Plain magenta backdrop, no workshop scenery.
+COMPOSITION: orderly equal-sized cells with ample magenta gutters, nothing cropped or touching another cell. Enough headroom for upside-down kicking legs. All panels depict the same spatial setup; a sprite animator must be able to trace them in sequence without changing scale. No captions, numbers, arrows, decorative borders, grid lines, logos, watermark, or extra characters. Read cells left to right, top to bottom.
+PRIMARY REQUEST: Create ONE large 4-column by 4-row LANDSCAPE OR SQUARE sprite-reference sheet containing EXACTLY SIXTEEN panels, sampled every fifth frame of a 140-frame barrel gag. This is sheet A: frames 0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75.
+Exact panel order:
+ROW 1:
+1/frame0: normal upright full body LEFT of barrel, both feet on floor, arms relaxed. Establish the master proportions.
+2/frame5: a small step toward barrel; unchanged proportions.
+3/frame10: standing beside barrel, both hands reach the near rim at normal bent-elbow reach, gaze down inside.
+4/frame15: bend naturally at hips and knees; hands support on rim; face approaches opening, feet still grounded.
+ROW 2:
+5/frame20: torso leans farther over opening, elbows bend on rim; heels lift as balance goes too far forward. Legs still connected to hips.
+6/frame25: loss of balance: head and shoulders now inside opening, hips rotating over the LEFT rim, knees bent and BOTH shoes rising from ground. Skirt starts falling toward shoulders under gravity.
+7/frame30: hips over opening, torso inside barrel; knees uncurl upward, white linen underlayer at hips, skirt draped down toward rim. Clearly traceable upside-down body.
+8/frame35: fully upside down, head/shoulders hidden inside, hips just above rim, both exposed legs pointing up with softly bent knees and brown shoes. Skirt hangs DOWN toward opening; linen covers pelvis.
+ROW 3:
+9/frame40: same upside-down position but legs kick asymmetrically: one knee bends, the other extends. Exact same thigh/shin lengths as master standing pose.
+10/frame45: hips slip lower into barrel, skirt and linen partly disappear below rim, knees/shoes remain above.
+11/frame50: only two bent lower legs and shoes briefly stick out of opening, all connected parts below rim properly occluded.
+12/frame55: Rosella completely inside; ONLY unchanged open barrel/lid. No floating hands, shoes or hair.
+ROW 4:
+13/frame60: dirty blonde crown and eyes just emerge above rim; hands grip rim, the rest of her hidden.
+14/frame65: head and shoulders emerge farther, brown manure clumps on hair/cheek/blouse; face surprised, hands attached naturally at rim.
+15/frame70: same head/shoulders exposure, turn head LEFT in a short hair-shake, sparse brown clumps fling aside.
+16/frame75: same exposure, turn head RIGHT in matching short shake, sparse brown clumps fling aside.
+Quality gate: exactly sixteen cells, consistent proportions and barrel, particularly natural frame25-50 inversion with gravity-correct skirt and modest linen. These are production silhouette references, not a polished illustration.

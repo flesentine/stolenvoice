@@ -1,0 +1,249 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "oil flask",
+  "room": "inventory",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/inventory/inventory-reference-v1.png",
+  "spriteRegion": [
+    64,
+    64,
+    32,
+    28
+  ],
+  "notes": "Hand-authored line-and-fill redraw of generated reference. Native pixels; no raster sampling.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Blue flask silhouette",
+      "points": [
+        [
+          72,
+          74
+        ],
+        [
+          74,
+          71
+        ],
+        [
+          74,
+          69
+        ],
+        [
+          80,
+          69
+        ],
+        [
+          80,
+          73
+        ],
+        [
+          84,
+          76
+        ],
+        [
+          88,
+          71
+        ],
+        [
+          92,
+          67
+        ],
+        [
+          94,
+          67
+        ],
+        [
+          90,
+          73
+        ],
+        [
+          86,
+          80
+        ],
+        [
+          85,
+          86
+        ],
+        [
+          82,
+          89
+        ],
+        [
+          74,
+          89
+        ],
+        [
+          70,
+          86
+        ],
+        [
+          69,
+          80
+        ]
+      ],
+      "color": 1,
+      "outline": 1
+    },
+    {
+      "type": "polygon",
+      "name": "Flask light plane",
+      "points": [
+        [
+          73,
+          76
+        ],
+        [
+          76,
+          74
+        ],
+        [
+          79,
+          75
+        ],
+        [
+          81,
+          78
+        ],
+        [
+          80,
+          87
+        ],
+        [
+          74,
+          87
+        ],
+        [
+          71,
+          84
+        ],
+        [
+          71,
+          80
+        ]
+      ],
+      "color": 9,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Glass highlight",
+      "points": [
+        [
+          73,
+          78
+        ],
+        [
+          72,
+          80
+        ],
+        [
+          72,
+          83
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Spout light",
+      "points": [
+        [
+          86,
+          77
+        ],
+        [
+          90,
+          71
+        ],
+        [
+          93,
+          68
+        ]
+      ],
+      "color": 9
+    },
+    {
+      "type": "polygon",
+      "name": "Metal neck",
+      "points": [
+        [
+          74,
+          68
+        ],
+        [
+          81,
+          68
+        ],
+        [
+          81,
+          71
+        ],
+        [
+          74,
+          71
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Oil stopper",
+      "points": [
+        [
+          75,
+          68
+        ],
+        [
+          76,
+          66
+        ],
+        [
+          79,
+          66
+        ],
+        [
+          80,
+          68
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Cap light",
+      "points": [
+        [
+          76,
+          67
+        ],
+        [
+          78,
+          67
+        ]
+      ],
+      "color": 15
+    }
+  ]
+}

@@ -1,0 +1,2636 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "Merrin singing",
+  "room": "merrin-ending",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../references/merrin-singing-reference-v2.png",
+  "notes": "Native proportion redraw: narrower shoulders and face for wide pixels, grouped fingers, rounded felt cap, readable eyes and grounded flowering garden. Compared with Sierra AGI close-ups. No raster transfer.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Sky",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          159,
+          0
+        ],
+        [
+          159,
+          167
+        ],
+        [
+          0,
+          167
+        ]
+      ],
+      "color": 9,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Cloud",
+      "points": [
+        [
+          92,
+          12
+        ],
+        [
+          99,
+          12
+        ],
+        [
+          101,
+          9
+        ],
+        [
+          109,
+          9
+        ],
+        [
+          112,
+          14
+        ],
+        [
+          122,
+          14
+        ],
+        [
+          125,
+          19
+        ],
+        [
+          137,
+          19
+        ],
+        [
+          137,
+          22
+        ],
+        [
+          91,
+          22
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Distant castle",
+      "points": [
+        [
+          103,
+          72
+        ],
+        [
+          103,
+          38
+        ],
+        [
+          110,
+          38
+        ],
+        [
+          110,
+          41
+        ],
+        [
+          115,
+          41
+        ],
+        [
+          115,
+          38
+        ],
+        [
+          121,
+          38
+        ],
+        [
+          121,
+          55
+        ],
+        [
+          135,
+          55
+        ],
+        [
+          135,
+          26
+        ],
+        [
+          144,
+          26
+        ],
+        [
+          144,
+          70
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Turret roof",
+      "points": [
+        [
+          131,
+          27
+        ],
+        [
+          140,
+          12
+        ],
+        [
+          149,
+          27
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Flag",
+      "points": [
+        [
+          140,
+          13
+        ],
+        [
+          140,
+          4
+        ],
+        [
+          146,
+          6
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Arch",
+      "points": [
+        [
+          110,
+          72
+        ],
+        [
+          110,
+          60
+        ],
+        [
+          114,
+          55
+        ],
+        [
+          118,
+          60
+        ],
+        [
+          118,
+          72
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Castle sill",
+      "points": [
+        [
+          106,
+          46
+        ],
+        [
+          119,
+          46
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Garden cypress",
+      "points": [
+        [
+          0,
+          99
+        ],
+        [
+          0,
+          51
+        ],
+        [
+          0,
+          52
+        ],
+        [
+          4,
+          27
+        ],
+        [
+          8,
+          51
+        ],
+        [
+          11,
+          49
+        ],
+        [
+          14,
+          99
+        ]
+      ],
+      "color": 2,
+      "outline": 2
+    },
+    {
+      "type": "polygon",
+      "name": "Garden cypress",
+      "points": [
+        [
+          15,
+          83
+        ],
+        [
+          17,
+          59
+        ],
+        [
+          20,
+          60
+        ],
+        [
+          24,
+          35
+        ],
+        [
+          28,
+          59
+        ],
+        [
+          31,
+          57
+        ],
+        [
+          34,
+          83
+        ]
+      ],
+      "color": 2,
+      "outline": 2
+    },
+    {
+      "type": "polygon",
+      "name": "Garden cypress",
+      "points": [
+        [
+          87,
+          85
+        ],
+        [
+          89,
+          68
+        ],
+        [
+          92,
+          69
+        ],
+        [
+          96,
+          44
+        ],
+        [
+          100,
+          68
+        ],
+        [
+          103,
+          66
+        ],
+        [
+          106,
+          85
+        ]
+      ],
+      "color": 2,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Garden cypress",
+      "points": [
+        [
+          115,
+          96
+        ],
+        [
+          117,
+          71
+        ],
+        [
+          120,
+          72
+        ],
+        [
+          124,
+          47
+        ],
+        [
+          128,
+          71
+        ],
+        [
+          131,
+          69
+        ],
+        [
+          134,
+          96
+        ]
+      ],
+      "color": 2,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Garden cypress",
+      "points": [
+        [
+          147,
+          103
+        ],
+        [
+          149,
+          49
+        ],
+        [
+          152,
+          50
+        ],
+        [
+          156,
+          25
+        ],
+        [
+          159,
+          49
+        ],
+        [
+          159,
+          47
+        ],
+        [
+          159,
+          103
+        ]
+      ],
+      "color": 2,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Garden wall",
+      "points": [
+        [
+          0,
+          77
+        ],
+        [
+          159,
+          77
+        ],
+        [
+          159,
+          100
+        ],
+        [
+          0,
+          100
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone courses",
+      "points": [
+        [
+          0,
+          82
+        ],
+        [
+          159,
+          82
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone courses",
+      "points": [
+        [
+          0,
+          91
+        ],
+        [
+          159,
+          91
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Garden ground",
+      "points": [
+        [
+          0,
+          100
+        ],
+        [
+          159,
+          100
+        ],
+        [
+          159,
+          138
+        ],
+        [
+          0,
+          138
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Sunlit grass",
+      "points": [
+        [
+          0,
+          113
+        ],
+        [
+          18,
+          107
+        ],
+        [
+          43,
+          113
+        ],
+        [
+          64,
+          107
+        ],
+        [
+          94,
+          113
+        ],
+        [
+          121,
+          106
+        ],
+        [
+          159,
+          113
+        ],
+        [
+          159,
+          127
+        ],
+        [
+          133,
+          119
+        ],
+        [
+          114,
+          127
+        ],
+        [
+          82,
+          119
+        ],
+        [
+          58,
+          129
+        ],
+        [
+          29,
+          120
+        ],
+        [
+          0,
+          130
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Garden path",
+      "points": [
+        [
+          115,
+          100
+        ],
+        [
+          128,
+          100
+        ],
+        [
+          150,
+          138
+        ],
+        [
+          128,
+          138
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Gardener silhouette",
+      "points": [
+        [
+          20,
+          130
+        ],
+        [
+          20,
+          95
+        ],
+        [
+          31,
+          78
+        ],
+        [
+          50,
+          69
+        ],
+        [
+          54,
+          60
+        ],
+        [
+          88,
+          59
+        ],
+        [
+          98,
+          75
+        ],
+        [
+          108,
+          88
+        ],
+        [
+          118,
+          76
+        ],
+        [
+          124,
+          70
+        ],
+        [
+          132,
+          74
+        ],
+        [
+          132,
+          88
+        ],
+        [
+          122,
+          115
+        ],
+        [
+          108,
+          121
+        ],
+        [
+          104,
+          135
+        ],
+        [
+          47,
+          136
+        ],
+        [
+          25,
+          134
+        ]
+      ],
+      "color": 0,
+      "outline": null,
+      "hidden": true
+    },
+    {
+      "type": "polygon",
+      "name": "Left linen sleeve",
+      "points": [
+        [
+          22,
+          128
+        ],
+        [
+          23,
+          96
+        ],
+        [
+          32,
+          81
+        ],
+        [
+          42,
+          83
+        ],
+        [
+          47,
+          104
+        ],
+        [
+          44,
+          130
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Sleeve shadow",
+      "points": [
+        [
+          24,
+          119
+        ],
+        [
+          28,
+          105
+        ],
+        [
+          32,
+          101
+        ],
+        [
+          32,
+          114
+        ],
+        [
+          40,
+          122
+        ],
+        [
+          42,
+          129
+        ],
+        [
+          24,
+          129
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Sleeve folds",
+      "points": [
+        [
+          25,
+          114
+        ],
+        [
+          32,
+          108
+        ],
+        [
+          37,
+          109
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Blue tunic",
+      "points": [
+        [
+          36,
+          79
+        ],
+        [
+          52,
+          69
+        ],
+        [
+          85,
+          66
+        ],
+        [
+          97,
+          76
+        ],
+        [
+          107,
+          97
+        ],
+        [
+          104,
+          133
+        ],
+        [
+          46,
+          134
+        ],
+        [
+          47,
+          105
+        ]
+      ],
+      "color": 1,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Coat light plane",
+      "points": [
+        [
+          52,
+          77
+        ],
+        [
+          68,
+          82
+        ],
+        [
+          83,
+          74
+        ],
+        [
+          93,
+          81
+        ],
+        [
+          98,
+          105
+        ],
+        [
+          93,
+          130
+        ],
+        [
+          54,
+          132
+        ],
+        [
+          55,
+          102
+        ]
+      ],
+      "color": 9,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Coat seam",
+      "points": [
+        [
+          87,
+          91
+        ],
+        [
+          88,
+          106
+        ],
+        [
+          86,
+          116
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "polygon",
+      "name": "Raised sleeve",
+      "points": [
+        [
+          97,
+          83
+        ],
+        [
+          108,
+          94
+        ],
+        [
+          117,
+          80
+        ],
+        [
+          126,
+          77
+        ],
+        [
+          130,
+          87
+        ],
+        [
+          120,
+          110
+        ],
+        [
+          109,
+          117
+        ],
+        [
+          104,
+          104
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Raised sleeve shade",
+      "points": [
+        [
+          108,
+          103
+        ],
+        [
+          117,
+          90
+        ],
+        [
+          124,
+          88
+        ],
+        [
+          116,
+          108
+        ],
+        [
+          111,
+          113
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Neck",
+      "points": [
+        [
+          56,
+          57
+        ],
+        [
+          80,
+          52
+        ],
+        [
+          85,
+          70
+        ],
+        [
+          74,
+          82
+        ],
+        [
+          64,
+          80
+        ],
+        [
+          55,
+          71
+        ]
+      ],
+      "color": 12,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Neck shade",
+      "points": [
+        [
+          57,
+          64
+        ],
+        [
+          63,
+          70
+        ],
+        [
+          74,
+          74
+        ],
+        [
+          80,
+          68
+        ],
+        [
+          79,
+          73
+        ],
+        [
+          74,
+          79
+        ],
+        [
+          66,
+          76
+        ],
+        [
+          57,
+          70
+        ]
+      ],
+      "color": 4,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Linen collar",
+      "points": [
+        [
+          52,
+          70
+        ],
+        [
+          63,
+          76
+        ],
+        [
+          74,
+          82
+        ],
+        [
+          84,
+          70
+        ],
+        [
+          88,
+          73
+        ],
+        [
+          77,
+          87
+        ],
+        [
+          73,
+          89
+        ],
+        [
+          68,
+          82
+        ],
+        [
+          56,
+          77
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Collar light",
+      "points": [
+        [
+          55,
+          72
+        ],
+        [
+          64,
+          78
+        ],
+        [
+          72,
+          83
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Face silhouette",
+      "points": [
+        [
+          53,
+          27
+        ],
+        [
+          64,
+          19
+        ],
+        [
+          77,
+          20
+        ],
+        [
+          84,
+          27
+        ],
+        [
+          86,
+          38
+        ],
+        [
+          87,
+          43
+        ],
+        [
+          89,
+          46
+        ],
+        [
+          88,
+          49
+        ],
+        [
+          86,
+          50
+        ],
+        [
+          86,
+          61
+        ],
+        [
+          83,
+          69
+        ],
+        [
+          76,
+          73
+        ],
+        [
+          68,
+          70
+        ],
+        [
+          61,
+          63
+        ],
+        [
+          56,
+          53
+        ],
+        [
+          53,
+          41
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Warm face",
+      "points": [
+        [
+          55,
+          28
+        ],
+        [
+          65,
+          22
+        ],
+        [
+          77,
+          23
+        ],
+        [
+          83,
+          29
+        ],
+        [
+          84,
+          39
+        ],
+        [
+          85,
+          44
+        ],
+        [
+          87,
+          46
+        ],
+        [
+          87,
+          48
+        ],
+        [
+          85,
+          49
+        ],
+        [
+          85,
+          60
+        ],
+        [
+          82,
+          66
+        ],
+        [
+          76,
+          70
+        ],
+        [
+          68,
+          67
+        ],
+        [
+          62,
+          61
+        ],
+        [
+          58,
+          51
+        ],
+        [
+          55,
+          40
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Cheek shade",
+      "points": [
+        [
+          57,
+          47
+        ],
+        [
+          60,
+          52
+        ],
+        [
+          63,
+          59
+        ],
+        [
+          68,
+          65
+        ],
+        [
+          75,
+          69
+        ],
+        [
+          82,
+          65
+        ],
+        [
+          79,
+          70
+        ],
+        [
+          75,
+          72
+        ],
+        [
+          67,
+          68
+        ],
+        [
+          61,
+          62
+        ],
+        [
+          58,
+          55
+        ]
+      ],
+      "color": 4,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Nose light",
+      "points": [
+        [
+          85,
+          43
+        ],
+        [
+          85,
+          45
+        ],
+        [
+          87,
+          46
+        ],
+        [
+          85,
+          46
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Nose return",
+      "points": [
+        [
+          84,
+          47
+        ],
+        [
+          85,
+          49
+        ],
+        [
+          87,
+          48
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "polygon",
+      "name": "Near ear",
+      "points": [
+        [
+          53,
+          37
+        ],
+        [
+          56,
+          34
+        ],
+        [
+          60,
+          37
+        ],
+        [
+          61,
+          48
+        ],
+        [
+          57,
+          53
+        ],
+        [
+          53,
+          47
+        ]
+      ],
+      "color": 12,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Ear crease",
+      "points": [
+        [
+          55,
+          40
+        ],
+        [
+          58,
+          39
+        ],
+        [
+          57,
+          46
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "polygon",
+      "name": "Silver sideburns",
+      "points": [
+        [
+          51,
+          31
+        ],
+        [
+          56,
+          28
+        ],
+        [
+          55,
+          34
+        ],
+        [
+          57,
+          35
+        ],
+        [
+          55,
+          39
+        ],
+        [
+          57,
+          42
+        ],
+        [
+          56,
+          48
+        ],
+        [
+          59,
+          51
+        ],
+        [
+          57,
+          56
+        ],
+        [
+          52,
+          53
+        ],
+        [
+          49,
+          45
+        ]
+      ],
+      "color": 7,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Hair streaks",
+      "points": [
+        [
+          51,
+          35
+        ],
+        [
+          54,
+          32
+        ],
+        [
+          52,
+          39
+        ],
+        [
+          55,
+          41
+        ],
+        [
+          52,
+          46
+        ],
+        [
+          55,
+          49
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Floppy cap silhouette",
+      "points": [
+        [
+          38,
+          41
+        ],
+        [
+          40,
+          28
+        ],
+        [
+          45,
+          21
+        ],
+        [
+          55,
+          14
+        ],
+        [
+          63,
+          8
+        ],
+        [
+          69,
+          10
+        ],
+        [
+          75,
+          14
+        ],
+        [
+          80,
+          18
+        ],
+        [
+          84,
+          24
+        ],
+        [
+          84,
+          29
+        ],
+        [
+          75,
+          32
+        ],
+        [
+          66,
+          35
+        ],
+        [
+          57,
+          40
+        ],
+        [
+          49,
+          47
+        ],
+        [
+          43,
+          48
+        ],
+        [
+          44,
+          40
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Brown felt cap",
+      "points": [
+        [
+          40,
+          38
+        ],
+        [
+          42,
+          29
+        ],
+        [
+          46,
+          23
+        ],
+        [
+          55,
+          16
+        ],
+        [
+          63,
+          11
+        ],
+        [
+          68,
+          13
+        ],
+        [
+          74,
+          17
+        ],
+        [
+          79,
+          20
+        ],
+        [
+          82,
+          24
+        ],
+        [
+          82,
+          27
+        ],
+        [
+          74,
+          29
+        ],
+        [
+          65,
+          32
+        ],
+        [
+          57,
+          37
+        ],
+        [
+          49,
+          44
+        ],
+        [
+          45,
+          45
+        ],
+        [
+          46,
+          38
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Cap fold",
+      "points": [
+        [
+          43,
+          34
+        ],
+        [
+          50,
+          28
+        ],
+        [
+          57,
+          23
+        ],
+        [
+          59,
+          17
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Crown fold",
+      "points": [
+        [
+          63,
+          16
+        ],
+        [
+          68,
+          18
+        ],
+        [
+          72,
+          22
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Hat light",
+      "points": [
+        [
+          53,
+          20
+        ],
+        [
+          59,
+          14
+        ],
+        [
+          63,
+          10
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Near eyebrow",
+      "points": [
+        [
+          64,
+          35
+        ],
+        [
+          67,
+          33
+        ],
+        [
+          70,
+          34
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Far eyebrow",
+      "points": [
+        [
+          77,
+          31
+        ],
+        [
+          80,
+          30
+        ],
+        [
+          82,
+          32
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Near eye",
+      "points": [
+        [
+          65,
+          39
+        ],
+        [
+          67,
+          37
+        ],
+        [
+          70,
+          37
+        ],
+        [
+          71,
+          39
+        ],
+        [
+          69,
+          41
+        ],
+        [
+          66,
+          41
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Far eye",
+      "points": [
+        [
+          77,
+          36
+        ],
+        [
+          78,
+          34
+        ],
+        [
+          80,
+          34
+        ],
+        [
+          82,
+          36
+        ],
+        [
+          80,
+          38
+        ],
+        [
+          78,
+          38
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Near pupil",
+      "points": [
+        [
+          68,
+          37
+        ],
+        [
+          70,
+          37
+        ],
+        [
+          70,
+          40
+        ],
+        [
+          68,
+          40
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Far pupil",
+      "points": [
+        [
+          80,
+          35
+        ],
+        [
+          80,
+          35
+        ],
+        [
+          80,
+          37
+        ],
+        [
+          80,
+          37
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Smile crease",
+      "points": [
+        [
+          63,
+          48
+        ],
+        [
+          66,
+          46
+        ],
+        [
+          67,
+          46
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Chin crease",
+      "points": [
+        [
+          77,
+          66
+        ],
+        [
+          80,
+          65
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "polygon",
+      "name": "Hand at heart",
+      "points": [
+        [
+          49,
+          117
+        ],
+        [
+          50,
+          110
+        ],
+        [
+          55,
+          106
+        ],
+        [
+          59,
+          101
+        ],
+        [
+          62,
+          98
+        ],
+        [
+          64,
+          99
+        ],
+        [
+          63,
+          104
+        ],
+        [
+          68,
+          102
+        ],
+        [
+          72,
+          102
+        ],
+        [
+          76,
+          104
+        ],
+        [
+          77,
+          107
+        ],
+        [
+          75,
+          110
+        ],
+        [
+          70,
+          112
+        ],
+        [
+          66,
+          116
+        ],
+        [
+          59,
+          119
+        ]
+      ],
+      "color": 12,
+      "outline": 4
+    },
+    {
+      "type": "line",
+      "name": "Finger creases",
+      "points": [
+        [
+          62,
+          108
+        ],
+        [
+          68,
+          106
+        ],
+        [
+          74,
+          106
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Finger creases",
+      "points": [
+        [
+          63,
+          112
+        ],
+        [
+          70,
+          109
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Finger creases",
+      "points": [
+        [
+          64,
+          115
+        ],
+        [
+          68,
+          113
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "polygon",
+      "name": "Raised singing hand",
+      "points": [
+        [
+          122,
+          81
+        ],
+        [
+          123,
+          74
+        ],
+        [
+          121,
+          70
+        ],
+        [
+          120,
+          66
+        ],
+        [
+          122,
+          65
+        ],
+        [
+          125,
+          69
+        ],
+        [
+          127,
+          65
+        ],
+        [
+          129,
+          59
+        ],
+        [
+          131,
+          57
+        ],
+        [
+          132,
+          57
+        ],
+        [
+          132,
+          61
+        ],
+        [
+          132,
+          65
+        ],
+        [
+          135,
+          61
+        ],
+        [
+          136,
+          62
+        ],
+        [
+          136,
+          66
+        ],
+        [
+          134,
+          70
+        ],
+        [
+          133,
+          76
+        ],
+        [
+          130,
+          82
+        ],
+        [
+          127,
+          84
+        ]
+      ],
+      "color": 12,
+      "outline": 4
+    },
+    {
+      "type": "line",
+      "name": "Raised fingers",
+      "points": [
+        [
+          128,
+          70
+        ],
+        [
+          131,
+          66
+        ],
+        [
+          133,
+          63
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Palm crease",
+      "points": [
+        [
+          126,
+          75
+        ],
+        [
+          129,
+          74
+        ],
+        [
+          132,
+          71
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "polygon",
+      "name": "Leather belt",
+      "points": [
+        [
+          48,
+          126
+        ],
+        [
+          101,
+          124
+        ],
+        [
+          103,
+          134
+        ],
+        [
+          47,
+          137
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Buckle",
+      "points": [
+        [
+          80,
+          125
+        ],
+        [
+          88,
+          125
+        ],
+        [
+          88,
+          134
+        ],
+        [
+          80,
+          134
+        ]
+      ],
+      "color": 14,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Buckle center",
+      "points": [
+        [
+          82,
+          127
+        ],
+        [
+          86,
+          127
+        ],
+        [
+          86,
+          132
+        ],
+        [
+          82,
+          132
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Lyric reserve",
+      "points": [
+        [
+          0,
+          139
+        ],
+        [
+          159,
+          139
+        ],
+        [
+          159,
+          167
+        ],
+        [
+          0,
+          167
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flower",
+      "points": [
+        [
+          4,
+          103
+        ],
+        [
+          6,
+          105
+        ],
+        [
+          4,
+          107
+        ],
+        [
+          2,
+          105
+        ]
+      ],
+      "color": 13,
+      "outline": null,
+      "hidden": true
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flower",
+      "points": [
+        [
+          151,
+          121
+        ],
+        [
+          153,
+          123
+        ],
+        [
+          151,
+          125
+        ],
+        [
+          149,
+          123
+        ]
+      ],
+      "color": 13,
+      "outline": null,
+      "hidden": true
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flower",
+      "points": [
+        [
+          15,
+          131
+        ],
+        [
+          17,
+          133
+        ],
+        [
+          15,
+          135
+        ],
+        [
+          13,
+          133
+        ]
+      ],
+      "color": 13,
+      "outline": null,
+      "hidden": true
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flower",
+      "points": [
+        [
+          145,
+          131
+        ],
+        [
+          147,
+          133
+        ],
+        [
+          145,
+          135
+        ],
+        [
+          143,
+          133
+        ]
+      ],
+      "color": 13,
+      "outline": null,
+      "hidden": true
+    },
+    {
+      "type": "line",
+      "name": "Tunic lacing",
+      "points": [
+        [
+          72,
+          88
+        ],
+        [
+          76,
+          90
+        ],
+        [
+          72,
+          93
+        ],
+        [
+          76,
+          96
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Left cuff seam",
+      "points": [
+        [
+          45,
+          113
+        ],
+        [
+          48,
+          116
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Right cuff seam",
+      "points": [
+        [
+          120,
+          80
+        ],
+        [
+          128,
+          85
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Crow feet",
+      "points": [
+        [
+          63,
+          39
+        ],
+        [
+          64,
+          40
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Crow feet",
+      "points": [
+        [
+          63,
+          42
+        ],
+        [
+          65,
+          42
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Temple silver",
+      "points": [
+        [
+          53,
+          39
+        ],
+        [
+          54,
+          36
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Temple silver",
+      "points": [
+        [
+          53,
+          44
+        ],
+        [
+          55,
+          48
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Cheek laugh line",
+      "points": [
+        [
+          62,
+          45
+        ],
+        [
+          59,
+          47
+        ],
+        [
+          60,
+          50
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Nose crease",
+      "points": [
+        [
+          88,
+          48
+        ],
+        [
+          87,
+          52
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Forehead crease",
+      "points": [
+        [
+          72,
+          27
+        ],
+        [
+          76,
+          26
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          5,
+          117
+        ],
+        [
+          5,
+          111
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          4,
+          113
+        ],
+        [
+          6,
+          113
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          5,
+          112
+        ],
+        [
+          5,
+          114
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          14,
+          130
+        ],
+        [
+          14,
+          124
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          13,
+          126
+        ],
+        [
+          15,
+          126
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          14,
+          125
+        ],
+        [
+          14,
+          127
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          153,
+          117
+        ],
+        [
+          153,
+          111
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          152,
+          113
+        ],
+        [
+          154,
+          113
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          153,
+          112
+        ],
+        [
+          153,
+          114
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          147,
+          134
+        ],
+        [
+          147,
+          128
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          146,
+          130
+        ],
+        [
+          148,
+          130
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          147,
+          129
+        ],
+        [
+          147,
+          131
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          27,
+          137
+        ],
+        [
+          27,
+          131
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          26,
+          133
+        ],
+        [
+          28,
+          133
+        ]
+      ],
+      "color": 13
+    },
+    {
+      "type": "line",
+      "name": "Flower petals",
+      "points": [
+        [
+          27,
+          132
+        ],
+        [
+          27,
+          134
+        ]
+      ],
+      "color": 13
+    }
+  ]
+}

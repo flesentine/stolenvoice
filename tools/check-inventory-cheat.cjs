@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
+const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot}',s);const {boot}=s.qa;
+const a=boot();a.start();a.game.saveGame();while(a.game.state.popupOpen)a.game.closeMessage();const before=a.game.state,stored=a.storage.get(a.game.key);
+a.game.command('XYZZY INVENTORY');assert.match(a.message,/XYZZY INVENTORY/);assert.equal(a.game.state.inv.length,9);assert(a.game.state.inv.includes('rusty shears'));assert(a.game.state.inv.includes('glass jar'));
+const granted=new Set(['inventoryCheat','rose','workshopKey','bell','oilTaken','twineTaken','plankTaken','shearsTaken','waxTaken','jarTaken']);
+for(const key of Object.keys(before.flags))if(!granted.has(key))assert.equal(a.game.state.flags[key],before.flags[key],key+' puzzle stays unchanged');
+assert.equal(a.game.state.room,before.room);assert.deepEqual(a.game.state.player,before.player);assert.equal(a.game.state.score,before.score);assert.equal(a.storage.get(a.game.key),stored,'does not replace save');
+while(a.game.state.popupOpen)a.game.closeMessage();a.game.command('xyzzy inventory');assert.equal(a.game.state.inv.length,9,'idempotent');while(a.game.state.popupOpen)a.game.closeMessage();a.game.saveGame();
+const restored=boot(new Map([[a.game.key,a.storage.get(a.game.key)]]));restored.start();restored.game.restoreGame();assert.match(restored.message,/restored/i);assert.equal(restored.game.state.inv.length,9,'early jar can be saved without solving mill');assert(!restored.game.state.flags.wheelTurned);
+while(restored.game.state.popupOpen)restored.game.closeMessage();restored.game.command('xyzzy');while(restored.game.state.popupOpen)restored.game.closeMessage();const checkpoint=restored.game.state;restored.game.command('xyzzy inventory');
+assert(restored.game.state.flags.roseGiven&&restored.game.state.flags.bridgeFixed&&restored.game.state.flags.jarSealed);assert(!restored.game.state.inv.includes('rose'));assert(!restored.game.state.inv.includes('wooden plank'));assert(!restored.game.state.inv.includes('beeswax'));assert.equal(restored.game.state.score,checkpoint.score,'used items stay used and no extra score');
+console.log('PASS inventory-only cheat: all nine fresh-start objects, no puzzle/position/score/save changes, idempotence, early-jar save/restore and consumed-item preservation.');

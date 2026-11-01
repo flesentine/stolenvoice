@@ -1,0 +1,4 @@
+Built-in image_gen; stylized-concept storyboard reference.
+Reference image: objects-agi-preview.png, bottom row's cyan jars with red beeswax lids.
+Four matching frames: blue echo sealed in jar; silver bell sound approaching; crisp white/yellow illumination; golden voice sealed inside. Black backdrop, supporting dark blue stone shelf. Each panel conceived on a 160x168 AGI grid with wide displayed pixels. Standard 16-color EGA palette, flat fills, thin selective native-pixel contours, stepped highlights. No gradients, antialiasing, painted texture, labels, or UI. Keep jar placement and silhouette identical throughout.
+Output: jar-transformation-reference-v1.png. Native redraw: paintJarTransformation in game/story-effects.js. Proof cells: assets/reviews/jar-closeup-0.png through jar-closeup-3.png.

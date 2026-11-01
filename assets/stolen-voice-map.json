@@ -1,0 +1,1034 @@
+{
+  "rooms": [
+    {
+      "name": "The Royal Garden",
+      "art": null,
+      "spawn": [
+        155,
+        190
+      ],
+      "areas": [
+        [
+          [
+            8,
+            166
+          ],
+          [
+            112,
+            166
+          ],
+          [
+            143,
+            142
+          ],
+          [
+            165,
+            142
+          ],
+          [
+            181,
+            166
+          ],
+          [
+            312,
+            166
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ]
+      ],
+      "blocked": [
+        [
+          51,
+          200,
+          70,
+          208
+        ]
+      ],
+      "exits": [
+        {
+          "id": "courtyard",
+          "names": [
+            "castle",
+            "courtyard",
+            "court",
+            "north",
+            "n",
+            "gate",
+            "inside"
+          ],
+          "to": 8,
+          "zone": [
+            132,
+            154,
+            174,
+            176
+          ],
+          "spawn": [
+            160,
+            211
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "back"
+        },
+        {
+          "id": "orchard",
+          "names": [
+            "orchard",
+            "east",
+            "e"
+          ],
+          "to": 3,
+          "zone": [
+            305,
+            183,
+            316,
+            218
+          ],
+          "spawn": [
+            27,
+            202
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "right"
+        }
+      ]
+    },
+    {
+      "name": "The Mirror Gallery",
+      "art": "gallery",
+      "spawn": [
+        160,
+        213
+      ],
+      "areas": [
+        [
+          [
+            8,
+            165
+          ],
+          [
+            312,
+            165
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ],
+        [
+          [
+            276,
+            151
+          ],
+          [
+            316,
+            151
+          ],
+          [
+            316,
+            214
+          ],
+          [
+            276,
+            214
+          ]
+        ],
+        [
+          [
+            34,
+            159
+          ],
+          [
+            110,
+            159
+          ],
+          [
+            110,
+            168
+          ],
+          [
+            34,
+            168
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "courtyard",
+          "names": [
+            "courtyard",
+            "court",
+            "outside",
+            "out",
+            "south",
+            "s",
+            "back"
+          ],
+          "to": 8,
+          "zone": [
+            110,
+            225,
+            204,
+            239
+          ],
+          "spawn": [
+            251,
+            158
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "front"
+        },
+        {
+          "id": "belfry",
+          "names": [
+            "belfry",
+            "tower",
+            "stairs",
+            "up",
+            "u"
+          ],
+          "to": 7,
+          "zone": [
+            289,
+            151,
+            316,
+            182
+          ],
+          "spawn": [
+            35,
+            207
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "right"
+        }
+      ]
+    },
+    {
+      "name": "The Potting Shed",
+      "art": "potting",
+      "spawn": [
+        160,
+        212
+      ],
+      "areas": [
+        [
+          [
+            8,
+            180
+          ],
+          [
+            312,
+            180
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ]
+      ],
+      "blocked": [
+        [
+          28,
+          172,
+          73,
+          184
+        ]
+      ],
+      "exits": [
+        {
+          "id": "courtyard",
+          "names": [
+            "courtyard",
+            "court",
+            "outside",
+            "out",
+            "south",
+            "s",
+            "back"
+          ],
+          "to": 8,
+          "zone": [
+            120,
+            226,
+            202,
+            239
+          ],
+          "spawn": [
+            64,
+            158
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "front"
+        }
+      ]
+    },
+    {
+      "name": "The Old Orchard",
+      "art": "orchard",
+      "spawn": [
+        27,
+        202
+      ],
+      "areas": [
+        [
+          [
+            8,
+            170
+          ],
+          [
+            312,
+            170
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ]
+      ],
+      "blocked": [
+        [
+          193,
+          185,
+          220,
+          194
+        ]
+      ],
+      "exits": [
+        {
+          "id": "garden",
+          "names": [
+            "garden",
+            "west",
+            "w",
+            "back"
+          ],
+          "to": 0,
+          "zone": [
+            4,
+            184,
+            15,
+            218
+          ],
+          "spawn": [
+            286,
+            201
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "left"
+        },
+        {
+          "id": "bridge",
+          "names": [
+            "bridge",
+            "stream",
+            "east",
+            "e"
+          ],
+          "to": 4,
+          "zone": [
+            305,
+            180,
+            316,
+            220
+          ],
+          "spawn": [
+            28,
+            202
+          ],
+          "requires": "thornsCut",
+          "blocked": "The blackthorn snags your clothes. Its tangled stems leave no room to pass.",
+          "facing": "right"
+        }
+      ]
+    },
+    {
+      "name": "The Broken Bridge",
+      "art": "bridge",
+      "spawn": [
+        28,
+        202
+      ],
+      "areas": [
+        [
+          [
+            8,
+            147
+          ],
+          [
+            50,
+            147
+          ],
+          [
+            50,
+            125
+          ],
+          [
+            93,
+            125
+          ],
+          [
+            116,
+            145
+          ],
+          [
+            140,
+            153
+          ],
+          [
+            140,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ],
+        [
+          [
+            182,
+            146
+          ],
+          [
+            312,
+            146
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            182,
+            238
+          ]
+        ],
+        [
+          [
+            284,
+            74
+          ],
+          [
+            300,
+            78
+          ],
+          [
+            284,
+            99
+          ],
+          [
+            284,
+            119
+          ],
+          [
+            312,
+            143
+          ],
+          [
+            312,
+            177
+          ],
+          [
+            294,
+            177
+          ],
+          [
+            292,
+            150
+          ],
+          [
+            268,
+            118
+          ],
+          [
+            270,
+            96
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "orchard",
+          "names": [
+            "orchard",
+            "garden",
+            "west",
+            "w",
+            "back"
+          ],
+          "to": 3,
+          "zone": [
+            4,
+            183,
+            15,
+            220
+          ],
+          "spawn": [
+            286,
+            201
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "left"
+        },
+        {
+          "id": "mill",
+          "names": [
+            "mill",
+            "northwest",
+            "nw"
+          ],
+          "to": 5,
+          "zone": [
+            68,
+            148,
+            100,
+            160
+          ],
+          "spawn": [
+            28,
+            181
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "front"
+        },
+        {
+          "id": "grotto",
+          "names": [
+            "grotto",
+            "cave",
+            "north",
+            "n",
+            "northeast",
+            "ne"
+          ],
+          "to": 6,
+          "zone": [
+            278,
+            129,
+            307,
+            149
+          ],
+          "spawn": [
+            43,
+            184
+          ],
+          "requires": "bridgePlank",
+          "blocked": "The grotto lies across the stream.",
+          "facing": "front"
+        }
+      ]
+    },
+    {
+      "name": "The Old Watermill",
+      "art": "mill",
+      "spawn": [
+        28,
+        205
+      ],
+      "areas": [
+        [
+          [
+            8,
+            178
+          ],
+          [
+            312,
+            178
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ],
+        [
+          [
+            8,
+            149
+          ],
+          [
+            35,
+            149
+          ],
+          [
+            44,
+            181
+          ],
+          [
+            8,
+            181
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "bridge",
+          "names": [
+            "bridge",
+            "door",
+            "doorway",
+            "outside",
+            "out",
+            "northwest",
+            "nw",
+            "back"
+          ],
+          "to": 4,
+          "zone": [
+            9,
+            150,
+            31,
+            167
+          ],
+          "spawn": [
+            85,
+            176
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "front"
+        }
+      ]
+    },
+    {
+      "name": "The Echo Grotto",
+      "art": "grotto",
+      "spawn": [
+        43,
+        184
+      ],
+      "areas": [
+        [
+          [
+            15,
+            173
+          ],
+          [
+            166,
+            173
+          ],
+          [
+            174,
+            163
+          ],
+          [
+            218,
+            163
+          ],
+          [
+            231,
+            173
+          ],
+          [
+            299,
+            176
+          ],
+          [
+            292,
+            196
+          ],
+          [
+            251,
+            202
+          ],
+          [
+            230,
+            220
+          ],
+          [
+            165,
+            231
+          ],
+          [
+            87,
+            222
+          ],
+          [
+            52,
+            203
+          ],
+          [
+            15,
+            197
+          ]
+        ],
+        [
+          [
+            21,
+            144
+          ],
+          [
+            39,
+            144
+          ],
+          [
+            48,
+            183
+          ],
+          [
+            19,
+            184
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "bridge",
+          "names": [
+            "bridge",
+            "outside",
+            "out",
+            "west",
+            "w",
+            "back"
+          ],
+          "to": 4,
+          "zone": [
+            21,
+            144,
+            38,
+            164
+          ],
+          "spawn": [
+            290,
+            166
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "front"
+        }
+      ]
+    },
+    {
+      "name": "The Castle Belfry",
+      "art": "belfry",
+      "spawn": [
+        35,
+        207
+      ],
+      "areas": [
+        [
+          [
+            8,
+            180
+          ],
+          [
+            312,
+            180
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "gallery",
+          "names": [
+            "gallery",
+            "stairs",
+            "down",
+            "d",
+            "out",
+            "back"
+          ],
+          "to": 1,
+          "zone": [
+            4,
+            190,
+            15,
+            230
+          ],
+          "spawn": [
+            284,
+            201
+          ],
+          "requires": null,
+          "blocked": "",
+          "facing": "left"
+        }
+      ]
+    },
+    {
+      "name": "The Castle Courtyard",
+      "art": "courtyard",
+      "spawn": [
+        160,
+        211
+      ],
+      "areas": [
+        [
+          [
+            8,
+            145
+          ],
+          [
+            312,
+            145
+          ],
+          [
+            312,
+            238
+          ],
+          [
+            8,
+            238
+          ]
+        ],
+        [
+          [
+            51,
+            130
+          ],
+          [
+            77,
+            130
+          ],
+          [
+            87,
+            162
+          ],
+          [
+            47,
+            162
+          ]
+        ],
+        [
+          [
+            231,
+            129
+          ],
+          [
+            269,
+            129
+          ],
+          [
+            277,
+            162
+          ],
+          [
+            226,
+            162
+          ]
+        ]
+      ],
+      "blocked": [],
+      "exits": [
+        {
+          "id": "garden",
+          "names": [
+            "garden",
+            "gate",
+            "south",
+            "s",
+            "out",
+            "outside",
+            "back"
+          ],
+          "to": 0,
+          "zone": [
+            128,
+            227,
+            194,
+            239
+          ],
+          "spawn": [
+            153,
+            185
+          ],
+          "facing": "front",
+          "requires": null,
+          "blocked": ""
+        },
+        {
+          "id": "shed",
+          "names": [
+            "shed",
+            "potting shed",
+            "left door",
+            "left",
+            "west",
+            "w",
+            "northwest",
+            "nw"
+          ],
+          "to": 2,
+          "zone": [
+            53,
+            130,
+            75,
+            143
+          ],
+          "spawn": [
+            160,
+            212
+          ],
+          "facing": "back",
+          "requires": null,
+          "blocked": ""
+        },
+        {
+          "id": "gallery",
+          "names": [
+            "gallery",
+            "mirror gallery",
+            "right door",
+            "right",
+            "north",
+            "n",
+            "northeast",
+            "ne",
+            "inside"
+          ],
+          "to": 1,
+          "zone": [
+            234,
+            129,
+            267,
+            143
+          ],
+          "spawn": [
+            160,
+            213
+          ],
+          "facing": "back",
+          "requires": null,
+          "blocked": ""
+        }
+      ]
+    }
+  ],
+  "hotspots": [
+    {
+      "man": [
+        61,
+        204
+      ],
+      "rose": [
+        273,
+        201
+      ],
+      "bell": [
+        285,
+        165
+      ]
+    },
+    {
+      "book": [
+        76,
+        171
+      ],
+      "mirror": [
+        144,
+        169
+      ],
+      "stairs": [
+        302,
+        171
+      ]
+    },
+    {
+      "oil": [
+        158,
+        191
+      ],
+      "twine": [
+        183,
+        191
+      ],
+      "shears": [
+        132,
+        191
+      ],
+      "plank": [
+        35,
+        193
+      ]
+    },
+    {
+      "wax": [
+        206,
+        184
+      ],
+      "thorns": [
+        292,
+        200
+      ]
+    },
+    {
+      "bridge": [
+        134,
+        169
+      ]
+    },
+    {
+      "wheel": [
+        83,
+        180
+      ],
+      "cabinet": [
+        245,
+        181
+      ],
+      "jar": [
+        245,
+        181
+      ]
+    },
+    {
+      "pool": [
+        193,
+        178
+      ]
+    },
+    {
+      "rope": [
+        176,
+        181
+      ],
+      "bell": [
+        176,
+        181
+      ]
+    },
+    {}
+  ]
+}

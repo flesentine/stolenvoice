@@ -1,0 +1,188 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "wooden plank",
+  "room": "inventory",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/inventory/inventory-reference-v1.png",
+  "spriteRegion": [
+    64,
+    64,
+    32,
+    28
+  ],
+  "notes": "Hand-authored line-and-fill redraw of generated reference. Native pixels; no raster sampling.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Oak board",
+      "points": [
+        [
+          67,
+          85
+        ],
+        [
+          86,
+          66
+        ],
+        [
+          93,
+          71
+        ],
+        [
+          74,
+          90
+        ]
+      ],
+      "color": 6,
+      "outline": 6
+    },
+    {
+      "type": "polygon",
+      "name": "End grain",
+      "points": [
+        [
+          67,
+          85
+        ],
+        [
+          74,
+          90
+        ],
+        [
+          74,
+          91
+        ],
+        [
+          67,
+          87
+        ]
+      ],
+      "color": 6,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Board lit edge",
+      "points": [
+        [
+          68,
+          85
+        ],
+        [
+          86,
+          67
+        ],
+        [
+          91,
+          71
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Oak grain",
+      "points": [
+        [
+          72,
+          84
+        ],
+        [
+          78,
+          78
+        ],
+        [
+          82,
+          73
+        ],
+        [
+          87,
+          70
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Second grain",
+      "points": [
+        [
+          75,
+          86
+        ],
+        [
+          80,
+          81
+        ],
+        [
+          88,
+          74
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Wood knot",
+      "points": [
+        [
+          79,
+          80
+        ],
+        [
+          81,
+          77
+        ],
+        [
+          83,
+          77
+        ],
+        [
+          82,
+          80
+        ],
+        [
+          80,
+          82
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Knot center",
+      "points": [
+        [
+          80,
+          80
+        ],
+        [
+          81,
+          79
+        ]
+      ],
+      "color": 6
+    }
+  ]
+}

@@ -1,0 +1,8891 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "room": "courtyard",
+  "name": "The Castle Courtyard",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/rooms/courtyard-reference-v2.png",
+  "notes": "Complete authored line-and-fill picture; no raster sampling. Scene layout preserves game exits and hotspots.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Blue sky",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          160,
+          168
+        ],
+        [
+          0,
+          168
+        ]
+      ],
+      "color": 9,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "White cloud",
+      "points": [
+        [
+          26,
+          15
+        ],
+        [
+          31,
+          12
+        ],
+        [
+          34,
+          7
+        ],
+        [
+          39,
+          7
+        ],
+        [
+          43,
+          13
+        ],
+        [
+          48,
+          13
+        ],
+        [
+          53,
+          17
+        ],
+        [
+          26,
+          17
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "White cloud",
+      "points": [
+        [
+          94,
+          9
+        ],
+        [
+          99,
+          6
+        ],
+        [
+          102,
+          1
+        ],
+        [
+          107,
+          1
+        ],
+        [
+          111,
+          7
+        ],
+        [
+          116,
+          7
+        ],
+        [
+          121,
+          11
+        ],
+        [
+          94,
+          11
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Receding curtain wall",
+      "points": [
+        [
+          0,
+          44
+        ],
+        [
+          92,
+          25
+        ],
+        [
+          160,
+          16
+        ],
+        [
+          160,
+          113
+        ],
+        [
+          0,
+          113
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Curtain wall return",
+      "points": [
+        [
+          155,
+          18
+        ],
+        [
+          160,
+          16
+        ],
+        [
+          160,
+          113
+        ],
+        [
+          155,
+          110
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Parapet underside",
+      "points": [
+        [
+          0,
+          47
+        ],
+        [
+          92,
+          28
+        ],
+        [
+          160,
+          19
+        ],
+        [
+          160,
+          21
+        ],
+        [
+          92,
+          30
+        ],
+        [
+          0,
+          49
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          0,
+          39
+        ],
+        [
+          8,
+          39
+        ],
+        [
+          8,
+          47
+        ],
+        [
+          0,
+          47
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          0,
+          47
+        ],
+        [
+          7,
+          47
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          16,
+          36
+        ],
+        [
+          24,
+          36
+        ],
+        [
+          24,
+          44
+        ],
+        [
+          16,
+          44
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          16,
+          44
+        ],
+        [
+          23,
+          44
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          32,
+          33
+        ],
+        [
+          40,
+          33
+        ],
+        [
+          40,
+          41
+        ],
+        [
+          32,
+          41
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          32,
+          41
+        ],
+        [
+          39,
+          41
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          48,
+          30
+        ],
+        [
+          56,
+          30
+        ],
+        [
+          56,
+          38
+        ],
+        [
+          48,
+          38
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          48,
+          38
+        ],
+        [
+          55,
+          38
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          64,
+          27
+        ],
+        [
+          72,
+          27
+        ],
+        [
+          72,
+          35
+        ],
+        [
+          64,
+          35
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          64,
+          35
+        ],
+        [
+          71,
+          35
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          80,
+          24
+        ],
+        [
+          88,
+          24
+        ],
+        [
+          88,
+          32
+        ],
+        [
+          80,
+          32
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          80,
+          32
+        ],
+        [
+          87,
+          32
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          96,
+          21
+        ],
+        [
+          104,
+          21
+        ],
+        [
+          104,
+          29
+        ],
+        [
+          96,
+          29
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          96,
+          29
+        ],
+        [
+          103,
+          29
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          112,
+          18
+        ],
+        [
+          120,
+          18
+        ],
+        [
+          120,
+          26
+        ],
+        [
+          112,
+          26
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          112,
+          26
+        ],
+        [
+          119,
+          26
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          128,
+          15
+        ],
+        [
+          136,
+          15
+        ],
+        [
+          136,
+          23
+        ],
+        [
+          128,
+          23
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          128,
+          23
+        ],
+        [
+          135,
+          23
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Battlement",
+      "points": [
+        [
+          144,
+          12
+        ],
+        [
+          152,
+          12
+        ],
+        [
+          152,
+          20
+        ],
+        [
+          144,
+          20
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Merlon lower return",
+      "points": [
+        [
+          144,
+          20
+        ],
+        [
+          151,
+          20
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone joint",
+      "points": [
+        [
+          111,
+          32
+        ],
+        [
+          117,
+          32
+        ],
+        [
+          117,
+          34
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone joint",
+      "points": [
+        [
+          137,
+          27
+        ],
+        [
+          144,
+          27
+        ],
+        [
+          144,
+          29
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone joint",
+      "points": [
+        [
+          62,
+          88
+        ],
+        [
+          69,
+          88
+        ],
+        [
+          69,
+          90
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone joint",
+      "points": [
+        [
+          74,
+          103
+        ],
+        [
+          80,
+          103
+        ],
+        [
+          80,
+          105
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Stone joint",
+      "points": [
+        [
+          145,
+          92
+        ],
+        [
+          150,
+          92
+        ],
+        [
+          150,
+          94
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Parapet worn edge",
+      "points": [
+        [
+          98,
+          27
+        ],
+        [
+          105,
+          26
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Parapet worn edge",
+      "points": [
+        [
+          122,
+          23
+        ],
+        [
+          128,
+          22
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Parapet worn edge",
+      "points": [
+        [
+          143,
+          20
+        ],
+        [
+          150,
+          19
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Arrow loop recess",
+      "points": [
+        [
+          143,
+          33
+        ],
+        [
+          146,
+          33
+        ],
+        [
+          146,
+          43
+        ],
+        [
+          143,
+          43
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Arrow loop interior",
+      "points": [
+        [
+          144,
+          34
+        ],
+        [
+          144,
+          40
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Arrow loop lower edge",
+      "points": [
+        [
+          144,
+          42
+        ],
+        [
+          145,
+          42
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Turret",
+      "points": [
+        [
+          66,
+          17
+        ],
+        [
+          78,
+          17
+        ],
+        [
+          78,
+          33
+        ],
+        [
+          66,
+          33
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Turret dark facet",
+      "points": [
+        [
+          76,
+          18
+        ],
+        [
+          78,
+          18
+        ],
+        [
+          78,
+          32
+        ],
+        [
+          76,
+          32
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Turret left stone light",
+      "points": [
+        [
+          67,
+          19
+        ],
+        [
+          67,
+          29
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Turret masonry joint",
+      "points": [
+        [
+          68,
+          21
+        ],
+        [
+          70,
+          21
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Turret masonry joint",
+      "points": [
+        [
+          73,
+          30
+        ],
+        [
+          75,
+          30
+        ],
+        [
+          75,
+          31
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Turret masonry joint",
+      "points": [
+        [
+          68,
+          27
+        ],
+        [
+          69,
+          27
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Turret window recess",
+      "points": [
+        [
+          70,
+          28
+        ],
+        [
+          70,
+          23
+        ],
+        [
+          72,
+          20
+        ],
+        [
+          74,
+          23
+        ],
+        [
+          74,
+          28
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Turret slit crown",
+      "points": [
+        [
+          72,
+          22
+        ],
+        [
+          72,
+          23
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Turret slit",
+      "points": [
+        [
+          71,
+          24
+        ],
+        [
+          73,
+          24
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Turret slit",
+      "points": [
+        [
+          71,
+          25
+        ],
+        [
+          73,
+          25
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Turret slit",
+      "points": [
+        [
+          71,
+          26
+        ],
+        [
+          73,
+          26
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Turret slit",
+      "points": [
+        [
+          71,
+          27
+        ],
+        [
+          73,
+          27
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Turret window sill",
+      "points": [
+        [
+          70,
+          29
+        ],
+        [
+          74,
+          29
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Turret base course",
+      "points": [
+        [
+          65,
+          33
+        ],
+        [
+          79,
+          33
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Turret base light",
+      "points": [
+        [
+          66,
+          32
+        ],
+        [
+          75,
+          32
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          72,
+          3
+        ],
+        [
+          72,
+          3
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          72,
+          4
+        ],
+        [
+          72,
+          4
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          71,
+          5
+        ],
+        [
+          73,
+          5
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          72,
+          5
+        ],
+        [
+          72,
+          5
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          70,
+          6
+        ],
+        [
+          74,
+          6
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          71,
+          6
+        ],
+        [
+          73,
+          6
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          69,
+          7
+        ],
+        [
+          75,
+          7
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          70,
+          7
+        ],
+        [
+          74,
+          7
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          68,
+          8
+        ],
+        [
+          76,
+          8
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          69,
+          8
+        ],
+        [
+          75,
+          8
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          67,
+          9
+        ],
+        [
+          77,
+          9
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          68,
+          9
+        ],
+        [
+          76,
+          9
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          66,
+          10
+        ],
+        [
+          78,
+          10
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          67,
+          10
+        ],
+        [
+          77,
+          10
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          65,
+          11
+        ],
+        [
+          79,
+          11
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          66,
+          11
+        ],
+        [
+          78,
+          11
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          64,
+          12
+        ],
+        [
+          80,
+          12
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          65,
+          12
+        ],
+        [
+          79,
+          12
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          63,
+          13
+        ],
+        [
+          81,
+          13
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          64,
+          13
+        ],
+        [
+          80,
+          13
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          62,
+          14
+        ],
+        [
+          82,
+          14
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          63,
+          14
+        ],
+        [
+          81,
+          14
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          61,
+          15
+        ],
+        [
+          83,
+          15
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          62,
+          15
+        ],
+        [
+          82,
+          15
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof outline",
+      "points": [
+        [
+          60,
+          16
+        ],
+        [
+          84,
+          16
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Red turret roof",
+      "points": [
+        [
+          61,
+          16
+        ],
+        [
+          83,
+          16
+        ]
+      ],
+      "color": 4
+    },
+    {
+      "type": "line",
+      "name": "Turret roof eave",
+      "points": [
+        [
+          60,
+          17
+        ],
+        [
+          84,
+          17
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Turret eave shadow",
+      "points": [
+        [
+          62,
+          18
+        ],
+        [
+          82,
+          18
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Turret tile joint",
+      "points": [
+        [
+          69,
+          8
+        ],
+        [
+          71,
+          9
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Turret tile joint",
+      "points": [
+        [
+          65,
+          12
+        ],
+        [
+          68,
+          12
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Turret tile joint",
+      "points": [
+        [
+          75,
+          12
+        ],
+        [
+          77,
+          13
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Turret tile glint",
+      "points": [
+        [
+          68,
+          9
+        ],
+        [
+          69,
+          8
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "line",
+      "name": "Flagstaff",
+      "points": [
+        [
+          72,
+          0
+        ],
+        [
+          72,
+          3
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy silhouette along wall",
+      "points": [
+        [
+          0,
+          37
+        ],
+        [
+          8,
+          39
+        ],
+        [
+          12,
+          35
+        ],
+        [
+          22,
+          38
+        ],
+        [
+          27,
+          34
+        ],
+        [
+          36,
+          36
+        ],
+        [
+          42,
+          33
+        ],
+        [
+          50,
+          37
+        ],
+        [
+          56,
+          34
+        ],
+        [
+          65,
+          39
+        ],
+        [
+          73,
+          36
+        ],
+        [
+          81,
+          40
+        ],
+        [
+          89,
+          39
+        ],
+        [
+          94,
+          43
+        ],
+        [
+          99,
+          42
+        ],
+        [
+          105,
+          47
+        ],
+        [
+          108,
+          54
+        ],
+        [
+          104,
+          58
+        ],
+        [
+          108,
+          65
+        ],
+        [
+          103,
+          70
+        ],
+        [
+          105,
+          78
+        ],
+        [
+          99,
+          83
+        ],
+        [
+          102,
+          91
+        ],
+        [
+          98,
+          101
+        ],
+        [
+          93,
+          106
+        ],
+        [
+          86,
+          103
+        ],
+        [
+          88,
+          95
+        ],
+        [
+          83,
+          89
+        ],
+        [
+          86,
+          81
+        ],
+        [
+          79,
+          76
+        ],
+        [
+          81,
+          68
+        ],
+        [
+          74,
+          64
+        ],
+        [
+          67,
+          65
+        ],
+        [
+          61,
+          60
+        ],
+        [
+          54,
+          63
+        ],
+        [
+          48,
+          57
+        ],
+        [
+          39,
+          61
+        ],
+        [
+          32,
+          55
+        ],
+        [
+          25,
+          57
+        ],
+        [
+          18,
+          51
+        ],
+        [
+          9,
+          54
+        ],
+        [
+          0,
+          50
+        ]
+      ],
+      "color": 2,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Green wall ivy",
+      "points": [
+        [
+          0,
+          39
+        ],
+        [
+          8,
+          42
+        ],
+        [
+          13,
+          39
+        ],
+        [
+          21,
+          42
+        ],
+        [
+          27,
+          38
+        ],
+        [
+          36,
+          40
+        ],
+        [
+          42,
+          37
+        ],
+        [
+          49,
+          41
+        ],
+        [
+          56,
+          38
+        ],
+        [
+          65,
+          43
+        ],
+        [
+          73,
+          40
+        ],
+        [
+          81,
+          44
+        ],
+        [
+          88,
+          43
+        ],
+        [
+          94,
+          47
+        ],
+        [
+          99,
+          46
+        ],
+        [
+          103,
+          51
+        ],
+        [
+          101,
+          56
+        ],
+        [
+          104,
+          62
+        ],
+        [
+          100,
+          68
+        ],
+        [
+          102,
+          75
+        ],
+        [
+          97,
+          80
+        ],
+        [
+          99,
+          87
+        ],
+        [
+          96,
+          96
+        ],
+        [
+          92,
+          101
+        ],
+        [
+          89,
+          99
+        ],
+        [
+          91,
+          92
+        ],
+        [
+          87,
+          87
+        ],
+        [
+          90,
+          79
+        ],
+        [
+          83,
+          75
+        ],
+        [
+          85,
+          66
+        ],
+        [
+          77,
+          61
+        ],
+        [
+          69,
+          62
+        ],
+        [
+          61,
+          56
+        ],
+        [
+          54,
+          59
+        ],
+        [
+          48,
+          53
+        ],
+        [
+          39,
+          57
+        ],
+        [
+          32,
+          51
+        ],
+        [
+          25,
+          53
+        ],
+        [
+          18,
+          47
+        ],
+        [
+          10,
+          50
+        ],
+        [
+          0,
+          47
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          8,
+          43
+        ],
+        [
+          12,
+          42
+        ],
+        [
+          16,
+          44
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          47,
+          41
+        ],
+        [
+          52,
+          43
+        ],
+        [
+          56,
+          41
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          72,
+          46
+        ],
+        [
+          76,
+          45
+        ],
+        [
+          80,
+          47
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          95,
+          55
+        ],
+        [
+          99,
+          54
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          91,
+          83
+        ],
+        [
+          94,
+          81
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Selected ivy light",
+      "points": [
+        [
+          60,
+          53
+        ],
+        [
+          63,
+          54
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Ivy hanging fold",
+      "points": [
+        [
+          103,
+          56
+        ],
+        [
+          101,
+          61
+        ],
+        [
+          103,
+          65
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Ivy lower fold",
+      "points": [
+        [
+          98,
+          83
+        ],
+        [
+          96,
+          88
+        ],
+        [
+          98,
+          91
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          3,
+          43
+        ],
+        [
+          9,
+          40
+        ],
+        [
+          15,
+          43
+        ],
+        [
+          20,
+          42
+        ],
+        [
+          18,
+          45
+        ],
+        [
+          11,
+          46
+        ],
+        [
+          6,
+          45
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          30,
+          40
+        ],
+        [
+          35,
+          38
+        ],
+        [
+          42,
+          40
+        ],
+        [
+          48,
+          39
+        ],
+        [
+          46,
+          43
+        ],
+        [
+          39,
+          44
+        ],
+        [
+          34,
+          42
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          54,
+          43
+        ],
+        [
+          61,
+          41
+        ],
+        [
+          67,
+          44
+        ],
+        [
+          72,
+          43
+        ],
+        [
+          69,
+          47
+        ],
+        [
+          62,
+          48
+        ],
+        [
+          57,
+          46
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          76,
+          46
+        ],
+        [
+          82,
+          44
+        ],
+        [
+          90,
+          47
+        ],
+        [
+          97,
+          47
+        ],
+        [
+          98,
+          51
+        ],
+        [
+          91,
+          52
+        ],
+        [
+          85,
+          50
+        ],
+        [
+          80,
+          51
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          86,
+          57
+        ],
+        [
+          92,
+          54
+        ],
+        [
+          99,
+          57
+        ],
+        [
+          99,
+          61
+        ],
+        [
+          94,
+          64
+        ],
+        [
+          88,
+          62
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          89,
+          70
+        ],
+        [
+          94,
+          67
+        ],
+        [
+          99,
+          70
+        ],
+        [
+          98,
+          74
+        ],
+        [
+          94,
+          77
+        ],
+        [
+          90,
+          75
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Ivy leaf fan",
+      "points": [
+        [
+          90,
+          86
+        ],
+        [
+          95,
+          83
+        ],
+        [
+          98,
+          86
+        ],
+        [
+          96,
+          91
+        ],
+        [
+          92,
+          94
+        ],
+        [
+          90,
+          91
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          18,
+          46
+        ],
+        [
+          23,
+          44
+        ],
+        [
+          27,
+          45
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          47,
+          48
+        ],
+        [
+          51,
+          46
+        ],
+        [
+          57,
+          48
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          75,
+          53
+        ],
+        [
+          81,
+          51
+        ],
+        [
+          85,
+          53
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          88,
+          64
+        ],
+        [
+          92,
+          66
+        ],
+        [
+          94,
+          65
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          90,
+          78
+        ],
+        [
+          94,
+          80
+        ],
+        [
+          97,
+          78
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Ivy overlapping seam",
+      "points": [
+        [
+          91,
+          96
+        ],
+        [
+          94,
+          95
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Exposed ivy stem",
+      "points": [
+        [
+          83,
+          57
+        ],
+        [
+          86,
+          65
+        ],
+        [
+          85,
+          72
+        ],
+        [
+          88,
+          79
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Trailing ivy behind banner",
+      "points": [
+        [
+          99,
+          74
+        ],
+        [
+          103,
+          76
+        ],
+        [
+          106,
+          79
+        ],
+        [
+          105,
+          82
+        ],
+        [
+          108,
+          85
+        ],
+        [
+          106,
+          88
+        ],
+        [
+          107,
+          91
+        ],
+        [
+          104,
+          94
+        ],
+        [
+          103,
+          98
+        ],
+        [
+          100,
+          97
+        ],
+        [
+          98,
+          94
+        ],
+        [
+          100,
+          91
+        ],
+        [
+          97,
+          88
+        ],
+        [
+          98,
+          84
+        ],
+        [
+          96,
+          81
+        ]
+      ],
+      "color": 2,
+      "outline": 2
+    },
+    {
+      "type": "polygon",
+      "name": "Trailing ivy leaf light",
+      "points": [
+        [
+          101,
+          84
+        ],
+        [
+          104,
+          83
+        ],
+        [
+          106,
+          85
+        ],
+        [
+          104,
+          87
+        ],
+        [
+          101,
+          86
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Trailing ivy lower leaf",
+      "points": [
+        [
+          100,
+          91
+        ],
+        [
+          103,
+          90
+        ],
+        [
+          105,
+          92
+        ],
+        [
+          103,
+          94
+        ],
+        [
+          100,
+          93
+        ]
+      ],
+      "color": 10,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Shed side shadow",
+      "points": [
+        [
+          50,
+          61
+        ],
+        [
+          56,
+          64
+        ],
+        [
+          56,
+          101
+        ],
+        [
+          50,
+          101
+        ]
+      ],
+      "color": 6,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Shed plaster face",
+      "points": [
+        [
+          7,
+          61
+        ],
+        [
+          29,
+          40
+        ],
+        [
+          51,
+          61
+        ],
+        [
+          51,
+          101
+        ],
+        [
+          7,
+          101
+        ]
+      ],
+      "color": 15,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Shed tiled roof silhouette",
+      "points": [
+        [
+          2,
+          59
+        ],
+        [
+          29,
+          34
+        ],
+        [
+          56,
+          59
+        ],
+        [
+          53,
+          62
+        ],
+        [
+          29,
+          40
+        ],
+        [
+          5,
+          62
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Red shed tiles",
+      "points": [
+        [
+          3,
+          59
+        ],
+        [
+          29,
+          35
+        ],
+        [
+          55,
+          59
+        ],
+        [
+          53,
+          60
+        ],
+        [
+          29,
+          38
+        ],
+        [
+          5,
+          61
+        ]
+      ],
+      "color": 4,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Single shed eave contour",
+      "points": [
+        [
+          5,
+          62
+        ],
+        [
+          29,
+          40
+        ],
+        [
+          53,
+          62
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Roof ridge highlight",
+      "points": [
+        [
+          4,
+          58
+        ],
+        [
+          29,
+          35
+        ],
+        [
+          54,
+          58
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          22,
+          45
+        ],
+        [
+          19,
+          47
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          15,
+          51
+        ],
+        [
+          12,
+          53
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          8,
+          57
+        ],
+        [
+          5,
+          59
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          36,
+          45
+        ],
+        [
+          39,
+          47
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          43,
+          51
+        ],
+        [
+          46,
+          53
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected tile seams",
+      "points": [
+        [
+          50,
+          57
+        ],
+        [
+          53,
+          59
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Sunlit tile edge",
+      "points": [
+        [
+          14,
+          51
+        ],
+        [
+          19,
+          47
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Shed corner timber",
+      "points": [
+        [
+          8,
+          62
+        ],
+        [
+          10,
+          62
+        ],
+        [
+          10,
+          101
+        ],
+        [
+          8,
+          101
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Timber lit edge",
+      "points": [
+        [
+          8,
+          64
+        ],
+        [
+          8,
+          99
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Shed corner timber",
+      "points": [
+        [
+          48,
+          62
+        ],
+        [
+          50,
+          62
+        ],
+        [
+          50,
+          101
+        ],
+        [
+          48,
+          101
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Timber lit edge",
+      "points": [
+        [
+          48,
+          64
+        ],
+        [
+          48,
+          99
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Gable tie beam",
+      "points": [
+        [
+          10,
+          61
+        ],
+        [
+          48,
+          61
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Left diagonal brace",
+      "points": [
+        [
+          10,
+          62
+        ],
+        [
+          15,
+          62
+        ],
+        [
+          10,
+          69
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Right diagonal brace",
+      "points": [
+        [
+          43,
+          62
+        ],
+        [
+          48,
+          62
+        ],
+        [
+          48,
+          69
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Shed window frame",
+      "points": [
+        [
+          13,
+          66
+        ],
+        [
+          21,
+          66
+        ],
+        [
+          21,
+          79
+        ],
+        [
+          13,
+          79
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Blue shed window",
+      "points": [
+        [
+          14,
+          67
+        ],
+        [
+          20,
+          67
+        ],
+        [
+          20,
+          77
+        ],
+        [
+          14,
+          77
+        ]
+      ],
+      "color": 1,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Window crossbar",
+      "points": [
+        [
+          14,
+          72
+        ],
+        [
+          20,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Window sill",
+      "points": [
+        [
+          12,
+          79
+        ],
+        [
+          22,
+          79
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Window flower box",
+      "points": [
+        [
+          13,
+          80
+        ],
+        [
+          21,
+          80
+        ],
+        [
+          20,
+          83
+        ],
+        [
+          14,
+          83
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Window herb",
+      "points": [
+        [
+          16,
+          80
+        ],
+        [
+          16,
+          77
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Window herb",
+      "points": [
+        [
+          19,
+          80
+        ],
+        [
+          20,
+          77
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Plaster repair seam",
+      "points": [
+        [
+          17,
+          88
+        ],
+        [
+          20,
+          88
+        ],
+        [
+          20,
+          90
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "polygon",
+      "name": "Shed door dark reveal",
+      "points": [
+        [
+          25,
+          56
+        ],
+        [
+          42,
+          56
+        ],
+        [
+          42,
+          96
+        ],
+        [
+          25,
+          96
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Shed door lintel",
+      "points": [
+        [
+          24,
+          54
+        ],
+        [
+          43,
+          54
+        ],
+        [
+          43,
+          57
+        ],
+        [
+          24,
+          57
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Doorframe light",
+      "points": [
+        [
+          25,
+          58
+        ],
+        [
+          25,
+          95
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Doorframe right return",
+      "points": [
+        [
+          42,
+          58
+        ],
+        [
+          42,
+          95
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Open oak door",
+      "points": [
+        [
+          43,
+          59
+        ],
+        [
+          50,
+          63
+        ],
+        [
+          50,
+          97
+        ],
+        [
+          43,
+          95
+        ]
+      ],
+      "color": 6,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Door free edge light",
+      "points": [
+        [
+          50,
+          64
+        ],
+        [
+          50,
+          95
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Door plank seam",
+      "points": [
+        [
+          45,
+          65
+        ],
+        [
+          45,
+          94
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Door plank seam",
+      "points": [
+        [
+          48,
+          65
+        ],
+        [
+          48,
+          94
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Door iron hinge",
+      "points": [
+        [
+          43,
+          67
+        ],
+        [
+          49,
+          69
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Door hinge pin",
+      "points": [
+        [
+          43,
+          66
+        ],
+        [
+          43,
+          69
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Door iron hinge",
+      "points": [
+        [
+          43,
+          87
+        ],
+        [
+          49,
+          89
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Door hinge pin",
+      "points": [
+        [
+          43,
+          86
+        ],
+        [
+          43,
+          89
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Door latch plate",
+      "points": [
+        [
+          48,
+          77
+        ],
+        [
+          48,
+          81
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Door ring handle",
+      "points": [
+        [
+          48,
+          78
+        ],
+        [
+          49,
+          78
+        ],
+        [
+          49,
+          80
+        ],
+        [
+          48,
+          80
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Terracotta pot",
+      "points": [
+        [
+          6,
+          94
+        ],
+        [
+          13,
+          94
+        ],
+        [
+          12,
+          104
+        ],
+        [
+          8,
+          104
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Pot lip",
+      "points": [
+        [
+          5,
+          94
+        ],
+        [
+          14,
+          94
+        ],
+        [
+          14,
+          96
+        ],
+        [
+          5,
+          96
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Pot shine",
+      "points": [
+        [
+          8,
+          97
+        ],
+        [
+          8,
+          101
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "line",
+      "name": "Potted shoots",
+      "points": [
+        [
+          9,
+          94
+        ],
+        [
+          9,
+          87
+        ],
+        [
+          6,
+          84
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Potted shoots",
+      "points": [
+        [
+          9,
+          91
+        ],
+        [
+          13,
+          86
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "polygon",
+      "name": "Terracotta pot",
+      "points": [
+        [
+          49,
+          95
+        ],
+        [
+          56,
+          95
+        ],
+        [
+          55,
+          105
+        ],
+        [
+          51,
+          105
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Pot lip",
+      "points": [
+        [
+          48,
+          95
+        ],
+        [
+          57,
+          95
+        ],
+        [
+          57,
+          97
+        ],
+        [
+          48,
+          97
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Pot shine",
+      "points": [
+        [
+          51,
+          98
+        ],
+        [
+          51,
+          102
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "line",
+      "name": "Potted shoots",
+      "points": [
+        [
+          52,
+          95
+        ],
+        [
+          52,
+          88
+        ],
+        [
+          49,
+          85
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Potted shoots",
+      "points": [
+        [
+          52,
+          92
+        ],
+        [
+          56,
+          87
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "polygon",
+      "name": "Gallery gatehouse face",
+      "points": [
+        [
+          112,
+          56
+        ],
+        [
+          129,
+          36
+        ],
+        [
+          146,
+          55
+        ],
+        [
+          146,
+          112
+        ],
+        [
+          112,
+          112
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Gatehouse shadow",
+      "points": [
+        [
+          142,
+          56
+        ],
+        [
+          146,
+          55
+        ],
+        [
+          146,
+          112
+        ],
+        [
+          142,
+          109
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Gallery red gable",
+      "points": [
+        [
+          111,
+          55
+        ],
+        [
+          129,
+          34
+        ],
+        [
+          148,
+          54
+        ],
+        [
+          145,
+          58
+        ],
+        [
+          129,
+          39
+        ],
+        [
+          114,
+          58
+        ]
+      ],
+      "color": 4,
+      "outline": 6
+    },
+    {
+      "type": "line",
+      "name": "Gable eave",
+      "points": [
+        [
+          113,
+          55
+        ],
+        [
+          129,
+          37
+        ],
+        [
+          146,
+          55
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Blue entrance valance",
+      "points": [
+        [
+          116,
+          54
+        ],
+        [
+          129,
+          43
+        ],
+        [
+          141,
+          54
+        ],
+        [
+          141,
+          61
+        ],
+        [
+          135,
+          58
+        ],
+        [
+          129,
+          61
+        ],
+        [
+          122,
+          58
+        ],
+        [
+          116,
+          61
+        ]
+      ],
+      "color": 1,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Valance gold lower edge",
+      "points": [
+        [
+          117,
+          59
+        ],
+        [
+          122,
+          57
+        ],
+        [
+          129,
+          60
+        ],
+        [
+          135,
+          57
+        ],
+        [
+          140,
+          59
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Entrance dark arch",
+      "points": [
+        [
+          119,
+          96
+        ],
+        [
+          119,
+          72
+        ],
+        [
+          122,
+          64
+        ],
+        [
+          129,
+          59
+        ],
+        [
+          136,
+          64
+        ],
+        [
+          139,
+          72
+        ],
+        [
+          139,
+          96
+        ]
+      ],
+      "color": 0,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Arch stone surround",
+      "points": [
+        [
+          115,
+          96
+        ],
+        [
+          115,
+          71
+        ],
+        [
+          119,
+          62
+        ],
+        [
+          129,
+          55
+        ],
+        [
+          139,
+          62
+        ],
+        [
+          143,
+          71
+        ],
+        [
+          143,
+          96
+        ],
+        [
+          139,
+          96
+        ],
+        [
+          139,
+          72
+        ],
+        [
+          136,
+          65
+        ],
+        [
+          129,
+          60
+        ],
+        [
+          122,
+          65
+        ],
+        [
+          119,
+          72
+        ],
+        [
+          119,
+          96
+        ]
+      ],
+      "color": 8,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Arch left lit edge",
+      "points": [
+        [
+          116,
+          94
+        ],
+        [
+          116,
+          72
+        ],
+        [
+          120,
+          64
+        ],
+        [
+          128,
+          58
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Arch voussoir seam",
+      "points": [
+        [
+          117,
+          78
+        ],
+        [
+          120,
+          78
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Arch voussoir seam",
+      "points": [
+        [
+          138,
+          78
+        ],
+        [
+          142,
+          78
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Arch voussoir seam",
+      "points": [
+        [
+          120,
+          63
+        ],
+        [
+          122,
+          66
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Arch voussoir seam",
+      "points": [
+        [
+          136,
+          64
+        ],
+        [
+          139,
+          62
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Blue carpet inside gallery",
+      "points": [
+        [
+          122,
+          91
+        ],
+        [
+          137,
+          91
+        ],
+        [
+          139,
+          96
+        ],
+        [
+          120,
+          96
+        ]
+      ],
+      "color": 1,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Royal shield",
+      "points": [
+        [
+          126,
+          47
+        ],
+        [
+          132,
+          47
+        ],
+        [
+          132,
+          53
+        ],
+        [
+          129,
+          57
+        ],
+        [
+          126,
+          53
+        ]
+      ],
+      "color": 14,
+      "outline": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Royal shield field",
+      "points": [
+        [
+          127,
+          48
+        ],
+        [
+          131,
+          48
+        ],
+        [
+          131,
+          53
+        ],
+        [
+          129,
+          55
+        ],
+        [
+          127,
+          53
+        ]
+      ],
+      "color": 1,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Shield gold tree",
+      "points": [
+        [
+          129,
+          49
+        ],
+        [
+          129,
+          53
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Shield gold tree",
+      "points": [
+        [
+          127,
+          51
+        ],
+        [
+          131,
+          51
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner rod",
+      "points": [
+        [
+          99,
+          48
+        ],
+        [
+          109,
+          48
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          50
+        ],
+        [
+          108,
+          50
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          51
+        ],
+        [
+          108,
+          51
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          51
+        ],
+        [
+          107,
+          51
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          52
+        ],
+        [
+          108,
+          52
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          52
+        ],
+        [
+          107,
+          52
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          53
+        ],
+        [
+          108,
+          53
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          53
+        ],
+        [
+          107,
+          53
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          54
+        ],
+        [
+          108,
+          54
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          54
+        ],
+        [
+          107,
+          54
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          55
+        ],
+        [
+          108,
+          55
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          55
+        ],
+        [
+          107,
+          55
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          56
+        ],
+        [
+          108,
+          56
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          56
+        ],
+        [
+          107,
+          56
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          57
+        ],
+        [
+          108,
+          57
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          57
+        ],
+        [
+          107,
+          57
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          58
+        ],
+        [
+          108,
+          58
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          58
+        ],
+        [
+          107,
+          58
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          59
+        ],
+        [
+          108,
+          59
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          59
+        ],
+        [
+          107,
+          59
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          60
+        ],
+        [
+          108,
+          60
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          60
+        ],
+        [
+          107,
+          60
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          61
+        ],
+        [
+          108,
+          61
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          61
+        ],
+        [
+          107,
+          61
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          62
+        ],
+        [
+          108,
+          62
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          62
+        ],
+        [
+          107,
+          62
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          63
+        ],
+        [
+          108,
+          63
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          63
+        ],
+        [
+          107,
+          63
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          64
+        ],
+        [
+          108,
+          64
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          64
+        ],
+        [
+          107,
+          64
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          65
+        ],
+        [
+          108,
+          65
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          65
+        ],
+        [
+          107,
+          65
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          66
+        ],
+        [
+          108,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          66
+        ],
+        [
+          107,
+          66
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          67
+        ],
+        [
+          108,
+          67
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          67
+        ],
+        [
+          107,
+          67
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          68
+        ],
+        [
+          108,
+          68
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          68
+        ],
+        [
+          107,
+          68
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          69
+        ],
+        [
+          108,
+          69
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          69
+        ],
+        [
+          107,
+          69
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          70
+        ],
+        [
+          108,
+          70
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          70
+        ],
+        [
+          107,
+          70
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          71
+        ],
+        [
+          108,
+          71
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          71
+        ],
+        [
+          107,
+          71
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          72
+        ],
+        [
+          108,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          72
+        ],
+        [
+          107,
+          72
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          73
+        ],
+        [
+          108,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          73
+        ],
+        [
+          107,
+          73
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          74
+        ],
+        [
+          108,
+          74
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          74
+        ],
+        [
+          107,
+          74
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          75
+        ],
+        [
+          108,
+          75
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          75
+        ],
+        [
+          107,
+          75
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          76
+        ],
+        [
+          108,
+          76
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          76
+        ],
+        [
+          107,
+          76
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          77
+        ],
+        [
+          108,
+          77
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          77
+        ],
+        [
+          107,
+          77
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          78
+        ],
+        [
+          108,
+          78
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          78
+        ],
+        [
+          107,
+          78
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          79
+        ],
+        [
+          108,
+          79
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          79
+        ],
+        [
+          107,
+          79
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          100,
+          80
+        ],
+        [
+          108,
+          80
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          101,
+          80
+        ],
+        [
+          107,
+          80
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          101,
+          81
+        ],
+        [
+          107,
+          81
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          102,
+          81
+        ],
+        [
+          106,
+          81
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          102,
+          82
+        ],
+        [
+          106,
+          82
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          103,
+          82
+        ],
+        [
+          105,
+          82
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          103,
+          83
+        ],
+        [
+          105,
+          83
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          104,
+          83
+        ],
+        [
+          104,
+          83
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          104,
+          84
+        ],
+        [
+          104,
+          84
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird body",
+      "points": [
+        [
+          104,
+          60
+        ],
+        [
+          104,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird wing",
+      "points": [
+        [
+          101,
+          61
+        ],
+        [
+          101,
+          63
+        ],
+        [
+          104,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird feet",
+      "points": [
+        [
+          104,
+          70
+        ],
+        [
+          102,
+          73
+        ],
+        [
+          101,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird wing",
+      "points": [
+        [
+          107,
+          61
+        ],
+        [
+          107,
+          63
+        ],
+        [
+          104,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird feet",
+      "points": [
+        [
+          104,
+          70
+        ],
+        [
+          106,
+          73
+        ],
+        [
+          107,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner rod",
+      "points": [
+        [
+          149,
+          48
+        ],
+        [
+          159,
+          48
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          50
+        ],
+        [
+          158,
+          50
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          51
+        ],
+        [
+          158,
+          51
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          51
+        ],
+        [
+          157,
+          51
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          52
+        ],
+        [
+          158,
+          52
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          52
+        ],
+        [
+          157,
+          52
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          53
+        ],
+        [
+          158,
+          53
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          53
+        ],
+        [
+          157,
+          53
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          54
+        ],
+        [
+          158,
+          54
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          54
+        ],
+        [
+          157,
+          54
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          55
+        ],
+        [
+          158,
+          55
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          55
+        ],
+        [
+          157,
+          55
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          56
+        ],
+        [
+          158,
+          56
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          56
+        ],
+        [
+          157,
+          56
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          57
+        ],
+        [
+          158,
+          57
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          57
+        ],
+        [
+          157,
+          57
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          58
+        ],
+        [
+          158,
+          58
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          58
+        ],
+        [
+          157,
+          58
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          59
+        ],
+        [
+          158,
+          59
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          59
+        ],
+        [
+          157,
+          59
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          60
+        ],
+        [
+          158,
+          60
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          60
+        ],
+        [
+          157,
+          60
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          61
+        ],
+        [
+          158,
+          61
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          61
+        ],
+        [
+          157,
+          61
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          62
+        ],
+        [
+          158,
+          62
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          62
+        ],
+        [
+          157,
+          62
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          63
+        ],
+        [
+          158,
+          63
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          63
+        ],
+        [
+          157,
+          63
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          64
+        ],
+        [
+          158,
+          64
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          64
+        ],
+        [
+          157,
+          64
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          65
+        ],
+        [
+          158,
+          65
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          65
+        ],
+        [
+          157,
+          65
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          66
+        ],
+        [
+          158,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          66
+        ],
+        [
+          157,
+          66
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          67
+        ],
+        [
+          158,
+          67
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          67
+        ],
+        [
+          157,
+          67
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          68
+        ],
+        [
+          158,
+          68
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          68
+        ],
+        [
+          157,
+          68
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          69
+        ],
+        [
+          158,
+          69
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          69
+        ],
+        [
+          157,
+          69
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          70
+        ],
+        [
+          158,
+          70
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          70
+        ],
+        [
+          157,
+          70
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          71
+        ],
+        [
+          158,
+          71
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          71
+        ],
+        [
+          157,
+          71
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          72
+        ],
+        [
+          158,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          72
+        ],
+        [
+          157,
+          72
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          73
+        ],
+        [
+          158,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          73
+        ],
+        [
+          157,
+          73
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          74
+        ],
+        [
+          158,
+          74
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          74
+        ],
+        [
+          157,
+          74
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          75
+        ],
+        [
+          158,
+          75
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          75
+        ],
+        [
+          157,
+          75
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          76
+        ],
+        [
+          158,
+          76
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          76
+        ],
+        [
+          157,
+          76
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          77
+        ],
+        [
+          158,
+          77
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          77
+        ],
+        [
+          157,
+          77
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          78
+        ],
+        [
+          158,
+          78
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          78
+        ],
+        [
+          157,
+          78
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          79
+        ],
+        [
+          158,
+          79
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          79
+        ],
+        [
+          157,
+          79
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          150,
+          80
+        ],
+        [
+          158,
+          80
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          151,
+          80
+        ],
+        [
+          157,
+          80
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          151,
+          81
+        ],
+        [
+          157,
+          81
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          152,
+          81
+        ],
+        [
+          156,
+          81
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          152,
+          82
+        ],
+        [
+          156,
+          82
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          153,
+          82
+        ],
+        [
+          155,
+          82
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          153,
+          83
+        ],
+        [
+          155,
+          83
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Banner blue field",
+      "points": [
+        [
+          154,
+          83
+        ],
+        [
+          154,
+          83
+        ]
+      ],
+      "color": 1
+    },
+    {
+      "type": "line",
+      "name": "Banner gold border",
+      "points": [
+        [
+          154,
+          84
+        ],
+        [
+          154,
+          84
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird body",
+      "points": [
+        [
+          154,
+          60
+        ],
+        [
+          154,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird wing",
+      "points": [
+        [
+          151,
+          61
+        ],
+        [
+          151,
+          63
+        ],
+        [
+          154,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird feet",
+      "points": [
+        [
+          154,
+          70
+        ],
+        [
+          152,
+          73
+        ],
+        [
+          151,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird wing",
+      "points": [
+        [
+          157,
+          61
+        ],
+        [
+          157,
+          63
+        ],
+        [
+          154,
+          66
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Heraldic bird feet",
+      "points": [
+        [
+          154,
+          70
+        ],
+        [
+          156,
+          73
+        ],
+        [
+          157,
+          73
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Courtyard lawn",
+      "points": [
+        [
+          0,
+          101
+        ],
+        [
+          25,
+          96
+        ],
+        [
+          40,
+          96
+        ],
+        [
+          54,
+          106
+        ],
+        [
+          104,
+          106
+        ],
+        [
+          120,
+          96
+        ],
+        [
+          140,
+          96
+        ],
+        [
+          160,
+          104
+        ],
+        [
+          160,
+          168
+        ],
+        [
+          0,
+          168
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Warm rear paving",
+      "points": [
+        [
+          0,
+          101
+        ],
+        [
+          25,
+          97
+        ],
+        [
+          40,
+          97
+        ],
+        [
+          54,
+          108
+        ],
+        [
+          105,
+          108
+        ],
+        [
+          121,
+          97
+        ],
+        [
+          140,
+          97
+        ],
+        [
+          160,
+          105
+        ],
+        [
+          160,
+          117
+        ],
+        [
+          128,
+          114
+        ],
+        [
+          106,
+          120
+        ],
+        [
+          48,
+          120
+        ],
+        [
+          19,
+          113
+        ],
+        [
+          0,
+          115
+        ]
+      ],
+      "color": 6,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          1,
+          108
+        ],
+        [
+          25,
+          108
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          42,
+          112
+        ],
+        [
+          54,
+          112
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          106,
+          112
+        ],
+        [
+          118,
+          112
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          143,
+          108
+        ],
+        [
+          158,
+          108
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          16,
+          103
+        ],
+        [
+          17,
+          107
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Paving joints",
+      "points": [
+        [
+          149,
+          110
+        ],
+        [
+          148,
+          115
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Left door threshold",
+      "points": [
+        [
+          25,
+          96
+        ],
+        [
+          40,
+          96
+        ],
+        [
+          42,
+          99
+        ],
+        [
+          24,
+          99
+        ]
+      ],
+      "color": 7,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Threshold light",
+      "points": [
+        [
+          26,
+          97
+        ],
+        [
+          39,
+          97
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Gallery threshold",
+      "points": [
+        [
+          119,
+          96
+        ],
+        [
+          139,
+          96
+        ],
+        [
+          142,
+          99
+        ],
+        [
+          117,
+          99
+        ]
+      ],
+      "color": 7,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Threshold light",
+      "points": [
+        [
+          120,
+          97
+        ],
+        [
+          138,
+          97
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Worn courtyard paving stone",
+      "points": [
+        [
+          1,
+          103
+        ],
+        [
+          12,
+          103
+        ],
+        [
+          15,
+          107
+        ],
+        [
+          2,
+          107
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Worn courtyard paving stone",
+      "points": [
+        [
+          15,
+          108
+        ],
+        [
+          25,
+          109
+        ],
+        [
+          28,
+          112
+        ],
+        [
+          17,
+          112
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Worn courtyard paving stone",
+      "points": [
+        [
+          141,
+          102
+        ],
+        [
+          152,
+          104
+        ],
+        [
+          154,
+          107
+        ],
+        [
+          141,
+          106
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Worn courtyard paving stone",
+      "points": [
+        [
+          125,
+          111
+        ],
+        [
+          135,
+          109
+        ],
+        [
+          142,
+          111
+        ],
+        [
+          133,
+          114
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Golden forked path",
+      "points": [
+        [
+          29,
+          98
+        ],
+        [
+          36,
+          98
+        ],
+        [
+          69,
+          126
+        ],
+        [
+          84,
+          129
+        ],
+        [
+          116,
+          106
+        ],
+        [
+          126,
+          99
+        ],
+        [
+          135,
+          99
+        ],
+        [
+          113,
+          119
+        ],
+        [
+          91,
+          137
+        ],
+        [
+          89,
+          168
+        ],
+        [
+          49,
+          168
+        ],
+        [
+          57,
+          139
+        ],
+        [
+          51,
+          128
+        ]
+      ],
+      "color": 14,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          37,
+          103
+        ],
+        [
+          39,
+          103
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          52,
+          120
+        ],
+        [
+          54,
+          120
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          87,
+          138
+        ],
+        [
+          89,
+          138
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          65,
+          151
+        ],
+        [
+          67,
+          151
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          73,
+          162
+        ],
+        [
+          75,
+          162
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Selected path wear",
+      "points": [
+        [
+          112,
+          111
+        ],
+        [
+          114,
+          111
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Raised oak planter",
+      "points": [
+        [
+          51,
+          111
+        ],
+        [
+          92,
+          111
+        ],
+        [
+          95,
+          114
+        ],
+        [
+          94,
+          118
+        ],
+        [
+          50,
+          118
+        ]
+      ],
+      "color": 6,
+      "outline": 6
+    },
+    {
+      "type": "line",
+      "name": "Planter upper edge",
+      "points": [
+        [
+          52,
+          112
+        ],
+        [
+          92,
+          112
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Planter return",
+      "points": [
+        [
+          92,
+          113
+        ],
+        [
+          94,
+          115
+        ],
+        [
+          94,
+          117
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Planter plank joint",
+      "points": [
+        [
+          61,
+          114
+        ],
+        [
+          61,
+          117
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Planter plank joint",
+      "points": [
+        [
+          75,
+          114
+        ],
+        [
+          75,
+          117
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Planter plank joint",
+      "points": [
+        [
+          87,
+          114
+        ],
+        [
+          87,
+          117
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Planter dark soil",
+      "points": [
+        [
+          53,
+          110
+        ],
+        [
+          91,
+          110
+        ],
+        [
+          93,
+          113
+        ],
+        [
+          52,
+          113
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          57,
+          111
+        ],
+        [
+          57,
+          105
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower leaves",
+      "points": [
+        [
+          54,
+          109
+        ],
+        [
+          57,
+          110
+        ],
+        [
+          60,
+          107
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flowers",
+      "points": [
+        [
+          55,
+          105
+        ],
+        [
+          57,
+          104
+        ],
+        [
+          59,
+          105
+        ],
+        [
+          59,
+          107
+        ],
+        [
+          57,
+          108
+        ],
+        [
+          55,
+          107
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          57,
+          106
+        ],
+        [
+          58,
+          106
+        ],
+        [
+          58,
+          107
+        ],
+        [
+          57,
+          107
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          68,
+          111
+        ],
+        [
+          68,
+          104
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower leaves",
+      "points": [
+        [
+          65,
+          108
+        ],
+        [
+          68,
+          109
+        ],
+        [
+          71,
+          106
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flowers",
+      "points": [
+        [
+          66,
+          104
+        ],
+        [
+          68,
+          103
+        ],
+        [
+          70,
+          104
+        ],
+        [
+          70,
+          106
+        ],
+        [
+          68,
+          107
+        ],
+        [
+          66,
+          106
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          68,
+          105
+        ],
+        [
+          69,
+          105
+        ],
+        [
+          69,
+          106
+        ],
+        [
+          68,
+          106
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          80,
+          111
+        ],
+        [
+          80,
+          105
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower leaves",
+      "points": [
+        [
+          77,
+          109
+        ],
+        [
+          80,
+          110
+        ],
+        [
+          83,
+          107
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flowers",
+      "points": [
+        [
+          78,
+          105
+        ],
+        [
+          80,
+          104
+        ],
+        [
+          82,
+          105
+        ],
+        [
+          82,
+          107
+        ],
+        [
+          80,
+          108
+        ],
+        [
+          78,
+          107
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          80,
+          106
+        ],
+        [
+          81,
+          106
+        ],
+        [
+          81,
+          107
+        ],
+        [
+          80,
+          107
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "line",
+      "name": "Flower stem",
+      "points": [
+        [
+          88,
+          111
+        ],
+        [
+          88,
+          106
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Flower leaves",
+      "points": [
+        [
+          85,
+          110
+        ],
+        [
+          88,
+          111
+        ],
+        [
+          91,
+          108
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Garden flowers",
+      "points": [
+        [
+          86,
+          106
+        ],
+        [
+          88,
+          105
+        ],
+        [
+          90,
+          106
+        ],
+        [
+          90,
+          108
+        ],
+        [
+          88,
+          109
+        ],
+        [
+          86,
+          108
+        ]
+      ],
+      "color": 12,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          88,
+          107
+        ],
+        [
+          89,
+          107
+        ],
+        [
+          89,
+          108
+        ],
+        [
+          88,
+          108
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Gateway pier",
+      "points": [
+        [
+          7,
+          143
+        ],
+        [
+          9,
+          140
+        ],
+        [
+          21,
+          140
+        ],
+        [
+          24,
+          143
+        ],
+        [
+          24,
+          168
+        ],
+        [
+          7,
+          168
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Pier light face",
+      "points": [
+        [
+          8,
+          144
+        ],
+        [
+          19,
+          144
+        ],
+        [
+          19,
+          168
+        ],
+        [
+          8,
+          168
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier bevel light",
+      "points": [
+        [
+          8,
+          145
+        ],
+        [
+          8,
+          167
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Pier coping slab",
+      "points": [
+        [
+          6,
+          140
+        ],
+        [
+          8,
+          138
+        ],
+        [
+          22,
+          138
+        ],
+        [
+          25,
+          141
+        ],
+        [
+          24,
+          144
+        ],
+        [
+          7,
+          144
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier coping top",
+      "points": [
+        [
+          8,
+          139
+        ],
+        [
+          21,
+          139
+        ],
+        [
+          23,
+          141
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Pier coping lip",
+      "points": [
+        [
+          7,
+          142
+        ],
+        [
+          23,
+          142
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "polygon",
+      "name": "Pier stone finial",
+      "points": [
+        [
+          8,
+          137
+        ],
+        [
+          9,
+          134
+        ],
+        [
+          12,
+          131
+        ],
+        [
+          15,
+          130
+        ],
+        [
+          18,
+          131
+        ],
+        [
+          21,
+          134
+        ],
+        [
+          22,
+          137
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Finial shadow face",
+      "points": [
+        [
+          15,
+          132
+        ],
+        [
+          18,
+          133
+        ],
+        [
+          21,
+          136
+        ],
+        [
+          15,
+          136
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier finial glint",
+      "points": [
+        [
+          10,
+          134
+        ],
+        [
+          13,
+          132
+        ],
+        [
+          15,
+          132
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Pier masonry joint",
+      "points": [
+        [
+          9,
+          151
+        ],
+        [
+          18,
+          151
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier masonry joint",
+      "points": [
+        [
+          14,
+          152
+        ],
+        [
+          14,
+          158
+        ],
+        [
+          19,
+          158
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier worn corner",
+      "points": [
+        [
+          18,
+          163
+        ],
+        [
+          17,
+          164
+        ],
+        [
+          17,
+          166
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier ivy stem",
+      "points": [
+        [
+          9,
+          167
+        ],
+        [
+          10,
+          161
+        ],
+        [
+          8,
+          156
+        ],
+        [
+          11,
+          151
+        ],
+        [
+          10,
+          146
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          10,
+          147
+        ],
+        [
+          7,
+          145
+        ],
+        [
+          6,
+          147
+        ],
+        [
+          8,
+          149
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          10,
+          147
+        ],
+        [
+          8,
+          147
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          10,
+          151
+        ],
+        [
+          13,
+          149
+        ],
+        [
+          14,
+          151
+        ],
+        [
+          12,
+          153
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          10,
+          151
+        ],
+        [
+          12,
+          151
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          8,
+          155
+        ],
+        [
+          5,
+          153
+        ],
+        [
+          4,
+          155
+        ],
+        [
+          6,
+          157
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          8,
+          155
+        ],
+        [
+          6,
+          155
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          9,
+          159
+        ],
+        [
+          12,
+          157
+        ],
+        [
+          13,
+          159
+        ],
+        [
+          11,
+          161
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          9,
+          159
+        ],
+        [
+          11,
+          159
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          10,
+          163
+        ],
+        [
+          7,
+          161
+        ],
+        [
+          6,
+          163
+        ],
+        [
+          8,
+          165
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          10,
+          163
+        ],
+        [
+          8,
+          163
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          10,
+          168
+        ],
+        [
+          9,
+          167
+        ],
+        [
+          12,
+          165
+        ],
+        [
+          13,
+          167
+        ],
+        [
+          12,
+          168
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          9,
+          167
+        ],
+        [
+          11,
+          167
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Gateway pier",
+      "points": [
+        [
+          132,
+          143
+        ],
+        [
+          134,
+          140
+        ],
+        [
+          146,
+          140
+        ],
+        [
+          149,
+          143
+        ],
+        [
+          149,
+          168
+        ],
+        [
+          132,
+          168
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Pier light face",
+      "points": [
+        [
+          133,
+          144
+        ],
+        [
+          144,
+          144
+        ],
+        [
+          144,
+          168
+        ],
+        [
+          133,
+          168
+        ]
+      ],
+      "color": 7,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier bevel light",
+      "points": [
+        [
+          133,
+          145
+        ],
+        [
+          133,
+          167
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "polygon",
+      "name": "Pier coping slab",
+      "points": [
+        [
+          131,
+          140
+        ],
+        [
+          133,
+          138
+        ],
+        [
+          147,
+          138
+        ],
+        [
+          150,
+          141
+        ],
+        [
+          149,
+          144
+        ],
+        [
+          132,
+          144
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier coping top",
+      "points": [
+        [
+          133,
+          139
+        ],
+        [
+          146,
+          139
+        ],
+        [
+          148,
+          141
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Pier coping lip",
+      "points": [
+        [
+          132,
+          142
+        ],
+        [
+          148,
+          142
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "polygon",
+      "name": "Pier stone finial",
+      "points": [
+        [
+          133,
+          137
+        ],
+        [
+          134,
+          134
+        ],
+        [
+          137,
+          131
+        ],
+        [
+          140,
+          130
+        ],
+        [
+          143,
+          131
+        ],
+        [
+          146,
+          134
+        ],
+        [
+          147,
+          137
+        ]
+      ],
+      "color": 7,
+      "outline": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Finial shadow face",
+      "points": [
+        [
+          140,
+          132
+        ],
+        [
+          143,
+          133
+        ],
+        [
+          146,
+          136
+        ],
+        [
+          140,
+          136
+        ]
+      ],
+      "color": 8,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier finial glint",
+      "points": [
+        [
+          135,
+          134
+        ],
+        [
+          138,
+          132
+        ],
+        [
+          140,
+          132
+        ]
+      ],
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Pier masonry joint",
+      "points": [
+        [
+          134,
+          151
+        ],
+        [
+          143,
+          151
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier masonry joint",
+      "points": [
+        [
+          139,
+          152
+        ],
+        [
+          139,
+          158
+        ],
+        [
+          144,
+          158
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier worn corner",
+      "points": [
+        [
+          143,
+          163
+        ],
+        [
+          142,
+          164
+        ],
+        [
+          142,
+          166
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Pier ivy stem",
+      "points": [
+        [
+          134,
+          167
+        ],
+        [
+          135,
+          161
+        ],
+        [
+          133,
+          156
+        ],
+        [
+          136,
+          151
+        ],
+        [
+          135,
+          146
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          135,
+          147
+        ],
+        [
+          132,
+          145
+        ],
+        [
+          131,
+          147
+        ],
+        [
+          133,
+          149
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          135,
+          147
+        ],
+        [
+          133,
+          147
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          135,
+          151
+        ],
+        [
+          138,
+          149
+        ],
+        [
+          139,
+          151
+        ],
+        [
+          137,
+          153
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          135,
+          151
+        ],
+        [
+          137,
+          151
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          133,
+          155
+        ],
+        [
+          130,
+          153
+        ],
+        [
+          129,
+          155
+        ],
+        [
+          131,
+          157
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          133,
+          155
+        ],
+        [
+          131,
+          155
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          134,
+          159
+        ],
+        [
+          137,
+          157
+        ],
+        [
+          138,
+          159
+        ],
+        [
+          136,
+          161
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          134,
+          159
+        ],
+        [
+          136,
+          159
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          135,
+          163
+        ],
+        [
+          132,
+          161
+        ],
+        [
+          131,
+          163
+        ],
+        [
+          133,
+          165
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          135,
+          163
+        ],
+        [
+          133,
+          163
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Pier ivy leaf",
+      "points": [
+        [
+          135,
+          168
+        ],
+        [
+          134,
+          167
+        ],
+        [
+          137,
+          165
+        ],
+        [
+          138,
+          167
+        ],
+        [
+          137,
+          168
+        ]
+      ],
+      "color": 2,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Pier leaf vein",
+      "points": [
+        [
+          134,
+          167
+        ],
+        [
+          136,
+          167
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          4,
+          123
+        ],
+        [
+          5,
+          121
+        ],
+        [
+          7,
+          122
+        ],
+        [
+          9,
+          120
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          11,
+          124
+        ],
+        [
+          12,
+          122
+        ],
+        [
+          14,
+          123
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          16,
+          122
+        ],
+        [
+          18,
+          121
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          28,
+          139
+        ],
+        [
+          29,
+          137
+        ],
+        [
+          31,
+          138
+        ],
+        [
+          33,
+          136
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          35,
+          140
+        ],
+        [
+          36,
+          138
+        ],
+        [
+          38,
+          139
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          40,
+          138
+        ],
+        [
+          42,
+          137
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          34,
+          162
+        ],
+        [
+          35,
+          160
+        ],
+        [
+          37,
+          161
+        ],
+        [
+          39,
+          159
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          41,
+          163
+        ],
+        [
+          42,
+          161
+        ],
+        [
+          44,
+          162
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          46,
+          161
+        ],
+        [
+          48,
+          160
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          113,
+          130
+        ],
+        [
+          114,
+          128
+        ],
+        [
+          116,
+          129
+        ],
+        [
+          118,
+          127
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          120,
+          131
+        ],
+        [
+          121,
+          129
+        ],
+        [
+          123,
+          130
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          125,
+          129
+        ],
+        [
+          127,
+          128
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          149,
+          122
+        ],
+        [
+          150,
+          120
+        ],
+        [
+          152,
+          121
+        ],
+        [
+          154,
+          119
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          156,
+          123
+        ],
+        [
+          157,
+          121
+        ],
+        [
+          159,
+          122
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          112,
+          155
+        ],
+        [
+          113,
+          153
+        ],
+        [
+          115,
+          154
+        ],
+        [
+          117,
+          152
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          119,
+          156
+        ],
+        [
+          120,
+          154
+        ],
+        [
+          122,
+          155
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Sunlit grass blades",
+      "points": [
+        [
+          124,
+          154
+        ],
+        [
+          126,
+          153
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "line",
+      "name": "Lawn grass",
+      "points": [
+        [
+          9,
+          127
+        ],
+        [
+          10,
+          124
+        ],
+        [
+          12,
+          127
+        ],
+        [
+          13,
+          125
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Lawn grass",
+      "points": [
+        [
+          33,
+          151
+        ],
+        [
+          34,
+          148
+        ],
+        [
+          36,
+          151
+        ],
+        [
+          37,
+          149
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Lawn grass",
+      "points": [
+        [
+          116,
+          143
+        ],
+        [
+          117,
+          140
+        ],
+        [
+          119,
+          143
+        ],
+        [
+          120,
+          141
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Lawn grass",
+      "points": [
+        [
+          153,
+          126
+        ],
+        [
+          154,
+          123
+        ],
+        [
+          156,
+          126
+        ],
+        [
+          157,
+          124
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Lawn flower",
+      "points": [
+        [
+          3,
+          137
+        ],
+        [
+          5,
+          139
+        ],
+        [
+          3,
+          141
+        ],
+        [
+          1,
+          139
+        ]
+      ],
+      "color": 13,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          3,
+          139
+        ],
+        [
+          4,
+          139
+        ],
+        [
+          4,
+          140
+        ],
+        [
+          3,
+          140
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Lawn flower",
+      "points": [
+        [
+          151,
+          152
+        ],
+        [
+          153,
+          154
+        ],
+        [
+          151,
+          156
+        ],
+        [
+          149,
+          154
+        ]
+      ],
+      "color": 13,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          151,
+          154
+        ],
+        [
+          152,
+          154
+        ],
+        [
+          152,
+          155
+        ],
+        [
+          151,
+          155
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Lawn flower",
+      "points": [
+        [
+          35,
+          162
+        ],
+        [
+          37,
+          164
+        ],
+        [
+          35,
+          166
+        ],
+        [
+          33,
+          164
+        ]
+      ],
+      "color": 13,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Flower center",
+      "points": [
+        [
+          35,
+          164
+        ],
+        [
+          36,
+          164
+        ],
+        [
+          36,
+          165
+        ],
+        [
+          35,
+          165
+        ]
+      ],
+      "color": 14,
+      "outline": 14
+    }
+  ]
+}

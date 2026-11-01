@@ -1,0 +1,23 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.pyc
+
+# Local session notes and generated visual-review output.
+/HANDOFF.md
+/*-20??-??-??.md
+/VISUAL-REVIEW.md
+/assets/reviews/*
+!/assets/reviews/.gitkeep
+
+# Preserve only historical fixtures used by the review/test tools.
+/backups/*
+!/backups/barrel-prank-before-native-trace-2026-10-31.js
+!/backups/merrin-rebuild-2026-10-27/
+/backups/merrin-rebuild-2026-10-27/*
+!/backups/merrin-rebuild-2026-10-27/merrin-ending.js
+!/backups/merrin-rebuild-2026-10-27/merrin-ending-workshop-v2.json

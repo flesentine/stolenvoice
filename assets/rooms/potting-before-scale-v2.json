@@ -1,0 +1,3177 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "room": "potting",
+  "name": "The Potting Shed",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/rooms/potting-reference-v2.png",
+  "notes": "Complete authored line-and-fill picture; no raster sampling. Scene layout preserves game exits and hotspots.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          160,
+          168
+        ],
+        [
+          0,
+          168
+        ]
+      ],
+      "color": 0,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          1,
+          18
+        ],
+        [
+          79,
+          29
+        ],
+        [
+          158,
+          18
+        ],
+        [
+          158,
+          124
+        ],
+        [
+          2,
+          124
+        ]
+      ],
+      "color": 7,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          0,
+          18
+        ],
+        [
+          12,
+          30
+        ],
+        [
+          12,
+          124
+        ],
+        [
+          0,
+          142
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          148,
+          30
+        ],
+        [
+          159,
+          18
+        ],
+        [
+          159,
+          141
+        ],
+        [
+          148,
+          123
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          149,
+          20
+        ],
+        [
+          79,
+          30
+        ],
+        [
+          11,
+          20
+        ]
+      ],
+      "color": 1,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          11,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          26,
+          0
+        ],
+        [
+          34,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          59,
+          0
+        ],
+        [
+          65,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          95,
+          0
+        ],
+        [
+          101,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          125,
+          0
+        ],
+        [
+          133,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          151,
+          0
+        ],
+        [
+          160,
+          0
+        ],
+        [
+          85,
+          29
+        ],
+        [
+          78,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          2,
+          24
+        ],
+        [
+          158,
+          24
+        ],
+        [
+          158,
+          29
+        ],
+        [
+          2,
+          29
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          4,
+          25
+        ],
+        [
+          155,
+          25
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          8,
+          27
+        ],
+        [
+          13,
+          27
+        ],
+        [
+          14,
+          125
+        ],
+        [
+          8,
+          125
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          9,
+          30
+        ],
+        [
+          10,
+          121
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          146,
+          27
+        ],
+        [
+          151,
+          27
+        ],
+        [
+          152,
+          125
+        ],
+        [
+          146,
+          125
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          147,
+          30
+        ],
+        [
+          148,
+          121
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          12,
+          30
+        ],
+        [
+          15,
+          30
+        ],
+        [
+          28,
+          48
+        ],
+        [
+          24,
+          48
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          144,
+          30
+        ],
+        [
+          147,
+          30
+        ],
+        [
+          132,
+          48
+        ],
+        [
+          128,
+          48
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          17,
+          38
+        ],
+        [
+          24,
+          38
+        ],
+        [
+          24,
+          42
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          39,
+          44
+        ],
+        [
+          46,
+          44
+        ],
+        [
+          46,
+          48
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          116,
+          43
+        ],
+        [
+          123,
+          43
+        ],
+        [
+          123,
+          47
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          130,
+          62
+        ],
+        [
+          137,
+          62
+        ],
+        [
+          137,
+          66
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          23,
+          84
+        ],
+        [
+          30,
+          84
+        ],
+        [
+          30,
+          88
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          104,
+          92
+        ],
+        [
+          111,
+          92
+        ],
+        [
+          111,
+          96
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          61,
+          40
+        ],
+        [
+          92,
+          40
+        ],
+        [
+          92,
+          74
+        ],
+        [
+          61,
+          74
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          64,
+          43
+        ],
+        [
+          89,
+          43
+        ],
+        [
+          89,
+          69
+        ],
+        [
+          64,
+          69
+        ]
+      ],
+      "color": 0,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          65,
+          44
+        ],
+        [
+          88,
+          44
+        ],
+        [
+          88,
+          68
+        ],
+        [
+          65,
+          68
+        ]
+      ],
+      "color": 9,
+      "outline": 9
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          66,
+          51
+        ],
+        [
+          71,
+          49
+        ],
+        [
+          74,
+          44
+        ],
+        [
+          78,
+          44
+        ],
+        [
+          81,
+          49
+        ],
+        [
+          85,
+          48
+        ],
+        [
+          78,
+          51
+        ],
+        [
+          81,
+          53
+        ],
+        [
+          66,
+          53
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          65,
+          67
+        ],
+        [
+          69,
+          57
+        ],
+        [
+          73,
+          62
+        ],
+        [
+          78,
+          53
+        ],
+        [
+          83,
+          59
+        ],
+        [
+          88,
+          55
+        ],
+        [
+          88,
+          68
+        ]
+      ],
+      "color": 2,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          76,
+          44
+        ],
+        [
+          76,
+          68
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          65,
+          56
+        ],
+        [
+          88,
+          56
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          60,
+          72
+        ],
+        [
+          94,
+          72
+        ],
+        [
+          94,
+          75
+        ],
+        [
+          60,
+          75
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          61,
+          72
+        ],
+        [
+          92,
+          72
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          18,
+          53
+        ],
+        [
+          53,
+          53
+        ],
+        [
+          53,
+          56
+        ],
+        [
+          18,
+          56
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          21,
+          56
+        ],
+        [
+          26,
+          56
+        ],
+        [
+          21,
+          62
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          108,
+          52
+        ],
+        [
+          138,
+          52
+        ],
+        [
+          138,
+          55
+        ],
+        [
+          108,
+          55
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          111,
+          55
+        ],
+        [
+          116,
+          55
+        ],
+        [
+          111,
+          61
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          21,
+          41
+        ],
+        [
+          27,
+          41
+        ],
+        [
+          27,
+          49
+        ],
+        [
+          23,
+          50
+        ],
+        [
+          22,
+          47
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          20,
+          41
+        ],
+        [
+          28,
+          41
+        ],
+        [
+          28,
+          43
+        ],
+        [
+          20,
+          43
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          22,
+          44
+        ],
+        [
+          23,
+          47
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          34,
+          40
+        ],
+        [
+          41,
+          40
+        ],
+        [
+          40,
+          50
+        ],
+        [
+          36,
+          50
+        ],
+        [
+          35,
+          47
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          33,
+          40
+        ],
+        [
+          42,
+          40
+        ],
+        [
+          42,
+          42
+        ],
+        [
+          33,
+          42
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          36,
+          43
+        ],
+        [
+          36,
+          47
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          111,
+          40
+        ],
+        [
+          118,
+          40
+        ],
+        [
+          117,
+          50
+        ],
+        [
+          113,
+          50
+        ],
+        [
+          112,
+          47
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          110,
+          40
+        ],
+        [
+          119,
+          40
+        ],
+        [
+          119,
+          42
+        ],
+        [
+          110,
+          42
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          113,
+          43
+        ],
+        [
+          113,
+          47
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          125,
+          42
+        ],
+        [
+          131,
+          42
+        ],
+        [
+          130,
+          50
+        ],
+        [
+          127,
+          50
+        ],
+        [
+          126,
+          48
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          124,
+          42
+        ],
+        [
+          132,
+          42
+        ],
+        [
+          132,
+          44
+        ],
+        [
+          124,
+          44
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          126,
+          45
+        ],
+        [
+          127,
+          48
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          0,
+          125
+        ],
+        [
+          160,
+          125
+        ],
+        [
+          160,
+          168
+        ],
+        [
+          0,
+          168
+        ]
+      ],
+      "color": 8,
+      "outline": 8
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          1,
+          137
+        ],
+        [
+          15,
+          137
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          15,
+          137
+        ],
+        [
+          19,
+          127
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          21,
+          137
+        ],
+        [
+          64,
+          137
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          64,
+          137
+        ],
+        [
+          68,
+          127
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          70,
+          137
+        ],
+        [
+          121,
+          137
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          121,
+          137
+        ],
+        [
+          125,
+          127
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          127,
+          137
+        ],
+        [
+          159,
+          137
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          1,
+          154
+        ],
+        [
+          37,
+          154
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          37,
+          154
+        ],
+        [
+          41,
+          144
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          43,
+          154
+        ],
+        [
+          98,
+          154
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          98,
+          154
+        ],
+        [
+          102,
+          144
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          104,
+          154
+        ],
+        [
+          159,
+          154
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          46,
+          68
+        ],
+        [
+          122,
+          68
+        ],
+        [
+          128,
+          73
+        ],
+        [
+          124,
+          79
+        ],
+        [
+          46,
+          79
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          48,
+          69
+        ],
+        [
+          121,
+          69
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          49,
+          79
+        ],
+        [
+          54,
+          79
+        ],
+        [
+          54,
+          124
+        ],
+        [
+          49,
+          124
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          120,
+          79
+        ],
+        [
+          125,
+          79
+        ],
+        [
+          125,
+          124
+        ],
+        [
+          120,
+          124
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          53,
+          112
+        ],
+        [
+          119,
+          112
+        ],
+        [
+          122,
+          117
+        ],
+        [
+          51,
+          117
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          55,
+          113
+        ],
+        [
+          118,
+          113
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          71,
+          80
+        ],
+        [
+          95,
+          80
+        ],
+        [
+          95,
+          95
+        ],
+        [
+          71,
+          95
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          74,
+          83
+        ],
+        [
+          92,
+          83
+        ],
+        [
+          92,
+          91
+        ],
+        [
+          74,
+          91
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          81,
+          87
+        ],
+        [
+          86,
+          87
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          96,
+          81
+        ],
+        [
+          114,
+          81
+        ],
+        [
+          111,
+          108
+        ],
+        [
+          102,
+          108
+        ]
+      ],
+      "color": 0,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          99,
+          82
+        ],
+        [
+          110,
+          105
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          57,
+          99
+        ],
+        [
+          64,
+          99
+        ],
+        [
+          63,
+          109
+        ],
+        [
+          59,
+          109
+        ],
+        [
+          58,
+          106
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          56,
+          99
+        ],
+        [
+          65,
+          99
+        ],
+        [
+          65,
+          101
+        ],
+        [
+          56,
+          101
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          59,
+          102
+        ],
+        [
+          59,
+          106
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          97,
+          103
+        ],
+        [
+          103,
+          103
+        ],
+        [
+          102,
+          111
+        ],
+        [
+          99,
+          111
+        ],
+        [
+          98,
+          109
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          96,
+          103
+        ],
+        [
+          104,
+          103
+        ],
+        [
+          104,
+          105
+        ],
+        [
+          96,
+          105
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          98,
+          106
+        ],
+        [
+          99,
+          109
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          74,
+          102
+        ],
+        [
+          87,
+          102
+        ],
+        [
+          87,
+          112
+        ],
+        [
+          74,
+          112
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          75,
+          105
+        ],
+        [
+          86,
+          105
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          16,
+          77
+        ],
+        [
+          20,
+          75
+        ],
+        [
+          21,
+          122
+        ],
+        [
+          15,
+          122
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          17,
+          80
+        ],
+        [
+          17,
+          118
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          23,
+          71
+        ],
+        [
+          28,
+          69
+        ],
+        [
+          29,
+          122
+        ],
+        [
+          22,
+          122
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          24,
+          74
+        ],
+        [
+          24,
+          118
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          31,
+          82
+        ],
+        [
+          35,
+          80
+        ],
+        [
+          36,
+          122
+        ],
+        [
+          30,
+          122
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          32,
+          85
+        ],
+        [
+          32,
+          118
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          133,
+          94
+        ],
+        [
+          147,
+          94
+        ],
+        [
+          149,
+          122
+        ],
+        [
+          132,
+          122
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          132,
+          95
+        ],
+        [
+          148,
+          95
+        ],
+        [
+          148,
+          98
+        ],
+        [
+          132,
+          98
+        ]
+      ],
+      "color": 1,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          132,
+          114
+        ],
+        [
+          149,
+          114
+        ],
+        [
+          149,
+          117
+        ],
+        [
+          132,
+          117
+        ]
+      ],
+      "color": 1,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          138,
+          99
+        ],
+        [
+          137,
+          113
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          144,
+          99
+        ],
+        [
+          145,
+          113
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          5,
+          113
+        ],
+        [
+          12,
+          113
+        ],
+        [
+          11,
+          123
+        ],
+        [
+          7,
+          123
+        ],
+        [
+          6,
+          120
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Structure",
+      "points": [
+        [
+          4,
+          113
+        ],
+        [
+          13,
+          113
+        ],
+        [
+          13,
+          115
+        ],
+        [
+          4,
+          115
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          7,
+          116
+        ],
+        [
+          7,
+          120
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "line",
+      "name": "Structure",
+      "points": [
+        [
+          63,
+          165
+        ],
+        [
+          97,
+          165
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Workbench footing",
+      "points": [
+        [
+          47,
+          122
+        ],
+        [
+          126,
+          122
+        ],
+        [
+          132,
+          127
+        ],
+        [
+          45,
+          127
+        ]
+      ],
+      "color": 0,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Oak trestle legs",
+      "points": [
+        [
+          49,
+          79
+        ],
+        [
+          55,
+          79
+        ],
+        [
+          56,
+          123
+        ],
+        [
+          50,
+          123
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Oak trestle legs",
+      "points": [
+        [
+          119,
+          79
+        ],
+        [
+          125,
+          79
+        ],
+        [
+          126,
+          123
+        ],
+        [
+          120,
+          123
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Oak trestle legs",
+      "points": [
+        [
+          51,
+          82
+        ],
+        [
+          52,
+          120
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Oak trestle legs",
+      "points": [
+        [
+          121,
+          82
+        ],
+        [
+          122,
+          120
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          50,
+          82
+        ],
+        [
+          55,
+          82
+        ],
+        [
+          55,
+          85
+        ],
+        [
+          50,
+          85
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          50,
+          114
+        ],
+        [
+          55,
+          114
+        ],
+        [
+          55,
+          117
+        ],
+        [
+          50,
+          117
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          51,
+          83
+        ],
+        [
+          53,
+          83
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          120,
+          82
+        ],
+        [
+          125,
+          82
+        ],
+        [
+          125,
+          85
+        ],
+        [
+          120,
+          85
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          120,
+          114
+        ],
+        [
+          125,
+          114
+        ],
+        [
+          125,
+          117
+        ],
+        [
+          120,
+          117
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Bench mortise joints",
+      "points": [
+        [
+          121,
+          83
+        ],
+        [
+          123,
+          83
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          54,
+          111
+        ],
+        [
+          119,
+          111
+        ],
+        [
+          122,
+          116
+        ],
+        [
+          54,
+          117
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          56,
+          112
+        ],
+        [
+          117,
+          112
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          74,
+          109
+        ],
+        [
+          73,
+          102
+        ],
+        [
+          75,
+          99
+        ],
+        [
+          81,
+          99
+        ],
+        [
+          84,
+          103
+        ],
+        [
+          83,
+          110
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          75,
+          103
+        ],
+        [
+          81,
+          103
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "line",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          78,
+          105
+        ],
+        [
+          78,
+          108
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          87,
+          111
+        ],
+        [
+          86,
+          106
+        ],
+        [
+          89,
+          102
+        ],
+        [
+          94,
+          102
+        ],
+        [
+          97,
+          106
+        ],
+        [
+          96,
+          111
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Lower shelf and seed sacks",
+      "points": [
+        [
+          88,
+          106
+        ],
+        [
+          95,
+          106
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Drawer hardware",
+      "points": [
+        [
+          71,
+          80
+        ],
+        [
+          95,
+          80
+        ],
+        [
+          95,
+          94
+        ],
+        [
+          71,
+          94
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Drawer hardware",
+      "points": [
+        [
+          74,
+          83
+        ],
+        [
+          92,
+          83
+        ],
+        [
+          92,
+          91
+        ],
+        [
+          74,
+          91
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Drawer hardware",
+      "points": [
+        [
+          80,
+          87
+        ],
+        [
+          86,
+          87
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Drawer hardware",
+      "points": [
+        [
+          78,
+          86
+        ],
+        [
+          80,
+          86
+        ],
+        [
+          80,
+          88
+        ],
+        [
+          78,
+          88
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Drawer hardware",
+      "points": [
+        [
+          87,
+          86
+        ],
+        [
+          89,
+          86
+        ],
+        [
+          89,
+          88
+        ],
+        [
+          87,
+          88
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Back-wall hanging pegs",
+      "points": [
+        [
+          103,
+          32
+        ],
+        [
+          135,
+          32
+        ],
+        [
+          135,
+          35
+        ],
+        [
+          103,
+          35
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Back-wall hanging pegs",
+      "points": [
+        [
+          108,
+          34
+        ],
+        [
+          108,
+          39
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Back-wall hanging pegs",
+      "points": [
+        [
+          120,
+          34
+        ],
+        [
+          120,
+          39
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Back-wall hanging pegs",
+      "points": [
+        [
+          131,
+          34
+        ],
+        [
+          131,
+          39
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Garden trowel",
+      "points": [
+        [
+          108,
+          38
+        ],
+        [
+          108,
+          47
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "polygon",
+      "name": "Garden trowel",
+      "points": [
+        [
+          106,
+          47
+        ],
+        [
+          110,
+          47
+        ],
+        [
+          110,
+          51
+        ],
+        [
+          108,
+          54
+        ],
+        [
+          106,
+          51
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Garden trowel",
+      "points": [
+        [
+          107,
+          48
+        ],
+        [
+          107,
+          51
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "line",
+      "name": "Pruning hook",
+      "points": [
+        [
+          120,
+          37
+        ],
+        [
+          120,
+          48
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Pruning hook",
+      "points": [
+        [
+          120,
+          39
+        ],
+        [
+          124,
+          39
+        ],
+        [
+          125,
+          42
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "line",
+      "name": "Twine peg shadow",
+      "points": [
+        [
+          131,
+          36
+        ],
+        [
+          131,
+          40
+        ]
+      ],
+      "color": 8
+    },
+    {
+      "type": "polygon",
+      "name": "Herb pot on shelf",
+      "points": [
+        [
+          114,
+          43
+        ],
+        [
+          120,
+          43
+        ],
+        [
+          119,
+          51
+        ],
+        [
+          115,
+          51
+        ]
+      ],
+      "color": 4,
+      "outline": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Herb pot on shelf",
+      "points": [
+        [
+          113,
+          42
+        ],
+        [
+          121,
+          42
+        ],
+        [
+          121,
+          44
+        ],
+        [
+          113,
+          44
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Herb pot on shelf",
+      "points": [
+        [
+          116,
+          42
+        ],
+        [
+          116,
+          37
+        ],
+        [
+          113,
+          35
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Herb pot on shelf",
+      "points": [
+        [
+          117,
+          42
+        ],
+        [
+          119,
+          36
+        ],
+        [
+          122,
+          36
+        ]
+      ],
+      "color": 2
+    },
+    {
+      "type": "line",
+      "name": "Herb pot on shelf",
+      "points": [
+        [
+          117,
+          39
+        ],
+        [
+          121,
+          39
+        ]
+      ],
+      "color": 10
+    },
+    {
+      "type": "polygon",
+      "name": "Storage barrel",
+      "points": [
+        [
+          132,
+          95
+        ],
+        [
+          147,
+          95
+        ],
+        [
+          150,
+          105
+        ],
+        [
+          148,
+          123
+        ],
+        [
+          133,
+          123
+        ],
+        [
+          131,
+          108
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          136,
+          99
+        ],
+        [
+          135,
+          119
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          141,
+          99
+        ],
+        [
+          140,
+          119
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          146,
+          99
+        ],
+        [
+          145,
+          119
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Storage barrel",
+      "points": [
+        [
+          132,
+          95
+        ],
+        [
+          146,
+          94
+        ],
+        [
+          148,
+          97
+        ],
+        [
+          146,
+          100
+        ],
+        [
+          133,
+          100
+        ]
+      ],
+      "color": 6,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          134,
+          96
+        ],
+        [
+          146,
+          96
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Storage barrel",
+      "points": [
+        [
+          132,
+          101
+        ],
+        [
+          149,
+          101
+        ],
+        [
+          149,
+          104
+        ],
+        [
+          132,
+          104
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          133,
+          101
+        ],
+        [
+          148,
+          101
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "polygon",
+      "name": "Storage barrel",
+      "points": [
+        [
+          132,
+          116
+        ],
+        [
+          149,
+          116
+        ],
+        [
+          149,
+          119
+        ],
+        [
+          132,
+          119
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Storage barrel",
+      "points": [
+        [
+          133,
+          116
+        ],
+        [
+          148,
+          116
+        ]
+      ],
+      "color": 7
+    },
+    {
+      "type": "polygon",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          11,
+          30
+        ],
+        [
+          14,
+          30
+        ],
+        [
+          14,
+          32
+        ],
+        [
+          11,
+          32
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          12,
+          30
+        ],
+        [
+          12,
+          31
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          148,
+          30
+        ],
+        [
+          151,
+          30
+        ],
+        [
+          151,
+          32
+        ],
+        [
+          148,
+          32
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          149,
+          30
+        ],
+        [
+          149,
+          31
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "polygon",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          81,
+          26
+        ],
+        [
+          84,
+          26
+        ],
+        [
+          84,
+          28
+        ],
+        [
+          81,
+          28
+        ]
+      ],
+      "color": 8,
+      "outline": 0
+    },
+    {
+      "type": "line",
+      "name": "Roof carpentry",
+      "points": [
+        [
+          82,
+          26
+        ],
+        [
+          82,
+          27
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Threshold stones",
+      "points": [
+        [
+          61,
+          163
+        ],
+        [
+          99,
+          163
+        ]
+      ],
+      "color": 0
+    },
+    {
+      "type": "line",
+      "name": "Threshold stones",
+      "points": [
+        [
+          63,
+          165
+        ],
+        [
+          97,
+          165
+        ]
+      ],
+      "color": 6
+    }
+  ]
+}

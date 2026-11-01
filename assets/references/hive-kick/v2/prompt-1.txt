@@ -1,0 +1,15 @@
+Use case: stylized-concept. Asset: eight-frame native Sierra AGI/EGA heroine kick sprite sheet for tracing into an existing game.
+REFERENCE IMAGE: the supplied screenshot is the EXACT character model, not merely inspiration. Copy her very narrow original right-facing profile, long simple yellow hair down the back, tiny navy eye, coral face and slender arms, WHITE short-sleeved blouse across shoulders, NAVY fitted bodice, plain periwinkle ankle-length skirt with one navy fold, brown flat shoes. Adult fairytale heroine. Preserve her original head/body ratio and slim silhouette. No character redesign.
+Generate exactly EIGHT full-body sprites in FOUR columns by TWO rows. Identical scale, same planted supporting shoe position within each cell, full head and shoes with ample clear gutters. Solid magenta #ff00ff background, no scenery or hive. Each sprite should read as about 10 native columns wide by 40 native rows tall (kick can extend to 16 columns); enlarged hard pixel steps, original AGI double-width native pixels. NOT modern detailed pixel art, NOT vector cartoon. No black enclosing contour around the figure: use selective single-native-pixel navy/brown contour accents like screenshot. Crisp closed solid color regions, no holes, no antialiasing, gradients, shadows, intermediate colors or dithering.
+ONLY inks: hair #ffff55, skin #ff5555, blouse/opaque underskirt #ffffff, bodice/fold/eye #0000aa, skirt #5555ff, shoes/small hair shadow #aa5500, background #ff00ff. No peach, black thick outlines, extra blues or browns.
+All poses SIDE VIEW facing RIGHT. A small funny front kick at shin-to-knee height, NOT a high kick. Original narrow torso stays nearly upright, original head position unchanged. Supporting leg stays vertical, its brown flat shoe planted. Active thigh connects at the HIP under the skirt, knee bends FIRST, then lower leg unfolds forward. Keep knee well below waist and the kick modest. Skirt lifts only enough around the knee with opaque white underskirt. Slim legs, tiny mitten hands, short relaxed bent elbows close to ribs. No extended arms, bulging biceps, balloon skirt, stomach leg, rubber limbs, extra limbs, displaced head, cropped feet.
+ORDER left to right:
+1 Exact screenshot standing silhouette, arms relaxed.
+2 Weight on supporting foot, active heel lifts slightly behind.
+3 Active knee bent forward modestly, heel tucked beneath knee; compact hands near ribs.
+4 Lower leg unfolds, shoe moves forward at knee level.
+5 Contact key: small brown shoe fully extended to right at KNEE level, soft bent knee, supporting foot exactly planted, upper body and head remain unchanged.
+6 Recoil: knee folds back, same anatomy as3.
+7 Active shoe lowers, skirt settles.
+8 Exact original standing silhouette restored, both shoes down.
+Prioritize coherent connected anatomy, exact reference identity and simple traceable 7-color solid stencils over decorative detail. Every sprite must be equally slim, no widening torso or larger head in later frames.

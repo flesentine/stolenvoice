@@ -1,0 +1,436 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "voice jar",
+  "room": "inventory",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "reference": "../assets/inventory/inventory-reference-v1.png",
+  "spriteRegion": [
+    64,
+    64,
+    32,
+    28
+  ],
+  "notes": "Hand-authored line-and-fill redraw of generated reference. Native pixels; no raster sampling.",
+  "commands": [
+    {
+      "type": "polygon",
+      "name": "Jar outline",
+      "points": [
+        [
+          76,
+          70
+        ],
+        [
+          75,
+          68
+        ],
+        [
+          76,
+          66
+        ],
+        [
+          84,
+          66
+        ],
+        [
+          85,
+          68
+        ],
+        [
+          84,
+          70
+        ],
+        [
+          85,
+          73
+        ],
+        [
+          86,
+          75
+        ],
+        [
+          86,
+          87
+        ],
+        [
+          84,
+          90
+        ],
+        [
+          76,
+          90
+        ],
+        [
+          74,
+          87
+        ],
+        [
+          74,
+          75
+        ]
+      ],
+      "color": 3,
+      "outline": 3
+    },
+    {
+      "type": "polygon",
+      "name": "Clear glass interior",
+      "points": [
+        [
+          76,
+          71
+        ],
+        [
+          84,
+          71
+        ],
+        [
+          85,
+          75
+        ],
+        [
+          85,
+          86
+        ],
+        [
+          84,
+          88
+        ],
+        [
+          76,
+          88
+        ],
+        [
+          75,
+          86
+        ],
+        [
+          75,
+          75
+        ]
+      ],
+      "color": 15,
+      "outline": null
+    },
+    {
+      "type": "line",
+      "name": "Jar rim shine",
+      "points": [
+        [
+          76,
+          67
+        ],
+        [
+          83,
+          67
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Jar mouth",
+      "points": [
+        [
+          76,
+          69
+        ],
+        [
+          83,
+          69
+        ]
+      ],
+      "color": 3
+    },
+    {
+      "type": "line",
+      "name": "Left glass edge",
+      "points": [
+        [
+          75,
+          76
+        ],
+        [
+          75,
+          85
+        ],
+        [
+          76,
+          87
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Right glass edge",
+      "points": [
+        [
+          84,
+          75
+        ],
+        [
+          84,
+          86
+        ],
+        [
+          83,
+          88
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Glass base",
+      "points": [
+        [
+          77,
+          89
+        ],
+        [
+          83,
+          89
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Echo sound ribbon",
+      "points": [
+        [
+          81,
+          73
+        ],
+        [
+          79,
+          76
+        ],
+        [
+          79,
+          78
+        ],
+        [
+          82,
+          81
+        ],
+        [
+          82,
+          83
+        ],
+        [
+          79,
+          86
+        ],
+        [
+          81,
+          87
+        ]
+      ],
+      "color": 6
+    },
+    {
+      "type": "line",
+      "name": "Ribbon lit side",
+      "points": [
+        [
+          82,
+          74
+        ],
+        [
+          80,
+          76
+        ],
+        [
+          80,
+          78
+        ],
+        [
+          83,
+          81
+        ],
+        [
+          83,
+          83
+        ],
+        [
+          81,
+          86
+        ]
+      ],
+      "color": 14
+    },
+    {
+      "type": "polygon",
+      "name": "Echo sparkle",
+      "points": [
+        [
+          77,
+          75
+        ],
+        [
+          77,
+          75
+        ],
+        [
+          77,
+          75
+        ],
+        [
+          77,
+          75
+        ]
+      ],
+      "color": 14,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Echo sparkle",
+      "points": [
+        [
+          83,
+          85
+        ],
+        [
+          83,
+          85
+        ],
+        [
+          83,
+          85
+        ],
+        [
+          83,
+          85
+        ]
+      ],
+      "color": 14,
+      "outline": null
+    },
+    {
+      "type": "polygon",
+      "name": "Red wax seal",
+      "points": [
+        [
+          75,
+          67
+        ],
+        [
+          76,
+          65
+        ],
+        [
+          84,
+          65
+        ],
+        [
+          85,
+          67
+        ],
+        [
+          84,
+          70
+        ],
+        [
+          83,
+          70
+        ],
+        [
+          83,
+          72
+        ],
+        [
+          82,
+          71
+        ],
+        [
+          81,
+          70
+        ],
+        [
+          78,
+          70
+        ],
+        [
+          77,
+          72
+        ],
+        [
+          76,
+          71
+        ]
+      ],
+      "color": 4,
+      "outline": 4
+    },
+    {
+      "type": "line",
+      "name": "Wax top highlight",
+      "points": [
+        [
+          76,
+          66
+        ],
+        [
+          79,
+          66
+        ],
+        [
+          81,
+          67
+        ],
+        [
+          83,
+          66
+        ]
+      ],
+      "color": 12
+    },
+    {
+      "type": "polygon",
+      "name": "Wax stamp",
+      "points": [
+        [
+          79,
+          67
+        ],
+        [
+          81,
+          67
+        ],
+        [
+          81,
+          70
+        ],
+        [
+          79,
+          70
+        ]
+      ],
+      "color": 4,
+      "outline": 12
+    }
+  ]
+}

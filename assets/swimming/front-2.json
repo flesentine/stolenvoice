@@ -1,0 +1,1244 @@
+{
+  "format": "agi-picture-workshop",
+  "version": 1,
+  "name": "Rosella swimming front 3",
+  "room": "swim-front-2",
+  "width": 160,
+  "height": 168,
+  "palette": [
+    "#000000",
+    "#0000aa",
+    "#00aa00",
+    "#00aaaa",
+    "#aa0000",
+    "#aa00aa",
+    "#aa5500",
+    "#aaaaaa",
+    "#555555",
+    "#5555ff",
+    "#55ff55",
+    "#55ffff",
+    "#ff5555",
+    "#ff55ff",
+    "#ffff55",
+    "#ffffff"
+  ],
+  "spriteRegion": [
+    64,
+    64,
+    24,
+    20
+  ],
+  "reference": "Existing Rosella walking sprite, head rows 0-13",
+  "commands": [
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          67
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          67
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          67
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          67
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 1
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 1
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          72
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          73
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          74
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          75
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          76
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          77
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          78
+        ]
+      ],
+      "size": 1,
+      "color": 14
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 12
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          79
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          72,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          73,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          74,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          75,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          76,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          77,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          78,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "brush",
+      "name": "Original Rosella head",
+      "points": [
+        [
+          79,
+          80
+        ]
+      ],
+      "size": 1,
+      "color": 15
+    },
+    {
+      "type": "line",
+      "name": "Left ripple",
+      "points": [
+        [
+          69,
+          81
+        ],
+        [
+          72,
+          81
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Right ripple",
+      "points": [
+        [
+          79,
+          82
+        ],
+        [
+          82,
+          82
+        ]
+      ],
+      "color": 11
+    },
+    {
+      "type": "line",
+      "name": "Waterline",
+      "points": [
+        [
+          72,
+          83
+        ],
+        [
+          78,
+          83
+        ]
+      ],
+      "color": 9
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+// Isolated native artwork proof; no browser or game screenshot.
+const fs=require('fs'),vm=require('vm'),sharp=require('sharp'),A=require('../editor/agi-picture.js');
+const c={window:{matchMedia:()=>({matches:false})}};vm.createContext(c);
+vm.runInContext(fs.readFileSync('game/mill-sluice.js','utf8')+';globalThis.frame=f=>{millSluiceTurns=millSluiceSolved.slice();millSluiceReleaseFrame=f;millSluicePulse=f;return millSluicePixels()}',c);
+(async()=>{const tiles=[];for(const f of [0,8,16,23]){const p=c.frame(f),rgba=Buffer.alloc(p.length*4);p.forEach((v,n)=>{const hex=A.palette[v].slice(1);for(let k=0;k<3;k++)rgba[n*4+k]=parseInt(hex.slice(k*2,k*2+2),16);rgba[n*4+3]=255});tiles.push(await sharp(rgba,{raw:{width:160,height:168,channels:4}}).resize(480,504,{kernel:'nearest'}).png().toBuffer())}await sharp({create:{width:960,height:1008,channels:4,background:'#000000'}}).composite(tiles.map((input,i)=>({input,left:i%2*480,top:Math.floor(i/2)*504}))).png().toFile('assets/reviews/sluice-water-payoff.png')})();

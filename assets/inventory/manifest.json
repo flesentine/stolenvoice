@@ -1,0 +1,34 @@
+{
+  "names": [
+    "workshop key",
+    "rose",
+    "silver bell",
+    "oil flask",
+    "twine",
+    "wooden plank",
+    "rusty shears",
+    "pruning shears",
+    "beeswax",
+    "glass jar",
+    "echo jar",
+    "sealed echo",
+    "voice jar"
+  ],
+  "reference": "inventory-reference-v1.png",
+  "method": "Authored AGI drawer commands; 32x28 native object cels",
+  "projects": [
+    "workshop-key-workshop-v1.json",
+    "rose-workshop-v1.json",
+    "silver-bell-workshop-v1.json",
+    "oil-flask-workshop-v1.json",
+    "twine-workshop-v1.json",
+    "wooden-plank-workshop-v1.json",
+    "rusty-shears-workshop-v1.json",
+    "pruning-shears-workshop-v1.json",
+    "beeswax-workshop-v1.json",
+    "glass-jar-workshop-v1.json",
+    "echo-jar-workshop-v1.json",
+    "sealed-echo-workshop-v1.json",
+    "voice-jar-workshop-v1.json"
+  ]
+}
