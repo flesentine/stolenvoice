@@ -1,0 +1,12 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
+let harness=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
+harness=harness.replace('globalThis.game={command,','globalThis.game={touchWalkTick,walkTick,go(x,y){stopWalking();touchDestination={x,y};walkDirection="touch"},place(r,x,y){stopWalking();room=r;player={x,y,step:1,facing:"front"}},get destination(){return touchDestination},get swimming(){return swimState.active},command,');
+const sandbox={require,console,Buffer,__dirname};vm.createContext(sandbox);vm.runInContext(harness+';globalThis.bootGame=boot;',sandbox);
+const a=sandbox.bootGame();a.start();while(a.game.state.popupOpen)a.game.closeMessage();
+a.game.place(2,160,215);a.game.go(200,220);for(let i=0;i<40;i++)a.game.walkTick();
+assert(Math.abs(a.game.state.player.x-200)<.5);assert(Math.abs(a.game.state.player.y-220)<.5);assert.equal(a.game.destination,null,'arrival cancels timer and destination');
+a.game.place(2,245,210);a.game.go(285,180);for(let i=0;i<40;i++)a.game.walkTick();assert(a.game.canStand(a.game.state.player.x,a.game.state.player.y),'barrel remains solid');assert.equal(a.game.destination,null,'blocked movement stops rather than spinning');
+a.game.place(2,160,215);a.game.go(200,220);a.game.closeMessage();a.game.command('look');assert.equal(a.game.destination,null,'popup cancels touch walking');a.game.closeMessage();
+a.game.place(0,286,201);a.game.go(315,201);for(let i=0;i<20;i++)a.game.walkTick();assert.equal(a.game.state.room,3,'touch walking uses normal room exits');assert.equal(a.game.destination,null,'room transition clears old destination');
+a.game.place(4,137,190);a.game.go(165,190);for(let i=0;i<15;i++)a.game.walkTick();assert(a.game.swimming,'touch movement into river still falls in');
+console.log('PASS touch destination arrival, solid barrel, popup cancellation, ordinary exits and river hazards.');

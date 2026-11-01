@@ -4,6 +4,7 @@ const fs=require('fs'),os=require('os'),path=require('path'),cp=require('child_p
 const root=path.resolve(__dirname,'..');
 const suites=[
  'standalone-build',
+ 'mobile-controls',
  'sound-playback',
  'royal-raspberry',
  'grotto-music',

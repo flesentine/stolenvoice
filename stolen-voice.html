@@ -34,6 +34,23 @@ body{display:grid;place-items:center;height:100dvh}
 .agi-message-window,.agi-ending-window{max-width:96%;background:#ffffff;line-height:0}
 #start{display:block;max-width:96%;padding:0;border:0;outline:none;background:#ffffff;line-height:0;cursor:default}
 .sr-only,.hud,.footer{position:absolute;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.mobile-controls{display:none}
+@media (hover:none) and (pointer:coarse){
+ body{display:flex;align-items:flex-start;justify-content:center;height:var(--mobile-height,100dvh);padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+ .shell{width:min(960px,100%,calc((var(--mobile-height,100dvh) - 120px) * 4 / 3));aspect-ratio:auto;margin:auto 0}
+ .screen{aspect-ratio:4/3;height:auto;touch-action:manipulation}
+ .hud{position:static;width:auto;height:auto;padding:5px;margin:0;overflow:visible;clip-path:none;white-space:normal}
+ #items{display:none}
+ #form{display:flex;gap:6px}
+ #input{min-width:0;flex:1;width:100%;height:44px;font:16px monospace;color:#fff;background:#171747;border:1px solid #aaa;padding:8px;border-radius:4px}
+ .mobile-controls{display:flex;gap:4px;padding:0 5px 5px;font:14px monospace;overflow-x:auto}
+ .mobile-controls button{flex-shrink:0}
+ .mobile-controls button,#form button{min-height:44px;font:14px monospace;border:1px solid #aaa;border-radius:4px;background:#171747;color:#fff;padding:6px 9px;touch-action:manipulation}
+ .mobile-controls button:disabled{opacity:.4}
+ .mobile-tip{display:none}
+ .shell:has(#intro) .hud{display:none}
+}
+
 </style></head>
 <body><main class="shell" aria-label="Rosella and the Stolen Voice"><div class="screen"><canvas id="game" width="320" height="200" aria-label="AGI game screen. Arrow keys start walking; press the same arrow to stop. Type a command and press Enter. Tab shows inventory; Escape opens menus." tabindex="-1" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Enter Escape Tab F1 F2 F3 F5 F7"></canvas><span id="roomname" class="sr-only">The Royal Garden</span><div id="agi-message" class="agi-message-layer" role="dialog" aria-modal="true" aria-label="Game message" aria-describedby="message agi-message-help" tabindex="-1" hidden><div id="agi-message-window" class="agi-message-window"><canvas id="agi-message-picture" aria-hidden="true"></canvas></div><span id="message" class="sr-only"></span><span id="agi-message-help" class="sr-only">Press Enter, Space or Escape to continue.</span></div><div id="agi-menu" class="agi-menu-layer" role="dialog" aria-modal="true" aria-label="Game menus" aria-describedby="agi-menu-description" tabindex="-1" hidden><canvas id="agi-menu-picture" width="320" height="200" aria-hidden="true"></canvas><span id="agi-menu-description" class="sr-only"></span></div><div class="overlay" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-title"><h1 id="intro-title" class="sr-only">Rosella and the Stolen Voice</h1><button id="start" type="button" aria-label="Begin Rosella and the Stolen Voice"><canvas id="intro-picture" aria-hidden="true"></canvas></button></div></div><div class="hud" inert><form id="form"><label class="sr-only" for="input">Command</label><input id="input" maxlength="38" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="Command"></form><span id="items"></span></div><div class="footer" inert><span id="status" aria-live="polite"></span><span id="score" aria-live="polite">SCORE 0/100</span></div></main>
 <script>
@@ -5727,6 +5744,7 @@ document.addEventListener('keyup',event=>{
 const moveSteps={up:[0,-3],down:[0,3],left:[-5,0],right:[5,0],nw:[-4,-2],ne:[4,-2],sw:[-4,2],se:[4,2]};
 walkStops.add(()=>{walkDirection=null;if(walkTimer){clearInterval(walkTimer);walkTimer=0}});
 function walkTick(){
+ if(touchWalkTick())return;
  if(!walkDirection||!playing||popupOpen||menuOpen){stopWalking();return}
  const oldX=player.x,oldY=player.y;
  movePlayer(...moveSteps[walkDirection]);
@@ -6002,6 +6020,61 @@ window.addEventListener('blur',()=>{prologueFocused=false;if(prologueActive)stop
 window.addEventListener('focus',()=>{prologueFocused=true;resumePrologueScore()});
 document.addEventListener('visibilitychange',()=>{if(!prologueActive)return;if(document.hidden)stopGameSound();else resumePrologueScore()});
 
+// Touch destinations use ordinary movement: no teleport, pathfinding or puzzle bypass.
+let touchDestination=null;
+walkStops.add(()=>{touchDestination=null});
+function touchWalkTick(){
+ if(walkDirection!=='touch')return false;
+ if(!touchDestination||!playing||popupOpen||menuOpen){stopWalking();return true}
+ const target=touchDestination,dx=target.x-player.x,dy=target.y-player.y;
+ if(Math.abs(dx)<.5&&Math.abs(dy)<.5){stopWalking();return true}
+ const factor=Math.min(1,5/Math.max(Math.abs(dx),Math.abs(dy)*5/3));
+ const before={x:player.x,y:player.y,room};
+ movePlayer(dx*factor,dy*factor);
+ // Sliding against a solid edge can leave a subpixel remainder on one axis.
+ // Treat that as blocked instead of animating forever against the obstacle.
+ if(room!==before.room||Math.hypot(player.x-before.x,player.y-before.y)<.1)stopWalking();
+ return true;
+}
+function installMobileControls(){
+ const mobile=window.matchMedia('(hover: none) and (pointer: coarse)');
+ // Desktop retains its hidden parser and original arrow-key controls.
+ if(!mobile.matches)return;
+ const form=document.querySelector('#form'),shell=document.querySelector('.shell');
+ const controls=document.createElement('nav');controls.className='mobile-controls';controls.setAttribute('aria-label','Touch game controls');
+ const makeButton=(label,action,parent=controls)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',()=>{action();sync()});parent.append(button);return button};
+ input.placeholder='Type a command…';input.setAttribute('enterkeyhint','send');input.setAttribute('autocorrect','off');
+ const go=makeButton('Go',()=>form.requestSubmit(),form);
+ const next=makeButton('Continue',()=>{
+  input.blur();
+  if(prologueActive){advancePrologue();return}
+  const start=document.querySelector('#start');if(start){start.click();return}
+  const ending=document.querySelector('.screen>.overlay[aria-modal="true"]');if(ending){advanceMerrinEnding();return}
+  if(popupOpen){if(hiveOpen)reachHive();else closeMessage();return}
+  stopWalking();
+ });
+ const skip=makeButton('Skip intro',()=>{if(prologueActive)finishPrologue()});
+ const actions=[['Items',()=>command('inventory')],['Help',()=>command('help')],['Save',()=>saveGame()],['Restore',()=>restoreGame()]].map(([label,fn])=>makeButton(label,()=>{input.blur();if(playing&&!popupOpen&&!menuOpen){stopWalking();fn()}}));
+ makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
+ const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Tap a destination to walk. Type commands below.';controls.append(tip);shell.append(controls);
+ const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
+ new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
+ const resize=()=>{document.documentElement.style.setProperty('--mobile-height',(window.visualViewport?.height||window.innerHeight)+'px')};
+ window.visualViewport?.addEventListener('resize',resize);window.addEventListener('resize',resize);resize();
+ // Hide the keyboard after submission; messages and minigames remain tappable.
+ form.addEventListener('submit',()=>{input.blur();if(popupOpen)popupFocus=c});
+ c.addEventListener('pointerdown',event=>{
+  if(event.pointerType!=='touch'||!mobile.matches||!playing||popupOpen||menuOpen||prologueActive||document.querySelector('.screen>.overlay[aria-modal="true"]'))return;
+  const rect=c.getBoundingClientRect(),px=(event.clientX-rect.left)*320/rect.width,py=(event.clientY-rect.top)*200/rect.height;
+  if(py>=176){stopWalking();input.focus();return}
+  if(py<8)return;
+  event.preventDefault();input.blur();stopWalking();
+  touchDestination={x:Math.max(4,Math.min(316,px)),y:(py-8)/.7};walkDirection='touch';walkTick();
+  if(walkDirection)walkTimer=setInterval(walkTick,speedTiming().walk);
+ });
+}
+
+installMobileControls();
 startOpening();
 document.querySelector('#start').focus();draw();
 })();

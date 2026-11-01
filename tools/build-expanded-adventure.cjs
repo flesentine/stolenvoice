@@ -5,6 +5,7 @@ require('./draw-prologue-closeup.cjs');
 let html=read('stolen-voice-short.html');
 // Static metadata is available to link-preview crawlers without running the game.
 html=html.replace('<head>',()=>'<head>\n'+read('game/share-metadata.html'));
+html=html.replace('</style>',()=>read('game/mobile-controls.css')+'\n</style>');
 html=html.replace('for(const left of [119,174])','for(const left of [118,174])');
 const stableRosella=require('./build-rosella-stable-face.cjs')();
 html=html.replace(/const rosellaWalkSprites=\{[^\n]+\};/,()=> 'const rosellaWalkSprites='+JSON.stringify(stableRosella)+';');
@@ -162,6 +163,8 @@ html=html.replace('TAB: inventory. ESC: menus.', 'TAB: inventory. ESC: menus/spe
 html=html.replace('event=>{if(harmonyOpen)', 'event=>{if(hiveOpen){event.preventDefault();event.stopPropagation();reachHive();return}if(harmonyOpen)');
 html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMessage(restoreFocus=true){\n if(hiveOpen&&restoreFocus){closeHive();return}\n if(!restoreFocus)resetHive();');
 html=html.replace(' if(harmonyOpen&&!event.isComposing)', ' if(hiveOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();hiveKey(event);return}\n if(harmonyOpen&&!event.isComposing)');
+html=html.replace('function walkTick(){','function walkTick(){\n if(touchWalkTick())return;');
+html=html.replace('startOpening();',()=>read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
 require('./lib/write-standalone.cjs')(path.join(root,'stolen-voice.html'),html,[
  'command','saveGame','restoreGame','showHive','showMillSluice',
  'swimmingShoreRoute','startPrologue','finishGame'
