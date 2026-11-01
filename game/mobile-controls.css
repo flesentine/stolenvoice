@@ -1,3 +1,4 @@
+.shell,.shell *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .mobile-controls,.mobile-keyboard{display:none}
 @media (hover:none) and (pointer:coarse){
  body{position:fixed;inset:0;display:block;height:100%;overflow:hidden;overscroll-behavior:none}

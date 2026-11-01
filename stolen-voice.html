@@ -34,6 +34,7 @@ body{display:grid;place-items:center;height:100dvh}
 .agi-message-window,.agi-ending-window{max-width:96%;background:#ffffff;line-height:0}
 #start{display:block;max-width:96%;padding:0;border:0;outline:none;background:#ffffff;line-height:0;cursor:default}
 .sr-only,.hud,.footer{position:absolute;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.shell,.shell *{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .mobile-controls,.mobile-keyboard{display:none}
 @media (hover:none) and (pointer:coarse){
  body{position:fixed;inset:0;display:block;height:100%;overflow:hidden;overscroll-behavior:none}
@@ -6034,6 +6035,17 @@ function paintPrologue(){
 window.addEventListener('blur',()=>{prologueFocused=false;if(prologueActive)stopGameSound()});
 window.addEventListener('focus',()=>{prologueFocused=true;resumePrologueScore()});
 document.addEventListener('visibilitychange',()=>{if(!prologueActive)return;if(document.hidden)stopGameSound();else resumePrologueScore()});
+
+// The page is a game surface: suppress browser editing/long-press chrome.
+for(const type of ['copy','cut','paste','contextmenu','selectstart','dragstart']){
+ document.addEventListener(type,event=>event.preventDefault(),true);
+}
+document.addEventListener('beforeinput',event=>{
+ if(['insertFromPaste','insertFromDrop','deleteByCut'].includes(event.inputType))event.preventDefault();
+},true);
+document.addEventListener('keydown',event=>{
+ if((event.ctrlKey||event.metaKey)&&!event.altKey&&!event.shiftKey&&['a','c','v','x'].includes(event.key.toLowerCase()))event.preventDefault();
+},true);
 
 // A readonly mobile parser keeps the OS keyboard (and its viewport pan) closed.
 // Real keyboard events still edit the same command field and submit the same form.
