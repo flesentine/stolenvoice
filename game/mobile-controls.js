@@ -37,8 +37,16 @@ function installMobileControls(){
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Tap a destination to walk. Type commands below.';controls.append(tip);shell.append(controls);
  const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
- const resize=()=>{document.documentElement.style.setProperty('--mobile-height',(window.visualViewport?.height||window.innerHeight)+'px')};
- window.visualViewport?.addEventListener('resize',resize);window.addEventListener('resize',resize);resize();
+ const resize=()=>{
+  const viewport=window.visualViewport,style=document.documentElement.style;
+  style.setProperty('--mobile-height',(viewport?.height||window.innerHeight)+'px');
+  style.setProperty('--mobile-width',(viewport?.width||window.innerWidth)+'px');
+  style.setProperty('--mobile-top',(viewport?.offsetTop||0)+'px');
+  style.setProperty('--mobile-left',(viewport?.offsetLeft||0)+'px');
+ };
+ // Keyboard focus can pan Safari without resizing the layout viewport.
+ window.visualViewport?.addEventListener('resize',resize);window.visualViewport?.addEventListener('scroll',resize);
+ window.addEventListener('resize',resize);window.addEventListener('orientationchange',resize);input.addEventListener('focus',()=>{stopWalking();resize()});resize();
  // Hide the keyboard after submission; messages and minigames remain tappable.
  form.addEventListener('submit',()=>{input.blur();if(popupOpen)popupFocus=c});
  c.addEventListener('pointerdown',event=>{

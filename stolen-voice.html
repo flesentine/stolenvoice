@@ -36,19 +36,27 @@ body{display:grid;place-items:center;height:100dvh}
 .sr-only,.hud,.footer{position:absolute;top:0;left:0;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .mobile-controls{display:none}
 @media (hover:none) and (pointer:coarse){
- body{display:flex;align-items:flex-start;justify-content:center;height:var(--mobile-height,100dvh);padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
- .shell{width:min(960px,100%,calc((var(--mobile-height,100dvh) - 120px) * 4 / 3));aspect-ratio:auto;margin:auto 0}
- .screen{aspect-ratio:4/3;height:auto;touch-action:manipulation}
- .hud{position:static;width:auto;height:auto;padding:5px;margin:0;overflow:visible;clip-path:none;white-space:normal}
+ body{position:fixed;inset:0;display:block;height:100%;overflow:hidden;overscroll-behavior:none}
+ /* Follow the visible viewport, including Safari's keyboard-induced pan. */
+ .shell{position:fixed;left:var(--mobile-left,0px);top:var(--mobile-top,0px);width:var(--mobile-width,100vw);height:var(--mobile-height,100dvh);aspect-ratio:auto;margin:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);display:grid;grid-template-rows:minmax(0,1fr) auto auto;justify-items:center;overflow:hidden}
+ .screen{width:min(100%,calc((var(--mobile-height,100dvh) - 114px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 4 / 3));aspect-ratio:4/3;height:auto;align-self:center;touch-action:manipulation}
+ .hud{position:static;width:min(960px,100%);height:auto;padding:5px;margin:0;overflow:visible;clip-path:none;white-space:normal}
  #items{display:none}
  #form{display:flex;gap:6px}
  #input{min-width:0;flex:1;width:100%;height:44px;font:16px monospace;color:#fff;background:#171747;border:1px solid #aaa;padding:8px;border-radius:4px}
- .mobile-controls{display:flex;gap:4px;padding:0 5px 5px;font:14px monospace;overflow-x:auto}
+ .mobile-controls{display:flex;width:min(960px,100%);min-height:54px;gap:4px;padding:0 5px 5px;font:14px monospace;overflow-x:auto}
  .mobile-controls button{flex-shrink:0}
  .mobile-controls button,#form button{min-height:44px;font:14px monospace;border:1px solid #aaa;border-radius:4px;background:#171747;color:#fff;padding:6px 9px;touch-action:manipulation}
  .mobile-controls button:disabled{opacity:.4}
  .mobile-tip{display:none}
  .shell:has(#intro) .hud{display:none}
+}
+@media (hover:none) and (pointer:coarse) and (orientation:landscape) and (min-width:600px){
+ .shell{grid-template-columns:minmax(0,1fr) clamp(164px,25vw,220px);grid-template-rows:auto minmax(0,1fr);gap:0 6px}
+ .screen{grid-column:1;grid-row:1 / 3;width:min(100%,calc((var(--mobile-height,100dvh) - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 4 / 3));justify-self:center}
+ .hud{grid-column:2;grid-row:1}
+ .mobile-controls{grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;min-height:0;height:100%;overflow:auto}
+ .mobile-controls button{min-width:0;padding:6px 4px}
 }
 
 </style></head>
@@ -6059,8 +6067,16 @@ function installMobileControls(){
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Tap a destination to walk. Type commands below.';controls.append(tip);shell.append(controls);
  const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
- const resize=()=>{document.documentElement.style.setProperty('--mobile-height',(window.visualViewport?.height||window.innerHeight)+'px')};
- window.visualViewport?.addEventListener('resize',resize);window.addEventListener('resize',resize);resize();
+ const resize=()=>{
+  const viewport=window.visualViewport,style=document.documentElement.style;
+  style.setProperty('--mobile-height',(viewport?.height||window.innerHeight)+'px');
+  style.setProperty('--mobile-width',(viewport?.width||window.innerWidth)+'px');
+  style.setProperty('--mobile-top',(viewport?.offsetTop||0)+'px');
+  style.setProperty('--mobile-left',(viewport?.offsetLeft||0)+'px');
+ };
+ // Keyboard focus can pan Safari without resizing the layout viewport.
+ window.visualViewport?.addEventListener('resize',resize);window.visualViewport?.addEventListener('scroll',resize);
+ window.addEventListener('resize',resize);window.addEventListener('orientationchange',resize);input.addEventListener('focus',()=>{stopWalking();resize()});resize();
  // Hide the keyboard after submission; messages and minigames remain tappable.
  form.addEventListener('submit',()=>{input.blur();if(popupOpen)popupFocus=c});
  c.addEventListener('pointerdown',event=>{
