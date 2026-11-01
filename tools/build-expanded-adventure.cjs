@@ -3,6 +3,8 @@ const fs=require('fs'),path=require('path');const root=path.resolve(__dirname,'.
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 require('./draw-prologue-closeup.cjs');
 let html=read('stolen-voice-short.html');
+// Static metadata is available to link-preview crawlers without running the game.
+html=html.replace('<head>',()=>'<head>\n'+read('game/share-metadata.html'));
 html=html.replace('for(const left of [119,174])','for(const left of [118,174])');
 const stableRosella=require('./build-rosella-stable-face.cjs')();
 html=html.replace(/const rosellaWalkSprites=\{[^\n]+\};/,()=> 'const rosellaWalkSprites='+JSON.stringify(stableRosella)+';');
