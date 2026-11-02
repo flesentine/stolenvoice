@@ -1,6 +1,6 @@
 // Touch destinations use ordinary movement: no teleport, pathfinding or puzzle bypass.
-let touchDestination=null,touchPointerId=null,touchMoving=false;
-walkStops.add(()=>{touchDestination=null;if(!touchMoving)touchPointerId=null});
+let touchDestination=null,touchPointerId=null,touchMoving=false,touchPad=null;
+walkStops.add(()=>{touchDestination=null;if(!touchMoving){touchPointerId=null;touchPad=null}});
 function pauseTouchStride(){
  // Reaching a finger or a solid edge pauses walking without ending the hold.
  touchMoving=true;try{stopWalking()}finally{touchMoving=false}
@@ -8,7 +8,7 @@ function pauseTouchStride(){
 function touchWalkTick(){
  if(walkDirection!=='touch')return false;
  if(!touchDestination||!playing||popupOpen||menuOpen){stopWalking();return true}
- const target=touchDestination,dx=target.x-player.x,dy=target.y-player.y;
+ const target=touchPad?{x:player.x+touchPad.dx,y:player.y+touchPad.dy}:touchDestination,dx=target.x-player.x,dy=target.y-player.y;
  if(Math.abs(dx)<.5&&Math.abs(dy)<.5){pauseTouchStride();return true}
  const factor=Math.min(1,5/Math.max(Math.abs(dx),Math.abs(dy)*5/3));
  const before={x:player.x,y:player.y,room};
@@ -37,7 +37,7 @@ function installMobileControls(){
  const skip=makeButton('Skip intro',()=>{if(prologueActive)finishPrologue()});
  const actions=[['Items',()=>command('inventory')],['Help',()=>command('help')],['Save',()=>saveGame()],['Restore',()=>restoreGame()]].map(([label,fn])=>makeButton(label,()=>{input.blur();if(playing&&!popupOpen&&!menuOpen){stopWalking();fn()}}));
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
- const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene to guide Rosella. Lift to stop.';controls.append(tip);shell.append(controls);
+ const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene, or drag in the black space to steer. Lift to stop.';controls.append(tip);shell.append(controls);
  const keyboard=installMobileKeyboard(input,form,shell,()=>playing&&!popupOpen&&!menuOpen&&!document.querySelector('#intro')&&!document.querySelector('.screen>.overlay[aria-modal="true"]'),()=>sync());
  const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
@@ -79,4 +79,33 @@ function installMobileControls(){
   stopWalking();if(c.hasPointerCapture(event.pointerId))c.releasePointerCapture(event.pointerId);
  };
  for(const type of ['pointerup','pointercancel','lostpointercapture'])c.addEventListener(type,releaseGuide);
+ // Relative thumb pad in the letterboxing: the first touch is neutral, so any
+ // comfortable starting point works. Drag away to steer; hold to keep walking.
+ shell.addEventListener('pointerdown',event=>{
+  if(event.pointerType!=='touch'||event.isPrimary===false||!canGuide()||event.defaultPrevented)return;
+  if(event.target?.closest?.('.screen,.mobile-controls,.mobile-keyboard,.hud,button,input,textarea,select,a'))return;
+  event.preventDefault();keyboard.release();stopWalking();
+  touchPointerId=event.pointerId;touchPad={x:event.clientX,y:event.clientY,dx:0,dy:0};
+  shell.setPointerCapture(event.pointerId);
+ });
+ shell.addEventListener('pointermove',event=>{
+  if(!touchPad||event.pointerId!==touchPointerId)return;
+  event.preventDefault();if(!canGuide()){stopWalking();return}
+  const dx=event.clientX-touchPad.x,dy=event.clientY-touchPad.y,rect=c.getBoundingClientRect();
+  const distance=Math.hypot(dx,dy);
+  touchPad.dx=distance<8?0:dx*320/rect.width;
+  touchPad.dy=distance<8?0:dy*200/(rect.height*.7);
+  touchDestination={x:player.x+touchPad.dx,y:player.y+touchPad.dy};
+  if(walkDirection!=='touch'){
+   walkDirection='touch';walkTick();
+   if(walkDirection)walkTimer=setInterval(walkTick,speedTiming().walk);
+  }
+ });
+ const releasePad=event=>{
+  if(!touchPad||event.pointerId!==touchPointerId)return;
+  stopWalking();if(shell.hasPointerCapture(event.pointerId))shell.releasePointerCapture(event.pointerId);
+ };
+ for(const type of ['pointerup','pointercancel','lostpointercapture'])shell.addEventListener(type,releasePad);
+ window.addEventListener('resize',()=>{if(touchPad)stopWalking()});
+
 }
