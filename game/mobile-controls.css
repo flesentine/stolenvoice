@@ -2,6 +2,7 @@
 .mobile-controls,.mobile-keyboard{display:none}
 @media (hover:none) and (pointer:coarse){
  body{position:fixed;inset:0;display:block;height:100%;overflow:hidden;overscroll-behavior:none}
+ #game{touch-action:none}
  /* Follow the visible viewport, including Safari's keyboard-induced pan. */
  .shell{position:fixed;left:var(--mobile-left,0px);top:var(--mobile-top,0px);width:var(--mobile-width,100vw);height:var(--mobile-height,100dvh);aspect-ratio:auto;margin:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);display:grid;grid-template-rows:minmax(0,1fr) auto auto auto;justify-items:center;overflow:hidden;--keyboard-space:0px}
  .shell{--keyboard-space:220px}
