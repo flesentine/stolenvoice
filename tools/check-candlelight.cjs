@@ -17,17 +17,17 @@ fs.writeFileSync('assets/reviews/warm-candle-frames.json',JSON.stringify(frames.
 let harness=read('tools/check-expanded-adventure.cjs');harness=harness.slice(0,harness.indexOf("check('Eight rooms"));const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(harness+'\nglobalThis.candles={boot};',s);const a=s.candles.boot();a.start();a.game.saveGame();const key=a.game.key,save=JSON.parse(a.storage.get(key));save.room=1;delete save.player;const b=s.candles.boot(new Map([[key,JSON.stringify(save)]]));b.start();b.game.restoreGame();while(b.game.state.popupOpen)b.game.closeMessage();const before=b.game.state;for(let i=0;i<6;i++)for(const fn of b.intervals.values())fn();assert.deepEqual(b.game.state,before);b.game.command('look');const count=b.draws;for(const fn of b.intervals.values())fn();assert.equal(b.draws,count);
 console.log('PASS single-column warm flames, independent random slow holds, redraw stability, exact underpainting, native bounds and popup pause.');
 
-// Replay the same clock as FART: ignition at the first puff (tick5), then
+// Replay the same clock as FART: puff at tick5, ignition two beats later at7, then
 // a large flare and a fade before the reaction ends. Each draw starts with
 // the real gallery underpainting, as gallery() does when clearing the scene.
 const flareFrames=[];let activePaint=0;
 for(let frame=0;frame<32;frame++){
  pixels.set(original);sandbox.storyAction={kind:'royalRaspberry',frame};sandbox.paint();const snapshot=Buffer.from(pixels);sandbox.paint();assert.deepEqual(Buffer.from(pixels),snapshot,'flare redraw is stable');flareFrames.push(Array.from(pixels));
  let outside=0;for(let n=0;n<pixels.length;n++)if(pixels[n]!==original[n]&&!patches.some(p=>n%160>=p.left&&n%160<p.left+p.width&&Math.floor(n/160)>=p.top&&Math.floor(n/160)<p.top+6))outside++;
- if(frame<5||frame>=22)assert.equal(outside,0,'normal small flames outside puff window');
- if(frame===5)assert(outside>20,'all candles ignite with the first puff');
- if(frame===10){assert(outside>100,'huge flames rise far beyond normal flame patches');activePaint=outside;for(const {wick}of patches)assert([-1,0,1].some(dx=>pixels[(wick[1]-16)*160+wick[0]+dx]!==original[(wick[1]-16)*160+wick[0]+dx]),'each candle flares high')}
+ if(frame<7||frame>=24)assert.equal(outside,0,'normal small flames before delayed flare and after its fade');
+ if(frame===7)assert(outside>20,'all candles ignite two beats after the first puff');
+ if(frame===12){assert(outside>100,'huge flames rise far beyond normal flame patches');activePaint=outside;for(const {wick}of patches)assert([-1,0,1].some(dx=>pixels[(wick[1]-16)*160+wick[0]+dx]!==original[(wick[1]-16)*160+wick[0]+dx]),'each candle flares high')}
 }
 assert(activePaint>0);pixels.set(original);sandbox.storyAction=null;sandbox.paint();for(let n=0;n<pixels.length;n++)if(pixels[n]!==original[n])assert(patches.some(p=>n%160>=p.left&&n%160<p.left+p.width&&Math.floor(n/160)>=p.top&&Math.floor(n/160)<p.top+6),'interruption restores ordinary candle bounds');
 fs.writeFileSync('assets/reviews/raspberry-candle-flare-frames.json',JSON.stringify(flareFrames));
-console.log('PASS six candle flares synchronized with puff5, huge EGA flame peaks, stable redraw, fade22 and interruption cleanup.');
+console.log('PASS six candle flares delayed two ticks after puff5, ignition7, huge EGA peaks, stable redraw, fade24 and interruption cleanup.');

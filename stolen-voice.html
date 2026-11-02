@@ -3905,6 +3905,7 @@ const galleryCandlePatches=[{"left":43,"top":47,"width":5,"pixels":[7,7,7,7,7,7,
 const candleFlameCels=['..6ee','.66ee','.6eee','..6ee','.666e','666ee'];
 const galleryCandleState=[];let galleryCandleLastFrame=-1;
 function galleryRaspberryFlare(frame){
+ frame-=2; // Let the puff lead the candle reaction by two story ticks.
  if(frame<5||frame>=22)return 0;
  return Math.round(4+14*Math.min(1,(frame-4)/2,(22-frame)/6));
 }
