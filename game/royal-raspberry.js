@@ -13,7 +13,9 @@ function handleRoyalRaspberry(){
  const comment=royalRaspberryComments[royalRaspberryComment];royalRaspberryComment=(royalRaspberryComment+1)%royalRaspberryComments.length;
  const message='Rosella claps a hand over her mouth.\n\n'+comment+'\n\n'+(replies[audience]||'Royal dignity drifts away on the breeze.');
  const frenzy=audience==='bees'?Array.from({length:8},()=>({phase:Math.random()*Math.PI*2,speed:.55+Math.random()*.6,wide:19+Math.random()*13,high:10+Math.random()*9})):null;
- startStoryEffect('royalRaspberry',message,{raspberryAudience:audience,beeFrenzy:frenzy});return true;
+ const direction=player.facing==='left'?-1:1;
+ const raspberryOrigin={x:pictureX(player.x)-direction*5,y:pictureY(player.y)-18};
+ startStoryEffect('royalRaspberry',message,{raspberryAudience:audience,beeFrenzy:frenzy,raspberryOrigin});return true;
 }
 // Shared native pixels keep her reflection in sync, including the puff.
 function royalRaspberryPixels(frame,reflected=false){
