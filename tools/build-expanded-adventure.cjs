@@ -163,6 +163,7 @@ html=html.replace('TAB: inventory. ESC: menus.', 'TAB: inventory. ESC: menus/spe
 html=html.replace('event=>{if(harmonyOpen)', 'event=>{if(hiveOpen){event.preventDefault();event.stopPropagation();reachHive();return}if(harmonyOpen)');
 html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMessage(restoreFocus=true){\n if(hiveOpen&&restoreFocus){closeHive();return}\n if(!restoreFocus)resetHive();');
 html=html.replace(' if(harmonyOpen&&!event.isComposing)', ' if(hiveOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();hiveKey(event);return}\n if(harmonyOpen&&!event.isComposing)');
+html=html.replace("textPopup.addEventListener('click',event=>{", "textPopup.addEventListener('click',event=>{if(inventoryTouchTap(event))return;");
 html=html.replace('function walkTick(){','function walkTick(){\n if(touchWalkTick())return;');
 html=html.replace('startOpening();',()=>read('game/browser-interactions.js')+'\n'+read('game/mobile-autocomplete.js')+'\n'+read('game/mobile-keyboard.js')+'\n'+read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
 require('./lib/write-standalone.cjs')(path.join(root,'stolen-voice.html'),html,[

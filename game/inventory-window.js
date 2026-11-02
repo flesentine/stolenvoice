@@ -6,7 +6,7 @@
   const text=(value,left,top,color)=>[...value].forEach((letter,col)=>{for(let y=0;y<8;y++)for(let x=0;x<8;x++)if(font[letter.charCodeAt(0)*8+y]&(128>>x))dot(left+col*8+x,top+y,color)});
   return{dot,text};
  }
- function renderList(items,font,index=0){
+ function renderList(items,font,index=0,{touch=false}={}){
   const width=288,height=Math.max(104,items.length*12+56),pixels=new Uint8Array(width*height).fill(15),{dot,text}=writer(pixels,width,height,font);
   // Match the white message windows: inset red rule, thin native edges.
   for(let xx=2;xx<width-2;xx++){dot(xx,2,4);dot(xx,height-3,4)}
@@ -17,7 +17,8 @@
    if(row===index)for(let yy=y-1;yy<y+9;yy++)for(let xx=20;xx<width-20;xx++)dot(xx,yy,0);
    text(displayName(name),28,y,row===index?15:0);
   });
-  text('ENTER: examine  ESC: return',Math.floor((width-26*8)/2),height-18,0);
+  const help=touch?'TAP: examine  ESC: return':'ENTER: examine  ESC: return';
+  text(help,Math.floor((width-help.length*8)/2),height-18,0);
   return{width,height,pixels,left:16,top:Math.floor((200-height)/2)};
  }
  function paintItem(name,pictures,dot,left,top){
@@ -49,11 +50,20 @@
 let inventoryOpen=false,inventoryView='list',inventoryIndex=0;
 function paintInventory(){
  const name=inv[inventoryIndex],description=inventoryView==='item'?inventoryItemDescription(objectId(name)):'';
- const drawing=inventoryView==='item'?(AgiInventoryWindow.renderDescription(name,description,agiFont,inventoryPictures,AgiMessageWindow,{showHelp:false})||AgiInventoryWindow.renderItem(name,agiFont,inventoryPictures,AgiMessageWindow)):AgiInventoryWindow.renderList(inv,agiFont,inventoryIndex);
+ const touch=window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+ const drawing=inventoryView==='item'?(AgiInventoryWindow.renderDescription(name,description,agiFont,inventoryPictures,AgiMessageWindow,{showHelp:false})||AgiInventoryWindow.renderItem(name,agiFont,inventoryPictures,AgiMessageWindow)):AgiInventoryWindow.renderList(inv,agiFont,inventoryIndex,{touch});
  paintInventoryDrawing(drawing);
  msg.textContent=inventoryView==='item'?AgiInventoryWindow.displayName(name)+'\n\n'+description:'You are carrying:\n'+inv.map(AgiInventoryWindow.displayName).join('\n')+'\nSelected: '+AgiInventoryWindow.displayName(inv[inventoryIndex])+'. Use Up and Down to select, Enter to examine, Escape to return.';
  textPopup.setAttribute('aria-label',inventoryView==='item'?'Inventory object':'Inventory');
- document.querySelector('#agi-message-help').textContent=inventoryView==='item'?'Press Enter or Escape to return to the list.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
+ document.querySelector('#agi-message-help').textContent=inventoryView==='item'?'Tap, Enter or Escape returns to the list.':touch?'Tap an item to examine it. Escape returns to the game.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
+}
+function inventoryTouchTap(event){
+ if(!inventoryOpen||inventoryView!=='list'||!window.matchMedia('(hover: none) and (pointer: coarse)').matches||event.pointerType==='mouse')return false;
+ const bitmap=document.querySelector('#agi-message-picture'),rect=bitmap.getBoundingClientRect();
+ const x=(event.clientX-rect.left)*bitmap.width/rect.width,y=(event.clientY-rect.top)*bitmap.height/rect.height;
+ const row=Math.floor((y-35)/12);
+ if(x<20||x>=bitmap.width-20||y<35||row<0||row>=inv.length)return false;
+ event.preventDefault();event.stopPropagation();inventoryIndex=row;inventoryView='item';paintInventory();return true;
 }
 function paintInventoryDrawing(drawing){
  const bitmap=document.querySelector('#agi-message-picture'),windowEl=document.querySelector('#agi-message-window');bitmap.width=drawing.width;bitmap.height=drawing.height;
