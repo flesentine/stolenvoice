@@ -18,7 +18,13 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
     const box=await page.locator(name).boundingBox();assert(box&&box.width>0&&box.height>0,name+' visible');
     assert(box.x>=view.left-1&&box.y>=view.top-1,name+' remains below visible top');
     assert(box.x+box.width<=view.left+view.width+1&&box.y+box.height<=view.top+view.height+1,name+' fits above keyboard');boxes[name]=box;
-   }return boxes;
+   }
+   const toolbar=boxes['.mobile-controls'],scene=boxes['.screen'],keyboard=boxes['#mobile-keyboard'];
+   assert(toolbar.y+toolbar.height<=scene.y+1,'toolbar stays above play viewport');
+   const center=scene.y+scene.height/2,expected=view.width<600?(toolbar.y+toolbar.height+keyboard.y)/2:(toolbar.y+toolbar.height+view.top+view.height)/2;
+   assert(Math.abs(center-expected)<=1,'play viewport is centered in available space');
+   assert((await page.locator('.mobile-controls button').first().evaluate(el=>getComputedStyle(el).fontFamily)).includes('Sierra AGI'),'controls use original game font');
+   return boxes;
   };
   await visible();assert(await page.locator('#input').isHidden());
   await viewport(390,560,0);await visible(); // Android-style resize
@@ -26,11 +32,11 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-portrait.png'});
   await page.keyboard.type('look');await page.locator('#mobile-keyboard').getByRole('button',{name:'Enter',exact:true}).click();assert(await page.locator('#agi-message').isVisible());await page.getByRole('button',{name:'Continue',exact:true}).click();
   await page.setViewportSize({width:844,height:390});await viewport(844,390);
-  let boxes=await visible();assert(boxes['.screen'].x+boxes['.screen'].width<=boxes['.mobile-controls'].x,'landscape controls beside the game');assert(boxes['.screen'].height>250,'landscape uses available height');
+  let boxes=await visible();assert(boxes['.mobile-controls'].y+boxes['.mobile-controls'].height<=boxes['.screen'].y+1,'landscape controls stay above the game');assert(boxes['.screen'].height>250,'landscape uses available height');
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-landscape.png'});
   assert(await page.locator('#input').isHidden());await viewport(844,340,40,0,'scroll');await visible();
   await page.screenshot({path:'/tmp/stolenvoice-keyboard-landscape-open.png'});
   await page.locator('#input').blur();await page.setViewportSize({width:390,height:844});await viewport(390,844);await visible();
-  assert.deepEqual(errors,[]);console.log('PASS portrait keyboard resize, Safari viewport pan, parser submission, landscape side panel, landscape keyboard and rotation back.');
+  assert.deepEqual(errors,[]);console.log('PASS top pixel-font toolbar, centered portrait/landscape play viewport, resize/pan, parser submission and rotation back.');
  }finally{await browser.close()}
 })().catch(error=>{console.error(error);process.exitCode=1});
