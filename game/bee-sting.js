@@ -1,4 +1,5 @@
-// A brief, optional scramble on the clear ground she recoiled onto.
+// A brief, unskippable scramble on the clear ground she recoiled onto.
+function beeStingInProgress(){return storyAction?.kind==='beeSting'&&storyAction.frame<storyAction.total}
 function startBeeStingReaction(message='Ouch! A bee stings your finger. You perform a short, entirely undignified dance. The bees guard their doorway fiercely; the loose wax lies below their flight.'){
  stopWalking();
  const escapes=[[player.x,Math.max(player.y,212)],[181,player.y],[232,player.y]];
@@ -12,7 +13,7 @@ function beeStingOffset(frame){
 }
 function drawBeeStingHero(px,py){
  if(storyAction?.kind!=='beeSting')return false;
- const frame=storyAction.frame,offset=beeStingOffset(frame),previous=beeStingOffset(Math.max(0,frame-1)),direction=offset>=previous?1:-1;
+ const frame=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:storyAction.frame,offset=beeStingOffset(frame),previous=beeStingOffset(Math.max(0,frame-1)),direction=offset>=previous?1:-1;
  const facing=direction>0?'right':'left',rows=rosellaWalkSprites[facing][frame%4],left=pictureX(px+offset)-4,top=pictureY(py)-39;
  ellipse(px+offset,py+1,7,1,'#000000');
  // Moving the old arm must reveal her clothes, never a hole in her side.

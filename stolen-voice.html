@@ -1684,13 +1684,14 @@ let storyAction=null,storyActionTimer=0,storyEffectsFocused=true;
 const storyJarCache={};
 function resetStoryEffect(){if(storyAction?.sound&&effectSource===storyAction.sound)stopGameSound();if(storyActionTimer)clearInterval(storyActionTimer);storyActionTimer=0;storyAction=null}
 function finishStoryEffect(showMessage=true){
- if(!storyAction)return;
+ if(!storyAction||beeStingInProgress())return;
  if(storyAction.kind==='hiveKick'){finishHiveDisaster();return}
  if(storyAction.kind==='barrelPrank'&&(showMessage||storyAction.frame>=130))settleBarrelPrank();
  if(storyAction.kind==='chairRest'&&storyAction.stage==='sit'&&showMessage){showChairRestMessage();return}
  const message=storyAction.message,mustAsk=storyAction.kind==='voiceOffered';if(storyAction.kind==='voiceFollow'){if(room===1)flags.voiceDepartureSeen=true;else if(room===8)flags.voiceCourtyardSeen=true;else if(room===0){flags.voiceArrivalSeen=true;flags.voiceDepartureSeen=true;flags.voiceCourtyardSeen=true}}else if(storyAction.kind==='voiceReturned')flags.voiceArrivalSeen=true;resetStoryEffect();draw();if((showMessage||mustAsk)&&message)say(message);
 }
 function startStoryEffect(kind,message,details={}){
+ if(beeStingInProgress())return;
  resetStoryEffect();stopWalking();
  if(kind==='pickup'||kind==='bellTaken'){
   if(kind==='bellTaken')details={pickup:'silver bell',pickupLevel:'bench',pickupTarget:'bell'};
@@ -1698,7 +1699,7 @@ function startStoryEffect(kind,message,details={}){
   const contact=pickupNativeContacts[details.pickupTarget];if(details.pickupLevel==='bench'&&contact){details.pickupDirection=player.facing==='left'?-1:1;details.stage='approach';details.pickupStand={x:Math.round((contact[0]-details.pickupDirection*6)*2),y:pickupStandingDepth(details.pickupTarget,target)}}
  }else if(kind==='thornsCut'){player.facing='right';player.step=0;details={stage:'approach'};}else if(kind==='echoCaught'){player.facing='right'}else if(['voiceOffered','voiceReturned'].includes(kind)){player.facing='back'}
  storyAction={kind,frame:0,room,message,...details,total:kind==='royalRaspberry'?(details.raspberryAudience==='cave'?50:32):kind==='barrelPrank'?135:kind==='hiveKick'?64:kind==='applePrank'?appleReachFrames+(details.appleTaste?32:44):kind==='beeSting'?18:kind==='windowJump'?44:kind==='chairRest'?12:kind==='courtDance'?(room===2?224:48):kind==='merrinKiss'?44:['mirrorBow','mirrorCurtsy'].includes(kind)?24:kind==='voiceFollow'?(room===0?36:52):kind==='thornsCut'?22:kind==='pickup'?10:kind==='poolRiddleSolved'?28:kind==='voiceReturned'?116:kind==='voiceOffered'?118:kind==='echoCaught'?32:kind==='voiceArrival'?17:14};
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(kind==='chairRest'){const text=storyAction.message;playChairCreak();resetStoryEffect();say(text+' You get up carefully, one hand on your back.');return}finishStoryEffect();if(kind==='courtDance')playGameSound(room===2?'workshopDance':'courtDance');return}
+ if(kind!=='beeSting'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(kind==='chairRest'){const text=storyAction.message;playChairCreak();resetStoryEffect();say(text+' You get up carefully, one hand on your back.');return}finishStoryEffect();if(kind==='courtDance')playGameSound(room===2?'workshopDance':'courtDance');return}
  if(kind==='courtDance')resumeStoryScore();
  storyActionTimer=setInterval(tickStoryEffect,90);draw();
 }
@@ -3156,6 +3157,7 @@ function changeRoom(nextRoom,spawn,facing='front'){
 }
 let exitLatch=false;
 function movePlayer(dx,dy){
+ if(beeStingInProgress()){stopWalking();return}
  if(bridgeFall||['voiceReturned','hiveKick'].includes(storyAction?.kind))return;
  if(storyAction&&storyAction.kind!=='voiceFollow')finishStoryEffect(false);
  if(!playing||popupOpen||menuOpen||bellAction||millAction||workshopDoorMotion)return;
@@ -3481,6 +3483,7 @@ function helpText(level=0){
 }
 const SAVE_KEY='stolen-voice-agi-save-v2';let memorySave='';
 function saveGame(){
+ if(beeStingInProgress())return;
  if(hiveDisaster)return;
  if(millSluiceReleaseFrame>=0)return;
  if(bridgeFall){say('Wait until Rosella has landed before saving.');return}
@@ -3495,6 +3498,7 @@ function saveGame(){
  if(pendingMirrorQuestion)agiMessagePages.push(AgiMessageWindow.wrap('The mirror whispers: \"Whose voice was it?\"'));
 }
 function restoreGame(){
+ if(beeStingInProgress())return;
  stopWalking();let raw=memorySave,migrating=false;
  if(!raw){try{raw=localStorage.getItem(SAVE_KEY);if(!raw){raw=localStorage.getItem('stolen-voice-agi-save-v1');migrating=!!raw}}catch{}}
  if(!raw){say('There is no saved adventure yet.');return}
@@ -4651,7 +4655,8 @@ function drawApplePrankHero(px,py){
  return true;
 }
 
-// A brief, optional scramble on the clear ground she recoiled onto.
+// A brief, unskippable scramble on the clear ground she recoiled onto.
+function beeStingInProgress(){return storyAction?.kind==='beeSting'&&storyAction.frame<storyAction.total}
 function startBeeStingReaction(message='Ouch! A bee stings your finger. You perform a short, entirely undignified dance. The bees guard their doorway fiercely; the loose wax lies below their flight.'){
  stopWalking();
  const escapes=[[player.x,Math.max(player.y,212)],[181,player.y],[232,player.y]];
@@ -4665,7 +4670,7 @@ function beeStingOffset(frame){
 }
 function drawBeeStingHero(px,py){
  if(storyAction?.kind!=='beeSting')return false;
- const frame=storyAction.frame,offset=beeStingOffset(frame),previous=beeStingOffset(Math.max(0,frame-1)),direction=offset>=previous?1:-1;
+ const frame=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:storyAction.frame,offset=beeStingOffset(frame),previous=beeStingOffset(Math.max(0,frame-1)),direction=offset>=previous?1:-1;
  const facing=direction>0?'right':'left',rows=rosellaWalkSprites[facing][frame%4],left=pictureX(px+offset)-4,top=pictureY(py)-39;
  ellipse(px+offset,py+1,7,1,'#000000');
  // Moving the old arm must reveal her clothes, never a hole in her side.
@@ -5527,6 +5532,7 @@ function describeObject(id,requested=''){
  say('You do not see '+id+' here.');
 }
 function command(raw){
+ if(beeStingInProgress())return;
  if(bridgeFall||storyAction?.kind==='hiveKick')return;
  if(storyAction?.kind==='voiceReturned')return;
  if(storyAction&&storyAction.kind!=='voiceFollow')finishStoryEffect(false);
@@ -6333,7 +6339,7 @@ function installMobileControls(){
  window.addEventListener('resize',resize);window.addEventListener('orientationchange',resize);input.addEventListener('focus',()=>{stopWalking();resize()});resize();
  // Submission leaves the keyboard in its permanent slot.
  form.addEventListener('submit',()=>{input.blur();if(popupOpen)popupFocus=c});
- const canGuide=()=>mobile.matches&&playing&&!popupOpen&&!menuOpen&&!prologueActive&&!document.querySelector('.screen>.overlay[aria-modal="true"]');
+ const canGuide=()=>mobile.matches&&!beeStingInProgress()&&playing&&!popupOpen&&!menuOpen&&!prologueActive&&!document.querySelector('.screen>.overlay[aria-modal="true"]');
  const guideTo=event=>{
   const rect=c.getBoundingClientRect(),px=(event.clientX-rect.left)*320/rect.width,py=(event.clientY-rect.top)*200/rect.height;
   touchDestination={x:Math.max(4,Math.min(316,px)),y:(Math.max(8,Math.min(175.9,py))-8)/.7};

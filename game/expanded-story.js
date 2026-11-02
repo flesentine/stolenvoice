@@ -164,6 +164,7 @@ function helpText(level=0){
 }
 const SAVE_KEY='stolen-voice-agi-save-v2';let memorySave='';
 function saveGame(){
+ if(beeStingInProgress())return;
  if(hiveDisaster)return;
  if(millSluiceReleaseFrame>=0)return;
  if(bridgeFall){say('Wait until Rosella has landed before saving.');return}
@@ -178,6 +179,7 @@ function saveGame(){
  if(pendingMirrorQuestion)agiMessagePages.push(AgiMessageWindow.wrap('The mirror whispers: \"Whose voice was it?\"'));
 }
 function restoreGame(){
+ if(beeStingInProgress())return;
  stopWalking();let raw=memorySave,migrating=false;
  if(!raw){try{raw=localStorage.getItem(SAVE_KEY);if(!raw){raw=localStorage.getItem('stolen-voice-agi-save-v1');migrating=!!raw}}catch{}}
  if(!raw){say('There is no saved adventure yet.');return}

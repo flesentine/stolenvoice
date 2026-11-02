@@ -15,11 +15,12 @@ assert(Math.min(...offsets)<0&&Math.max(...offsets)>0,'runs both ways');assert.e
 a.game.tickStoryEffect();assert(!a.game.action);assert(a.game.state.popupOpen);assert.match(a.message.replace(/\s+/g,' '),/finger.*undignified/);
 for(const key of ['flags','score','inv'])assert.deepEqual(a.game.state[key],before[key]);assert.equal(a.game.heard.filter(c=>c[0]==='beeSting').length,1,'one sting only');
 fs.writeFileSync('assets/reviews/bee-sting-paint.json',JSON.stringify(frames));
-const reduced=at();reduced.game.reduced();reduced.game.movePlayer(0,-5);assert(!reduced.game.action);assert(reduced.game.state.popupOpen);
-const interrupted=at();interrupted.game.movePlayer(0,-5);interrupted.game.movePlayer(0,2);assert(!interrupted.game.action,'movement interrupts');
-const saved=at();saved.game.movePlayer(0,-5);saved.game.saveGame();assert(!saved.game.action);assert(saved.storage.has(saved.game.key));
+const reduced=at();reduced.game.reduced();reduced.game.movePlayer(0,-5);assert(reduced.game.action,'reduced motion still waits for the reaction');assert(!reduced.game.state.popupOpen);for(let n=0;n<18;n++)reduced.game.tickStoryEffect();assert(!reduced.game.action);assert(reduced.game.state.popupOpen);
+const interrupted=at();interrupted.game.movePlayer(0,-5);interrupted.game.movePlayer(0,2);assert.equal(interrupted.game.action.frame,0,'movement cannot interrupt');
+const frozen=interrupted.game.state.player;for(const key of ['Enter',' ','Escape','ArrowRight'])interrupted.key(key);for(const text of ['look','dance','take wax','save','restore'])interrupted.game.command(text);assert.equal(interrupted.game.action.frame,0,'keys and parser cannot skip');assert.deepEqual(interrupted.game.state.player,frozen);assert(!interrupted.game.state.popupOpen);for(let n=0;n<18;n++)interrupted.game.tickStoryEffect();assert(!interrupted.game.action);assert(interrupted.game.state.popupOpen);
+const saved=at();saved.game.movePlayer(0,-5);saved.game.saveGame();assert(saved.game.action,'saving cannot skip reaction');assert(!saved.storage.has(saved.game.key));saved.game.restoreGame();assert(saved.game.action,'restore cannot skip reaction');assert(!saved.game.state.popupOpen);for(let n=0;n<18;n++)saved.game.tickStoryEffect();saved.game.closeMessage();saved.game.saveGame();assert(saved.storage.has(saved.game.key),'save works after reaction');
 const calm=at(true);calm.game.movePlayer(0,-5);assert(!calm.game.action);assert(!calm.game.heard.some(c=>c[0]==='beeSting'),'no stings after collecting wax');
-console.log('PASS actual orchard sting, 18-frame finger-clutch scramble both ways, safe floor/return, one buzz, no lost points, hidden pause, reduced motion, interruption/save and calm collected hive.');
+console.log('PASS actual orchard sting, 18-frame finger-clutch scramble both ways, safe floor/return, one buzz, no lost points, hidden pause, mandatory reduced-motion wait, blocked skip/movement/parser/save/restore and calm collected hive.');
 
 const cries=at();cries.game.movePlayer(0,-5);
 for(let frame=1;frame<=18;frame++){

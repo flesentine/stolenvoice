@@ -53,7 +53,7 @@ function installMobileControls(){
  window.addEventListener('resize',resize);window.addEventListener('orientationchange',resize);input.addEventListener('focus',()=>{stopWalking();resize()});resize();
  // Submission leaves the keyboard in its permanent slot.
  form.addEventListener('submit',()=>{input.blur();if(popupOpen)popupFocus=c});
- const canGuide=()=>mobile.matches&&playing&&!popupOpen&&!menuOpen&&!prologueActive&&!document.querySelector('.screen>.overlay[aria-modal="true"]');
+ const canGuide=()=>mobile.matches&&!beeStingInProgress()&&playing&&!popupOpen&&!menuOpen&&!prologueActive&&!document.querySelector('.screen>.overlay[aria-modal="true"]');
  const guideTo=event=>{
   const rect=c.getBoundingClientRect(),px=(event.clientX-rect.left)*320/rect.width,py=(event.clientY-rect.top)*200/rect.height;
   touchDestination={x:Math.max(4,Math.min(316,px)),y:(Math.max(8,Math.min(175.9,py))-8)/.7};

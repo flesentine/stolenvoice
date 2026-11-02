@@ -113,6 +113,7 @@ function describeObject(id,requested=''){
  say('You do not see '+id+' here.');
 }
 function command(raw){
+ if(beeStingInProgress())return;
  if(bridgeFall||storyAction?.kind==='hiveKick')return;
  if(storyAction?.kind==='voiceReturned')return;
  if(storyAction&&storyAction.kind!=='voiceFollow')finishStoryEffect(false);

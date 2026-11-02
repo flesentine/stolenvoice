@@ -4,13 +4,14 @@ let storyAction=null,storyActionTimer=0,storyEffectsFocused=true;
 const storyJarCache={};
 function resetStoryEffect(){if(storyAction?.sound&&effectSource===storyAction.sound)stopGameSound();if(storyActionTimer)clearInterval(storyActionTimer);storyActionTimer=0;storyAction=null}
 function finishStoryEffect(showMessage=true){
- if(!storyAction)return;
+ if(!storyAction||beeStingInProgress())return;
  if(storyAction.kind==='hiveKick'){finishHiveDisaster();return}
  if(storyAction.kind==='barrelPrank'&&(showMessage||storyAction.frame>=130))settleBarrelPrank();
  if(storyAction.kind==='chairRest'&&storyAction.stage==='sit'&&showMessage){showChairRestMessage();return}
  const message=storyAction.message,mustAsk=storyAction.kind==='voiceOffered';if(storyAction.kind==='voiceFollow'){if(room===1)flags.voiceDepartureSeen=true;else if(room===8)flags.voiceCourtyardSeen=true;else if(room===0){flags.voiceArrivalSeen=true;flags.voiceDepartureSeen=true;flags.voiceCourtyardSeen=true}}else if(storyAction.kind==='voiceReturned')flags.voiceArrivalSeen=true;resetStoryEffect();draw();if((showMessage||mustAsk)&&message)say(message);
 }
 function startStoryEffect(kind,message,details={}){
+ if(beeStingInProgress())return;
  resetStoryEffect();stopWalking();
  if(kind==='pickup'||kind==='bellTaken'){
   if(kind==='bellTaken')details={pickup:'silver bell',pickupLevel:'bench',pickupTarget:'bell'};
@@ -18,7 +19,7 @@ function startStoryEffect(kind,message,details={}){
   const contact=pickupNativeContacts[details.pickupTarget];if(details.pickupLevel==='bench'&&contact){details.pickupDirection=player.facing==='left'?-1:1;details.stage='approach';details.pickupStand={x:Math.round((contact[0]-details.pickupDirection*6)*2),y:pickupStandingDepth(details.pickupTarget,target)}}
  }else if(kind==='thornsCut'){player.facing='right';player.step=0;details={stage:'approach'};}else if(kind==='echoCaught'){player.facing='right'}else if(['voiceOffered','voiceReturned'].includes(kind)){player.facing='back'}
  storyAction={kind,frame:0,room,message,...details,total:kind==='royalRaspberry'?(details.raspberryAudience==='cave'?50:32):kind==='barrelPrank'?135:kind==='hiveKick'?64:kind==='applePrank'?appleReachFrames+(details.appleTaste?32:44):kind==='beeSting'?18:kind==='windowJump'?44:kind==='chairRest'?12:kind==='courtDance'?(room===2?224:48):kind==='merrinKiss'?44:['mirrorBow','mirrorCurtsy'].includes(kind)?24:kind==='voiceFollow'?(room===0?36:52):kind==='thornsCut'?22:kind==='pickup'?10:kind==='poolRiddleSolved'?28:kind==='voiceReturned'?116:kind==='voiceOffered'?118:kind==='echoCaught'?32:kind==='voiceArrival'?17:14};
- if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(kind==='chairRest'){const text=storyAction.message;playChairCreak();resetStoryEffect();say(text+' You get up carefully, one hand on your back.');return}finishStoryEffect();if(kind==='courtDance')playGameSound(room===2?'workshopDance':'courtDance');return}
+ if(kind!=='beeSting'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(kind==='chairRest'){const text=storyAction.message;playChairCreak();resetStoryEffect();say(text+' You get up carefully, one hand on your back.');return}finishStoryEffect();if(kind==='courtDance')playGameSound(room===2?'workshopDance':'courtDance');return}
  if(kind==='courtDance')resumeStoryScore();
  storyActionTimer=setInterval(tickStoryEffect,90);draw();
 }

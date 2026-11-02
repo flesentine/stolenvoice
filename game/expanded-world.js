@@ -53,6 +53,7 @@ function changeRoom(nextRoom,spawn,facing='front'){
 }
 let exitLatch=false;
 function movePlayer(dx,dy){
+ if(beeStingInProgress()){stopWalking();return}
  if(bridgeFall||['voiceReturned','hiveKick'].includes(storyAction?.kind))return;
  if(storyAction&&storyAction.kind!=='voiceFollow')finishStoryEffect(false);
  if(!playing||popupOpen||menuOpen||bellAction||millAction||workshopDoorMotion)return;
