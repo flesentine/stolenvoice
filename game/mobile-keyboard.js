@@ -3,7 +3,8 @@
 function installMobileKeyboard(field,form,shell,canType,onSubmit){
  let symbols=false;
  const vocabulary=mobileKeyboardVocabulary(mobileActionWords,objectAliases,sceneryAliases);
- let touchKey=null,suppressTouchClick=false;
+ let touchKey=null,suppressTouchClick=false,backspaceHold=null,repeatDelay=0,repeatTimer=0;
+ const stopBackspace=()=>{clearTimeout(repeatDelay);clearInterval(repeatTimer);repeatDelay=repeatTimer=0;if(backspaceHold)suppressTouchClick=true;backspaceHold=null};
  const panel=document.createElement('div');panel.id='mobile-keyboard';panel.className='mobile-keyboard';
  panel.setAttribute('role','group');panel.setAttribute('aria-label','Game command keyboard');
  field.readOnly=true;field.inputMode='none';field.tabIndex=-1;field.setAttribute('aria-controls',panel.id);
@@ -11,6 +12,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  completion.setAttribute('aria-label','Complete action');completion.addEventListener('pointerdown',event=>event.preventDefault());
  completion.addEventListener('click',()=>edit(' '));shell.querySelector('.screen').append(completion);
  const refresh=()=>{
+  if(!canType())stopBackspace();
   const next=canType()?mobileActionCompletion(field.value,field.selectionStart??field.value.length,field.selectionEnd??field.value.length):null;
   if(completion.hidden!==!next)completion.hidden=!next;
   const label=next?'Space: '+next.word:'';if(completion.textContent!==label)completion.textContent=label;
@@ -18,7 +20,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  };
  // Keep keyboard and game geometry constant; tapping the display never focuses
  // a native text field, which can pan Safari even when the field is readonly.
- const release=()=>field.blur();
+ const release=()=>{stopBackspace();field.blur()};
  field.addEventListener('pointerdown',event=>{event.preventDefault();release()});field.addEventListener('focus',release);
  const edit=(value)=>{
   if(!canType())return;
@@ -38,7 +40,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
   button.addEventListener('pointerdown',event=>event.preventDefault());button.addEventListener('click',action);row.append(button);
  };
  const paint=()=>{
-  panel.replaceChildren();
+  stopBackspace();panel.replaceChildren();
   const rows=symbols?['1234567890',"-/:;()&@'",'.,?!"']:['qwertyuiop','asdfghjkl','zxcvbnm'];
   rows.forEach((letters,index)=>{const row=document.createElement('div');row.className='keyboard-row';
    for(const letter of letters)key(row,letter.toUpperCase(),()=>edit(letter),false,/^[a-z]$/.test(letter)?letter:'');
@@ -51,34 +53,48 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  const submit=()=>{release();if(canType())form.requestSubmit();else document.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));onSubmit()};
  paint();shell.append(panel);
  // Resolve genuine finger taps centrally so a likely letter can also accept
- // the nearby key-well gap or a very small slice of its neighbor's edge.
+ // the nearby key-well gap or the edge of an unlikely neighboring letter.
  panel.addEventListener('pointerdown',event=>{
   suppressTouchClick=false;
-  if(event.pointerType!=='touch'||event.isPrimary===false||symbols||!canType())return;
-  const native=event.target.closest('button');if(native&&!native.dataset.keyboardLetter)return;
+  if(event.pointerType!=='touch'||event.isPrimary===false||!canType())return;
+  const native=event.target.closest('button');
+  if(native?.getAttribute('aria-label')==='Backspace'){
+   event.preventDefault();event.stopImmediatePropagation();stopBackspace();
+   backspaceHold={id:event.pointerId,button:native};panel.setPointerCapture(event.pointerId);edit('Backspace');
+   repeatDelay=setTimeout(()=>{repeatTimer=setInterval(()=>{if(!canType()||!backspaceHold){stopBackspace();return}edit('Backspace')},70)},360);
+   return;
+  }
+  if(symbols||native&&!native.dataset.keyboardLetter)return;
   const buttons=[...panel.querySelectorAll('button')],keys=buttons.map((button,id)=>{
    const r=button.getBoundingClientRect();return{id,letter:button.dataset.keyboardLetter||'',left:r.left,right:r.right,top:r.top,bottom:r.bottom};
   });
-  const likely=mobileNextLetters(field.value,vocabulary,field.selectionStart??field.value.length,field.selectionEnd??field.value.length);
+  const likely=mobileNextLetters(field.value,vocabulary,field.selectionStart??field.value.length,field.selectionEnd??field.value.length,mobileActionWords);
   if(!Object.keys(likely).length)return; // Preserve the browser's ordinary tap behavior for unknown words.
   const selected=mobileLetterAtPoint(event.clientX,event.clientY,keys,likely);
   if(selected===null||!keys[selected].letter)return;
   event.preventDefault();event.stopImmediatePropagation();panel.setPointerCapture(event.pointerId);
   touchKey={id:event.pointerId,x:event.clientX,y:event.clientY,keys,likely};
  },true);
+ panel.addEventListener('pointermove',event=>{
+  if(event.pointerId!==backspaceHold?.id)return;
+  const r=backspaceHold.button.getBoundingClientRect();
+  if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)stopBackspace();
+ },true);
  panel.addEventListener('pointerup',event=>{
+  if(backspaceHold&&event.pointerId===backspaceHold.id){event.preventDefault();event.stopImmediatePropagation();stopBackspace();if(panel.hasPointerCapture(event.pointerId))panel.releasePointerCapture(event.pointerId);return}
   if(event.pointerId!==touchKey?.id)return;
   event.preventDefault();event.stopImmediatePropagation();const tap=touchKey;touchKey=null;suppressTouchClick=true;
   const selected=mobileLetterAtPoint(event.clientX,event.clientY,tap.keys,tap.likely);
   if(Math.hypot(event.clientX-tap.x,event.clientY-tap.y)<=14&&selected!==null&&tap.keys[selected].letter)edit(tap.keys[selected].letter);
   if(panel.hasPointerCapture(event.pointerId))panel.releasePointerCapture(event.pointerId);
  },true);
- panel.addEventListener('pointercancel',()=>{touchKey=null;suppressTouchClick=true},true);
- panel.addEventListener('lostpointercapture',()=>{if(touchKey)suppressTouchClick=true;touchKey=null},true);
- window.addEventListener('resize',()=>{touchKey=null;suppressTouchClick=true});
+ panel.addEventListener('pointercancel',()=>{stopBackspace();touchKey=null;suppressTouchClick=true},true);
+ panel.addEventListener('lostpointercapture',()=>{stopBackspace();if(touchKey)suppressTouchClick=true;touchKey=null},true);
+ window.addEventListener('resize',()=>{stopBackspace();touchKey=null;suppressTouchClick=true});
  panel.addEventListener('click',event=>{
   if(suppressTouchClick&&event.detail>0){suppressTouchClick=false;event.preventDefault();event.stopImmediatePropagation()}
  },true);
+ window.addEventListener('blur',stopBackspace);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopBackspace()});
  document.addEventListener('keydown',event=>{
   if(!canType()||event.ctrlKey||event.metaKey||event.altKey||event.isComposing)return;
   if(event.key.length===1||['Backspace','Enter'].includes(event.key)){
