@@ -17,13 +17,20 @@ function startStoryEffect(kind,message,details={}){
   const target=hotspots[room][details.pickupTarget];player.facing=target&&target[0]<player.x?'left':'right';player.step=0;
   const contact=pickupNativeContacts[details.pickupTarget];if(details.pickupLevel==='bench'&&contact){details.pickupDirection=player.facing==='left'?-1:1;details.stage='approach';details.pickupStand={x:Math.round((contact[0]-details.pickupDirection*6)*2),y:pickupStandingDepth(details.pickupTarget,target)}}
  }else if(kind==='thornsCut'){player.facing='right';player.step=0;details={stage:'approach'};}else if(kind==='echoCaught'){player.facing='right'}else if(['voiceOffered','voiceReturned'].includes(kind)){player.facing='back'}
- storyAction={kind,frame:0,room,message,...details,total:kind==='royalRaspberry'?32:kind==='barrelPrank'?135:kind==='hiveKick'?64:kind==='applePrank'?appleReachFrames+(details.appleTaste?32:44):kind==='beeSting'?18:kind==='windowJump'?44:kind==='chairRest'?12:kind==='courtDance'?(room===2?224:48):kind==='merrinKiss'?44:['mirrorBow','mirrorCurtsy'].includes(kind)?24:kind==='voiceFollow'?(room===0?36:52):kind==='thornsCut'?22:kind==='pickup'?10:kind==='poolRiddleSolved'?28:kind==='voiceReturned'?116:kind==='voiceOffered'?118:kind==='echoCaught'?32:kind==='voiceArrival'?17:14};
+ storyAction={kind,frame:0,room,message,...details,total:kind==='royalRaspberry'?(details.raspberryAudience==='cave'?50:32):kind==='barrelPrank'?135:kind==='hiveKick'?64:kind==='applePrank'?appleReachFrames+(details.appleTaste?32:44):kind==='beeSting'?18:kind==='windowJump'?44:kind==='chairRest'?12:kind==='courtDance'?(room===2?224:48):kind==='merrinKiss'?44:['mirrorBow','mirrorCurtsy'].includes(kind)?24:kind==='voiceFollow'?(room===0?36:52):kind==='thornsCut'?22:kind==='pickup'?10:kind==='poolRiddleSolved'?28:kind==='voiceReturned'?116:kind==='voiceOffered'?118:kind==='echoCaught'?32:kind==='voiceArrival'?17:14};
  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(kind==='chairRest'){const text=storyAction.message;playChairCreak();resetStoryEffect();say(text+' You get up carefully, one hand on your back.');return}finishStoryEffect();if(kind==='courtDance')playGameSound(room===2?'workshopDance':'courtDance');return}
  if(kind==='courtDance')resumeStoryScore();
  storyActionTimer=setInterval(tickStoryEffect,90);draw();
 }
+// One original puff and two distant answers; all follow the paused story clock.
+function storyRaspberryPlayback(){
+ if(storyAction?.kind!=='royalRaspberry')return null;
+ const starts=storyAction.raspberryAudience==='cave'?[5,20,35]:[5];
+ const index=starts.findIndex(start=>storyAction.frame>=start&&storyAction.frame<start+12);
+ return index<0?null:{offset:(storyAction.frame-starts[index])*.09,gain:[1,.6,.35][index]};
+}
 function storyScoreName(){
- if(storyAction?.kind==='royalRaspberry'&&storyAction.frame>=5&&storyAction.frame<17)return 'royalRaspberry';
+ if(storyRaspberryPlayback())return 'royalRaspberry';
  if(storyAction?.kind==='barrelPrank'&&storyAction.frame>=20&&storyAction.frame<45)return 'barrelTumble';
  if(storyAction?.kind==='merrinKiss'&&storyAction.frame>=16)return 'kissJig';
  if(storyAction?.kind==='courtDance')return storyAction.room===2?'workshopDance':'courtDance';
@@ -31,7 +38,8 @@ function storyScoreName(){
 }
 function resumeStoryScore(){
  const score=storyScoreName();if(!score||document.hidden||!storyEffectsFocused||popupOpen||menuOpen)return;
- playGameSound(score,false,(storyAction.frame-(storyAction.kind==='merrinKiss'?16:storyAction.kind==='barrelPrank'?20:storyAction.kind==='royalRaspberry'?5:0))*.09);storyAction.sound=effectSource;storyAction.soundPaused=!soundEnabled;
+ const raspberry=storyRaspberryPlayback();
+ playGameSound(score,false,raspberry?raspberry.offset:(storyAction.frame-(storyAction.kind==='merrinKiss'?16:storyAction.kind==='barrelPrank'?20:storyAction.kind==='royalRaspberry'?5:0))*.09,raspberry?.gain??1);storyAction.sound=effectSource;storyAction.soundPaused=!soundEnabled;
 }
 function tickStoryEffect(){
  if(!storyAction)return;
@@ -45,7 +53,7 @@ function tickStoryEffect(){
  if(storyAction.kind==='chairRest'){tickChairRest();return}
  if(approachHiveKick()||approachBlackthorn()||approachPickup())return;
  storyAction.frame++;
- if(storyAction.kind==='royalRaspberry'&&storyAction.frame===5)resumeStoryScore();
+ if(storyAction.kind==='royalRaspberry'&&(storyAction.frame===5||storyAction.raspberryAudience==='cave'&&[20,35].includes(storyAction.frame)))resumeStoryScore();
  if(storyAction.kind==='barrelPrank'){if(storyAction.frame===20)resumeStoryScore();if([68,72,76].includes(storyAction.frame))playGameSound('appleSpit',false,0,.35)}
  if(storyAction.kind==='merrinKiss'&&storyAction.frame===16)resumeStoryScore();
  if(storyAction.kind==='hiveKick'){if(storyAction.frame===14)playGameSound('appleDrop');if([23,35,47].includes(storyAction.frame))playGameSound('hiveFury');if(storyAction.frame===61)playGameSound('hiveDoom')}

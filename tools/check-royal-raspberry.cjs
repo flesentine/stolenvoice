@@ -4,8 +4,8 @@ h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot};',s);
 function at(r=2,face='right',px=160){const a=s.qa.boot();a.start();while(a.game.state.popupOpen)a.game.closeMessage();a.game.place(r,face,px);return a}
 for(let r=0;r<9;r++){
- const a=at(r),before=a.game.state;a.game.command('fart');assert.equal(a.game.action.kind,'royalRaspberry');assert.equal(a.game.action.total,32);
- for(let f=0;f<32;f++)a.game.tickStoryEffect();assert(!a.game.action);assert.match(a.message.replace(/\s+/g,' '),/Wrong end/);
+ const a=at(r),before=a.game.state;a.game.command('fart');assert.equal(a.game.action.kind,'royalRaspberry');assert.equal(a.game.action.total,r===6?50:32);
+ for(let f=0;f<(r===6?50:32);f++)a.game.tickStoryEffect();assert(!a.game.action);assert.match(a.message.replace(/\s+/g,' '),/Wrong end/);
  for(const key of ['player','flags','inv','score'])assert.deepEqual(a.game.state[key],before[key],'optional gag preserves '+key);
  assert(a.game.heard.some(c=>c[0]==='royalRaspberry'));
 }
@@ -23,7 +23,7 @@ for(const [face,px]of [['right',160],['left',160],['right',2],['left',317]]){
 fs.writeFileSync('assets/reviews/royal-raspberry-paint.json',JSON.stringify(paintings));
 const pause=at();pause.game.command('fart');for(let n=0;n<9;n++)pause.game.tickStoryEffect();const audio=pause.game.audio;pause.doc.hidden=true;pause.game.tickStoryEffect();assert.equal(pause.game.action.frame,9);assert(audio.stopped);pause.doc.hidden=false;pause.game.tickStoryEffect();assert(Math.abs(pause.game.heard.at(-1)[2]-.36)<1e-9);const resumed=pause.game.audio;pause.game.movePlayer(5,0);assert(!pause.game.action);assert(resumed.stopped);
 const reduced=at();reduced.game.reduced();reduced.game.command('fart');assert(!reduced.game.action);assert(reduced.game.state.popupOpen);
-console.log('PASS FART in all nine rooms, 32 native frames, rear-facing vapor/bounds, hand-to-mouth, comic popup, score/inventory/state preservation, pause/resume/interruption and reduced motion.');
+console.log('PASS FART in all nine rooms, 32 native frames (50 for cave echoes), rear-facing vapor/bounds, hand-to-mouth, comic popup, score/inventory/state preservation, pause/resume/interruption and reduced motion.');
 
 // Nearby audiences respond; distance and voice-restoration state matter.
 for(const [returned,arrived,expected]of [[false,false,/ding-ding/],[true,false,/ding-ding/],[true,true,/fertilizer/]]){
@@ -68,3 +68,11 @@ for(const key of ['player','flags','inv','score'])assert.deepEqual(belfry.game.s
 const reducedBell=at(7);reducedBell.game.command('fart');reducedBell.game.setFrame(9);reducedBell.game.reduced();assert.equal(reducedBell.game.bellSwingFrame(),null);
 const interruptedBell=at(7);interruptedBell.game.command('fart');interruptedBell.game.setFrame(9);interruptedBell.game.movePlayer(3,0);assert.equal(interruptedBell.game.bellSwingFrame(),null);
 console.log('PASS belfry gust swings existing bell cels from puff5, settles, preserves puzzles/state, reduced motion and interruption.');
+
+const echoes=at(6);echoes.game.command('fart');const calls=[];
+for(let f=1;f<=50;f++){const before=echoes.game.heard.length;echoes.game.tickStoryEffect();if(echoes.game.heard.length>before)calls.push([f,...echoes.game.heard.at(-1)])}
+assert.deepEqual(JSON.parse(JSON.stringify(calls)),[[5,'royalRaspberry',false,0,1],[20,'royalRaspberry',false,0,.6],[35,'royalRaspberry',false,0,.35]],'three total playbacks, with space between and descending volume');
+assert(!echoes.game.action);assert(echoes.game.state.popupOpen);
+const pausedEcho=at(6);pausedEcho.game.command('fart');for(let f=0;f<23;f++)pausedEcho.game.tickStoryEffect();pausedEcho.doc.hidden=true;pausedEcho.game.tickStoryEffect();assert(pausedEcho.game.audio===null||pausedEcho.game.audio.stopped);const held=pausedEcho.game.action.frame;pausedEcho.game.tickStoryEffect();assert.equal(pausedEcho.game.action.frame,held);pausedEcho.doc.hidden=false;pausedEcho.game.tickStoryEffect();assert.deepEqual(JSON.parse(JSON.stringify(pausedEcho.game.heard.at(-1))),['royalRaspberry',false,.27,.6],'resume within the quieter second playback');
+pausedEcho.game.movePlayer(3,0);assert(!pausedEcho.game.action);const stoppedCount=pausedEcho.game.heard.length;pausedEcho.game.tickStoryEffect();assert.equal(pausedEcho.game.heard.length,stoppedCount,'interruption cancels remaining echo');
+console.log('PASS cave original plus two quieter echoes, exact starts/gains, pause/resume within echo, completion and interruption.');
