@@ -4,6 +4,7 @@ for(const [prefix,word]of [['ta','take'],['tal','talk'],['lo','look'],['op','ope
  if(prefix===word)assert.equal(context.complete(prefix),null);else assert.equal(context.complete(prefix).word,word);
 }
 for(const word of context.words)assert.equal(context.complete(word),null,'complete words and aliases remain unchanged');
+for(const letter of 'abcdefghijklmnopqrstuvwxyz')assert.equal(context.complete(letter),null,'single letters never reveal verbs');
 for(const text of ['','take ','take ro','look at mi','hello','xyzzy','123'])assert.equal(context.complete(text),null,'only action prefixes are completed');
 assert.equal(context.complete('ta',1),null,'do not replace middle of word');assert.equal(context.complete('ta',2,1),null,'do not replace selection');
 assert.equal(context.complete('  TA').start,2);assert.equal(context.complete('  TA').word,'take');

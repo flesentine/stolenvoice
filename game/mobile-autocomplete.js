@@ -23,6 +23,7 @@ function mobileActionCompletion(value,caret=value.length,selectionEnd=caret){
  if(caret!==selectionEnd||caret!==value.length)return null;
  const match=value.match(/^(\s*)([a-z]+)$/i);if(!match)return null;
  const prefix=match[2].toLowerCase();
+ if(prefix.length<2)return null;
  if(mobileActionWords.includes(prefix))return null;
  const word=mobileActionWords.find(word=>word.startsWith(prefix));
  return word?{word,start:match[1].length,end:caret}:null;
