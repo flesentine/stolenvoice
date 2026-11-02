@@ -1,0 +1,22 @@
+// NODE_PATH=<Playwright dependencies> node tools/check-mobile-key-hit-browser.cjs [game URL]
+const {chromium}=require('playwright'),assert=require('assert/strict');
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
+ const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(process.argv[2]||'http://127.0.0.1:8766/stolen-voice.html');
+ const field=page.locator('#input'),panel=page.locator('#mobile-keyboard'),key=name=>panel.getByRole('button',{name,exact:true});
+ for(let i=0;i<2;i++)await key('Enter').tap();await page.getByRole('button',{name:'Skip intro',exact:true}).click();for(let i=0;i<4;i++)if(await page.locator('#agi-message').isVisible())await key('Enter').tap();
+ const geometry=()=>panel.locator('button').evaluateAll(buttons=>buttons.map(b=>{const r=b.getBoundingClientRect();return{label:b.textContent,x:r.x,y:r.y,width:r.width,height:r.height}}));
+ const type=async text=>{await key('Clear').tap();await page.keyboard.type(text)};
+ const edge=async letter=>{const r=await key(letter).boundingBox();await page.touchscreen.tap(r.x+r.width+1,r.y+r.height/2)};
+ const neighborEdge=async letter=>{const r=await key(letter).boundingBox();await page.touchscreen.tap(r.x+.25,r.y+r.height/2)};
+ for(const viewport of [{width:390,height:844},{width:844,height:390}]){
+  await page.setViewportSize(viewport);await page.waitForTimeout(100);await type('look m');const before=await geometry(),scene=await page.locator('.screen').boundingBox();
+  await neighborEdge('S');assert.equal(await field.inputValue(),'look ma','A accepts neighboring edge after m exactly once');await type('look m');await neighborEdge('P');assert.equal(await field.inputValue(),'look mo','O also expands after m');
+  await type('look m');await key('S').tap();assert.equal(await field.inputValue(),'look ms','deliberate unlikely key center is literal');await key('Space').tap();assert.equal(await field.inputValue(),'look ms ','Space is never redirected');
+  await type('look qzx');await edge('A');assert(['look qzx','look qzxa'].includes(await field.inputValue()),'unknown word keeps ordinary browser gap behavior');await type('look qzx');await key('A').tap();assert.equal(await field.inputValue(),'look qzxa','unknown words can still be typed');
+  await type('m');assert(!(await page.locator('.mobile-action-completion').isVisible()),'one-letter vocabulary remains invisible');await key('Backspace').tap();assert.equal(await field.inputValue(),'');
+  await key('123').tap();await key('1').tap();await key('2').tap();assert.equal(await field.inputValue(),'12','symbols use ordinary keys');await key('ABC').tap();await key('Clear').tap();
+  await key('L').tap();await key('O').tap();await key('O').tap();await key('K').tap();assert.equal(await field.inputValue(),'look','rapid repeat letter commits once per tap');await key('Enter').tap();assert(await page.locator('#agi-message').isVisible());await key('Enter').tap();assert.deepEqual(await geometry(),before,'prediction never moves/resizes keys');assert.deepEqual(await page.locator('.screen').boundingBox(),scene,'typing never shifts viewport');
+  await type('look m');const r=await key('A').boundingBox(),cdp=await page.context().newCDPSession(page),point={x:r.x+r.width/2,y:r.y+r.height/2,id:1};await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[point]});await cdp.send('Input.dispatchTouchEvent',{type:'touchCancel',touchPoints:[]});assert.equal(await field.inputValue(),'look m','cancelled touch never types');await cdp.detach();
+ }
+ assert.deepEqual(errors,[]);console.log('PASS real touch A/O near-miss assistance, reliable centers/control/symbols, unknown words, repeated keys, cancel, hidden predictions and fixed portrait/landscape geometry.');
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

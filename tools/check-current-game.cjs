@@ -6,6 +6,7 @@ const suites=[
  'standalone-build',
  'mobile-controls',
  'mobile-autocomplete',
+ 'mobile-key-hit-test',
  'sound-playback',
  'royal-raspberry',
  'grotto-music',

@@ -165,7 +165,7 @@ html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMe
 html=html.replace(' if(harmonyOpen&&!event.isComposing)', ' if(hiveOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();hiveKey(event);return}\n if(harmonyOpen&&!event.isComposing)');
 html=html.replace("textPopup.addEventListener('click',event=>{", "textPopup.addEventListener('click',event=>{if(inventoryTouchTap(event))return;");
 html=html.replace('function walkTick(){','function walkTick(){\n if(touchWalkTick())return;');
-html=html.replace('startOpening();',()=>read('game/browser-interactions.js')+'\n'+read('game/mobile-autocomplete.js')+'\n'+read('game/mobile-keyboard.js')+'\n'+read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
+html=html.replace('startOpening();',()=>read('game/browser-interactions.js')+'\n'+read('game/mobile-autocomplete.js')+'\n'+read('game/mobile-key-hit-test.js')+'\n'+read('game/mobile-keyboard.js')+'\n'+read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
 require('./lib/write-standalone.cjs')(path.join(root,'stolen-voice.html'),html,[
  'command','saveGame','restoreGame','showHive','showMillSluice',
  'swimmingShoreRoute','startPrologue','finishGame'
