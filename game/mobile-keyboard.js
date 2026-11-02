@@ -7,7 +7,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  field.readOnly=true;field.inputMode='none';field.tabIndex=-1;field.setAttribute('aria-controls',panel.id);
  const completion=document.createElement('button');completion.type='button';completion.className='mobile-action-completion';completion.hidden=true;
  completion.setAttribute('aria-label','Complete action');completion.addEventListener('pointerdown',event=>event.preventDefault());
- completion.addEventListener('click',()=>edit(' '));form.append(completion);
+ completion.addEventListener('click',()=>edit(' '));shell.querySelector('.screen').append(completion);
  const refresh=()=>{
   const next=canType()?mobileActionCompletion(field.value,field.selectionStart??field.value.length,field.selectionEnd??field.value.length):null;
   if(completion.hidden!==!next)completion.hidden=!next;

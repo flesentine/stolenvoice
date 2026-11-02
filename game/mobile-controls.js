@@ -26,8 +26,6 @@ function installMobileControls(){
  const form=document.querySelector('#form'),shell=document.querySelector('.shell');
  const controls=document.createElement('nav');controls.className='mobile-controls';controls.setAttribute('aria-label','Touch game controls');
  const makeButton=(label,action,parent=controls)=>{const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('pointerdown',event=>event.preventDefault());button.addEventListener('click',()=>{keyboard.release();action();sync()});parent.append(button);return button};
- input.placeholder='Type a command…';input.setAttribute('enterkeyhint','send');input.setAttribute('autocorrect','off');
- const go=makeButton('Go',()=>form.requestSubmit(),form);
  const next=makeButton('Continue',()=>{
   input.blur();
   if(prologueActive){advancePrologue();return}
@@ -41,7 +39,7 @@ function installMobileControls(){
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene to guide Rosella. Lift to stop.';controls.append(tip);shell.append(controls);
  const keyboard=installMobileKeyboard(input,form,shell,()=>playing&&!popupOpen&&!menuOpen&&!document.querySelector('#intro')&&!document.querySelector('.screen>.overlay[aria-modal="true"]'),()=>sync());
- const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
+ const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
  const resize=()=>{
   const viewport=window.visualViewport,style=document.documentElement.style;
