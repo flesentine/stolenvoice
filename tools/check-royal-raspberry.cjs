@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=>{if(!soundEnabled)return;heard.push(args);stopGameSound();effectSource={stop(){this.stopped=true},disconnect(){}}};globalThis.game={get heard(){return heard},get audio(){return effectSource},get action(){return storyAction},tickStoryEffect,drawRoyalRaspberry,drawMirrorReflection,mirrorReflectionPose,royalRaspberryPixels,insidePolygon,orchardRaspberryBeePoint,orchardScoutBees,setMerrinVoice(returned,arrived){flags.voiceReturned=returned;flags.voiceArrivalSeen=arrived},paintHive(){sceneProps=[];orchardHive();sceneProps.sort((a,b)=>a.depth-b.depth).forEach(p=>p.paint());drawRoyalRaspberry(player.x,player.y)},setFrame(f){storyAction.frame=f},place(r=2,face="right",px=160){room=r;player={x:px,y:212,step:1,facing:face};soundEnabled=true},reduced(){window.matchMedia=()=>({matches:true})},command,');
+h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=>{if(!soundEnabled)return;heard.push(args);stopGameSound();effectSource={stop(){this.stopped=true},disconnect(){}}};globalThis.game={get heard(){return heard},get audio(){return effectSource},bellSwingFrame,get action(){return storyAction},tickStoryEffect,drawRoyalRaspberry,drawMirrorReflection,mirrorReflectionPose,royalRaspberryPixels,insidePolygon,orchardRaspberryBeePoint,orchardScoutBees,setMerrinVoice(returned,arrived){flags.voiceReturned=returned;flags.voiceArrivalSeen=arrived},paintHive(){sceneProps=[];orchardHive();sceneProps.sort((a,b)=>a.depth-b.depth).forEach(p=>p.paint());drawRoyalRaspberry(player.x,player.y)},setFrame(f){storyAction.frame=f},place(r=2,face="right",px=160){room=r;player={x:px,y:212,step:1,facing:face};soundEnabled=true},reduced(){window.matchMedia=()=>({matches:true})},command,');
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot};',s);
 function at(r=2,face='right',px=160){const a=s.qa.boot();a.start();while(a.game.state.popupOpen)a.game.closeMessage();a.game.place(r,face,px);return a}
 for(let r=0;r<9;r++){
@@ -58,3 +58,13 @@ assert.notEqual(JSON.stringify(mirrorFrames[0]),JSON.stringify(mirrorFrames[24])
 const backReaction=mirror.game.royalRaspberryPixels(24,true);assert(backReaction.some(([x,y,c])=>x===4&&y===9&&c===12),'reflection raises hand beside the back of her head');assert(!backReaction.some(([x,y,c])=>x===0&&y===8&&c===12),'no mouth painted through rear-facing hair');
 fs.writeFileSync('assets/reviews/raspberry-mirror-paint.json',JSON.stringify(mirrorFrames));
 console.log('PASS four cycling comments, shared reflected puff/hand reaction and complete glass clipping.');
+
+const belfry=at(7),bellBefore=belfry.game.state;belfry.game.command('fart');
+assert.equal(belfry.game.action.raspberryAudience,'belfry');
+const swings=[];for(let f=0;f<32;f++){belfry.game.setFrame(f);const cel=belfry.game.bellSwingFrame();swings.push(cel);assert.equal(belfry.game.bellSwingFrame(),cel,'redraw does not advance bell');if(f<5||f>=20)assert.equal(cel,null)}
+assert(new Set(swings.filter(f=>f!==null)).size>=5,'gust swings bell through existing native cels');
+belfry.game.setFrame(31);belfry.game.tickStoryEffect();assert.equal(belfry.game.bellSwingFrame(),null);assert.match(belfry.message,/blame the wind/);
+for(const key of ['player','flags','inv','score'])assert.deepEqual(belfry.game.state[key],bellBefore[key]);
+const reducedBell=at(7);reducedBell.game.command('fart');reducedBell.game.setFrame(9);reducedBell.game.reduced();assert.equal(reducedBell.game.bellSwingFrame(),null);
+const interruptedBell=at(7);interruptedBell.game.command('fart');interruptedBell.game.setFrame(9);interruptedBell.game.movePlayer(3,0);assert.equal(interruptedBell.game.bellSwingFrame(),null);
+console.log('PASS belfry gust swings existing bell cels from puff5, settles, preserves puzzles/state, reduced motion and interruption.');

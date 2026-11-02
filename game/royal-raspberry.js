@@ -4,10 +4,11 @@ const royalRaspberryComments=['"Wrong end," she whispers.','"That was meant to b
 function handleRoyalRaspberry(){
  if(swimState.active){say('A few suspicious bubbles rise to the surface. Rosella looks innocent.');return true}
  const nearby=(id,range=60)=>{const p=hotspots[room][id];return p&&Math.hypot(player.x-p[0],player.y-p[1])<=range};
- const audience=room===0&&nearby('man')?'merrin':room===3&&nearby('wax',120)?'bees':room===6?'cave':'';
+ const audience=room===0&&nearby('man')?'merrin':room===3&&nearby('wax',120)?'bees':room===6?'cave':room===7?'belfry':'';
  const replies={
   merrin:flags.voiceArrivalSeen?'Merrin pinches his nose. "Your Highness! The roses prefer their fertilizer applied to the soil."':'Merrin pinches his nose. A tiny, indignant "ding-ding!" escapes him. You decide not to ask for a translation.',
   bees:'The bees scatter in eight different directions. Apparently, that is not how one announces a new flower.',
+  belfry:'The great bell sways overhead. Rosella glances up. "I shall blame the wind."',
   cave:'The grotto sends it booming back. Then again. And again. For once, you wish the cave were less musical.'
  };
  const comment=royalRaspberryComments[royalRaspberryComment];royalRaspberryComment=(royalRaspberryComment+1)%royalRaspberryComments.length;

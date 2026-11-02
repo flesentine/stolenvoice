@@ -1,7 +1,16 @@
 // Rosella's original cel, with raised arms and discrete jump offsets.
 let bellAction=null,bellActionTimer=0,bellActionFocused=true;
 const bellSwingSequence=[3,3,3,2,1,0,1,3,6,5,3,1,2,3,5,4,3,3];
-function bellSwingFrame(){if(!bellAction||bellAction.stage!=='jump'||bellAction.outcome==='dull'||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return null;return bellSwingSequence[Math.min(bellAction.frame,bellSwingSequence.length-1)]}
+function bellSwingFrame(){
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return null;
+ // The royal gust moves only the artwork: no rope, tuning or quest progress.
+ if(room===7&&storyAction?.kind==='royalRaspberry'){
+  const frame=storyAction.frame-5;
+  return frame>=0&&frame<bellSwingSequence.length-3?bellSwingSequence[frame+3]:null;
+ }
+ if(!bellAction||bellAction.stage!=='jump'||bellAction.outcome==='dull')return null;
+ return bellSwingSequence[Math.min(bellAction.frame,bellSwingSequence.length-1)];
+}
 function queueBelfryBell(){
  const frame=bellSwingFrame()??3,key='bell-foreground-'+frame;
  if(!roomPropCache[key]){
