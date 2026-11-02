@@ -5,6 +5,15 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  const panel=document.createElement('div');panel.id='mobile-keyboard';panel.className='mobile-keyboard';
  panel.setAttribute('role','group');panel.setAttribute('aria-label','Game command keyboard');
  field.readOnly=true;field.inputMode='none';field.tabIndex=-1;field.setAttribute('aria-controls',panel.id);
+ const completion=document.createElement('button');completion.type='button';completion.className='mobile-action-completion';completion.hidden=true;
+ completion.setAttribute('aria-label','Complete action');completion.addEventListener('pointerdown',event=>event.preventDefault());
+ completion.addEventListener('click',()=>edit(' '));form.append(completion);
+ const refresh=()=>{
+  const next=canType()?mobileActionCompletion(field.value,field.selectionStart??field.value.length,field.selectionEnd??field.value.length):null;
+  if(completion.hidden!==!next)completion.hidden=!next;
+  const label=next?'Space: '+next.word:'';if(completion.textContent!==label)completion.textContent=label;
+  completion.setAttribute('aria-label',next?'Complete action '+next.word:'Complete action');
+ };
  // Keep keyboard and game geometry constant; tapping the display never focuses
  // a native text field, which can pan Safari even when the field is readonly.
  const release=()=>field.blur();
@@ -12,6 +21,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  const edit=(value)=>{
   if(!canType())return;
   let start=field.selectionStart??field.value.length,end=field.selectionEnd??start;
+  if(value===' '){const next=mobileActionCompletion(field.value,start,end);if(next){start=next.start;end=next.end;value=next.word+' '}}
   if(value==='Backspace'){if(start===end)start=Math.max(0,start-1);value=''}
   const next=(field.value.slice(0,start)+value+field.value.slice(end)).slice(0,field.maxLength);
   field.value=next;const caret=Math.min(start+value.length,next.length);field.setSelectionRange(caret,caret);
@@ -44,6 +54,6 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
    if(event.key==='Enter')submit();else edit(event.key);
   }
  },true);
- form.addEventListener('submit',release);
- return{release};
+ field.addEventListener('input',refresh);form.addEventListener('submit',()=>{release();refresh()});refresh();
+ return{release,refresh};
 }

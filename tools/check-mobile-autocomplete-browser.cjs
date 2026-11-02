@@ -1,0 +1,17 @@
+// NODE_PATH=<Playwright dependencies> node tools/check-mobile-autocomplete-browser.cjs [game URL]
+const {chromium}=require('playwright'),assert=require('assert/strict');
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
+ const page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(process.argv[2]||'http://127.0.0.1:8766/stolen-voice.html');const field=page.locator('#input'),panel=page.locator('#mobile-keyboard'),key=name=>panel.getByRole('button',{name,exact:true});
+ for(let i=0;i<2;i++)await key('Enter').tap();await page.getByRole('button',{name:'Skip intro',exact:true}).click();for(let i=0;i<4;i++)if(await page.locator('#agi-message').isVisible())await key('Enter').tap();
+ const before=await page.locator('.screen').boundingBox(),hint=page.locator('.mobile-action-completion');
+ await key('T').tap();await key('A').tap();assert.equal(await field.inputValue(),'ta');assert.equal(await hint.textContent(),'Space: take');assert(await hint.isVisible());assert.deepEqual(await page.locator('.screen').boundingBox(),before,'suggestion does not shift layout');await page.screenshot({path:'/tmp/stolenvoice-autocomplete-portrait.png'});
+ await key('Space').tap();assert.equal(await field.inputValue(),'take ');assert(!(await hint.isVisible()));for(const c of ['R','O','S','E'])await key(c).tap();await key('Space').tap();assert.equal(await field.inputValue(),'take rose ','next word is typed normally');
+ await key('Clear').tap();await key('O').tap();await key('P').tap();await hint.tap();assert.equal(await field.inputValue(),'open ','suggestion is tappable');
+ await key('Clear').tap();for(const c of ['C','L','I'])await key(c).tap();assert.equal(await hint.textContent(),'Space: climb');await key('Space').tap();assert.equal(await field.inputValue(),'climb ');
+ await key('Clear').tap();await field.pressSequentially('lo ');assert.equal(await field.inputValue(),'look ','hardware Space also accepts');await key('Enter').tap();assert(await page.locator('#agi-message').isVisible());assert(!(await hint.isVisible()));await key('Enter').tap();
+ await key('T').tap();await key('A').tap();await key('L').tap();assert.equal(await hint.textContent(),'Space: talk');await key('Backspace').tap();assert.equal(await hint.textContent(),'Space: take');await key('Clear').tap();assert(!(await hint.isVisible()));
+ await field.pressSequentially('xyzzy ');assert.equal(await field.inputValue(),'xyzzy ','unknown text is preserved');await key('Clear').tap();await key('X').tap();assert(!(await hint.isVisible()),'complete shorthand alias is preserved');await key('Space').tap();assert.equal(await field.inputValue(),'x ');
+ await key('Clear').tap();await page.setViewportSize({width:844,height:390});await page.waitForTimeout(100);await key('T').tap();await key('A').tap();const screen=await page.locator('.screen').boundingBox();await hint.tap();assert.equal(await field.inputValue(),'take ');assert.deepEqual(await page.locator('.screen').boundingBox(),screen);await page.screenshot({path:'/tmp/stolenvoice-autocomplete-landscape.png'});assert.deepEqual(errors,[]);
+ console.log('PASS visible action suggestion, touch/hardware Space acceptance, next-word text, alternative prefixes, suggestion tap, backspace/Clear, unknown text, aliases and stable portrait/landscape layout.');
+}finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

@@ -45,7 +45,9 @@ body{display:grid;place-items:center;height:100dvh}
  .screen{width:min(100%,calc((var(--mobile-height,100dvh) - 114px - var(--keyboard-space) - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 4 / 3));aspect-ratio:4/3;height:auto;align-self:center;touch-action:manipulation}
  .hud{position:static;width:min(960px,100%);height:auto;padding:5px;margin:0;overflow:visible;clip-path:none;white-space:normal}
  #items{display:none}
- #form{display:flex;gap:6px}
+ #form{position:relative;display:flex;gap:6px}
+ #form .mobile-action-completion{position:absolute;right:48px;top:4px;max-width:60%;min-height:36px;padding:4px 7px;font:12px monospace;color:#302d26;background:#e0d8c5;border:1px solid #928873;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ #form .mobile-action-completion[hidden]{display:none}
  #input{min-width:0;flex:1;width:100%;height:44px;font:16px monospace;color:#fff;background:#171747;border:1px solid #aaa;padding:8px;border-radius:4px}
  .mobile-controls{display:flex;width:min(960px,100%);min-height:54px;gap:4px;padding:0 5px 5px;font:14px monospace;overflow-x:auto}
  .mobile-controls button{flex-shrink:0}
@@ -6048,6 +6050,36 @@ document.addEventListener('keydown',event=>{
  if((event.ctrlKey||event.metaKey)&&!event.altKey&&!event.shiftKey&&['a','c','v','x'].includes(event.key.toLowerCase()))event.preventDefault();
 },true);
 
+// Parser action vocabulary, ordered so common short prefixes have useful defaults.
+const mobileActionWords=[
+ 'take','talk','look','load','use','open','close','climb','give','get','go',
+ 'put','pick','place','read','ring','repair','restore','save','say','seal',
+ 'tie','turn','touch','cut','curtsy','dance','jump','kiss','kick','fart','eat','enter',
+ 'examine','exit','inspect','inventory','help','hint','listen','leave',
+ 'oil','offer','hold','raise','lift','remove','unlock',
+ 'shut','sit','sing','swim','smell','taste','shake','show','speak','shout',
+ 'search','secure','fasten','fix','bind','lash','mend','attach','apply','catch',
+ 'capture','collect','trap','bottle','scoop','fill','stopper','cork','plug',
+ 'polish','flatter','bow','wait','walk','push','pull','press','drop','stop',
+ 'trim','prune','clip','lubricate','grease','set','lay','fit','add','reinforce',
+ 'tether','anchor','strap','stabilize','insert','slide','position','hand',
+ 'greet','ask','question','knock','tap','strike','sound','blow','bless',
+ 'wipe','clean','pour','hit','move','pluck','bite','try','sniff','rap','feel',
+ 'buff','compliment','praise','make','rattle','replace','lower','leap','hop',
+ 'dive','wade','bathe','hook','retrieve','grab','dip','dunk','immerse',
+ 'chime','play','flick','tilt','tip','invert','unhook','shift','drag','tug',
+ 'untie','release','answer','reply','solve','guess','ascend','descend','call',
+ 'l','x','i','inv','n','s','e','w','u','d','ne','nw','se','sw'
+];
+function mobileActionCompletion(value,caret=value.length,selectionEnd=caret){
+ if(caret!==selectionEnd||caret!==value.length)return null;
+ const match=value.match(/^(\s*)([a-z]+)$/i);if(!match)return null;
+ const prefix=match[2].toLowerCase();
+ if(mobileActionWords.includes(prefix))return null;
+ const word=mobileActionWords.find(word=>word.startsWith(prefix));
+ return word?{word,start:match[1].length,end:caret}:null;
+}
+
 // A readonly mobile parser keeps the OS keyboard (and its viewport pan) closed.
 // Real keyboard events still edit the same command field and submit the same form.
 function installMobileKeyboard(field,form,shell,canType,onSubmit){
@@ -6055,6 +6087,15 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  const panel=document.createElement('div');panel.id='mobile-keyboard';panel.className='mobile-keyboard';
  panel.setAttribute('role','group');panel.setAttribute('aria-label','Game command keyboard');
  field.readOnly=true;field.inputMode='none';field.tabIndex=-1;field.setAttribute('aria-controls',panel.id);
+ const completion=document.createElement('button');completion.type='button';completion.className='mobile-action-completion';completion.hidden=true;
+ completion.setAttribute('aria-label','Complete action');completion.addEventListener('pointerdown',event=>event.preventDefault());
+ completion.addEventListener('click',()=>edit(' '));form.append(completion);
+ const refresh=()=>{
+  const next=canType()?mobileActionCompletion(field.value,field.selectionStart??field.value.length,field.selectionEnd??field.value.length):null;
+  if(completion.hidden!==!next)completion.hidden=!next;
+  const label=next?'Space: '+next.word:'';if(completion.textContent!==label)completion.textContent=label;
+  completion.setAttribute('aria-label',next?'Complete action '+next.word:'Complete action');
+ };
  // Keep keyboard and game geometry constant; tapping the display never focuses
  // a native text field, which can pan Safari even when the field is readonly.
  const release=()=>field.blur();
@@ -6062,6 +6103,7 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
  const edit=(value)=>{
   if(!canType())return;
   let start=field.selectionStart??field.value.length,end=field.selectionEnd??start;
+  if(value===' '){const next=mobileActionCompletion(field.value,start,end);if(next){start=next.start;end=next.end;value=next.word+' '}}
   if(value==='Backspace'){if(start===end)start=Math.max(0,start-1);value=''}
   const next=(field.value.slice(0,start)+value+field.value.slice(end)).slice(0,field.maxLength);
   field.value=next;const caret=Math.min(start+value.length,next.length);field.setSelectionRange(caret,caret);
@@ -6094,8 +6136,8 @@ function installMobileKeyboard(field,form,shell,canType,onSubmit){
    if(event.key==='Enter')submit();else edit(event.key);
   }
  },true);
- form.addEventListener('submit',release);
- return{release};
+ field.addEventListener('input',refresh);form.addEventListener('submit',()=>{release();refresh()});refresh();
+ return{release,refresh};
 }
 
 // Touch destinations use ordinary movement: no teleport, pathfinding or puzzle bypass.
@@ -6141,7 +6183,7 @@ function installMobileControls(){
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene to guide Rosella. Lift to stop.';controls.append(tip);shell.append(controls);
  const keyboard=installMobileKeyboard(input,form,shell,()=>playing&&!popupOpen&&!menuOpen&&!document.querySelector('#intro')&&!document.querySelector('.screen>.overlay[aria-modal="true"]'),()=>sync());
- const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
+ const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
  const resize=()=>{
   const viewport=window.visualViewport,style=document.documentElement.style;

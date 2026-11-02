@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..');
 const suites=[
  'standalone-build',
  'mobile-controls',
+ 'mobile-autocomplete',
  'sound-playback',
  'royal-raspberry',
  'grotto-music',

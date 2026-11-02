@@ -41,7 +41,7 @@ function installMobileControls(){
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene to guide Rosella. Lift to stop.';controls.append(tip);shell.append(controls);
  const keyboard=installMobileKeyboard(input,form,shell,()=>playing&&!popupOpen&&!menuOpen&&!document.querySelector('#intro')&&!document.querySelector('.screen>.overlay[aria-modal="true"]'),()=>sync());
- const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen)};
+ const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;go.disabled=!playing||popupOpen||menuOpen;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
  const resize=()=>{
   const viewport=window.visualViewport,style=document.documentElement.style;
