@@ -91,7 +91,7 @@ function movePlayer(dx,dy){
  if(!moved)stopWalking();
  draw();
 }
-function castleBoundaryReason(){return flags.voiceReturned?'Rosella will see Merrin before leaving the castle grounds.':'Rosella cannot leave Merrin like this. The road beyond the castle must wait.'}
+function castleBoundaryReason(){return flags.voiceReturned?'Elara will see Merrin before leaving the castle grounds.':'Elara cannot leave Merrin like this. The road beyond the castle must wait.'}
 function goToExit(destination){
  // Resolve the visible doorway in this room, rather than requiring its map name.
  const doorwayNames=[

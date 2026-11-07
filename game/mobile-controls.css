@@ -8,10 +8,11 @@
  .shell{--keyboard-space:220px}
  .screen{grid-row:2;width:min(100%,calc((var(--mobile-height,100dvh) - 52px - var(--keyboard-space) - env(safe-area-inset-top) - env(safe-area-inset-bottom)) * 4 / 3));aspect-ratio:4/3;height:auto;align-self:center;touch-action:manipulation}
  .hud{display:none}
- .mobile-action-completion{position:absolute;right:3px;bottom:2px;max-width:60%;height:9%;max-height:32px;padding:1px 6px;font:10px 'Sierra AGI',monospace;color:#000;background:#fff;border:2px solid #a00;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;touch-action:manipulation}
+ .mobile-action-completion{position:absolute;right:3px;bottom:2px;max-width:60%;height:9%;max-height:32px;padding:1px 6px;font:10px 'Alder Pixel',monospace;color:#000;background:#fff;border:2px solid #a00;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;touch-action:manipulation}
  .mobile-action-completion[hidden]{display:none}
  .mobile-controls{grid-row:1;display:flex;align-items:stretch;width:min(960px,100%);min-height:50px;gap:0;padding:3px 4px;background:#fff;border-bottom:2px solid #a00;overflow-x:auto}
- .mobile-controls button{flex:1 0 auto;min-height:44px;font:clamp(10px,2.5vw,13px) 'Sierra AGI',monospace;border:0;border-right:1px solid #aaa;border-radius:0;background:#fff;color:#000;padding:4px 6px;touch-action:manipulation}
+ .mobile-controls button{flex:1 0 auto;min-height:44px;font:clamp(10px,2.5vw,13px) 'Alder Pixel',monospace;border:0;border-right:1px solid #aaa;border-radius:0;background:#fff;color:#000;padding:4px 6px;touch-action:manipulation}
+ .mobile-controls button[hidden]{display:none}
  .mobile-controls button:last-of-type{border-right:0}
  .mobile-controls button:active{background:#000;color:#fff}
  .mobile-controls button:focus-visible{outline:2px solid #a00;outline-offset:-2px}

@@ -15,7 +15,7 @@ function handleHumanIntent(text){
  const poolEntry=text.match(/^(?:swim|wade|bathe|enter|dive|jump|step|get|go|walk)(?: (?:in|into|down into))? (.+)$/);
  if(room===6&&(/^(?:swim|wade|bathe|dive)(?: in)?$/.test(text)||(poolEntry&&objectId(poolEntry[1])==='pool'))){
   if(!nearObject('pool'))return true;
-  stopWalking();say('You test the pool with a toe. The cold goes straight through your shoe. Rosella retreats to the dry stone, her enthusiasm for a royal bath considerably diminished.');return true;
+  stopWalking();say('You test the pool with a toe. The cold goes straight through your shoe. Elara retreats to the dry stone, her enthusiasm for a royal bath considerably diminished.');return true;
  }
 
  if(room===0&&/^(?:use|hook|retrieve|get|grab).*?(?:rose|stem).*?clapper|^(?:hook|retrieve|get|grab).*?clapper.*?(?:rose|stem)/.test(text)){useObject('rose','bell');return true}

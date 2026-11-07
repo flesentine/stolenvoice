@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),A=require('../editor/agi-picture.js');
-const art=vm.runInNewContext(fs.readFileSync('game/bell-pictures.js','utf8')+';({pictures:bellSwingPictures,masks:bellForegroundMasks})'),views=require('../assets/rosella-walk-stable-face-v2.json').views;
+const art=vm.runInNewContext(fs.readFileSync('game/bell-pictures.js','utf8')+';({pictures:bellSwingPictures,masks:bellForegroundMasks})'),views=require('../assets/elara-walk-stable-face-v2.json').views;
 function decode(encoded){const bytes=Buffer.from(encoded,'base64'),out=[];for(let i=0;i<bytes.length;i+=2)for(let n=0;n<bytes[i];n++)out.push(bytes[i+1]);return out}
 const palette=new Map(A.palette.map((c,i)=>[c.toLowerCase(),i]));
 function scene(frame,y=182,jump=0,overlay=true){

@@ -1,8 +1,8 @@
 // Native prop-only rendering; no game screenshot or room raster.
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),A=require('../editor/agi-picture.js');
-const stable=JSON.parse(fs.readFileSync('assets/rosella-walk-stable-face-v2.json')).views;
-const short=fs.readFileSync('stolen-voice-short.html','utf8'),colors=JSON.parse(short.match(/const rosellaColors=(\[[^\n]+\]);/)[1]);
-let dots=[];const s={window:{addEventListener(){}},player:{x:144,y:190,step:0,facing:'back'},rosellaWalkSprites:stable,rosellaColors:colors,pictureX:x=>Math.round(x/2),pictureY:y=>Math.round(y*.7),x:{fillStyle:'',fillRect(x,y,w,h){assert([x,y,w,h].every(Number.isInteger));assert(A.palette.includes(this.fillStyle));for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++){assert(xx>=0&&xx<160&&yy>=0&&yy<168);dots.push([xx,yy,this.fillStyle])}}}};
+const stable=JSON.parse(fs.readFileSync('assets/elara-walk-stable-face-v2.json')).views;
+const short=fs.readFileSync('stolen-voice-short.html','utf8'),colors=JSON.parse(short.match(/const elaraColors=(\[[^\n]+\]);/)[1]);
+let dots=[];const s={window:{addEventListener(){}},player:{x:144,y:190,step:0,facing:'back'},elaraWalkSprites:stable,elaraColors:colors,pictureX:x=>Math.round(x/2),pictureY:y=>Math.round(y*.7),x:{fillStyle:'',fillRect(x,y,w,h){assert([x,y,w,h].every(Number.isInteger));assert(A.palette.includes(this.fillStyle));for(let yy=y;yy<y+h;yy++)for(let xx=x;xx<x+w;xx++){assert(xx>=0&&xx<160&&yy>=0&&yy<168);dots.push([xx,yy,this.fillStyle])}}}};
 const world=fs.readFileSync('game/expanded-world.js','utf8');vm.createContext(s);vm.runInContext(world.slice(world.indexOf('function insidePolygon('),world.indexOf('function canStand('))+fs.readFileSync('game/gallery-room.js','utf8')+fs.readFileSync('game/story-effects.js','utf8')+';globalThis.qa={set(frame){storyAction={kind:"voiceOffered",frame}},mirrorJarPose,drawMirrorHandJar,drawStoryMirrorJar,drawMirrorJarExchange,insidePolygon,glass:mirrorGlassClip};',s);
 const q=s.qa;let previous=null;const cels=[];
 for(let frame=0;frame<50;frame++){

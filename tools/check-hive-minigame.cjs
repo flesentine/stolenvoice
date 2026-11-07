@@ -60,7 +60,7 @@ for(let cel=0;cel<=12;cel++){
  a.game.setHiveReach(cel);
  const pixels=a.game.hivePixels();
  const advance=Math.min(1,cel/5,(13-cel)/7),y=Math.round(156-advance*44);
- for(let sy=Math.max(0,y+16);sy<168;sy++)assert([7,15].includes(pixels[sy*160+80]),'connected sleeve at cel '+cel+' row '+sy);
+ for(let sy=Math.max(0,y+16);sy<168;sy++)assert([9,15].includes(pixels[sy*160+80]),'connected blue sleeve/white cuff at cel '+cel+' row '+sy);
 }
 console.log('PASS all thirteen reach cels connect cuff and sleeve to the bottom picture edge.');
 

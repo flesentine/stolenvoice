@@ -1,4 +1,4 @@
-// Existing Rosella cel, working hands, opening/closing steel shears and falling twigs.
+// Existing Elara cel, working hands, opening/closing steel shears and falling twigs.
 const thornSnipFrames=[4,10,16];
 function thornCutStage(){
  if(!storyAction||storyAction.kind!=='thornsCut')return null;
@@ -22,7 +22,7 @@ function thornInk(points,color){
 function drawThornCutHero(px,py){
  if(!storyAction||storyAction.kind!=='thornsCut'||storyAction.stage==='approach')return false;
  const frame=storyAction.frame,working=frame>=1&&frame<=20,amount=working?Math.min(1,frame/3,(21-frame)/4):0;
- const left=pictureX(px)-4,top=pictureY(py)-39,rows=rosellaWalkSprites.right[0];
+ const left=pictureX(px)-4,top=pictureY(py)-39,rows=elaraWalkSprites.right[0];
  ellipse(px,py+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
@@ -30,7 +30,7 @@ function drawThornCutHero(px,py){
   const shift=Math.round(amount),lower=row>=27?Math.round(shift*(38-row)/11):shift;
   const foot=row>=38?(col>=4?shift:0):lower;
   const drop=row<27?Math.round(amount):row<38?Math.round(amount*(38-row)/11):0;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+(row>=38?foot:lower),top+row+drop,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+(row>=38?foot:lower),top+row+drop,1,1);
  }
  if(!working)return true;
  // Compact fixed-length elbow/forearm pose; only the blades cycle.

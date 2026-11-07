@@ -61,7 +61,7 @@ const label=document.createElement('output');label.id='pen-label';label.textCont
 document.querySelectorAll('[data-tool]').forEach(button=>button.addEventListener('click',()=>chooseTool(button.dataset.tool)));
 cursor.addEventListener('pointerdown',event=>{
  if(event.button!==0)return;stop();all();cursor.focus();const point=locationOf(event);hover=point;
- if(event.altKey){$('show-hero').checked=true;$('hero-x').value=point[0];$('hero-y').value=Math.max(39,point[1]);paintCursor();message('Moved Rosella\'s 40-pixel scale guide. The guide is not exported.');return}
+ if(event.altKey){$('show-hero').checked=true;$('hero-x').value=point[0];$('hero-y').value=Math.max(39,point[1]);paintCursor();message('Moved Elara\'s 40-pixel scale guide. The guide is not exported.');return}
  if(tool==='flood'){append({type:'flood',name:'Flood fill',seed:point,color:pen});return}
  if(tool==='outline'||tool==='polygon'){draft.push(point);paint();return}
  dragging=true;cursor.setPointerCapture(event.pointerId);draft=tool==='line'?[point,point]:[point];paint();

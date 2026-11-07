@@ -1,7 +1,7 @@
 // Local word-prefix hints adjust touch boundaries only; keycaps never move.
 function mobileKeyboardVocabulary(actions,objects,scenery){
  const phrases=[...actions,...Object.values(objects).flat(),...Object.values(scenery).flat(),
-  'moon','merrin','rosella','the','a','an','at','to','with','using','on','in','into','from','over','under','through','out','of','my','your'];
+  'moon','merrin','elara','the','a','an','at','to','with','using','on','in','into','from','over','under','through','out','of','my','your'];
  return [...new Set(phrases.flatMap(text=>text.toLowerCase().match(/[a-z]+/g)||[]))];
 }
 function mobileNextLetters(value,words,caret=value.length,selectionEnd=caret,actions=[]){

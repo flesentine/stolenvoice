@@ -1,4 +1,4 @@
-// Shed proportions are authored against Rosella's actual 40-native-pixel cel.
+// Shed proportions are authored against Elara's actual 40-native-pixel cel.
 // Bench: work surface at y108, feet at y129 => 21 pixels, about waist height.
 module.exports=function shed({fill,stroke,named=()=>{}}){
  const p=(name,pts,c,e=0)=>{named(name);fill(pts,c,e)};

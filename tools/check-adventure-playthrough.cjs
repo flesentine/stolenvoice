@@ -2,15 +2,24 @@
 // and parser/key handlers; no inventory grants, room teleports or puzzle skips.
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-h=h.replace('globalThis.game={command,',`globalThis.game={get busy(){return !!storyAction||!!bellAction||!!bookAnimationTimer||!!workshopDoorMotion||!!millAction||millSluiceReleaseFrame>=0},get hiveOpen(){return hiveOpen},get hiveFrame(){return hiveFrame},hiveContact,tickHive,seedHive(){hiveFlight=makeHiveFlight(1)},get slot(){return millSluiceSelected},get held(){return millSluiceHeld},get releaseFrame(){return millSluiceReleaseFrame},get sluiceOpen(){return millSluiceOpen},get harmonyOpen(){return harmonyOpen},get harmonyHelp(){return harmonyHelp},memory:savedMerrinMemory,secret:secretSnailFound,command,`);
+h=h.replace('globalThis.game={command,',`globalThis.game={portableSaveText,importGameSave,get busy(){return !!storyAction||!!bellAction||!!bookAnimationTimer||!!workshopDoorMotion||!!millAction||millSluiceReleaseFrame>=0},get hiveOpen(){return hiveOpen},get hiveFrame(){return hiveFrame},hiveContact,tickHive,seedHive(){hiveFlight=makeHiveFlight(1)},get slot(){return millSluiceSelected},get held(){return millSluiceHeld},get releaseFrame(){return millSluiceReleaseFrame},get sluiceOpen(){return millSluiceOpen},get harmonyOpen(){return harmonyOpen},get harmonyHelp(){return harmonyHelp},memory:savedMerrinMemory,secret:secretSnailFound,command,`);
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot,travel,approach,walkWhere}',s);
-const {boot,travel,approach,walkWhere}=s.qa;let a=boot(),commands=0;const visited=new Set(),transcript=[];
+const {boot,travel,approach,walkWhere}=s.qa;let a=boot(),commands=0,checkpointCount=0;const saveChecks=[];const visited=new Set(),transcript=[];
 function drain(){let text='',n=0;while(a.game.state.popupOpen&&!a.game.hiveOpen&&!a.game.sluiceOpen&&!a.game.harmonyOpen&&n++<40){text+=' '+a.message;a.game.closeMessage()}assert(n<40);return text.replace(/\s+/g,' ')}
 function settle(){let text=drain();for(let n=0;a.game.busy&&n<240;n++){for(const tick of [...a.intervals.values()])tick();if(a.game.releaseFrame>=36)a.key('Enter');text+=' '+drain()}assert(!a.game.busy,'action settles');return text;}
 function cmd(text){settle();a.game.command(text);commands++;const reply=settle();transcript.push({command:text,room:a.game.state.room,reply,score:a.game.state.score});return reply;}
 function near(id){settle();approach(a,id)}
 function go(id){settle();travel(a,id);settle();visited.add(a.game.state.room)}
-function checkpoint(){cmd('save');const before=a.game.state,storage=a.storage;a=boot(storage);a.start();settle();cmd('restore');assert.equal(a.game.state.room,before.room);assert.equal(JSON.stringify(a.game.state.flags),JSON.stringify(before.flags));assert.equal(JSON.stringify(a.game.state.inv),JSON.stringify(before.inv));assert.equal(a.game.state.score,before.score);}
+function checkpoint(){
+ cmd('save');const before=a.game.state,oldMemory=JSON.stringify(a.game.memory()),portable=checkpointCount++%2===0;
+ const file=portable?a.game.portableSaveText(a.storage.get(a.game.key)):null;
+ const filePath=portable?'assets/reviews/playthrough-save-'+checkpointCount+'.json':null;
+ if(filePath)fs.writeFileSync(filePath,file,'utf8');
+ a=boot(portable?new Map():a.storage);a.start();settle();
+ if(portable){assert(a.game.importGameSave(fs.readFileSync(filePath,'utf8')));settle()}else cmd('restore');
+ assert.equal(a.game.state.room,before.room);assert.equal(JSON.stringify(a.game.state.flags),JSON.stringify(before.flags));assert.equal(JSON.stringify(a.game.state.inv),JSON.stringify(before.inv));assert.equal(a.game.state.score,before.score);assert.equal(JSON.stringify(a.game.memory()),oldMemory);
+ saveChecks.push({method:portable?'portable-file-new-location':'browser-restart',room:before.room,score:before.score,...(filePath?{file:filePath}:{})});
+}
 a.start();settle();visited.add(0);assert.equal(a.game.state.score,0);assert.equal(a.game.roomLayouts.length,9);assert.equal(a.game.maxScore,105);
 near('man');cmd('dance with Merrin');near('rose');cmd('take rose');near('bell');cmd('take bell');near('man');cmd('give rose to Merrin');assert(a.game.state.flags.workshopKey);
 go('courtyard');walkWhere(a,(x,y)=>Math.hypot(x-64,y-145)<43);cmd('use workshop key on shed door');go('shed');
@@ -36,5 +45,9 @@ go('bridge');near('bridge');cmd('lay plank across gap');cmd('wrap twine around b
 go('bridge');go('orchard');go('garden');near('man');assert.match(cmd('talk Merrin'),/one proud finger/);go('courtyard');go('gallery');near('book');cmd('open book');cmd('read book');near('mirror');cmd('ring bell');go('belfry');near('rope');cmd('fix rope with twine');cmd('pull rope');assert(a.game.harmonyOpen);
 if(a.game.harmonyHelp)a.key('Enter');for(let n=0;n<3;n++)a.key('ArrowUp');a.key('ArrowRight');for(let n=0;n<4;n++)a.key('ArrowDown');a.key('ArrowRight');for(let n=0;n<3;n++)a.key('ArrowUp');assert(a.game.state.flags.harmonyTuned);a.key('Enter');settle();assert(a.game.state.flags.bellRung);checkpoint();
 go('gallery');near('mirror');cmd('offer jar to mirror');cmd('say Merrin');assert(a.game.state.flags.voiceReturned);go('courtyard');go('garden');settle();assert(a.game.state.flags.complete);assert.equal(a.game.state.score,105);assert(!a.game.state.playing);assert.equal(visited.size,9);assert(a.game.memory().seen.includes('snail'));
-fs.writeFileSync('assets/reviews/current-playthrough.json',JSON.stringify({method:'Fresh embedded-game headless playthrough with physical navigation, actual puzzle key inputs and fresh-runtime restores.',rooms:[...visited],commands,final:a.game.state,transcript},null,2)+'\n');
-console.log('PASS fresh 105/105 adventure: all nine rooms, '+commands+' commands, hive/sluice/harmony via real inputs, mill-before-bridge order, secret/Merrin callbacks and four fresh-runtime save restores.');
+// A completed-game save must reopen the ending without duplicate points.
+const completedFile=a.game.portableSaveText(a.game.saveGame());
+fs.writeFileSync('assets/reviews/playthrough-save-complete.json',completedFile,'utf8');
+const completed=boot(new Map());completed.start();assert(completed.game.importGameSave(fs.readFileSync('assets/reviews/playthrough-save-complete.json','utf8')));assert(completed.game.state.flags.complete);assert.equal(completed.game.state.score,105);assert(!completed.game.state.playing);
+fs.writeFileSync('assets/reviews/current-playthrough.json',JSON.stringify({method:'Fresh embedded-game headless playthrough with physical navigation, actual puzzle key inputs, fresh-location portable imports and fresh-runtime browser restores.',rooms:[...visited],commands,saveChecks,final:a.game.state,transcript},null,2)+'\n');
+console.log('PASS fresh 105/105 adventure: all nine rooms, '+commands+' commands, hive/sluice/harmony via real inputs, mill-before-bridge order, secret/Merrin callbacks and two fresh-location portable imports and two fresh-runtime browser restores; completed-file import also reopens the ending at 105/105.');

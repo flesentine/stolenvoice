@@ -6,7 +6,7 @@ The body pose stays intact. Costume now uses a slit-neck blue tunic, plain gray 
 
 ## Prompt used
 
-Edit this body reference to give the gardener believable medieval working clothes suitable for a King's Quest-like fairy-tale castle. Preserve the exact right-facing polishing pose, shoulder/elbow/wrist anatomy, hand pressing the white cloth, crop, character scale and magenta background. Keep the head excluded.
+Edit this body reference to give the gardener believable medieval working clothes suitable for a The Star-Bell-like fairy-tale castle. Preserve the exact right-facing polishing pose, shoulder/elbow/wrist anatomy, hand pressing the white cloth, crop, character scale and magenta background. Keep the head excluded.
 
 Replace the modern-looking blue sweater-vest and dress-shirt styling:
 - A simple loose dark-blue wool work tunic with a rounded neck opening and a short central slit.

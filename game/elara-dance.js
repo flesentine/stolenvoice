@@ -1,6 +1,6 @@
 // A courtly turn in place. Reuse her measured head/walking cels; only pose
 // pixels move, never her world position or collision baseline.
-function rosellaDanceChoreography(frame,reflected=false){
+function elaraDanceChoreography(frame,reflected=false){
  if(storyAction?.kind==='courtDance'&&storyAction.room===2)frame=frame<192?frame%48:frame<220?frame-192:44+frame-220;
  const danceFrame=Math.max(0,frame),twirl=danceFrame>=24&&danceFrame<44;
  frame=frame>=44?27:Math.max(0,frame)%24;
@@ -12,10 +12,10 @@ function rosellaDanceChoreography(frame,reflected=false){
  const active=twirl||(frame>=2&&frame<24),sway=active?Math.round(Math.sin(frame*Math.PI/8)):0;
  return{danceFrame,twirl,frame,beat,step,facing,active,sway};
 }
-function rosellaDanceSprite(frame,reflected=false){
- const pose=rosellaDanceChoreography(frame,reflected);
+function elaraDanceSprite(frame,reflected=false){
+ const pose=elaraDanceChoreography(frame,reflected);
  const {danceFrame,twirl,beat,step,facing,active,sway}=pose;frame=pose.frame;
- const rows=rosellaWalkSprites[facing][step],out=Array.from({length:40},()=>Array(14).fill('.'));
+ const rows=elaraWalkSprites[facing][step],out=Array.from({length:40},()=>Array(14).fill('.'));
  // In profile, the idle arm covers much of the torso. Paint the blouse and
  // dress underneath before removing that arm to bend it into a new pose.
  if(active&&(facing==='left'||facing==='right')){
@@ -72,16 +72,16 @@ function rosellaDanceSprite(frame,reflected=false){
  }
  return out.map(row=>row.join(''));
 }
-function drawRosellaDance(px,py){
- const rows=rosellaDanceSprite(storyAction.frame),left=pictureX(px)-7,top=pictureY(py)-39;
+function drawElaraDance(px,py){
+ const rows=elaraDanceSprite(storyAction.frame),left=pictureX(px)-7,top=pictureY(py)-39;
  ellipse(px,py+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<14;col++){
   const ink=rows[row][col];if(ink==='.')continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
  }
 }
 
-// All guests emerge behind the barrel. Plan floor routes around Rosella's
+// All guests emerge behind the barrel. Plan floor routes around Elara's
 // full dancing silhouette, so the middle rat never runs beneath her dress.
 function workshopRatRoutes(){
  if(storyAction.workshopRatRoutes)return storyAction.workshopRatRoutes;
@@ -106,7 +106,7 @@ function workshopRatRoutes(){
 }
 function workshopMousePoses(frame){
  if(room!==2||storyAction?.kind!=='courtDance'||frame<8||frame>=220)return[];
- const dance=rosellaDanceChoreography(frame);
+ const dance=elaraDanceChoreography(frame);
  return workshopRatRoutes().map((path,i)=>{
   const start=8+i*6,end=208+i*6;if(frame<start||frame>=end)return null;
   const duration=Math.ceil((path.length-1)/2.6),t=Math.max(0,Math.min(1,(frame-start)/duration,(end-frame)/duration));
@@ -135,7 +135,7 @@ function drawWorkshopMice(){
   const {x:cx,y:feet,hop,beat}=mouse,top=feet-10-hop;
   const dot=(dx,dy,color)=>{const xx=cx+dx,yy=top+dy;if(!workshopRatPixelVisible(xx,yy,feet))return;x.fillStyle=color;x.fillRect(xx,yy,1,1)};
   const rows=workshopMouseSprite(beat,mouse.danceFacing,mouse.active,mouse.step,mouse.twirl);
-  rows.forEach((row,y)=>[...row].forEach((ink,col)=>{if(ink!=='.')dot(col-6,y,rosellaColors[parseInt(ink,16)])}));
+  rows.forEach((row,y)=>[...row].forEach((ink,col)=>{if(ink!=='.')dot(col-6,y,elaraColors[parseInt(ink,16)])}));
 
  }
 }

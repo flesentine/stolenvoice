@@ -92,7 +92,7 @@ function queueRoomObjects(){
    const context=sprite.getContext('2d'),image=pictureCache[object.art].getContext('2d').getImageData(0,0,160,168),coverage=new Uint8Array(160*168);
    for(const [left,top,length]of object.mask)coverage.fill(1,top*160+left,top*160+left+length);
    for(let n=0;n<coverage.length;n++)if(!coverage[n])image.data[n*4+3]=0;
-   if(object.ink)for(const [n,color]of object.ink){const rgb=rosellaColors[color].slice(1);image.data[n*4]=parseInt(rgb.slice(0,2),16);image.data[n*4+1]=parseInt(rgb.slice(2,4),16);image.data[n*4+2]=parseInt(rgb.slice(4,6),16);image.data[n*4+3]=255}
+   if(object.ink)for(const [n,color]of object.ink){const rgb=elaraColors[color].slice(1);image.data[n*4]=parseInt(rgb.slice(0,2),16);image.data[n*4+1]=parseInt(rgb.slice(2,4),16);image.data[n*4+2]=parseInt(rgb.slice(4,6),16);image.data[n*4+3]=255}
    context.putImageData(image,0,0);roomPropCache[key]=sprite;
   }
   // The loose-plank fall goes off the near edge: timber must not erase her

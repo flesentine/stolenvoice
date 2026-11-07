@@ -1,4 +1,4 @@
-// The title uses Sierra's bitmap font over a native 160x168 PIC.
+// The title uses the original Alder Pixel font over a native 160x168 PIC.
 let titleMusicStarted=false;
 let titleFrame=0,titleTimer=0,titleArt=null;
 const openingBreathPath=[[39,86],[48,83],[58,79],[68,80],[78,84],[88,85],[98,82],[108,80]];
@@ -46,10 +46,10 @@ function paintOpening(){
  ctx.fillStyle='#000000';ctx.fillRect(0,0,320,200);
  if(!titleArt)titleArt=decodePicture(openingPicture);ctx.drawImage(titleArt,0,20,320,168);
  paintOpeningClouds(ctx);
- blitText(ctx,'ROSELLA',(320-7*8)/2,1,'#ffff55');blitText(ctx,'AND THE STOLEN VOICE',(320-20*8)/2,10,'#ffffff');
+ blitText(ctx,'ELARA',(320-5*8)/2,1,'#ffff55');blitText(ctx,'AND THE STOLEN VOICE',(320-20*8)/2,10,'#ffffff');
  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)paintOpeningVoice(ctx);
  const prompt=titleMusicStarted?'PRESS ENTER TO BEGIN':'PRESS ENTER FOR MUSIC';
  blitText(ctx,prompt,(320-prompt.length*8)/2,192,'#ffffff');
- const button=document.querySelector('#start');button.setAttribute('aria-label',titleMusicStarted?'Begin Rosella and the Stolen Voice':'Play opening music');button.style.width='100%';button.style.maxWidth='100%';bitmap.style.width='100%';bitmap.style.height='100%';button.style.height='100%';
+ const button=document.querySelector('#start');button.setAttribute('aria-label',titleMusicStarted?'Begin Elara and the Stolen Voice':'Play opening music');button.style.width='100%';button.style.maxWidth='100%';bitmap.style.width='100%';bitmap.style.height='100%';button.style.height='100%';
 }
 function startOpening(){paintOpening();if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)titleTimer=setInterval(()=>{if(!document.querySelector('#intro')){clearInterval(titleTimer);titleTimer=0;return}if(!document.hidden){titleFrame++;paintOpening()}},1000*60/72/3)}

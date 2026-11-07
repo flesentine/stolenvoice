@@ -3,14 +3,14 @@
 const fs=require('fs'),os=require('os'),path=require('path'),cp=require('child_process');
 const root=path.resolve(__dirname,'..');
 const suites=[
- 'standalone-build',
+ 'standalone-build','original-branding','save-files','playtest-recording',
  'mobile-controls',
  'mobile-autocomplete',
  'mobile-key-hit-test',
  'sound-playback',
  'royal-raspberry',
  'grotto-music',
- 'rosella-dance',
+ 'elara-dance',
  'mirror-curtsy',
  'bridge-fall-direction',
  'bridge-fall-priority',

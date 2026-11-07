@@ -41,7 +41,7 @@ function worldLifePixels(){
  return pixels;
 }
 function drawWorldLife(){
- for(const pixel of worldLifePixels()){x.fillStyle=rosellaColors[pixel.color];x.fillRect(pixel.x,pixel.y,1,1)}
+ for(const pixel of worldLifePixels()){x.fillStyle=elaraColors[pixel.color];x.fillRect(pixel.x,pixel.y,1,1)}
 }
 function tickWorldLife(){
  syncGrottoMusic();

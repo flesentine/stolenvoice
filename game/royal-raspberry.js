@@ -2,17 +2,17 @@ let royalRaspberryComment=0;
 const royalRaspberryComments=['"Wrong end," she whispers.','"That was meant to be a curtsy."','"A royal fanfare. In the wrong key."','"A passing dragon. Very far away."'];
 // Optional parser joke; no inventory, puzzle flags, score or movement changes.
 function handleRoyalRaspberry(){
- if(swimState.active){say('A few suspicious bubbles rise to the surface. Rosella looks innocent.');return true}
+ if(swimState.active){say('A few suspicious bubbles rise to the surface. Elara looks innocent.');return true}
  const nearby=(id,range=60)=>{const p=hotspots[room][id];return p&&Math.hypot(player.x-p[0],player.y-p[1])<=range};
  const audience=room===0&&nearby('man')?'merrin':room===3&&nearby('wax',120)?'bees':room===6?'cave':room===7?'belfry':'';
  const replies={
   merrin:flags.voiceArrivalSeen?'Merrin pinches his nose. "Your Highness! The roses prefer their fertilizer applied to the soil."':'Merrin pinches his nose. A tiny, indignant "ding-ding!" escapes him. You decide not to ask for a translation.',
   bees:'The bees scatter in eight different directions. Apparently, that is not how one announces a new flower.',
-  belfry:'The great bell sways overhead. Rosella glances up. "I shall blame the wind."',
+  belfry:'The great bell sways overhead. Elara glances up. "I shall blame the wind."',
   cave:'The grotto sends it booming back. Then again. And again. For once, you wish the cave were less musical.'
  };
  const comment=royalRaspberryComments[royalRaspberryComment];royalRaspberryComment=(royalRaspberryComment+1)%royalRaspberryComments.length;
- const message='Rosella claps a hand over her mouth.\n\n'+comment+'\n\n'+(replies[audience]||'Royal dignity drifts away on the breeze.');
+ const message='Elara claps a hand over her mouth.\n\n'+comment+'\n\n'+(replies[audience]||'Royal dignity drifts away on the breeze.');
  const frenzy=audience==='bees'?Array.from({length:8},()=>({phase:Math.random()*Math.PI*2,speed:.55+Math.random()*.6,wide:19+Math.random()*13,high:10+Math.random()*9})):null;
  const direction=player.facing==='left'?-1:1;
  const raspberryOrigin={x:pictureX(player.x)-direction*5,y:pictureY(player.y)-18};
@@ -30,7 +30,7 @@ function royalRaspberryPixels(frame,reflected=false){
    dot(cx+dx,cy+dy,(dx+dy+n)%3===0?10:7);
   }
  }
- const reaction=f>=18,rows=rosellaWalkSprites[reaction?(reflected?'back':'front'):direction>0?'right':'left'][1];
+ const reaction=f>=18,rows=elaraWalkSprites[reaction?(reflected?'back':'front'):direction>0?'right':'left'][1];
  for(let yy=0;yy<40;yy++)for(let xx=0;xx<8;xx++){
   const ink=rows[yy][xx];if(ink==='.'||reaction&&yy>=14&&yy<=23&&xx>=6&&ink==='c')continue;
   dot(xx-4,yy,parseInt(ink,16));
@@ -46,7 +46,7 @@ function drawRoyalRaspberry(px,py){
  const cx=pictureX(px),top=pictureY(py)-39;
  for(const [dx,y,ink]of royalRaspberryPixels(storyAction.frame)){
   const xx=cx+dx,yy=top+y;if(xx<0||xx>=160||yy<0||yy>=168)continue;
-  x.fillStyle=rosellaColors[ink];x.fillRect(xx,yy,1,1);
+  x.fillStyle=elaraColors[ink];x.fillRect(xx,yy,1,1);
  }
  return true;
 }
@@ -56,7 +56,7 @@ function drawRoyalRaspberryMirror(pose,glass){
  for(let yy=pose.top;yy<pose.top+pose.height;yy++)for(let xx=left;xx<right;xx++){
   if(!insidePolygon(xx,yy,glass))continue;
   const sx=Math.floor((xx-pose.left)/scale)-4,sy=Math.floor((yy-pose.top)*40/pose.height),ink=pixels.get(sx+','+sy);
-  if(ink===undefined)continue;x.fillStyle=rosellaColors[ink===15?7:ink===9?1:ink];x.fillRect(xx,yy,1,1);
+  if(ink===undefined)continue;x.fillStyle=elaraColors[ink===15?7:ink===9?1:ink];x.fillRect(xx,yy,1,1);
  }
 }
 

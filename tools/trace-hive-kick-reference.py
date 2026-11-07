@@ -8,7 +8,7 @@ import numpy as np
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 im=Image.open(ROOT/'assets/references/hive-kick/v2/candidate-3.png').convert('RGB')
-original=json.loads(subprocess.check_output(['node','-e',"process.stdout.write(JSON.stringify(require('./tools/build-rosella-stable-face.cjs')().right[1]))"],cwd=ROOT))
+original=json.loads(subprocess.check_output(['node','-e',"process.stdout.write(JSON.stringify(require('./tools/build-elara-stable-face.cjs')().right[1]))"],cwd=ROOT))
 # Exact EGA inks. Magenta is solely background and is never shipped as ink.
 palette=np.array([[0,0,170],[85,85,255],[255,85,85],[170,85,0],[255,255,255],[255,255,85],[255,0,255]],dtype=int)
 inks=[1,9,12,6,15,14,-1]
@@ -32,7 +32,7 @@ for i in range(6):
    if not area.size:continue
    counts=np.bincount(area.ravel(),minlength=7);valid=counts[:6]
    if valid.sum()<area.size*.38:continue
-   out[x,y]=inks[int(valid.argmax())]
+   out[x,y]={14:6}.get(inks[int(valid.argmax())],inks[int(valid.argmax())])
  # Restore original identity AND torso/arms, down to the hip. Retain generated
  # contours only below the waist, avoiding a disconnected head/body composite.
  out={p:c for p,c in out.items() if p[1]>=-19}

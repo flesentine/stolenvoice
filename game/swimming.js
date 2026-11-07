@@ -121,8 +121,8 @@ function drawBridgeFallHero(){
  const px=fall.bank.x+(fall.landing.x-fall.bank.x)*ease;
  const py=fall.bank.y+(fall.landing.y-fall.bank.y)*ease;
  const waterline=pictureY(fall.landing.y);
- const facing=rosellaWalkSprites[fall.bank.facing]?fall.bank.facing:'front';
- const rows=rosellaWalkSprites[facing][1];
+ const facing=elaraWalkSprites[fall.bank.facing]?fall.bank.facing:'front';
+ const rows=elaraWalkSprites[facing][1];
  const direction=Math.sign(fall.landing.x-fall.bank.x)||(facing==='left'?-1:1);
  const reel=frame<5?0:frame<10?Math.sin((frame-4)*Math.PI/6)*.12:.12+t*.34;
  const angle=direction*reel,cos=Math.cos(angle),sin=Math.sin(angle);
@@ -132,7 +132,7 @@ function drawBridgeFallHero(){
   const dx=(col-3.5)*2,dy=row-39;
   const xx=center+Math.round((dx*cos-dy*sin)/2),yy=feet+Math.round(dx*sin+dy*cos);
   if(yy>=waterline&&frame>=14)return;
-  x.fillStyle=rosellaColors[ink];x.fillRect(xx,yy,1,1);
+  x.fillStyle=elaraColors[ink];x.fillRect(xx,yy,1,1);
  };
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
@@ -248,7 +248,7 @@ function slideSwimming(dx,dy){
 function drown(){
  swimState.remaining=0;swimState.active=false;swimState.dead=true;
  if(swimTimer){clearInterval(swimTimer);swimTimer=0}stopWalking();playing=false;draw();
- say('The current pulls Rosella under. Her struggle is over.\n\nYou have drowned.\n\nENTER: retry from the bank.\nF7: restore a saved game.\nR: restart.');
+ say('The current pulls Elara under. Her struggle is over.\n\nYou have drowned.\n\nENTER: retry from the bank.\nF7: restore a saved game.\nR: restart.');
 }
 function retryAfterDrowning(){
  const bank=swimState.bank||{x:28,y:202,step:1,facing:'front'};resetSwimming();stopWalking();
@@ -279,15 +279,15 @@ function swimmingCommand(text){
  if(direction){swimState.route=null;toggleWalk(direction);return true}
  say('You paddle in place, trying to keep your head above the water.');return true;
 }
-// Reuse Rosella's exact walking head, without a replacement character design.
+// Reuse Elara's exact walking head, without a replacement character design.
 function drawSwimming(px,py){
  const left=pictureX(px)-4,waterline=pictureY(py),frame=swimState.frame;
  if(!swimState.dead){
-  const facing=rosellaWalkSprites[player.facing]?player.facing:'front';
-  const cel=rosellaWalkSprites[facing][0];
+  const facing=elaraWalkSprites[player.facing]?player.facing:'front';
+  const cel=elaraWalkSprites[facing][0];
   for(let row=0;row<14;row++)for(let col=0;col<8;col++){
    const ch=cel[row][col];if(ch==='.')continue;
-   x.fillStyle=rosellaColors[parseInt(ch,16)];x.fillRect(left+col,waterline-14+row,1,1);
+   x.fillStyle=elaraColors[parseInt(ch,16)];x.fillRect(left+col,waterline-14+row,1,1);
   }
  }
  const ripple=(start,y,length,color)=>{x.fillStyle=color;for(let xx=start;xx<start+length;xx++)if(isBridgeWater(xx*2,y/0.7)&&!isBridgeDeck(xx*2,y/0.7)&&!bridgeWoodAt(xx*2,y/0.7)&&!objectFootprintAt(xx*2,y/0.7,4))x.fillRect(xx,y,1,1)};

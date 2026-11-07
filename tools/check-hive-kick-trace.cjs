@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let harness=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-harness=harness.replace('globalThis.game={command,','globalThis.game={place(px){room=3;player={x:px,y:212,step:1,facing:"front"}},get disaster(){return hiveDisaster},get head(){return rosellaWalkSprites.right[1]},get cels(){return hiveKickCels},get hiveMask(){return orchardHiveMask},setFrame(f){storyAction.frame=f},drawHiveKickHero,drawHiveKickObject,tickStoryEffect,get walks(){return rosellaWalkSprites},command,');
+harness=harness.replace('globalThis.game={command,','globalThis.game={place(px){room=3;player={x:px,y:212,step:1,facing:"front"}},get disaster(){return hiveDisaster},get head(){return elaraWalkSprites.right[1]},get cels(){return hiveKickCels},get hiveMask(){return orchardHiveMask},setFrame(f){storyAction.frame=f},drawHiveKickHero,drawHiveKickObject,tickStoryEffect,get walks(){return elaraWalkSprites},command,');
 const scope={require,console,Buffer,__dirname};vm.createContext(scope);vm.runInContext(harness+';globalThis.qa={boot};',scope);
 const colors=['#000000','#0000aa','#00aa00','#00aaaa','#aa0000','#aa00aa','#aa5500','#aaaaaa','#555555','#5555ff','#55ff55','#55ffff','#ff5555','#ff55ff','#ffff55','#ffffff'];
 const paintings=[],walkingPaintings=[];

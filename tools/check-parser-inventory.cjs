@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),path=require('path');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const Window=require('../game/inventory-window.js'),Message=require('../game/agi-message-window.js'),font=fs.readFileSync(path.join(root,'assets/fonts/sierra-agi-8x8.bin')),pictures=vm.runInNewContext(read('game/inventory-pictures.js')+';inventoryPictures');
+const Window=require('../game/inventory-window.js'),Message=require('../game/agi-message-window.js'),font=fs.readFileSync(path.join(root,'assets/fonts/alder-pixel-8x8.bin')),pictures=vm.runInNewContext(read('game/inventory-pictures.js')+';inventoryPictures');
 for(const name of Object.keys(pictures)){
  const card=Window.renderDescription(name,'A curious object worth a closer look.',font,pictures,Message);
  assert.equal(card.width,280);assert(card.top>=0&&card.top+card.height<=200);

@@ -21,12 +21,12 @@ function settleBarrelPrank(){
 }
 function drawBarrelEmergence(frame){
  // Preserve the approved head rise and shake between the traced keys.
- const hy=Math.max(111,128-(frame-58)*3),shake=frame>=66?Math.round(Math.sin(frame*1.8)*2):0,rows=rosellaWalkSprites.front[1];
+ const hy=Math.max(111,128-(frame-58)*3),shake=frame>=66?Math.round(Math.sin(frame*1.8)*2):0,rows=elaraWalkSprites.front[1];
  for(let r=0;r<24;r++)for(let c=0;c<8;c++){
   let ink=rows[r][c];if(ink==='.')continue;
   if([[1,4],[5,7],[3,12],[1,19],[5,22]].some(([xx,yy])=>c>=xx&&c<=xx+1&&r>=yy&&r<=yy+1))ink='6';
   const xx=134+c+(r<13?shake:0),yy=hy-24+r;
-  if(yy<=102){x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(xx,yy,1,1)}
+  if(yy<=102){x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(xx,yy,1,1)}
  }
  if(frame>=66&&frame%2===0)for(let n=0;n<3;n++){x.fillStyle='#aa5500';x.fillRect(130+n*7+(frame%3),88+(n*3+frame)%12,1,1)}
 }
@@ -43,7 +43,7 @@ function drawBarrelPrank(){
  let dx=0,dy=0;
  // Approach the barrel with intact cels; the final pose stays at cleanup.
  if(f<10){const t=1-f/10,base=barrelPrankCels[0];dx=Math.round((pictureX(player.x)-base.anchorX)*t);dy=Math.round((pictureY(player.y)-base.floor)*t)}
- for(const [left,top,width,ink]of barrelPrankCel(f).runs){x.fillStyle=rosellaColors[ink];x.fillRect(left+dx,top+dy,width,1)}
+ for(const [left,top,width,ink]of barrelPrankCel(f).runs){x.fillStyle=elaraColors[ink];x.fillRect(left+dx,top+dy,width,1)}
 }
 
 function barrelShape(points,fill,edge){

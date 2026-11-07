@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-const legacy=fs.readFileSync('backups/barrel-prank-before-native-trace-2026-10-31.js','utf8');
+const legacy=fs.readFileSync('backups/barrel-prank-before-native-trace-2026-10-31.js','utf8').replace(/rosella/g,'elara').replace(/Rosella/g,'Elara');
 h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=>{if(!soundEnabled)return;heard.push(args);stopGameSound();effectSource={stop(){this.stopped=true},disconnect(){}}};const legacyBarrelDraw=(()=>{'+legacy+';return drawBarrelPrank})();globalThis.game={get heard(){return heard},get audio(){return effectSource},get soundName(){return storyScoreName()},mute(value){soundEnabled=!value;if(value)stopGameSound()},legacyBarrelDraw,tickStoryEffect,beginSwimming,drawBarrelPrank,barrelPrankCel,drawBarrelEmergence,get action(){return storyAction},setFrame(f){storyAction.frame=f},reduced(){window.matchMedia=()=>({matches:true})},place(r=2,x=276,y=193){room=r;player={x,y,step:1,facing:"back"}},command,');
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot};',s);
 function drain(a){let n=0;while(a.game.state.popupOpen&&n++<30)a.game.closeMessage();assert(n<30)}

@@ -1,13 +1,15 @@
-"""Build a local TrueType wrapper and bitmap table from ScummVM's Sierra 8x8 data."""
+"""Build Alder Pixel from the game's original eight-pixel glyph cells."""
 from pathlib import Path
 import re,struct,json,base64
 root=Path(__file__).resolve().parent.parent
-source=(root/'assets/fonts/scummvm-agi-font-source.h').read_text()
-body=source.split('fontData_Sierra[] = {',1)[1].split('};',1)[0]
-body=re.sub(r'//[^\n]*','',body)
-bits=bytes(int(x,16) for x in re.findall(r'0x([0-9a-fA-F]{2})',body))
-if len(bits)!=2048: raise ValueError('Expected 256 eight-row glyphs')
-(root/'assets/fonts/sierra-agi-8x8.bin').write_bytes(bits)
+glyphs=json.loads((root/'assets/fonts/alder-pixel-glyphs.json').read_text())
+buffer=bytearray(2048)
+for char,rows in glyphs.items():
+ if len(char)!=1 or ord(char)>255 or len(rows)!=8 or any(not re.fullmatch('[01]{8}',r) for r in rows): raise ValueError('Invalid 8x8 glyph: '+repr(char))
+ for row,pattern in enumerate(rows): buffer[ord(char)*8+row]=int(pattern,2)
+for code,char in [(24,'^'),(25,'v'),(26,'>'),(27,'<')]: buffer[code*8:code*8+8]=buffer[ord(char)*8:ord(char)*8+8]
+bits=bytes(buffer)
+(root/'assets/fonts/alder-pixel-8x8.bin').write_bytes(bits)
 pack=struct.pack
 pad=lambda b:b+b'\0'*((-len(b))%4)
 glyphs=[b''];maxpoints=maxcontours=0
@@ -46,12 +48,12 @@ sub+=pack('>'+str(count)+'H',*(u for u,g in items))+pack('>H',0)
 sub+=pack('>'+str(count)+'H',*(u for u,g in items))
 sub+=pack('>'+str(count)+'H',*((g-u)&65535 for u,g in items))+bytes(count*2)
 cmap=pack('>HHHHI',0,1,3,1,12)+sub
-names={0:'Bitmap glyphs from ScummVM Sierra AGI font data; GPL-2.0-or-later.',1:'Sierra AGI',2:'Regular',3:'StarBell-SierraAGI-1',4:'Sierra AGI',5:'Version 1.0',6:'SierraAGI'}
+names={0:'Original Alder Pixel bitmap glyphs, authored for this game.',1:'Alder Pixel',2:'Regular',3:'AlderPixel-1',4:'Alder Pixel',5:'Version 1.1',6:'AlderPixel'}
 records=b'';strings=b''
 for identifier,value in names.items():
  b=value.encode('utf-16-be');records+=pack('>6H',3,1,0x409,identifier,len(b),len(strings));strings+=b
 name=pack('>3H',0,len(names),6+12*len(names))+records+strings
-os2=bytearray(78);struct.pack_into('>HhHH',os2,0,0,1024,400,5);os2[58:62]=b'SIEA';struct.pack_into('>HHHhhhHH',os2,62,64,32,65535,896,-128,0,896,128);struct.pack_into('>I',os2,42,1)
+os2=bytearray(78);struct.pack_into('>HhHH',os2,0,0,1024,400,5);os2[58:62]=b'ALDR';struct.pack_into('>HHHhhhHH',os2,62,64,32,65535,896,-128,0,896,128);struct.pack_into('>I',os2,42,1)
 tables={'OS/2':bytes(os2),'cmap':cmap,'glyf':glyf,'head':bytes(head),'hhea':bytes(hhea),'hmtx':pack('>Hh',1024,0)*len(glyphs),'loca':pack('>'+str(len(offsets))+'I',*offsets),'maxp':pack('>I14H',0x10000,len(glyphs),maxpoints,maxcontours,0,0,1,0,0,0,0,0,0,0,0),'name':name,'post':pack('>I',0x30000)+bytes(28)}
 checksum=lambda b:sum(struct.unpack('>'+str(len(pad(b))//4)+'I',pad(b)))&0xffffffff
 num=len(tables);power=2**(num.bit_length()-1)
@@ -62,6 +64,6 @@ for tag,data in sorted(tables.items()):
  if tag=='head':headpos=offset
  directory+=tag.encode()+pack('>3I',checksum(data),offset,len(data));payload+=pad(data)
 font=bytearray(header+directory+payload);struct.pack_into('>I',font,headpos+8,(0xb1b0afba-checksum(font))&0xffffffff)
-(root/'assets/fonts/sierra-agi.ttf').write_bytes(font)
-(root/'assets/fonts/sierra-agi-data.json').write_text(json.dumps({'source':'ScummVM a709596b48 engines/agi/font.h, fontData_Sierra','bytes':list(bits)}))
-print('Built Sierra AGI font: 256 bitmap glyphs and local TrueType wrapper.')
+(root/'assets/fonts/alder-pixel.ttf').write_bytes(font)
+(root/'assets/fonts/alder-pixel-data.json').write_text(json.dumps({'source':'Original hand-authored Alder Pixel glyphs','bytes':list(bits)}))
+print('Built Alder Pixel font: 256 bitmap glyphs and local TrueType wrapper.')

@@ -24,7 +24,7 @@ The Room selector opens the gallery, courtyard, shed, orchard, bridge, mill, gro
 
 ## Character scale guide
 
-Toggle **Rosella scale (40 px)** to show her actual 8×40 native walking cel over the drawing. Set Foot X / Y, or Alt-click the canvas to move her feet. This is a drawing ruler only; it is not exported into PNGs or painting commands.
+Toggle **Elara scale (40 px)** to show her actual 8×40 native walking cel over the drawing. Set Foot X / Y, or Alt-click the canvas to move her feet. This is a drawing ruler only; it is not exported into PNGs or painting commands.
 
 The shed project uses a 40-pixel person against a work surface at y108 and bench feet at y129: 21 pixels of furniture height, rather than the previous oversized bench. Its removable tools, shelf, boards and barrel share that scale. Collision and interaction points were moved with the furniture.
 
@@ -53,7 +53,7 @@ To apply a downloaded project to its room:
 
 Native effects and furniture depth overlays are in `../game/gallery-room.js`; interaction and collision coordinates are in `../assets/stolen-voice-map.json`. Moving major objects to new places requires updating those game coordinates too.
 
-This is a browser drawing editor with AGI constraints. JSON exports are its own editable command format, not compiled Sierra PIC resources.
+This is a browser drawing editor with AGI constraints. JSON exports are its own editable command format, not compiled interpreter picture resources.
 
 ## Current review status
 

@@ -22,7 +22,7 @@ function paintGalleryFlare(wick,height,index,frame){
   for(let dx=-half;dx<=half;dx++){
    const xx=wick[0]+sway+dx,yy=wick[1]-height+row;if(xx<0||xx>=160||yy<0||yy>=168)continue;
    // Orange rim, bright yellow body and a tiny white-hot core at the base.
-   x.fillStyle=rosellaColors[row>height-4&&dx===0?15:Math.abs(dx)===half&&half||row<2?6:14];x.fillRect(xx,yy,1,1);
+   x.fillStyle=elaraColors[row>height-4&&dx===0?15:Math.abs(dx)===half&&half||row<2?6:14];x.fillRect(xx,yy,1,1);
   }
  }
 }
@@ -39,6 +39,6 @@ function galleryCandleLight(){
   const {wick}=galleryCandlePatches[i];
   const flare=galleryRaspberryFlare(fartFrame,wick,action?.raspberryOrigin);
   if(flare){paintGalleryFlare(wick,flare,i,fartFrame);continue;}
-  [...candleFlameCels[state.phase]].forEach((ink,yy)=>{if(ink==='.')return;x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(wick[0],wick[1]+yy-5,1,1)});
+  [...candleFlameCels[state.phase]].forEach((ink,yy)=>{if(ink==='.')return;x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(wick[0],wick[1]+yy-5,1,1)});
  }
 }

@@ -1,0 +1,8 @@
+.save-file-dialog{box-sizing:border-box;width:min(480px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow-y:auto;margin:auto;padding:16px;background:#fff;color:#000;border:3px double #a00;border-radius:0;font:14px/1.5 'Alder Pixel',monospace;overscroll-behavior:contain}
+.save-file-dialog::backdrop{background:rgba(0,0,0,.85)}
+.save-file-dialog h2{margin:0 0 12px;font:inherit;color:#a00}
+.save-file-dialog p{margin:0 0 12px;font:inherit}
+.save-file-dialog button{box-sizing:border-box;display:block;width:100%;min-height:44px;margin:6px 0 0;padding:8px;background:#fff;color:#000;border:1px solid #000;border-radius:0;font:inherit;touch-action:manipulation}
+.save-file-dialog button:focus-visible,.save-file-dialog button:active{background:#000;color:#fff;outline:2px solid #a00;outline-offset:2px}
+.save-file-cancel{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;min-height:44px;max-width:calc(100vw - 24px);padding:8px 16px;background:#fff;color:#000;border:2px solid #a00;border-radius:0;font:14px 'Alder Pixel',monospace;touch-action:manipulation}
+.save-file-cancel:focus-visible{outline:2px solid #fff;outline-offset:2px}

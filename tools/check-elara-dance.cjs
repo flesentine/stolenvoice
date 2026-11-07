@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-h=h.replace('globalThis.game={command,','const heard=[];let stopped=0;playGameSound=(...args)=>{if(soundEnabled){heard.push(args);effectSource={}}};stopGameSound=()=>{stopped++;effectSource=null};globalThis.game={face(value){player.facing=value},setMenu(value){menuOpen=value},setMuted(value){soundEnabled=!value;if(value)stopGameSound()},get heard(){return heard},get stopped(){return stopped},foreignSound(){effectSource={}},rosellaDanceSprite,rosellaDanceChoreography,drawRosellaDance,drawWorkshopMice,workshopMousePoses,workshopRatRoutes,workshopRatPixelVisible,workshopMouseSprite,insidePolygon,drawMirrorReflection,tickStoryEffect,get action(){return storyAction&&{...storyAction}},setFrame(n){storyAction.frame=n},reduced(){window.matchMedia=()=>({matches:true})},place(r,x,y){soundEnabled=true;room=r;player={x,y,step:1,facing:"front"}},colors:rosellaColors,command,');
+h=h.replace('globalThis.game={command,','const heard=[];let stopped=0;playGameSound=(...args)=>{if(soundEnabled){heard.push(args);effectSource={}}};stopGameSound=()=>{stopped++;effectSource=null};globalThis.game={face(value){player.facing=value},setMenu(value){menuOpen=value},setMuted(value){soundEnabled=!value;if(value)stopGameSound()},get heard(){return heard},get stopped(){return stopped},foreignSound(){effectSource={}},elaraDanceSprite,elaraDanceChoreography,drawElaraDance,drawWorkshopMice,workshopMousePoses,workshopRatRoutes,workshopRatPixelVisible,workshopMouseSprite,insidePolygon,drawMirrorReflection,tickStoryEffect,get action(){return storyAction&&{...storyAction}},setFrame(n){storyAction.frame=n},reduced(){window.matchMedia=()=>({matches:true})},place(r,x,y){soundEnabled=true;room=r;player={x,y,step:1,facing:"front"}},colors:elaraColors,command,');
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.bootQA=boot;',s);
 function drain(a){while(a.game.state.popupOpen)a.game.closeMessage()}
 function at(r=0,x=85,y=185){const a=s.bootQA();a.start();drain(a);a.game.place(r,x,y);return a}
@@ -9,18 +9,18 @@ for(const [r,command]of [[0,'dance with Merrin'],[1,'dance for mirror'],[3,'danc
  assert.equal(a.game.action.kind,'courtDance');assert.equal(a.game.action.total,48);assert(!a.game.state.popupOpen,'response waits until dancing finishes');
  assert(a.game.heard.some(call=>call[0]==='courtDance'),'dance starts its score');
  const first=a.game.action.frame;a.doc.hidden=true;a.game.tickStoryEffect();assert.equal(a.game.action.frame,first);assert(a.game.stopped>0,'hidden dance pauses owned music');a.doc.hidden=false;
- const frames=[];for(let n=0;n<48;n++){a.game.setFrame(n);const rows=a.game.rosellaDanceSprite(n);frames.push(Array.from(rows));assert.equal(rows.length,40);assert(rows.every(row=>row.length===14&&/^[.0-9a-f]+$/.test(row)));}
+ const frames=[];for(let n=0;n<48;n++){a.game.setFrame(n);const rows=a.game.elaraDanceSprite(n);frames.push(Array.from(rows));assert.equal(rows.length,40);assert(rows.every(row=>row.length===14&&/^[.0-9a-f]+$/.test(row)));}
  assert(new Set(frames.map(rows=>rows.slice(14,25).map(row=>row.replace(/[^c]/g,".")).join(""))).size>=6,'hands change pose through the turn');
  assert(new Set(frames.map(JSON.stringify)).size>=8,'visibly different turn and step cels');assert.deepEqual(frames[0],frames[47],'returns to starting pose');
  a.game.setFrame(0);for(let n=0;n<48;n++)a.game.tickStoryEffect();assert(!a.game.action);assert(a.game.state.popupOpen);assert.deepEqual(a.game.state.player,before.player);assert.equal(a.game.state.score,before.score);assert.deepEqual(a.game.state.inv,before.inv);
  if(r!==0)assert.deepEqual(a.game.state.flags,before.flags);
- if(r===0)fs.writeFileSync('assets/reviews/rosella-dance-frames.json',JSON.stringify({frames,colors:Array.from(a.game.colors)}));
+ if(r===0)fs.writeFileSync('assets/reviews/elara-dance-frames.json',JSON.stringify({frames,colors:Array.from(a.game.colors)}));
 }
 // Turning the arm away must reveal cloth, not transparent torso pixels.
 const body=at(),turn=['front','left','back','right'];
 const centerOf=(row,inks)=>{const columns=[...row].map((ink,col)=>inks.includes(ink)?col:-1).filter(col=>col>=0);assert(columns.length,'visible anatomy row');return(columns[0]+columns.at(-1))/2};
 for(const origin of turn)for(const reflected of [false,true])for(let n=25;n<43;n++){
- body.game.face(origin);const rows=body.game.rosellaDanceSprite(n,reflected),waist=centerOf(rows[23],'19');
+ body.game.face(origin);const rows=body.game.elaraDanceSprite(n,reflected),waist=centerOf(rows[23],'19');
  assert(Math.abs(centerOf(rows[36],'c')-waist)<=.5,'twirl legs centered under waist '+origin+'/'+reflected+'/'+n);
  assert(Math.abs(centerOf(rows[38],'6')-waist)<=.5,'twirl boots follow body '+origin+'/'+reflected+'/'+n);
 }
@@ -30,16 +30,16 @@ for(const origin of turn)for(const reflected of [false,true])for(let n=0;n<48;n+
  let facing=turn[(turn.indexOf(origin)+rotation)%4];
  if(reflected)facing={front:'back',back:'front',left:'left',right:'right'}[facing];
  if(!['left','right'].includes(facing))continue;
- const rows=body.game.rosellaDanceSprite(n,reflected),sway=Math.round(Math.sin(frame*Math.PI/8)),left=(facing==='left'?3:2)+3+sway;
+ const rows=body.game.elaraDanceSprite(n,reflected),sway=Math.round(Math.sin(frame*Math.PI/8)),left=(facing==='left'?3:2)+3+sway;
  for(let y=14;y<=24;y++)for(let x=left;x<left+3;x++)assert.notEqual(rows[y][x],'.','solid profile torso '+origin+'/'+reflected+'/'+n+' at '+x+','+y);
 }
 body.game.face('front');
-const spinning=body.game.rosellaDanceSprite(33),settled=body.game.rosellaDanceSprite(47);
+const spinning=body.game.elaraDanceSprite(33),settled=body.game.elaraDanceSprite(47);
 assert(spinning[27].includes('c')&&spinning[36].includes('c'),'twirl raises hem to show knees and calves');
 assert(!spinning[26].includes('c'),'spinning skirt covers upper legs');
 assert(spinning[26].replace(/\./g,'').length>=12,'skirt fans out during spin');
 assert(!settled[30].includes('c'),'hem settles after twirl');
-for(let n=24;n<44;n++)assert(/[06]/.test(body.game.rosellaDanceSprite(n)[39]),'pivot feet stay grounded throughout twirl');
+for(let n=24;n<44;n++)assert(/[06]/.test(body.game.elaraDanceSprite(n)[39]),'pivot feet stay grounded throughout twirl');
 const mirror=at(1,144,190);mirror.game.command('dance for mirror');const ctx=mirror.get('canvas').getContext('2d'),pixels=[];ctx.fillRect=(x,y)=>pixels.push([x,y]);
 for(let n=0;n<48;n++){mirror.game.setFrame(n);mirror.game.drawMirrorReflection()}
 assert(pixels.length>0);const polygon=[[63,48],[72,38],[82,48],[82,101],[63,101]];
@@ -65,12 +65,12 @@ const mouseContext=workshop.get('canvas').getContext('2d'),mouseFrames=[],heroFr
 for(let frame=0;frame<224;frame++){
  workshop.game.setFrame(frame);poses.push(workshop.game.workshopMousePoses(frame));
  const dots=[];mouseContext.fillRect=function(x,y,w,h){assert(Number.isInteger(x)&&Number.isInteger(y));dots.push([x,y,w,h,this.fillStyle])};
- workshop.game.drawWorkshopMice();const mousePixels=dots.length,ratDots=dots.slice();workshop.game.drawRosellaDance(160,212);const heroPixels=new Set(dots.slice(mousePixels).filter(d=>d[4]!=='#000000').map(d=>d[0]+','+d[1]));for(const dot of ratDots)assert(!heroPixels.has(dot[0]+','+dot[1]),'rat stays outside Rosella silhouette at '+frame);mouseFrames.push(dots);heroFrames.push(Array.from(workshop.game.rosellaDanceSprite(frame)));
+ workshop.game.drawWorkshopMice();const mousePixels=dots.length,ratDots=dots.slice();workshop.game.drawElaraDance(160,212);const heroPixels=new Set(dots.slice(mousePixels).filter(d=>d[4]!=='#000000').map(d=>d[0]+','+d[1]));for(const dot of ratDots)assert(!heroPixels.has(dot[0]+','+dot[1]),'rat stays outside Elara silhouette at '+frame);mouseFrames.push(dots);heroFrames.push(Array.from(workshop.game.elaraDanceSprite(frame)));
  if(frame<8||frame>=220)assert.equal(mousePixels,0,'guests stay hidden before entrance and after exit');
  else if(frame>=28&&frame<208)assert(mousePixels>0,'dancing mice emerge and remain visible');
 }
 assert.equal(poses[45].length,3);assert(poses[45].every(p=>p.x>=9&&p.x<=152&&p.y>=125&&p.y<=163));assert.notDeepEqual(poses[45],poses[48],'mice step to the beat');
-assert.deepEqual(heroFrames[0],heroFrames[223],'Rosella settles at original pose');assert.notDeepEqual(heroFrames[55],heroFrames[95],'Rosella keeps dancing beyond original 48 frames');
+assert.deepEqual(heroFrames[0],heroFrames[223],'Elara settles at original pose');assert.notDeepEqual(heroFrames[55],heroFrames[95],'Elara keeps dancing beyond original 48 frames');
 fs.writeFileSync('assets/reviews/workshop-mouse-dance.json',JSON.stringify(mouseFrames));
 workshop.game.setFrame(70);workshop.doc.hidden=true;workshop.game.tickStoryEffect();assert.equal(workshop.game.action.frame,70);workshop.doc.hidden=false;workshop.game.tickStoryEffect();assert.equal(workshop.game.heard.at(-1)[0],'workshopDance');assert.equal(workshop.game.heard.at(-1)[2],70*.09);
 workshop.game.setFrame(223);workshop.game.tickStoryEffect();assert(!workshop.game.action);assert.match(workshop.message.replace(/\s+/g,' '),/Three mice.*footwear/);
@@ -89,11 +89,11 @@ console.log('PASS compact mouse silhouettes, round ear/muzzle, dark eye and limi
 
 const synchronized=at(2,160,212);synchronized.game.command('dance');
 for(let f=8;f<220;f++){
- synchronized.game.setFrame(f);const dance=synchronized.game.rosellaDanceChoreography(f);
+ synchronized.game.setFrame(f);const dance=synchronized.game.elaraDanceChoreography(f);
  for(const mouse of synchronized.game.workshopMousePoses(f)){assert.equal(mouse.danceFacing,dance.facing);assert.equal(mouse.step,dance.step);assert.equal(mouse.active,dance.active);assert.equal(mouse.twirl,dance.twirl)}
 }
 for(const facing of ['front','back','left','right'])for(let beat=0;beat<6;beat++){const rows=workshop.game.workshopMouseSprite(beat,facing,true,beat%4);assert.equal(rows.length,11);assert(rows.every(r=>r.length===13));if(facing==='back')assert(!rows[3].includes('0'),'back-facing mice turn their faces away')}
-console.log('PASS mice share Rosella\'s exact facing, footwork, arm phrase and twirl timing through the full number.');
+console.log('PASS mice share Elara\'s exact facing, footwork, arm phrase and twirl timing through the full number.');
 
 // Confirm facing is not reversed again by the native painter after cel selection.
 for(const frame of [12,18,28,32,36,40,60,68,84]){

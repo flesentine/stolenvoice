@@ -6,25 +6,25 @@ function galleryInk(points,color){
   for(;;){x.fillRect(a,b,1,1);if(a===c&&b===d)break;const twice=error*2;if(twice>=dy){error+=dy;a+=sx}if(twice<=dx){error+=dx;b+=sy}}
  }
 }
-// Reflection uses the same walking cels as Rosella, viewed from the other side.
+// Reflection uses the same walking cels as Elara, viewed from the other side.
 function mirrorReflectionPose(){
  const distance=pictureY(player.y)-116;
  if(Math.abs(player.x-144)>94||distance< -6)return null;
  const facing={front:'back',back:'front',left:'left',right:'right'}[player.facing]||'front';
  const height=Math.max(28,Math.min(40,40-Math.round(Math.max(0,distance)*0.3))),width=Math.max(6,Math.round(height/5));
  const center=72+Math.round((pictureX(player.x)-72)*0.6),feet=99-Math.round(Math.max(0,distance)*0.45);
- return{facing,rows:rosellaWalkSprites[facing][player.step%4],left:center-Math.floor(width/2),top:feet-height,width,height};
+ return{facing,rows:elaraWalkSprites[facing][player.step%4],left:center-Math.floor(width/2),top:feet-height,width,height};
 }
 function drawMirrorReflection(){
  const pose=mirrorReflectionPose();if(!pose)return;
  const glass=[[63,48],[72,38],[82,48],[82,101],[63,101]];
  if(storyAction?.kind==='royalRaspberry'){drawRoyalRaspberryMirror(pose,glass);return;}
  if(['courtDance','mirrorCurtsy'].includes(storyAction?.kind)){
-  const rows=storyAction.kind==='mirrorCurtsy'?rosellaCurtsySprite(storyAction.frame,true):rosellaDanceSprite(storyAction.frame,true),width=Math.ceil(pose.width*14/8),left=pose.left-Math.round(pose.width*3/8);
+  const rows=storyAction.kind==='mirrorCurtsy'?elaraCurtsySprite(storyAction.frame,true):elaraDanceSprite(storyAction.frame,true),width=Math.ceil(pose.width*14/8),left=pose.left-Math.round(pose.width*3/8);
   for(let row=0;row<pose.height;row++)for(let col=0;col<width;col++){
    const ink=rows[Math.floor(row*40/pose.height)][Math.floor(col*8/pose.width)];
    const px=left+col,py=pose.top+row;if(!ink||ink==='.'||!insidePolygon(px,py,glass))continue;
-   const color=parseInt(ink,16);x.fillStyle=rosellaColors[color===15?7:color===9?1:color];x.fillRect(px,py,1,1);
+   const color=parseInt(ink,16);x.fillStyle=elaraColors[color===15?7:color===9?1:color];x.fillRect(px,py,1,1);
   }
   return;
  }
@@ -35,7 +35,7 @@ function drawMirrorReflection(){
   if(!insidePolygon(px,py,glass))continue;
   if(storyAction&&['voiceOffered','voiceReturned'].includes(storyAction.kind)&&sourceRow>=15&&sourceRow<=23&&sourceCol>=6&&['c','f'].includes(ink))continue;
   // Silver dulls the white blouse and deepens the blue, using only EGA colors.
-  const color=parseInt(ink,16);x.fillStyle=rosellaColors[color===15?7:color===9?1:color];x.fillRect(px,py,1,1);
+  const color=parseInt(ink,16);x.fillStyle=elaraColors[color===15?7:color===9?1:color];x.fillRect(px,py,1,1);
  }
 }
 function gallery(){

@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-h=h.replace('globalThis.game={command,','globalThis.game={tickStoryEffect,orchardHive,orchardDanceBeePoint,paintAudience(){sceneProps=[];orchardHive();sceneProps.sort((a,b)=>a.depth-b.depth).forEach(p=>p.paint());drawRosellaDance(player.x,player.y)},advanceScouts(){orchardBeeFrame++;moveOrchardScouts()},get action(){return storyAction},setFrame(f){storyAction.frame=f},place(r,x,y){room=r;player={x,y,step:1,facing:"front"}},command,');
+h=h.replace('globalThis.game={command,','globalThis.game={tickStoryEffect,orchardHive,orchardDanceBeePoint,paintAudience(){sceneProps=[];orchardHive();sceneProps.sort((a,b)=>a.depth-b.depth).forEach(p=>p.paint());drawElaraDance(player.x,player.y)},advanceScouts(){orchardBeeFrame++;moveOrchardScouts()},get action(){return storyAction},setFrame(f){storyAction.frame=f},place(r,x,y){room=r;player={x,y,step:1,facing:"front"}},command,');
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.qa={boot};',s);
 function drain(a){while(a.game.state.popupOpen)a.game.closeMessage()}
 function at(r=3,x=181,y=202){const a=s.qa.boot();a.start();drain(a);a.game.place(r,x,y);return a}

@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict'),A=require('../editor/agi-picture.js');
 const data=require('./build-object-priorities.cjs')(),objects=data[7]||[];
 assert.equal(objects.filter(o=>o.id.startsWith('belfry-stair-')).length,3,'belfry stair posts and handrail need independent priorities');
-const project=require('../assets/rooms/belfry-workshop-v1.json'),base=A.render(project.commands),rgba=A.rgba(base),views=require('../assets/rosella-walk-stable-face-v2.json').views;
+const project=require('../assets/rooms/belfry-workshop-v1.json'),base=A.render(project.commands),rgba=A.rgba(base),views=require('../assets/elara-walk-stable-face-v2.json').views;
 const palette=new Map(A.palette.map((color,i)=>[color.toLowerCase(),i]));
 function scene(y,priority=true){
  const pixels=base.slice(),props=[],actor=[];let depth=0;

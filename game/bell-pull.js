@@ -1,4 +1,4 @@
-// Rosella's original cel, with raised arms and discrete jump offsets.
+// Elara's original cel, with raised arms and discrete jump offsets.
 let bellAction=null,bellActionTimer=0,bellActionFocused=true;
 const bellSwingSequence=[3,3,3,2,1,0,1,3,6,5,3,1,2,3,5,4,3,3];
 function bellSwingFrame(){
@@ -40,7 +40,7 @@ function tickBellPull(){
   const dx=Math.sign(177-player.x)*Math.min(3,Math.abs(177-player.x)),dy=Math.sign(221-player.y)*Math.min(3,Math.abs(221-player.y));
   if(dx||dy){
    if(clearGroundStep(player.x,player.y,player.x+dx,player.y+dy)){player.x+=dx;player.y+=dy;player.step++;player.facing=dx<0?'left':dx>0?'right':dy<0?'back':'front';draw();return}
-   resetBellPull();say('Rosella needs a clear place to stand beneath the rope.');return;
+   resetBellPull();say('Elara needs a clear place to stand beneath the rope.');return;
   }
   action.stage='jump';player.facing='front';player.step=0;
  }
@@ -55,13 +55,13 @@ function tickBellPull(){
 }
 function drawBellPullHero(px,py){
  if(!bellAction||bellAction.stage==='approach')return false;
- const frame=bellAction.frame,jump=bellJump[frame]||0,rows=rosellaWalkSprites.front[0],left=pictureX(px)-4,top=pictureY(py)-39-jump;
+ const frame=bellAction.frame,jump=bellJump[frame]||0,rows=elaraWalkSprites.front[0],left=pictureX(px)-4,top=pictureY(py)-39-jump;
  // The shadow stays on the floor while the body rises.
  ellipse(px,py+1,frame>1&&frame<7?4:7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
   if(frame>0&&frame<7&&row>=14&&row<=23&&[0,1,6,7].includes(col)&&['c','f'].includes(ink))continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
  }
  if(frame>0&&frame<7){
   galleryInk([[left+1,top+14],[left-1,top+10],[left-1,top+2],[left+1,top-3],[left+3,top-3]],'#ff5555');

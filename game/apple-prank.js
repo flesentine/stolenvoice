@@ -6,7 +6,7 @@ function handleAppleIntent(text){
  if(room!==3){say('There are no apples here to try.');return true}
  const trees=[38,118,238],tree=trees.reduce((a,b)=>Math.abs(player.x-a)<Math.abs(player.x-b)?a:b);
  if(Math.hypot(player.x-tree,player.y-180)>58){say('Walk closer to an apple tree first. Even royal arms have their limits.');return true}
- startStoryEffect('applePrank','You nibble the apple down to its core. Your lips nearly meet behind your ears. "How clever," Rosella wheezes. "Merrin grows his vinegar on trees."',{appleTaste:true,appleDirection:tree<player.x?-1:1});return true;
+ startStoryEffect('applePrank','You nibble the apple down to its core. Your lips nearly meet behind your ears. "How clever," Elara wheezes. "Merrin grows his vinegar on trees."',{appleTaste:true,appleDirection:tree<player.x?-1:1});return true;
 }
 function applePrankPose(px,py,frame=storyAction.frame,taste=storyAction.appleTaste,direction=storyAction.appleDirection){
  if(frame<appleReachFrames){
@@ -52,20 +52,20 @@ function applePrankPixels(bites=0,angle=0,direction=1){
 }
 function drawApplePrankHero(px,py){
  if(storyAction?.kind!=='applePrank')return false;
- const frame=storyAction.frame,direction=storyAction.appleDirection,taste=storyAction.appleTaste,rows=rosellaWalkSprites[direction>0?'right':'left'][1];
+ const frame=storyAction.frame,direction=storyAction.appleDirection,taste=storyAction.appleTaste,rows=elaraWalkSprites[direction>0?'right':'left'][1];
  const {left,top,shoulder,elbow,hand,pucker,apple}=applePrankPose(px,py);
  ellipse(px,py+1,7,1,'#000000');
  const torso=direction>0?3:2;
- for(let row=13;row<=24;row++)for(let col=torso;col<torso+3;col++){x.fillStyle=rosellaColors[row<16?15:row<20?1:9];x.fillRect(left+col,top+row,1,1)}
+ for(let row=13;row<=24;row++)for(let col=torso;col<torso+3;col++){x.fillStyle=elaraColors[row<16?15:row<20?1:9];x.fillRect(left+col,top+row,1,1)}
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.'||(row>=12&&row<=24&&ink==='c'))continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+(row<12?pucker:0),top+row,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+(row<12?pucker:0),top+row,1,1);
  }
  galleryInk([shoulder,elbow],'#ffffff');galleryInk([elbow,hand],'#ff5555');
  x.fillStyle='#ff5555';x.fillRect(hand[0]-1,hand[1],3,2);
  if(apple.visible)for(const [dx,dy,color]of applePrankPixels(apple.bites,apple.angle,direction)){
   const xx=apple.x+dx,yy=apple.y+dy;if(xx<0||xx>=160||yy<0||yy>=168)continue;
-  x.fillStyle=rosellaColors[color];x.fillRect(xx,yy,1,1);
+  x.fillStyle=elaraColors[color];x.fillRect(xx,yy,1,1);
  }
  if(pucker){x.fillStyle='#ffffff';x.fillRect(left+(direction>0?10:-3),top+7,1,1);x.fillRect(left+(direction>0?11:-4),top+10,1,1)}
  return true;

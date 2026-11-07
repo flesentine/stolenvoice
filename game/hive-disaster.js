@@ -1,4 +1,4 @@
-// A deliberate Sierra-style disaster, kept out of persistent puzzle state.
+// A deliberate classic disaster, kept out of persistent puzzle state.
 let hiveDisaster=null;
 function handleHiveDisaster(text){
  if(!/^(?:kick(?: over)?|boot|topple|knock over) (?:the )?(?:hive|beehive|bee hive|straw hive)(?: over)?$/.test(text))return false;
@@ -14,7 +14,7 @@ function hiveDisasterFrame(){return hiveDisaster?.dead?64:storyAction?.kind==='h
 function finishHiveDisaster(){
  if(!hiveDisaster)return;
  resetStoryEffect();hiveDisaster.walking=false;hiveDisaster.dead=true;stopWalking();playing=false;draw();
- say('The bees unanimously reject your royal footwork.\n\nRosella has kicked the bucket. The hive was merely the first step.\n\nENTER: retry before the kick.\nF7: restore.  R: restart.');
+ say('The bees unanimously reject your royal footwork.\n\nElara has kicked the bucket. The hive was merely the first step.\n\nENTER: retry before the kick.\nF7: restore.  R: restart.');
 }
 function retryHiveDisaster(){
  const origin=hiveDisaster?.origin;if(!origin)return;
@@ -43,7 +43,7 @@ function drawHiveKickObject(){
  if(!hiveDisaster||room!==3)return false;
  const f=hiveDisasterFrame(),angle=Math.max(0,Math.min(1,(f-14)/14))*Math.PI/2,drop=Math.sin(angle)*12;
  const art=hiveKickArtwork,co=Math.cos(angle),si=Math.sin(angle);
- for(const [xx,yy,color]of art.underlay){x.fillStyle=rosellaColors[color];x.fillRect(xx,yy,1,1)}
+ for(const [xx,yy,color]of art.underlay){x.fillStyle=elaraColors[color];x.fillRect(xx,yy,1,1)}
  // Rotate in display space: native AGI pixels are wider than they are tall.
  // A square-grid rotation squashes the fallen hive on the rendered screen.
  const aspect=.6,corners=[];
@@ -57,7 +57,7 @@ function drawHiveKickObject(){
  for(let yy=top;yy<=bottom;yy++)for(let xx=left;xx<=right;xx++){
   const dx=xx-111,dy=yy-124-drop,sx=Math.round(111+dx*co+dy*aspect*si),sy=Math.round(124-dx*si/aspect+dy*co);
   if(sx<art.left||sx>=art.left+art.width||sy<art.top||sy>=art.top+art.height)continue;
-  const ink=art.pixels[(sy-art.top)*art.width+sx-art.left];if(ink===16)continue;x.fillStyle=rosellaColors[ink];x.fillRect(xx,yy,1,1);
+  const ink=art.pixels[(sy-art.top)*art.width+sx-art.left];if(ink===16)continue;x.fillStyle=elaraColors[ink];x.fillRect(xx,yy,1,1);
  }
  return true;
 }
@@ -70,13 +70,13 @@ function drawHiveKickHero(){
   const keys=[7,10,12,14,18,23];
   let cel=0;for(let i=1;i<keys.length;i++)if(f>=keys[i])cel=i;
   const cx=pictureX(p.x),feet=pictureY(p.y);
-  const paint=(dx,dy,ink)=>{const xx=cx+direction*dx,yy=feet+dy;if(xx<0||xx>=160||yy<0||yy>=168)return;x.fillStyle=rosellaColors[ink];x.fillRect(xx,yy,1,1)};
+  const paint=(dx,dy,ink)=>{const xx=cx+direction*dx,yy=feet+dy;if(xx<0||xx>=160||yy<0||yy>=168)return;x.fillStyle=elaraColors[ink];x.fillRect(xx,yy,1,1)};
   for(const [dx,dy,ink]of hiveKickCels[cel])paint(dx,dy,ink);
   return true;
  }
  const cx=pictureX(p.x),feet=pictureY(p.y);
- const paint=(xx,yy,ink)=>{if(xx<0||xx>=160||yy<0||yy>=168)return;x.fillStyle=rosellaColors[typeof ink==='string'?parseInt(ink,16):ink];x.fillRect(xx,yy,1,1)};
- const rows=rosellaWalkSprites[hiveDisaster.walking?player.facing:f<30?(direction>0?'right':'left'):'front'][hiveDisaster.walking?player.step%4:1];
+ const paint=(xx,yy,ink)=>{if(xx<0||xx>=160||yy<0||yy>=168)return;x.fillStyle=elaraColors[typeof ink==='string'?parseInt(ink,16):ink];x.fillRect(xx,yy,1,1)};
+ const rows=elaraWalkSprites[hiveDisaster.walking?player.facing:f<30?(direction>0?'right':'left'):'front'][hiveDisaster.walking?player.step%4:1];
  if(f<48){
   const stagger=f>=30?Math.round(Math.sin(f*1.4)):0;
   for(let yy=0;yy<40;yy++)for(let xx=0;xx<8;xx++){const ink=rows[yy][xx];if(ink!=='.')paint(cx+xx-4+stagger,feet+yy-39,ink)}

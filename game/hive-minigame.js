@@ -66,7 +66,7 @@ function resetHive(keepVictory=false){if(hiveOpen&&!keepVictory)stopGameSound();
 function closeHive(){resetHive(hiveWon);document.querySelector('#agi-message-window').style.maxWidth='';closeMessage()}
 function retreatFromHiveStings(){
  const dropped=hivePieces()>0;flags.hiveWaxOne=false;flags.hiveWaxTwo=false;
- closeHive();startBeeStingReaction('Three stings! '+(dropped?'You drop your gathered wax flakes as you flee. ':'')+'Rosella performs the traditional dance of the offended finger.'+(dropped?' You will need to gather them again.':''));
+ closeHive();startBeeStingReaction('Three stings! '+(dropped?'You drop your gathered wax flakes as you flee. ':'')+'Elara performs the traditional dance of the offended finger.'+(dropped?' You will need to gather them again.':''));
 }
 function showHive(){
  if(room!==3||!nearObject('wax'))return;
@@ -75,14 +75,14 @@ function showHive(){
  stopWalking();say('The living hive.');agiMessagePages=[];hiveOpen=true;hiveFrame=0;hiveMissed=false;hiveReach=-1;hiveWon=false;hiveHelp=true;hiveStings=0;hiveStatus='Watch their flight before reaching.';paintHive();
  hiveTimer=setInterval(tickHive,80);
 }
-function reachHive(){if(hiveHelp){hiveHelp=false;hiveMusic();paintHive();return}if(hiveWon){closeHive();return}if(hiveReach>=0)return;hiveReach=0;hiveCaught=false;hiveMissed=false;hiveStatus='Rosella reaches toward the loose wax.';paintHive()}
+function reachHive(){if(hiveHelp){hiveHelp=false;hiveMusic();paintHive();return}if(hiveWon){closeHive();return}if(hiveReach>=0)return;hiveReach=0;hiveCaught=false;hiveMissed=false;hiveStatus='Elara reaches toward the loose wax.';paintHive()}
 function tickHive(){
  if(!hiveOpen||hiveHelp||document.hidden||!hiveFocused)return;
  hiveFrame++;if(hiveFrame%90===0&&!hiveWon)hiveMusic();
  if(hiveReach>=0){
   hiveReach++;
   if(hiveReach<13&&!hiveMissed&&hiveContact(hiveFrame,hiveReach)){
-   hiveMissed=true;hiveCaught=false;hiveStings++;hiveStatus='Sting '+hiveStings+'/3! Rosella draws back.';playGameSound('hiveMiss');
+   hiveMissed=true;hiveCaught=false;hiveStings++;hiveStatus='Sting '+hiveStings+'/3! Elara draws back.';playGameSound('hiveMiss');
   }
   if(hiveReach===5&&!hiveMissed){hiveCaught=true;hiveStatus='Her fingers close around the wax.';}
   if(hiveReach>=13){
@@ -195,19 +195,19 @@ function hivePixels(){
  if(hiveReach>=0){
   const y=hiveHandY(hiveReach);
   // Draw a complete hand cel: staggered rounded fingertips, a cupped palm,
-  // an opposing thumb and a narrow wrist inside Rosella's white cuff.
+  // an opposing thumb and a narrow wrist inside Elara's white cuff.
   // Each character is one native picture pixel; no stretched body parts.
 
-  // The close-up is Rosella's viewpoint: her sleeve enters from below the
+  // The close-up is Elara's viewpoint: her sleeve enters from below the
   // picture, never as a detached cuff floating in front of the stump.
   // Continue the last hand-cel row to the picture edge at every reach height.
   const sleeveTop=y+24;
   for(let sy=sleeveTop;sy<168;sy++){
    const depth=sy-sleeveTop,left=74-Math.min(8,Math.floor(depth/9)),right=85+Math.min(5,Math.floor(depth/14));
-   rect(left,sy,right-left+1,1,7);
-   rect(right-1,sy,2,1,8);
+   rect(left,sy,right-left+1,1,9);
+   rect(right-1,sy,2,1,1);
   }
-  const colors={s:12,w:15,c:7,d:8};
+  const colors={s:12,w:15,c:9,d:1};
   hiveHand.forEach((row,dy)=>Array.from(row).forEach((pixel,dx)=>{if(pixel!=='.')rect(72+dx,y-8+dy,1,1,colors[pixel])}));
   line([[81,y+4],[80,y+7],[78,y+9]],4);
   if(hiveCaught&&hiveReach>=5){
@@ -232,14 +232,16 @@ function paintHive(){
   blitText(ctx,'Enough wax!',116,76,'#000000');
   blitText(ctx,'The bees are unharmed.',76,96,'#000000');
   blitText(ctx,'You tuck the flakes away.',64,112,'#000000');
-  blitText(ctx,'ENTER / ESC / CLICK: continue',48,187,'#ffff55');
+  blitText(ctx,mobilePuzzleUI()?'TAP anywhere: continue':'ENTER / ESC / CLICK: continue',48,187,'#ffff55');
  }else{
   blitText(ctx,hiveStatus,4,169,'#ffffff');
-  blitText(ctx,'SPACE: reach  F2: sound  ESC: back',24,187,'#ffff55');
+  blitText(ctx,mobilePuzzleUI()?'TAP anywhere: reach   Back: leave':'SPACE: reach  F2: sound  ESC: back',24,187,'#ffff55');
  }
- if(hiveHelp){ctx.fillStyle='#ffffff';ctx.fillRect(8,42,304,104);ctx.fillStyle='#aa0000';ctx.fillRect(10,44,300,100);ctx.fillStyle='#ffffff';ctx.fillRect(11,45,298,98);hiveHelpLines.forEach((line,i)=>blitText(ctx,line,20,51+i*10,'#000000'))}
+ if(hiveHelp){ctx.fillStyle='#ffffff';ctx.fillRect(8,42,304,104);ctx.fillStyle='#aa0000';ctx.fillRect(10,44,300,100);ctx.fillStyle='#ffffff';ctx.fillRect(11,45,298,98);(mobilePuzzleUI()?hiveHelpLines.map(line=>line.includes('SPACE /')?'TAP anywhere: reach.':line.includes('ENTER:')?'TAP to begin. Back: return.':line):hiveHelpLines).forEach((line,i)=>blitText(ctx,line,20,51+i*10,'#000000'))}
  const panel=document.querySelector('#agi-message-window');panel.style.left='0%';panel.style.top='0%';panel.style.width='100%';panel.style.maxWidth='100%';panel.style.aspectRatio='320/240';
  msg.textContent=hiveWon?'Enough wax! The bees are unharmed. You tuck the flakes away. Enter, Escape or click to continue.':hiveHelp?'Watch the bees loop around the hive. Reach for the loose wax when the space below the entrance clears. Space, Enter or click to begin. Three stings send you back and make you drop any gathered flakes. Escape returns.':hiveStatus+(hiveGap()?' The reaching path is briefly clear.':' The bees sweep past the entrance.')+' Space or click to reach. Escape returns.';
+ if(mobilePuzzleUI())msg.textContent=hiveWon?'Enough wax! The bees are unharmed. You tuck the flakes away. Tap anywhere to continue.':hiveHelp?'Watch the bees. Reach for loose wax when the path clears. Tap anywhere to begin, then tap to reach. Three stings send you back and drop your gathered flakes. Back returns.':hiveStatus+' Tap anywhere to reach. Back returns.';
+ syncMobilePuzzleControls();
 }
 function hiveKey(event){if(event.repeat||event.isComposing)return;if(event.key==='F2'){soundEnabled=!soundEnabled;if(soundEnabled)hiveMusic();else stopGameSound();paintHive();return}if(event.key==='Escape'){if(hiveStings>=3)retreatFromHiveStings();else closeHive();return}if(['Enter',' '].includes(event.key))reachHive()}
 window.addEventListener('blur',()=>{hiveFocused=false});window.addEventListener('focus',()=>{hiveFocused=true;hiveMusic()});

@@ -1,4 +1,4 @@
-// Retain Sierra tap-to-walk controls; a held arrow pair adds diagonal steering.
+// Retain tap-to-walk controls; a held arrow pair adds diagonal steering.
 let heldWalkArrows=new Set(),walkArrowChord=false;
 const walkArrowNames={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};
 function heldArrowDirection(){

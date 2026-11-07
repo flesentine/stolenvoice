@@ -20,7 +20,7 @@ for(const voice of score.voices)assert(voice.notes.some(([n])=>n===0),'Each voic
 assert(Math.abs(score.durationSeconds-27.0166667)<.001);
 const A=require('../editor/agi-picture.js'),art=JSON.parse(read('assets/opening/opening-workshop-v1.json'));
 assert.equal(art.width,160);assert.equal(art.height,168);assert.equal(art.palette.length,16);
-for(const name of ['Merrin mouth','Rosella reaching hand','Mirror silver','Stolen voice ribbon'])assert(art.commands.some(c=>c.name===name),name);
+for(const name of ['Merrin mouth','Elara reaching hand','Mirror silver','Stolen voice ribbon'])assert(art.commands.some(c=>c.name===name),name);
 assert.equal(art.reference,'assets/opening/opening-imagegen-v2.png');assert(art.commands.length>180,'manually redrawn architecture and figures');
 const pixels=A.render(art.commands);assert.equal(pixels.length,160*168);assert(pixels.every(c=>c>=0&&c<16));
 // Exercise all cels of the title overlay independently, recording native ink.

@@ -1,7 +1,7 @@
 // One optional curiosity, saved with Merrin's memories rather than quest flags.
 function secretSnailFound(){return merrinMemories.seen.includes('snail')}
 function secretSnailText(){
- return 'Beneath the workbench, a little wooden snail trophy is fixed to the low crosspiece. It wears a very small crown.\n\nThe faded label reads: "SIR CREEP-A-LOT. FIRST PLACE, DAVENTRY SNAIL DERBY."\n\nIn Merrin\'s handwriting below: "Only entrant. Still counts."';
+ return 'Beneath the workbench, a little wooden snail trophy is fixed to the low crosspiece. It wears a very small crown.\n\nThe faded label reads: "SIR CREEP-A-LOT. FIRST PLACE, ALDERWICK SNAIL DERBY."\n\nIn Merrin\'s handwriting below: "Only entrant. Still counts."';
 }
 function handleOptionalSecret(text){
  const under=text.match(/^(?:look|peek|peer|search|check|examine|inspect) (?:under|underneath|beneath) (.+)$/);

@@ -88,7 +88,7 @@ function maybeVoiceArrival(){
 }
 function drawWaitingVoice(){
  // Once it crosses the threshold it is outside this room. The next leg
- // begins only when Rosella enters the courtyard or garden herself.
+ // begins only when Elara enters the courtyard or garden herself.
 }
 function followVoicePoint(frame,view=room){
  if(view===1)return storyArc({x:73,y:77},{x:80,y:184},Math.min(1,frame/48),8);
@@ -112,7 +112,7 @@ function drawStoryJar(name,left,top,width=12,height=16,clip=null){
  for(let yy=0;yy<height;yy++)for(let xx=0;xx<width;xx++){
   const color=pixels[Math.floor(yy*28/height)*32+Math.floor(xx*32/width)];
   if(color===15||color===undefined||(clip&&!insidePolygon(left+xx,top+yy,clip)))continue;
-  x.fillStyle=rosellaColors[color];x.fillRect(left+xx,top+yy,1,1);
+  x.fillStyle=elaraColors[color];x.fillRect(left+xx,top+yy,1,1);
  }
  return{x:left+6,y:top+2};
 }
@@ -138,12 +138,12 @@ function drawStoryHero(px,py){
  if(drawPlayfulHero(px,py))return true;
  if(drawPickupHero(px,py)||drawThornCutHero(px,py))return true;
  if(!storyAction||!['echoCaught','voiceOffered','voiceReturned'].includes(storyAction.kind))return drawCarriedEchoHero(px,py);
- const rows=rosellaWalkSprites[player.facing][player.step%4],left=pictureX(px)-4,top=pictureY(py)-39;
+ const rows=elaraWalkSprites[player.facing][player.step%4],left=pictureX(px)-4,top=pictureY(py)-39;
  ellipse(px,py+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
   if(row>=15&&row<=23&&col>=6&&['c','f'].includes(ink))continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
  }
  const jar=heldStoryJar(),mirror=['voiceOffered','voiceReturned'].includes(storyAction.kind);
  if(mirror){
@@ -194,7 +194,7 @@ function drawMirrorJarExchange(frame){
  const actual=mirrorJarPose(),reflection=mirrorJarPose(true);if(!reflection)return;
  const source={x:actual.left+4,y:actual.top},dest={x:reflection.left+3,y:reflection.top+1};
  // Successive motes travel along a single curved connection, rather than
- // floating as an unrelated musical symbol over Rosella's reflection.
+ // floating as an unrelated musical symbol over Elara's reflection.
  if(frame>=8&&frame<39){
   for(let i=0;i<7;i++){
    const t=((frame-8+i*4)%28)/27,p=storyArc(source,dest,t,9);
@@ -268,7 +268,7 @@ function drawStoryEffects(){
  const {kind,frame,total}=storyAction,t=frame/(total-1),jar=heldStoryJar(),mouth={x:jar.left+6,y:jar.top+2};
  if(kind==='thornsCut'){drawCutThornDebris();
  }else if(kind==='bellTaken'||kind==='pickup'){
-  // Item and reaching hands share Rosella's normal scene priority.
+  // Item and reaching hands share Elara's normal scene priority.
  }else if(kind==='poolRiddleSolved'){
   // The answer's water and sparks render with the pool, before actors.
 
@@ -312,9 +312,9 @@ function carryingOpenEcho(){return playing&&!swimState.active&&!swimState.dead&&
 function heldEchoPose(px=player.x,py=player.y){const direction=player.facing==='left'?-1:1;return{left:pictureX(px)+(direction>0?5:-11),top:pictureY(py)-24,width:7,height:10,direction}}
 function drawCarriedEchoHero(px,py){
  if(!carryingOpenEcho())return false;
- const pose=heldEchoPose(px,py),rows=rosellaWalkSprites[player.facing][player.step%4],left=pictureX(px)-4,top=pictureY(py)-39;
+ const pose=heldEchoPose(px,py),rows=elaraWalkSprites[player.facing][player.step%4],left=pictureX(px)-4,top=pictureY(py)-39;
  ellipse(px,py+1,7,1,'#000000');
- for(let row=0;row<40;row++)for(let col=0;col<8;col++){const ink=rows[row][col];if(ink==='.')continue;if(row>=15&&row<=23&&['c','f'].includes(ink)&&(pose.direction>0?col>=6:col<=1))continue;x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1)}
+ for(let row=0;row<40;row++)for(let col=0;col<8;col++){const ink=rows[row][col];if(ink==='.')continue;if(row>=15&&row<=23&&['c','f'].includes(ink)&&(pose.direction>0?col>=6:col<=1))continue;x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1)}
  const sx=left+(pose.direction>0?6:1),handX=pose.left+(pose.direction>0?1:5),handY=pose.top+6;
  galleryInk([[sx,top+15],[sx+pose.direction*2,top+20],[handX,handY]],'#ff5555');
  x.fillStyle='#ffffff';x.fillRect(sx,top+14,1,2);
@@ -527,7 +527,7 @@ function drawPoolAnswerRipple(frame){
  }
 }
 
-// Cutaways render the real rooms without moving Rosella or invoking exits.
+// Cutaways render the real rooms without moving Elara or invoking exits.
 // Only the camera follows the voice; restore render state before returning.
 function drawVoiceCutaway(view){
  const originalRoom=room,originalProps=sceneProps;

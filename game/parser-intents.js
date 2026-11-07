@@ -23,7 +23,7 @@ function handleAcceptedIntent(text){
   if(!nearObject('wax'))return true;
   say('You give the hive a gentle nudge with your boot. Dry straw rustles, but the old hive stays put.');return true;
  }
- if(/^(?:take|get|pick up) (?:all|everything)$/.test(text)){say('Choose one thing at a time. Rosella likes to know what she is putting in her satchel.');return true}
+ if(/^(?:take|get|pick up) (?:all|everything)$/.test(text)){say('Choose one thing at a time. Elara likes to know what she is putting in her satchel.');return true}
  if(/^(?:hello|hi|greet(?: merrin| gardener| man)?)$/.test(text)||/^(?:ask|question) (?:the )?(?:merrin|gardener|man)(?: about .+)?$/.test(text)){
   if(room!==0){say('Merrin is in the royal garden.');return true}command('talk man');return true;
  }
@@ -141,7 +141,7 @@ function handleAcceptedIntent(text){
   return true;
  }
  if(/^jump(?: (?:the )?(?:gap|bridge|across gap|over gap|across bridge))?$/.test(text)){
-  say(room===4?(flags.bridgePlank?'The narrow bridge boards leave little room for a safe jump.':'The wet edges offer no firm takeoff. You stay on the bank.'):'There is no safe reason to jump here. Rosella keeps her feet on the ground.');return true;
+  say(room===4?(flags.bridgePlank?'The narrow bridge boards leave little room for a safe jump.':'The wet edges offer no firm takeoff. You stay on the bank.'):'There is no safe reason to jump here. Elara keeps her feet on the ground.');return true;
  }
  m=text.match(/^(?:throw|drop|toss) (.+?) (?:in|into|at) (.+)$/);
  if(m&&objectId(m[1])==='clapper'&&objectId(m[2])==='pool'){

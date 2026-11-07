@@ -1,3 +1,5 @@
+function mobilePuzzleUI(){return window.matchMedia('(hover: none) and (pointer: coarse)').matches}
+let syncMobilePuzzleControls=()=>{};
 // Touch destinations use ordinary movement: no teleport, pathfinding or puzzle bypass.
 let touchDestination=null,touchPointerId=null,touchMoving=false,touchPad=null;
 walkStops.add(()=>{touchDestination=null;if(!touchMoving){touchPointerId=null;touchPad=null}});
@@ -31,15 +33,33 @@ function installMobileControls(){
   if(prologueActive){advancePrologue();return}
   const start=document.querySelector('#start');if(start){start.click();return}
   const ending=document.querySelector('.screen>.overlay[aria-modal="true"]');if(ending){advanceMerrinEnding();return}
-  if(popupOpen){if(hiveOpen)reachHive();else closeMessage();return}
+  if(popupOpen){if(hiveOpen)reachHive();else if(harmonyOpen)harmonyKey({key:'Enter'});else if(millSluiceOpen&&millSluiceReleaseFrame>=36)finishMillSluiceRelease();else if(!millSluiceOpen||millSluiceReleaseFrame<0)closeMessage();return}
   stopWalking();
  });
+ const puzzleBack=makeButton('Back',()=>{if(hiveOpen)hiveKey({key:'Escape'});else if(harmonyOpen)closeHarmony();else if(millSluiceOpen&&millSluiceReleaseFrame<0)closeMillSluice()});
+ const puzzleButtons=[
+  ['Undo',()=>millSluiceKey({key:'u'}),'mill'],
+  ['Reset',()=>{if(millSluiceOpen)millSluiceKey({key:'r'});else harmonyKey({key:'r'})},'both'],
+  ['Jar',()=>harmonyKey({key:'l'}),'harmony'],
+  ['Help',()=>harmonyKey({key:'h'}),'harmony']
+ ].map(([label,fn,mode])=>({button:makeButton(label,fn),mode}));
  const skip=makeButton('Skip intro',()=>{if(prologueActive)finishPrologue()});
- const actions=[['Items',()=>command('inventory')],['Help',()=>command('help')],['Save',()=>saveGame()],['Restore',()=>restoreGame()]].map(([label,fn])=>makeButton(label,()=>{input.blur();if(playing&&!popupOpen&&!menuOpen){stopWalking();fn()}}));
+ const actions=[['Items',()=>command('inventory')],['Help',()=>command('help')],['Save',()=>showSaveFiles()],['Restore',()=>restoreGame()]].map(([label,fn])=>makeButton(label,()=>{input.blur();if(playing&&!popupOpen&&!menuOpen){stopWalking();fn()}}));
  makeButton('Sound',()=>{soundEnabled=!soundEnabled;if(!soundEnabled){stopOpeningJingle();stopGameSound()}else if(prologueActive)resumePrologueScore();draw()});
  const tip=document.createElement('p');tip.className='mobile-tip';tip.textContent='Hold and drag on the scene, or drag in the black space to steer. Lift to stop.';controls.append(tip);shell.append(controls);
  const keyboard=installMobileKeyboard(input,form,shell,()=>playing&&!popupOpen&&!menuOpen&&!document.querySelector('#intro')&&!document.querySelector('.screen>.overlay[aria-modal="true"]'),()=>sync());
- const sync=()=>{const intro=!!document.querySelector('#intro'),label=intro||popupOpen?'Continue':'Stop';if(next.textContent!==label)next.textContent=label;if(skip.hidden===prologueActive)skip.hidden=!prologueActive;actions.forEach(b=>b.disabled=!playing||popupOpen||menuOpen);keyboard.refresh()};
+ const sync=()=>{
+  const intro=!!document.querySelector('#intro'),puzzle=hiveOpen||harmonyOpen||millSluiceOpen;
+  const label=hiveOpen?(hiveHelp?'Begin':hiveWon?'Continue':'Reach'):harmonyOpen?(harmonyHelp?'Begin':harmonySolved?'Continue':'Notes'):millSluiceOpen?(millSluiceReleaseFrame>=36?'Continue':millSluiceReleaseFrame>=0?'Wait':'Back'):intro||popupOpen?'Continue':'Stop';
+  if(next.textContent!==label)next.textContent=label;
+  next.disabled=millSluiceOpen&&millSluiceReleaseFrame>=0&&millSluiceReleaseFrame<36;
+  const backVisible=(hiveOpen||harmonyOpen)&&!(hiveWon&&hiveOpen||harmonySolved&&harmonyOpen);
+  if(puzzleBack.hidden===backVisible)puzzleBack.hidden=!backVisible;
+  for(const {button,mode}of puzzleButtons){const visible=mode==='mill'?millSluiceOpen&&millSluiceReleaseFrame<0:mode==='harmony'?harmonyOpen&&!harmonySolved&&!harmonyHelp:(millSluiceOpen&&millSluiceReleaseFrame<0||harmonyOpen&&!harmonySolved&&!harmonyHelp);if(button.hidden===visible)button.hidden=!visible}
+  if(skip.hidden===prologueActive)skip.hidden=!prologueActive;
+  actions.forEach(b=>{b.disabled=!playing||popupOpen||menuOpen;if(b.hidden!==!!puzzle)b.hidden=!!puzzle});keyboard.refresh();
+ };
+ syncMobilePuzzleControls=sync;
  new MutationObserver(sync).observe(shell,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','inert']});sync();
  const resize=()=>{
   const viewport=window.visualViewport,style=document.documentElement.style;

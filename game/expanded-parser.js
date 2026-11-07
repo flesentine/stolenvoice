@@ -76,7 +76,7 @@ function describeRoom(){
   flags.bridgeFixed?'The repaired footbridge spans the rushing stream. The old mill nestles among the trees; across the water, a path climbs to a dark grotto in the cliff.':flags.bridgePlank?'A new plank spans the gap in the footbridge, its ends resting on solid timbers. Water rushes past the old mill. Across the stream, a path climbs toward a dark grotto in the cliff.':'Two missing boards leave a gap in the footbridge. Water rushes past the old mill; across the stream, a path climbs to a dark grotto in the cliff.',
   'Water glints beneath the mill machinery. '+(flags.wheelUnlocked?'A full counterweight bucket holds the wheel brake clear. ':'Water spills from a tray of carved trough blocks. A rope links its empty bucket to the wheel brake. Its wooden panel has shallow trough blocks and worn finger grips. ')+(flags.wheelTurned?(millAction==='hoist'?'The grain hoist is lifting its heavy sack.':'A grain sack hangs safely at the loft beam.'): 'A loaded grain sack blocks a wooden cupboard. Its hoist rope runs back to the great wheel.')+' '+(flags.cabinetOpen?(flags.jarTaken?'The cupboard stands open, its measuring shelf empty.':'An empty glass measuring jar stands in the open cupboard.'):'The cupboard door is closed.'),
   flags.echoCaught?'The pool is quiet beneath the stone vault. Pale mineral seams catch the light.':flags.poolAwake&&!flags.poolRiddleSolved?'Silver words shimmer on the pool. A voice asks a question, then waits for your reply.':flags.echoNamed?'Merrin\'s name repeats above the perfectly still pool. Pale mineral seams catch the light beneath the stone vault.':'A perfectly still pool rests beneath the stone vault. Pale mineral seams catch the light. Every sound seems to wait before answering.',
-  'A high brass bell hangs between oak beams. '+(flags.ropeFixed?'Fresh twine binds its short rope.':'Its short rope is badly frayed.')+' An oak string instrument hangs beside the bell, its strings stretched over a shared bridge to three brass weights. Beyond the deep windows lie the fields and hills of Daventry.',
+  'A high brass bell hangs between oak beams. '+(flags.ropeFixed?'Fresh twine binds its short rope.':'Its short rope is badly frayed.')+' An oak string instrument hangs beside the bell, its strings stretched over a shared bridge to three brass weights. Beyond the deep windows lie the fields and hills of Alderwick.',
   'Ivy softens the castle walls. '+(flags.workshopOpen?'The workshop door stands open. ':'The workshop door is closed. ')+'A timber-framed potting shed faces a grand stone arch hung with royal banners. Flowers brighten a raised planter between them.'
  ][room];
 }
@@ -133,6 +133,10 @@ function command(raw){
  if(swimState.active&&!/^(?:look|examine|inspect|listen|l|x|inventory|inv|i|help|hint|save|restore|load)(?: |$)/.test(t)){say('You cannot manage that while keeping your head above water.');return}
  const hint=t.match(/^(?:help|hint)(?: (more|command))?$/);
  if(hint||t==='what can i do'){say(helpText(hint?.[1]==='command'?2:hint?.[1]==='more'?1:0));return}
+ if(/^(?:save files|save file|manage saves)$/.test(t)){showSaveFiles();return}
+ if(/^(?:export save|download save)$/.test(t)){downloadGameSave();return}
+ if(/^(?:import save|open save file|load save file)$/.test(t)){chooseGameSave();return}
+ if(/^(?:recover save|restore backup)$/.test(t)){restoreBackupGame();return}
  if(/^(save|save game)$/.test(t)){saveGame();return}
  if(/^(restore|load|restore game|load game)$/.test(t)){restoreGame();return}
  if(/^(inventory|inv|i|i have)$/.test(t)){showInventory();return}
@@ -144,7 +148,7 @@ function command(raw){
  if(handleSceneryReaction(t))return;
  if(handleAcceptedIntent(t))return;
  const look=t.match(/^(?:look(?:\s+(?:out of|up at|down at|out through|out|through|inside|into|underneath|beneath|under|behind|in|at))?|examine|inspect|l|x)(?:\s+(.*))?$/);
- if(look){let target=noun(look[1]||'');if(['up','ceiling above'].includes(target))target='ceiling';if(target==='down')target='floor';if(['out','outside'].includes(target)||(!target&&/^look (?:out|out of|out through|through)$/.test(t)))target='window';if(['','around','room','surroundings','here','screen'].includes(target))say(describeRoom());else if(['me','myself','self','rosella','princess'].includes(target))say('You are Princess Rosella. A stolen voice is reason enough to walk beyond the castle walls.');else describeObject(objectId(target,true),target);return}
+ if(look){let target=noun(look[1]||'');if(['up','ceiling above'].includes(target))target='ceiling';if(target==='down')target='floor';if(['out','outside'].includes(target)||(!target&&/^look (?:out|out of|out through|through)$/.test(t)))target='window';if(['','around','room','surroundings','here','screen'].includes(target))say(describeRoom());else if(['me','myself','self','elara','princess'].includes(target))say('You are Princess Elara. A stolen voice is reason enough to walk beyond the castle walls.');else describeObject(objectId(target,true),target);return}
  const read=t.match(/^read(?:\s+(.+))?$/);
  if(read){
   if(room===1&&(!read[1]||objectId(read[1])==='book')){if(!nearObject('book'))return;if(!flags.bookOpen){say('The red book is closed. Its covers conceal the writing.');return}if(bookAnimationTimer){say('Wait for the heavy cover to settle.');return}flags.readBook=true;playGameSound('bookReading');say(["Of Borrowed Voices", "", "Silver wakes the deep;", "The pool your words will keep.", "Call whose voice is gone;", "His name will linger on.", "Let hollow glass draw near;", "The name will gather here.", "Open lips let whispers fly;", "Honey's gold will bind a sigh.", "Let strings and glass agree;", "The bell shall set voice free.", "At mirror, silver ring;", "Then glass to glass you bring.", "To end the borrowed claim,", "Speak out the rightful name."]);agiMessagePages.push(AgiMessageWindow.wrap('A faded note mentions the old miller\'s experiments with echoes.'))}
@@ -223,7 +227,7 @@ function command(raw){
  const attempted=t.match(/^\S+\s+(.+)$/);
  if(attempted){
   const requested=noun(attempted[1]),id=objectId(requested);
-  if(objectIsHere(id)){say('Rosella finds no useful way to do that with the '+requested+'.');return}
+  if(objectIsHere(id)){say('Elara finds no useful way to do that with the '+requested+'.');return}
  }
  say('I did not understand that action. Try phrasing it another way.');
 }
@@ -289,7 +293,7 @@ function useObject(item,target){
   // The great bell has its own full-sized clapper.
 
   if(flags.bellRung)startBellPull('repeat','The high bell rings again. Merrin\'s voice grumbles from the jar.');
-  else startBellPull('voice','Rosella jumps, catches the repaired rope, and pulls. The high bell rings! The sealed jar sings in Merrin\'s own voice. The echo has become true!');return;
+  else startBellPull('voice','Elara jumps, catches the repaired rope, and pulls. The high bell rings! The sealed jar sings in Merrin\'s own voice. The echo has become true!');return;
  }
  if(item==='jar'&&target==='mirror'&&room===1){
   if(!flags.jarTaken){say('You have no jar with you.');return}if(!nearObject('mirror'))return;

@@ -14,9 +14,9 @@ let animationOptions='';
 for(const direction of ['left','right','back','front'])for(let frame=0;frame<4;frame++){const key='swim-'+direction+'-'+frame;library[key]=JSON.parse(read('assets/swimming/'+direction+'-'+frame+'.json'));animationOptions+='<option value="'+key+'">Swim: '+direction+' '+(frame+1)+'</option>';}
 const libraryJSON=JSON.stringify(library).replace(/</g,'\\u003c');
 const spriteSource=read('stolen-voice-short.html');
-const sprites=JSON.parse(read('assets/rosella-walk-stable-face-v2.json')).views;
-const spriteColors=JSON.parse(spriteSource.match(/const rosellaColors=(\[[^\n]+\]);/)[1]);
+const sprites=JSON.parse(read('assets/elara-walk-stable-face-v2.json')).views;
+const spriteColors=JSON.parse(spriteSource.match(/const elaraColors=(\[[^\n]+\]);/)[1]);
 const heroJSON=JSON.stringify({rows:sprites.front[1],colors:spriteColors});
-const html=read('editor/workshop.template.html').replace('</select></label>','<option value="opening">Opening: Rosella and the Stolen Voice</option>'+'<option value="prologue-closeup">Intro: Merrin polishing the mirror</option><option value="merrin-ending">Ending: Merrin singing</option>'+inventoryOptions+animationOptions+'</select></label>').replace('<label>Room <select','<label>Project <select').replace('__PROJECT__',()=>project).replace('__LIBRARY__',()=>libraryJSON).replace('__HERO__',()=>heroJSON).replace('__RENDERER__',()=>read('editor/agi-picture.js')).replace('__EDITOR__',()=>read('editor/workshop.js'));
+const html=read('editor/workshop.template.html').replace('</select></label>','<option value="opening">Opening: Elara and the Stolen Voice</option>'+'<option value="prologue-closeup">Intro: Merrin polishing the mirror</option><option value="merrin-ending">Ending: Merrin singing</option>'+inventoryOptions+animationOptions+'</select></label>').replace('<label>Room <select','<label>Project <select').replace('__PROJECT__',()=>project).replace('__LIBRARY__',()=>libraryJSON).replace('__HERO__',()=>heroJSON).replace('__RENDERER__',()=>read('editor/agi-picture.js')).replace('__EDITOR__',()=>read('editor/workshop.js'));
 fs.writeFileSync(path.join(root,'editor/index.html'),html);
 console.log('Built standalone AGI editor with eight rooms, '+inventory.names.length+' inventory objects, sixteen swim cels and shared renderer.');

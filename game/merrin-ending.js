@@ -1,7 +1,7 @@
 const merrinEndingLyrics=[
  'Cold silver stole my song away,',
- 'Rosella brought it home today.',
- 'Now let the bells of Daventry ring,',
+ 'Elara brought it home today.',
+ 'Now let the bells of Alderwick ring,',
  'And every waking robin sing.',
  'Sing hey! The thorn gives way to rose,',
  'And home the wandering music goes.',
@@ -15,7 +15,7 @@ function merrinSongDuration(){return Math.max(...tandyCues.merrinSong.map(v=>v.r
 let merrinEndingTotal=198,merrinEndingReward=false,merrinEndingMemory=[];
 let merrinEndingTimer=0,merrinEndingFrame=0,merrinEndingFocused=true,merrinEndingCanvas=null;
 function drawMerrinPortrait(ctx,frame,finished=false){
- const colors=rosellaColors;
+ const colors=elaraColors;
  const box=(a,b,w,h,c)=>{const right=Math.min(160,a+w),bottom=Math.min(168,b+h);a=Math.max(0,a);b=Math.max(0,b);if(right<=a||bottom<=b)return;ctx.fillStyle=colors[c];ctx.fillRect(a,b,right-a,bottom-b)};
  const line=(points,c)=>{for(let i=1;i<points.length;i++){let[a,b]=points[i-1];const[d,e]=points[i],dx=Math.abs(d-a),dy=-Math.abs(e-b),sx=a<d?1:-1,sy=b<e?1:-1;let err=dx+dy;for(;;){box(a,b,1,1,c);if(a===d&&b===e)break;const k=err*2;if(k>=dy){err+=dy;a+=sx}if(k<=dx){err+=dx;b+=sy}}}};
  const poly=(pts,c)=>{for(let y=Math.max(0,Math.min(...pts.map(p=>p[1])));y<=Math.min(167,Math.max(...pts.map(p=>p[1])));y++){const spans=[];for(let i=0,j=pts.length-1;i<pts.length;j=i++){const a=pts[j],b=pts[i];if((a[1]>y+.5)!==(b[1]>y+.5))spans.push(a[0]+(y+.5-a[1])*(b[0]-a[0])/(b[1]-a[1]))}spans.sort((a,b)=>a-b);for(let n=0;n+1<spans.length;n+=2)box(Math.ceil(spans[n]),y,Math.floor(spans[n+1])-Math.ceil(spans[n])+1,1,c)}};

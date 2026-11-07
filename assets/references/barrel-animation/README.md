@@ -28,7 +28,7 @@ Trace gates: constant head size and limb lengths in display aspect; consistent b
 
 ## Next bounded implementation
 
-Implemented in `tools/trace-barrel-prank.cjs`: 28 manually authored native line/fill cels for frames 0–135 at five-frame spacing. Reference bitmaps are not sampled. Actor coordinates use the existing fixed barrel rim at (138,102) and floor at y135; head stencils reuse Rosella's game identity. Compact limb contours, opaque linen, explicit rim straddle/lower/land and separate tug/release/cleanup keys replace the procedural rotated/stretching body.
+Implemented in `tools/trace-barrel-prank.cjs`: 28 manually authored native line/fill cels for frames 0–135 at five-frame spacing. Reference bitmaps are not sampled. Actor coordinates use the existing fixed barrel rim at (138,102) and floor at y135; head stencils reuse Elara's game identity. Compact limb contours, opaque linen, explicit rim straddle/lower/land and separate tug/release/cleanup keys replace the procedural rotated/stretching body.
 
 `game/barrel-prank.js` paints immutable indexed runs from these cels. It translates intact poses to/from the real player's footpoint; collision position stays unchanged. The approved continuous head-emergence/shake at frames58–81 is preserved exactly and is regression-compared against the saved prior renderer. Frame139 restores the original facing/step stencil before ending. Lifecycle, manure state and river callback are preserved.
 

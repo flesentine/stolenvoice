@@ -1,10 +1,10 @@
-# Rosella and the Stolen Voice
+# Elara and the Stolen Voice
 
 Open [stolen-voice.html](stolen-voice.html) directly in a browser. No installation or server is required.
 
-Current bell interaction: TAKE BELL in the garden, then RING BELL beside the pool or gallery mirror. Rosella carries the whole little silver bell; the belfry bell is rung separately with its rope. Earlier clapper instructions below describe superseded versions.
+Current bell interaction: TAKE BELL in the garden, then RING BELL beside the pool or gallery mirror. Elara carries the whole little silver bell; the belfry bell is rung separately with its rope. Earlier clapper instructions below describe superseded versions.
 
-A nine-screen Sierra-style mystery: the enchanted castle mirror has stolen Merrin's voice. Recover its echo, give it a true silver note, and persuade the mirror to return it. Designed for a **15–25 minute first playthrough**, with exploration and linked inventory puzzles. That duration is a design target; a human playthrough has not yet been timed. The bridge stream is now a hazard: after a fall, Rosella has five seconds of active play to return to the bank she fell from. The current prevents swimming to the opposite bank, so repairing the bridge is necessary to cross. Drowning offers a bank retry, restore, or restart. Essential items are retained on retry.
+A nine-screen classic mystery: the enchanted castle mirror has stolen Merrin's voice. Recover its echo, give it a true silver note, and persuade the mirror to return it. Designed for a **15–25 minute first playthrough**, with exploration and linked inventory puzzles. That duration is a design target; a human playthrough has not yet been timed. The bridge stream is now a hazard: after a fall, Elara has five seconds of active play to return to the bank she fell from. The current prevents swimming to the opposite bank, so repairing the bridge is necessary to cross. Drowning offers a bank retry, restore, or restart. Essential items are retained on retry.
 
 The original adventure remains in `index.html`. The earlier two-room version is preserved in `stolen-voice-short.html`.
 
@@ -22,13 +22,13 @@ The original adventure remains in `index.html`. The earlier two-room version is 
 | Echo Grotto | Left passage: bridge | Wake the pool, name Merrin's echo and capture it |
 | Castle Belfry | Left stair: gallery | Mend the bell rope and give the captured echo its true note |
 
-The route now separates outdoor travel from entering buildings: garden → courtyard → shed or gallery; garden → orchard → stream, with the mill door on the near bank and grotto across the repaired bridge. Returning from an interior places Rosella beside the same exterior doorway, facing away from it. The belfry remains upstairs from the gallery.
+The route now separates outdoor travel from entering buildings: garden → courtyard → shed or gallery; garden → orchard → stream, with the mill door on the near bank and grotto across the repaired bridge. Returning from an interior places Elara beside the same exterior doorway, facing away from it. The belfry remains upstairs from the gallery.
 
-Walkable ground, solid props, exit triggers and landing positions are authored in `assets/stolen-voice-map.json`. Rosella must walk close enough to interact with scenery. Typed GO commands also require proximity to an exit. Water, walls and the unrepaired bridge block movement. Essential supplies remain usable wherever another puzzle needs them.
+Walkable ground, solid props, exit triggers and landing positions are authored in `assets/stolen-voice-map.json`. Elara must walk close enough to interact with scenery. Typed GO commands also require proximity to an exit. Water, walls and the unrepaired bridge block movement. Essential supplies remain usable wherever another puzzle needs them.
 
 ## Controls and presentation
 
-- Arrow keys: start walking; press the same direction again to stop. Home, Page Up, End and Page Down give diagonal movement. The numeric keypad also moves Rosella; keypad 5 stops her.
+- Arrow keys: start walking; press the same direction again to stop. Home, Page Up, End and Page Down give diagonal movement. The numeric keypad also moves Elara; keypad 5 stops her.
 - Start typing immediately; Enter submits the command.
 - Enter, Space, Escape, or a tap: dismiss a message.
 - Tab: inventory popup.
@@ -37,7 +37,7 @@ Walkable ground, solid props, exit triggers and landing positions are authored i
 - F5 / SAVE: save. F7 / RESTORE: restore.
 - HELP: a clue for the current puzzle stage.
 
-The interface is one 320×200 bitmap screen displayed at 4:3, with a double-width 160×168 picture, a top status strip and a command prompt below. All eight traced room backgrounds use detailed contour traces at 160×168, using only the standard 16-color EGA palette. Text uses the original Sierra 8×8 bitmap font. Messages use DOS/EGA AGI text-grid placement, 30-column wrapping and white windows with a red frame (two display pixels vertically, one horizontally); long messages advance through separate windows. the opening is four short pages without scrolling. The existing Rosella walking cels retain their current frame when movement stops.
+The interface is one 320×200 bitmap screen displayed at 4:3, with a double-width 160×168 picture, a top status strip and a command prompt below. All eight traced room backgrounds use detailed contour traces at 160×168, using only the standard 16-color EGA palette. Text uses the original Sierra 8×8 bitmap font. Messages use DOS/EGA AGI text-grid placement, 30-column wrapping and white windows with a red frame (two display pixels vertically, one horizontally); long messages advance through separate windows. the opening is four short pages without scrolling. The existing Elara walking cels retain their current frame when movement stops.
 
 The new 7.28-second original Tandy-style three-voice fanfare plays once when Enter or a tap begins the opening. F2 toggles sound, including during messages. The tune stops when the window loses focus.
 
@@ -87,7 +87,7 @@ These are AGI-style browser pictures, not compiled Sierra PIC resources. Each of
 - `assets/rooms/agi-room-preview.png`: contact sheet of the native pictures.
 - `tools/draw-room-workshops.cjs`: creates the seven upgraded editable room projects, preserving existing projects by default; `--room courtyard --force` regenerates only the courtyard.
 - `tools/draw-belfry-scene.cjs`: belfry masonry, recessed windows, red roof, bell mounting, lantern and guild plaque.
-- `tools/draw-potting-scene.cjs`: shed drawing built around Rosella's 40-pixel height, with a waist-high bench and ordinary-sized tools.
+- `tools/draw-potting-scene.cjs`: shed drawing built around Elara's 40-pixel height, with a waist-high bench and ordinary-sized tools.
 - `tools/draw-courtyard-scene.cjs`: the courtyard's colorful lawn, ivy, red-tile buildings and warm paving, with original entry positions.
 - `tools/agi-room-scenes.cjs`: underlying hand-authored compositions for those seven rooms.
 - `assets/rooms/gallery-workshop-v1.json`: canonical editable gallery drawing.
@@ -117,21 +117,21 @@ Narrative style: ordinary LOOK, dialogue, failure messages and success messages 
 
 Swimming: arrow keys paddle in the same way they control walking; SWIM LEFT, SWIM RIGHT and SWIM TO SHORE also work. Popups, menus and a hidden/unfocused window pause the five-second timer. Saving while in the current is blocked; restoring clears the swimming state. ENTER retries a drowning from the last dry position without resetting quest progress, F7 restores, and R restarts. The placed plank is safe to cross; twine adds reinforcement and points. The sixteen editable cels in assets/swimming reuse the exact existing walking head pixels, with animated ripples. Use the editor Project list to inspect them.
 
-Object priority pass: 41 visible props across the gallery, shed, orchard, bridge, grotto and courtyard now use authored foreground masks and ground footprints. Covered or invisible objects do not introduce hidden blockers. Bridge rocks block walking and swimming at their bases, with matching foreground occlusion when Rosella is behind them. Existing hive priority remains in place. Tools on the bench remain live pickups within the bench depth group. Check with tools/check-object-priorities.cjs and the full gameplay walkthrough.
+Object priority pass: 41 visible props across the gallery, shed, orchard, bridge, grotto and courtyard now use authored foreground masks and ground footprints. Covered or invisible objects do not introduce hidden blockers. Bridge rocks block walking and swimming at their bases, with matching foreground occlusion when Elara is behind them. Existing hive priority remains in place. Tools on the bench remain live pickups within the bench depth group. Check with tools/check-object-priorities.cjs and the full gameplay walkthrough.
 
 Inventory selection: Tab opens a monochrome text list with a black-on-white highlight. Arrow keys select an item; Enter shows its picture. Enter or Escape returns to the list, keeping the selection. Escape returns to the game. Item pictures are no longer displayed together when inventory opens.
 
 
 ## Resumed opening and mill pass - 2026-10-24
 
-- The opening uses a new hand-authored 160x168 EGA picture based on the selected grid reference, Sierra bitmap title, moving pennants and moat glints. The AGI editor includes the opening project.
+- The opening uses a new hand-authored 160x168 EGA picture based on the selected grid reference, Alder Pixel bitmap title, moving pennants and moat glints. The AGI editor includes the opening project.
 - Original three-voice PCM effects accompany the wheel catch, bells, mirror, pool, bridge plank, rope repair and returning voice. F2 mutes music and effects; losing focus stops playback.
 - The outside wheel has a rounder six-spoke drawing; both wheels remain still until the inside mechanism is turned. The cabinet has grounded feet, a framed door and a short hinged opening animation. The mill exit reaches the floor, the small slatted blue panel is gone, and structural braces connect posts to beams.
 - The far-bank cave sits in a rock hillside; light grass separates the darker trees. Bridge posts have exact foreground masks and solid bases. Placing the plank permits crossing immediately; lashing still earns its five points.
 - The gallery table blocks its solid base and has a walkable rear strip. Trying to leave the castle grounds south gives an in-world explanation.
 - Verification: the physical headless parser walkthrough reaches 100/100; swimming, wheel, priority, inventory, candle and resumed-feature checks pass. The new cue synthesis was exercised with an AudioContext stand-in and checked for audible PCM/nonclipping amplitudes. Source-art proof sheets were inspected. Live browser playback and speaker listening were not performed.
 
-Gallery book: OPEN BOOK animates the cover through six native EGA cels; READ BOOK requires the cover to be fully open. CLOSE BOOK reverses the animation. LOOK BOOK reports its current state. The book shares the table's priority layer using transparent cels, so the wall behind it does not erase Rosella. The open state is saved; older saves without this flag still restore. Opening/closing awards no points. Check with tools/check-book-animation.cjs.
+Gallery book: OPEN BOOK animates the cover through six native EGA cels; READ BOOK requires the cover to be fully open. CLOSE BOOK reverses the animation. LOOK BOOK reports its current state. The book shares the table's priority layer using transparent cels, so the wall behind it does not erase Elara. The open state is saved; older saves without this flag still restore. Opening/closing awards no points. Check with tools/check-book-animation.cjs.
 
 ## Parser acceptance and story consistency pass — 2026-10-24
 
@@ -139,7 +139,7 @@ Ordinary expressions now route through the existing guarded puzzle actions: retr
 
 HELLO/ASK MERRIN, SEARCH HIVE, SMELL ROSE, EAT APPLE, OPEN SHEARS/DRAWER/CABINET, PULL LATCH, SHAKE/REACH INTO BELL, TOUCH MIRROR, JUMP GAP and TAKE ALL have deliberate responses. GET OUT and HEAD FOR SHORE work during swimming. The shallow drawer is empty; opening it does not introduce another collectible or puzzle.
 
-The exterior waterwheel is recognized in the bridge scene. Potting soil, roots, absent bees and the old honey smell are acknowledged. The unlocked cabinet's visible bottle resolves to its jar for LOOK/TAKE, rather than the already carried oil flask. Plank-placement text agrees with its immediate ability to bear Rosella's weight.
+The exterior waterwheel is recognized in the bridge scene. Potting soil, roots, absent bees and the old honey smell are acknowledged. The unlocked cabinet's visible bottle resolves to its jar for LOOK/TAKE, rather than the already carried oil flask. Plank-placement text agrees with its immediate ability to bear Elara's weight.
 
 LOOK/LISTEN and inventory distinguish an empty jar, named echo, sealed echo, true voice and the empty jar left after release. Old saves recompute the correct jar contents from existing progress flags. Pool ambience responds to its current magic state. Ringing the high bell again after release leaves the empty jar silent. The book's verse and marginal note occupy separate complete popups.
 
@@ -147,7 +147,7 @@ Validation: `tools/check-parser-acceptance.cjs` exercises successful aliases, ph
 
 ## Visible story payoffs — 2026-10-24
 
-The successful pool capture now shows Rosella holding the existing jar artwork while a blue echo travels from the pool into the glass. The high-bell action places the sealed jar beside her on the floor; it changes to the gold voice state and gives a small answering musical note when the bell sounds. Offering the jar shows its reflection shimmering inside the mirror; saying the rightful name empties the jar and sends a golden voice out through the gallery. On returning to the garden, the whisper reaches Merrin and he touches his throat and laughs. Arrival is shown once and stored with saves; older saves without this presentation flag still load.
+The successful pool capture now shows Elara holding the existing jar artwork while a blue echo travels from the pool into the glass. The high-bell action places the sealed jar beside her on the floor; it changes to the gold voice state and gives a small answering musical note when the bell sounds. Offering the jar shows its reflection shimmering inside the mirror; saying the rightful name empties the jar and sends a golden voice out through the gallery. On returning to the garden, the whisper reaches Merrin and he touches his throat and laughs. Arrival is shown once and stored with saves; older saves without this presentation flag still load.
 
 These short effects use the original character cels and inventory objects, integer native pixels and EGA colors. Result text appears after the animation. Enter advances to that text; another command or movement settles the effect before acting. Menus, messages, hidden windows and focus loss pause the effects. Reduced-motion mode presents the result without the animated motion. Progress and points commit once before playback, so skipping, saving or restoring cannot lose/duplicate an earned result.
 
@@ -155,7 +155,7 @@ Validate with `tools/check-story-effects.cjs`, `tools/check-parser-acceptance.cj
 
 ### Prop clue follow-up — 2026-10-24
 
-Loose beeswax now appears as pale chipped pieces on the grass beneath the hive, rather than a bright rectangle drawn on its body. Its interaction target follows the ground position; a separate depth baseline lets Rosella pass behind or in front of the chips, which disappear after collection.
+Loose beeswax now appears as pale chipped pieces on the grass beneath the hive, rather than a bright rectangle drawn on its body. Its interaction target follows the ground position; a separate depth baseline lets Elara pass behind or in front of the chips, which disappear after collection.
 
 The mill gear now connects to the cabinet catch with a thin iron crank, guided pull rod and latch. Turning the repaired wheel lifts the catch through three native cels before the six-cel door opening. Restoring cancels transient cabinet motion and draws the saved locked/open state. This adds a visible cause for the unlock without adding puzzle instructions.
 
@@ -167,7 +167,7 @@ Added local observations for the hive stump and wax chips, rocky cliff/ledge, br
 
 ### Room-flow follow-up — 2026-10-24
 
-Audited all nine default spawn positions and every incoming doorway against every physically reachable outgoing exit with the repaired bridge state: 50 routes pass through the actual movement function. Landings are walkable and outside return triggers. Added blackthorn contact feedback at the actual collision boundary, rather than only at the distant exit; Rosella can retreat and the response disappears once the path is cleared.
+Audited all nine default spawn positions and every incoming doorway against every physically reachable outgoing exit with the repaired bridge state: 50 routes pass through the actual movement function. Landings are walkable and outside return triggers. Added blackthorn contact feedback at the actual collision boundary, rather than only at the distant exit; Elara can retreat and the response disappears once the path is cleared.
 
 Typed navigation recognizes visible door/arch/passage names locally and GO/WALK THROUGH, INTO and ACROSS phrasings. Ambiguous courtyard ENTER DOOR asks which entrance; distant entry still requires approaching, and the grotto retains its bridge prerequisite. Twenty-two doorway aliases pass alongside the existing early-transition, bench blocking/diagonal sliding, swimming, 123 parser/state, 60 scenery and full 100/100 headless quest checks. This is headless movement verification, not a live visual or independent human steering test.
 
@@ -185,13 +185,13 @@ First Enter/click starts the music while keeping the title artwork visible; the 
 
 ### Native river animation — 2026-10-25
 
-The bridge stream and mill race now use six transparent native-grid cels. Short EGA blue/cyan highlights drift downstream; the water flows even before the wheel is repaired. A 2,744-pixel visible-water mask excludes banks, stones, bridge boards and the union of all moving wheel positions. Runtime painting precedes props and Rosella; repaired decking remains in front. The shared ambient clock pauses for popups/menus, hidden tabs and blur, and retains the existing reduced-motion behavior. Pool water in the echo grotto remains still.
+The bridge stream and mill race now use six transparent native-grid cels. Short EGA blue/cyan highlights drift downstream; the water flows even before the wheel is repaired. A 2,744-pixel visible-water mask excludes banks, stones, bridge boards and the union of all moving wheel positions. Runtime painting precedes props and Elara; repaired decking remains in front. The shared ambient clock pauses for popups/menus, hidden tabs and blur, and retains the existing reduced-motion behavior. Pool water in the echo grotto remains still.
 
 `tools/build-water-animation.cjs` generates `game/water-pictures.js`; `game/river-water.js` displays the patches. `tools/check-river-water.cjs` verifies all six cels, clipping, wheel-independent flow, unchanged progress and background/modal pauses. Source-art detail reviewed in `assets/reviews/river-cels-proof.png`. Wheel gating, swimming, object masks and both full headless walkthroughs pass. Live browser timing remains unverified.
 
 ### Bridge swimming collision and priority — 2026-10-25
 
-Swimming now treats the visible bridge decks, support beams, posts and installed repair plank as solid timber, separately from their walkable top surfaces. A swept move and a head-width contact margin prevent passing through an edge with a larger or diagonal input. Submerged Rosella and her ripples are painted behind bridge timber on both halves; dry walking retains its normal priority rules. The repair remains walkable from above.
+Swimming now treats the visible bridge decks, support beams, posts and installed repair plank as solid timber, separately from their walkable top surfaces. A swept move and a head-width contact margin prevent passing through an edge with a larger or diagonal input. Submerged Elara and her ripples are painted behind bridge timber on both halves; dry walking retains its normal priority rules. The repair remains walkable from above.
 
 SWIM TO SHORE / GET OUT now finds a short water route around the timber to an actual bank rather than treating the deck as a swimming exit. Manual directional movement cancels that route. Route motion uses the existing active-play swimming clock and pauses behind modals or while hidden/unfocused. The five-second hazard, retry and save rules remain intact.
 
@@ -222,11 +222,11 @@ PUT WATER IN JAR, FILL JAR WITH WATER, SCOOP WATER INTO JAR and dipping/lowering
 
 ### Whole silver handbell — 25 October
 
-Replaced the detached-clapper collectible with the complete little silver bell. TAKE BELL lifts it by its wooden handle and leaves an empty garden peg. New inventory art shows the handle, silver body, rim and attached clapper; the pickup animation carries the whole bell toward Rosella. RING BELL / USE BELL / SHAKE BELL work contextually beside the pool and mirror. The full-sized belfry bell remains a separate rope action; explicitly ringing SILVER BELL there gives a small tinkle without advancing the high-bell ritual. Existing saved clapper progress becomes possession of the handbell automatically using the same story flag, score and save slot. Legacy clapper command aliases remain compatible. Verified whole-bell pickup aliases, reach, one-time points, saved inventory, mounted ringing, pool/mirror effects, belfry distinction, inventory assets and full 105/105 route. Prior source files are in `backups/whole-bell-2026-10-25/`.
+Replaced the detached-clapper collectible with the complete little silver bell. TAKE BELL lifts it by its wooden handle and leaves an empty garden peg. New inventory art shows the handle, silver body, rim and attached clapper; the pickup animation carries the whole bell toward Elara. RING BELL / USE BELL / SHAKE BELL work contextually beside the pool and mirror. The full-sized belfry bell remains a separate rope action; explicitly ringing SILVER BELL there gives a small tinkle without advancing the high-bell ritual. Existing saved clapper progress becomes possession of the handbell automatically using the same story flag, score and save slot. Legacy clapper command aliases remain compatible. Verified whole-bell pickup aliases, reach, one-time points, saved inventory, mounted ringing, pool/mirror effects, belfry distinction, inventory assets and full 105/105 route. Prior source files are in `backups/whole-bell-2026-10-25/`.
 
 ### Merrin declines unwanted gifts — 25 October
 
-GIVE/OFFER/HAND now make Merrin explicitly decline carried items he does not want, with small object-specific gestures while mute and a spoken "No, thank you" after recovery. Every refusal says Rosella keeps the item. The rose remains the accepted gift. Reach, ownership, inventory and points remain unchanged on refusal. Verified seven item categories, shorthand verbs, recovered dialogue and the rose exception in `tools/check-merrin-refusals.cjs`.
+GIVE/OFFER/HAND now make Merrin explicitly decline carried items he does not want, with small object-specific gestures while mute and a spoken "No, thank you" after recovery. Every refusal says Elara keeps the item. The rose remains the accepted gift. Reach, ownership, inventory and points remain unchanged on refusal. Verified seven item categories, shorthand verbs, recovered dialogue and the rose exception in `tools/check-merrin-refusals.cjs`.
 
 ### Courtyard turret refinement — 25 October
 
@@ -242,15 +242,15 @@ Every newly scored story action now starts with a brief 0.20-second rising Tandy
 
 ### Belfry bell swing — 25 October
 
-The high bell now sways gently around its fixed axle during Rosella's existing jump-and-pull sequence. Seven integer-pixel EGA cels use the original authored polygons, with a lagging clapper and rope bending toward Rosella's fixed grip. The motion settles to the exact idle drawing before the result popup. Real wall/window underpainting prevents trails. Both successful and ordinary rings use the settling sequence; reduced-motion mode keeps the bell still. Existing message/menu/background pauses, scoring, sound timing and restore cancellation remain. Native three-position art proof inspected; cel/background, bell-action and full quest checks pass. Prior runtime/build sources preserved in `backups/bell-swing-2026-10-25/`.
+The high bell now sways gently around its fixed axle during Elara's existing jump-and-pull sequence. Seven integer-pixel EGA cels use the original authored polygons, with a lagging clapper and rope bending toward Elara's fixed grip. The motion settles to the exact idle drawing before the result popup. Real wall/window underpainting prevents trails. Both successful and ordinary rings use the settling sequence; reduced-motion mode keeps the bell still. Existing message/menu/background pauses, scoring, sound timing and restore cancellation remain. Native three-position art proof inspected; cel/background, bell-action and full quest checks pass. Prior runtime/build sources preserved in `backups/bell-swing-2026-10-25/`.
 
 ### Connected belfry knee braces — 25 October
 
 Replaced the diagonal timbers ending in open wall/window space with shorter knee braces. Each now joins the underside of the head beam to its own upright below the corner, with small fastening marks. The left brace/post remains an exact native-pixel reflection of the right. Regenerated bell-swing cels against the new underpainting, rebuilt the game/editor, and checked symmetry, native art detail, swing restoration and bell-pull behavior. Previous source/project retained in `backups/belfry-knee-braces-2026-10-25/`.
 
-### Rosella pickup poses — 25 October
+### Elara pickup poses — 25 October
 
-Successful pickups now use Rosella's existing side-view artwork for a short native-pixel reach-and-stoop sequence. Roses, loose beeswax and planks use a deeper crouch; oil, twine, shears and the cupboard jar use a smaller bench/shelf reach. The whole-bell pickup also uses her reaching pose. She briefly holds the collected object's existing inventory artwork and brings it toward her waist before returning to the exact idle cel, with her feet kept planted. No replacement character artwork was generated.
+Successful pickups now use Elara's existing side-view artwork for a short native-pixel reach-and-stoop sequence. Roses, loose beeswax and planks use a deeper crouch; oil, twine, shears and the cupboard jar use a smaller bench/shelf reach. The whole-bell pickup also uses her reaching pose. She briefly holds the collected object's existing inventory artwork and brings it toward her waist before returning to the exact idle cel, with her feet kept planted. No replacement character artwork was generated.
 
 Pickup messages wait until the short motion finishes. Enter skips to the result; a new action settles it safely. Existing hidden/unfocused pauses and reduced-motion behavior apply. Ownership and points commit once, so interruption and save/restore cannot lose or duplicate an item. All seven new pickup categories, whole-bell behavior, pause/skip/restore/repeat states, other story effects, point chimes, parser acceptance and the 105/105 route are checked. Inspected the isolated sprite proof `assets/reviews/pickup-pose-proof.png`; live browser timing remains unverified. Prior story/build sources are under `backups/pickup-animation-2026-10-25/`.
 
@@ -264,14 +264,14 @@ Redrew the hive as a traditional domed straw skep: rounded crown, closely stacke
 
 ### Blackthorn cutting animation — 25 October
 
-CUT BLACKTHORN now guides Rosella to a clear footing beside the thicket and uses her existing right-facing cel for a small working lean. Her hands hold red-gripped steel shears whose blades open and close through three timed snips. Native clearing cels remove sections of the thicket in turn, with small severed twigs falling onto the path; each snip has a short Tandy cue. The point chime remains at the initial award. Result text waits until she straightens up.
+CUT BLACKTHORN now guides Elara to a clear footing beside the thicket and uses her existing right-facing cel for a small working lean. Her hands hold red-gripped steel shears whose blades open and close through three timed snips. Native clearing cels remove sections of the thicket in turn, with small severed twigs falling onto the path; each snip has a short Tandy cue. The point chime remains at the initial award. Result text waits until she straightens up.
 
 Existing rusty/missing-shears and reach requirements remain. Progress commits once before playback, while the approach still respects the original thorn boundary. Enter skips; new actions settle the sequence; hidden/unfocused pauses and reduced-motion behavior reuse the story-effect lifecycle. Mid-animation save/restore retains a clear path without duplicate points. Inspected the isolated native art/sprite proof `assets/reviews/thorn-cutting-proof.png`. Three approach positions, timed snips, skip/save/repeat guards, four EGA clearing stages and the full 105/105 route pass. Previous story/build sources retained under `backups/thorn-cutting-2026-10-25/`.
 
 
 ### Prevent river shortcut — 25 October
 
-Swimming now remembers the bank from which Rosella fell. She can escape only onto that same bank; an attempt to reach the opposite bank produces a strong-current response and sweeps her back to her water-entry position. This does not replenish the five-second timer, award points or change bridge progress. The warning appears once per fall, avoiding repeated modal interruptions. SWIM TO SHORE / GET OUT routes to the original bank, and explicit SWIM ACROSS / OTHER SIDE / FAR BANK attempts receive the same response. Once the plank is placed, ordinary walking across the bridge still works. Retry remains on the original dry position, and save/restore rules are unchanged.
+Swimming now remembers the bank from which Elara fell. She can escape only onto that same bank; an attempt to reach the opposite bank produces a strong-current response and sweeps her back to her water-entry position. This does not replenish the five-second timer, award points or change bridge progress. The warning appears once per fall, avoiding repeated modal interruptions. SWIM TO SHORE / GET OUT routes to the original bank, and explicit SWIM ACROSS / OTHER SIDE / FAR BANK attempts receive the same response. Once the plank is placed, ordinary walking across the bridge still works. Retry remains on the original dry position, and save/restore rules are unchanged.
 
 `tools/check-river-bank-rule.cjs` finds paths that would have reached the opposite shore under the previous rules, then exercises the actual movement against those routes from both banks and verifies they are blocked. Same-bank escapes, current pushback, timer preservation, typed attempts and repaired bridge crossing pass, alongside existing swimming/timber, room-route and full-quest checks. Prior swimming source preserved in `backups/river-bank-rule-2026-10-25/`.
 
@@ -297,7 +297,7 @@ Swimming now checks the rocks' visible native-pixel masks at the waterline as we
 
 Speaking Merrin's name to the waiting mirror now starts a roughly ten-second, three-scene flight. The golden voice leaves the gallery doorway, emerges from the gallery arch in the actual courtyard, crosses toward the outer gate, then appears outside the castle and flies into Merrin. He touches his throat and laughs. A short Tandy flight phrase and arrival cue accompany the sequence.
 
-These are camera cutaways rendered from existing rooms. Rosella remains in the gallery, with her position and exits unchanged. Ordinary movement/typing cannot accidentally dismiss the flight; ENTER can deliberately skip it. Focus, hidden-page and popup pauses remain. Completion marks the arrival seen once, so visiting the garden afterwards does not replay a second arrival. Mid-flight saving settles the cinematic and preserves consistent returned-voice/arrival state.
+These are camera cutaways rendered from existing rooms. Elara remains in the gallery, with her position and exits unchanged. Ordinary movement/typing cannot accidentally dismiss the flight; ENTER can deliberately skip it. Focus, hidden-page and popup pauses remain. Completion marks the arrival seen once, so visiting the garden afterwards does not replay a second arrival. Mid-flight saving settles the cinematic and preserves consistent returned-voice/arrival state.
 
 Verified by `tools/check-voice-journey.cjs` (actual cutaway rendering, scene order, stationary player, pause/input lock, skip, score and save/restore), story-effects and 124 parser checks, plus the complete 105/105 headless walkthrough. Previous source: `backups/voice-flight-2026-10-25/`.
 
@@ -334,7 +334,7 @@ Backup: `backups/jar-storm-2026-10-25/`. Verification: all 80 native artwork fra
 
 ## Mirror jar exchange — October 25, 2026
 
-Replaced the large resampled inventory jar in Rosella's hand with a purpose-drawn 8×12 native cel. Its rounded shoulders, narrow red neck, flat golden base and moving interior light remain readable at scene scale. Rosella lifts it gently by two native pixels with a short connected forearm. The mirror uses a matching 6×10 cel positioned beside the actual reflected hand, rather than a jar fixed at an unrelated point in the glass. Both jars become empty together when the voice is released.
+Replaced the large resampled inventory jar in Elara's hand with a purpose-drawn 8×12 native cel. Its rounded shoulders, narrow red neck, flat golden base and moving interior light remain readable at scene scale. Elara lifts it gently by two native pixels with a short connected forearm. The mirror uses a matching 6×10 cel positioned beside the actual reflected hand, rather than a jar fixed at an unrelated point in the glass. Both jars become empty together when the voice is released.
 
 During the offering, gold/cyan motes travel from the held jar into its reflection. Small clipped ripples grow in the mirror and settle into a golden voice wisp before the mirror asks its existing question. The ordinary static musical glyph is suppressed during this exchange. Reflected hands, jar pixels, ripples and wisps remain inside the arched glass; the frame is untouched.
 
@@ -348,4 +348,4 @@ Completed Merrin's generated-reference/native-AGI ending redraw and longer 31.68
 
 Type **XYZZY PUZZLES** (or **SKIP PUZZLE**) while standing by the mill mechanism, awakened grotto pool, or belfry instrument. It solves only that room's puzzle and plays its normal success animation. In Lost Harmony, dismiss the success message to continue the bell sequence. Close an open puzzle panel with Escape before typing the command.
 
-This shortcut does not grant inventory, teleport Rosella, repair the rope, seal the jar, or skip the story. Normal item/prerequisite checks still apply, and ordinary save/restore retains the solved puzzle. The original **XYZZY** remains the full pre-finale checkpoint shortcut.
+This shortcut does not grant inventory, teleport Elara, repair the rope, seal the jar, or skip the story. Normal item/prerequisite checks still apply, and ordinary save/restore retains the solved puzzle. The original **XYZZY** remains the full pre-finale checkpoint shortcut.

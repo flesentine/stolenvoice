@@ -24,7 +24,7 @@ for(const handler of paused.handlers.get('window:focus')||[])handler.fn();for(co
 console.log('PASS focus loss pauses animation and focus return resumes from the same frame.');
 
 for(const run of [a,b,c]){assert.deepEqual(JSON.parse(JSON.stringify(run.game.state.player)),{x:102,y:206,step:1,facing:'left'});assert(run.game.canStand(102,206,0),'arrival is on clear garden ground')}
-console.log('PASS timed, advanced and skipped intros hand off at the final Rosella position, facing and cel.');
+console.log('PASS timed, advanced and skipped intros hand off at the final Elara position, facing and cel.');
 
 const gardenShot=s.bootQA(),actorCalls=gardenShot.game.spyGardenActor();
 gardenShot.get('#start').onclick();gardenShot.get('#start').onclick();

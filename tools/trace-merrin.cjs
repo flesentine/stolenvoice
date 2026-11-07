@@ -1,7 +1,7 @@
 // Convert the generated gardener reference to a native, palette-indexed AGI cel.
 const sharp=require('sharp'),fs=require('fs'),path=require('path');
 const root=path.resolve(__dirname,'..');
-const palette=JSON.parse(fs.readFileSync(path.join(root,'assets/rosella-direct-trace-v3.json'),'utf8')).palette;
+const palette=JSON.parse(fs.readFileSync(path.join(root,'assets/elara-direct-trace-v3.json'),'utf8')).palette;
 const rgb=palette.map(h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)));
 (async()=>{
  const {data,info}=await sharp(path.join(root,'assets/merrin-reference-v1.png')).ensureAlpha().raw().toBuffer({resolveWithObject:true});
@@ -60,7 +60,7 @@ function gardener(px,py){
  const left=pictureX(px)-4,top=pictureY(py)-37;
  for(let row=0;row<38;row++)for(let col=0;col<8;col++){
   const ink=merrinSprite[row][col];if(ink==='.')continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col,top+row,1,1);
  }
 }
 `;

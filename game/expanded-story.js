@@ -162,29 +162,28 @@ function helpText(level=0){
  const hint=choices[hintSessionIndex].steps[Math.max(0,Math.min(2,level))];
  return hint+(level===0?'\n\n'+(choices.length>1?'Ask again for another local lead. ':'')+'HINT MORE gives a stronger nudge; HINT COMMAND gives exact wording.':level===1?'\n\nHINT COMMAND gives exact wording.':'');
 }
-const SAVE_KEY='stolen-voice-agi-save-v2';let memorySave='';
+const SAVE_KEY='stolen-voice-agi-save-v2',SAVE_BACKUP_KEY=SAVE_KEY+'-backup';let memorySave='',memoryBackup='';
 function saveGame(){
  if(beeStingInProgress())return;
  if(hiveDisaster)return;
  if(millSluiceReleaseFrame>=0)return;
- if(bridgeFall){say('Wait until Rosella has landed before saving.');return}
+ if(bridgeFall){say('Wait until Elara has landed before saving.');return}
  const pendingMirrorQuestion=storyAction?.kind==='voiceOffered',pendingDeparture=storyAction?.kind==='voiceFollow'&&room===1&&popupOpen&&!flags.voiceDepartureSeen;
  if(storyAction&&!(storyAction.kind==='voiceFollow'&&popupOpen))finishStoryEffect(false);
- if(bellAction){say(bellAction.stage==='jar'?'Wait until the bell note fades before saving.':'Wait until Rosella has landed before saving.');return}
+ if(bellAction){say(bellAction.stage==='jar'?'Wait until the bell note fades before saving.':'Wait until Elara has landed before saving.');return}
  if(swimState.active){say('You cannot save while struggling in the current.');return}
- memorySave=JSON.stringify({version:2,game:'stolen-voice-expanded',room,flags,player,merrinMemory:savedMerrinMemory(),sluiceRevision:3,sluice:millSluiceTurns,harmony:harmonyWeights});
- try{localStorage.setItem(SAVE_KEY,memorySave);say('Your adventure is saved.')}
- catch{say('Saved for this visit only; this browser blocks local saves.')}
+ const raw=JSON.stringify({version:2,game:'stolen-voice-expanded',room,flags,player,merrinMemory:savedMerrinMemory(),sluiceRevision:3,sluice:millSluiceTurns,harmony:harmonyWeights});
+ if(!validAdventureSave(raw)){say('This moment cannot be saved yet. Finish the current action first.');return false}
+ const stored=writeAdventureSave(raw);
+ say(stored?'Your adventure is saved.':'Saved for this visit only. Use SAVE FILES to download a copy you can keep.');
  if(pendingDeparture)agiMessagePages.push(AgiMessageWindow.wrap(voiceReleaseText));
  if(pendingMirrorQuestion)agiMessagePages.push(AgiMessageWindow.wrap('The mirror whispers: \"Whose voice was it?\"'));
+ return raw;
 }
-function restoreGame(){
- if(beeStingInProgress())return;
- stopWalking();let raw=memorySave,migrating=false;
- if(!raw){try{raw=localStorage.getItem(SAVE_KEY);if(!raw){raw=localStorage.getItem('stolen-voice-agi-save-v1');migrating=!!raw}}catch{}}
- if(!raw){say('There is no saved adventure yet.');return}
- try{
-  const saved=JSON.parse(raw),nextMerrinMemory=readMerrinMemory(saved.merrinMemory);let nextFlags={...flagDefaults},nextRoom=saved.room;
+function validateAdventureSave(raw){
+  const saved=decodeSaveFile(raw);
+  if(!saved||typeof saved!=='object'||Array.isArray(saved)||!saved.flags||typeof saved.flags!=='object'||Array.isArray(saved.flags))throw Error('invalid save');
+  const migrating=saved.version===1&&saved.game==='stolen-voice',nextMerrinMemory=readMerrinMemory(saved.merrinMemory);let nextFlags={...flagDefaults},nextRoom=saved.room;
   if(migrating&&saved.version===1&&saved.game==='stolen-voice'){
    if(![0,1].includes(saved.room)||!saved.flags)throw Error('invalid earlier save');
    for(const key of ['rose','bell','mirrorAwake'])nextFlags[key]=saved.flags[key]===true;
@@ -207,16 +206,40 @@ function restoreGame(){
   if(nextFlags.harmonyTuned&&!harmonyPitches(nextHarmony).every((p,i)=>p===harmonyPitches(harmonySolution)[i]))throw Error('inconsistent harmony');
   const nextPlayer={x:Number.isFinite(saved.player?.x)?saved.player.x:roomLayouts[nextRoom].spawn[0],y:Number.isFinite(saved.player?.y)?saved.player.y:roomLayouts[nextRoom].spawn[1],step:Number.isInteger(saved.player?.step)&&saved.player.step>=0?saved.player.step%4:1,facing:['front','back','left','right'].includes(saved.player?.facing)?saved.player.facing:'front'};
   const oldFlags=flags;flags=nextFlags;
+  try{
   if(nextRoom===4&&nextFlags.bridgeFixed&&nextPlayer.x>=141&&nextPlayer.x<=179&&nextPlayer.y>=158&&nextPlayer.y<=181&&!canStand(nextPlayer.x,nextPlayer.y,nextRoom)&&canStand(nextPlayer.x,162,nextRoom))nextPlayer.y=162;
   if(!canStand(nextPlayer.x,nextPlayer.y,nextRoom)){const spawn=roomLayouts[nextRoom].spawn;nextPlayer.x=spawn[0];nextPlayer.y=spawn[1]}
-  flags=oldFlags;
+  }finally{flags=oldFlags}
+  return{nextRoom,nextFlags,nextTurns,nextHarmony,nextPlayer,nextMerrinMemory,migrating};
+}
+function validAdventureSave(raw){try{validateAdventureSave(raw);return true}catch{return false}}
+function applyAdventureSave(raw,source='browser'){
+ let state;
+ try{state=validateAdventureSave(raw)}catch{say('That saved adventure could not be read. Your current quest is unchanged.');return false}
+ const {nextRoom,nextFlags,nextTurns,nextHarmony,nextPlayer,nextMerrinMemory,migrating}=state;
+ stopWalking();closeMessage(false);
   resetHarmony();harmonyWeights=nextHarmony.slice();if(millSluiceOpen)closeMillSluice();millSluiceTurns=nextTurns.slice();resetMillSluiceControls();resetSwimming();resetHiveDisaster();resetBookAnimation();resetBellPull();resetStoryEffect();resetMillCabinet();resetWorkshopDoor();room=nextRoom;flags=nextFlags;merrinMemories=nextMerrinMemory;if(flags.bridgeFixed||!flags.bridgePlank)flags.bridgePlankSlipped=false;player=nextPlayer;scored={};score=0;
   for(const key of Object.keys(eventPoints))if(flags[key])award(key,eventPoints[key]);
   syncInventory();selected='';exitLatch=false;
+  if(source==='file'&&memorySave&&validAdventureSave(memorySave))memoryBackup=memorySave;
   memorySave=JSON.stringify({version:2,game:'stolen-voice-expanded',room,flags,player,merrinMemory:savedMerrinMemory(),sluiceRevision:3,sluice:millSluiceTurns,harmony:harmonyWeights});
-  draw();if(flags.complete)finishGame();else{maybeVoiceArrival();say(migrating?'Your earlier belongings and progress are restored. The adventure continues.':'Your saved adventure is restored.');if(flags.voiceReturned&&!flags.voiceArrivalSeen&&!flags.voiceDepartureSeen&&room===1)agiMessagePages.push(AgiMessageWindow.wrap(voiceReleaseText));}
- }catch{say('That saved adventure could not be read. Your current quest is unchanged.')}
+  const stored=source==='file'||source==='backup'?writeAdventureSave(memorySave):true;
+  draw();if(flags.complete)finishGame();else{maybeVoiceArrival();say(migrating?'Your earlier belongings and progress are restored. The adventure continues.':source==='file'?'Your save file is restored.'+(stored?'':' Browser storage is unavailable; keep your save file.'):source==='backup'?'Your backup adventure is restored.':'Your saved adventure is restored.');if(flags.voiceReturned&&!flags.voiceArrivalSeen&&!flags.voiceDepartureSeen&&room===1)agiMessagePages.push(AgiMessageWindow.wrap(voiceReleaseText));}
+ return true;
 }
+function restoreGame(){
+ if(beeStingInProgress())return false;
+ const primary=memorySave||readStoredSave(SAVE_KEY),backup=memoryBackup||readStoredSave(SAVE_BACKUP_KEY),earlier=readStoredSave('stolen-voice-agi-save-v1');
+ for(const [raw,source]of [[primary,'browser'],[backup,'backup'],[earlier,'browser']])if(raw&&validAdventureSave(raw))return applyAdventureSave(raw,source);
+ say(primary||backup||earlier?'That saved adventure could not be read. Your current quest is unchanged.':'There is no saved adventure yet.');return false;
+}
+function restoreBackupGame(){
+ if(beeStingInProgress())return false;
+ const raw=memoryBackup||readStoredSave(SAVE_BACKUP_KEY);
+ if(!raw){say('There is no previous save to recover yet.');return false}
+ return applyAdventureSave(raw,'backup');
+}
+
 function finishGame(){
  if(orchardBeeTimer)clearInterval(orchardBeeTimer);orchardBeeTimer=0;
  const firstCompletion=!flags.complete;

@@ -23,7 +23,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
    assert(toolbar.y+toolbar.height<=scene.y+1,'toolbar stays above play viewport');
    const center=scene.y+scene.height/2,expected=view.width<600?(toolbar.y+toolbar.height+keyboard.y)/2:(toolbar.y+toolbar.height+view.top+view.height)/2;
    assert(Math.abs(center-expected)<=1,'play viewport is centered in available space');
-   assert((await page.locator('.mobile-controls button').first().evaluate(el=>getComputedStyle(el).fontFamily)).includes('Sierra AGI'),'controls use original game font');
+   assert((await page.locator('.mobile-controls button').first().evaluate(el=>getComputedStyle(el).fontFamily)).includes('Alder Pixel'),'controls use original game font');
    return boxes;
   };
   await visible();assert(await page.locator('#input').isHidden());

@@ -43,13 +43,13 @@ function handlePlayfulIntent(text){
   startStoryEffect('courtDance','Three bees copy your steps, then scatter during your twirl. "That was a dance, not directions to a flower," you explain. The bees seem unconvinced.',{beeAudience:true});return true;
  }
  if(!target){
-  const message=action==='dance'&&room===0?'You dance along the garden path. The roses make a wonderfully undemanding audience.':action==='dance'&&room===2?'Three mice scurry out to join your dance. Excellent footwork. Questionable footwear. They vanish before you can ask who taught them.':action==='sing'?'Rosella hums a few notes to herself. The tune is pleasant company.':action==='dance'?'You manage two graceful steps and one less graceful recovery. Fortunately, there is no audience.':action==='curtsy'?'You lift your skirts and make a very proper curtsy. Even the floor seems impressed.':'You make a very formal bow to nobody in particular.';
+  const message=action==='dance'&&room===0?'You dance along the garden path. The roses make a wonderfully undemanding audience.':action==='dance'&&room===2?'Three mice scurry out to join your dance. Excellent footwork. Questionable footwear. They vanish before you can ask who taught them.':action==='sing'?'Elara hums a few notes to herself. The tune is pleasant company.':action==='dance'?'You manage two graceful steps and one less graceful recovery. Fortunately, there is no audience.':action==='curtsy'?'You lift your skirts and make a very proper curtsy. Even the floor seems impressed.':'You make a very formal bow to nobody in particular.';
   if(['dance','bow','curtsy'].includes(action))startStoryEffect(action==='dance'?'courtDance':action==='curtsy'?'mirrorCurtsy':'mirrorBow',message);else say(message);
   return true;
  }
  if(!['mirror','man'].includes(id)){
   if(['polish','flatter','face'].includes(action))return false;
-  say('That is not much of an audience. Rosella saves her performance for someone who might appreciate it.');return true;
+  say('That is not much of an audience. Elara saves her performance for someone who might appreciate it.');return true;
  }
  if(!objectIsHere(id)){say(id==='man'?'Merrin is in the royal garden.':'You do not see a mirror here.');return true}
  if(!nearObject(id))return true;
@@ -84,33 +84,33 @@ function handlePlayfulIntent(text){
 }
 function drawPlayfulHero(px,py){
  if(drawRoyalRaspberry(px,py))return true;
- if(storyAction?.kind==='merrinKiss'){drawRosellaKiss(px,py);return true}
- if(storyAction?.kind==='courtDance'){drawRosellaDance(px,py);return true}
+ if(storyAction?.kind==='merrinKiss'){drawElaraKiss(px,py);return true}
+ if(storyAction?.kind==='courtDance'){drawElaraDance(px,py);return true}
  if(storyAction?.kind==='mirrorCurtsy'){
-  const rows=rosellaCurtsySprite(storyAction.frame),left=pictureX(px)-7,top=pictureY(py)-39;
+  const rows=elaraCurtsySprite(storyAction.frame),left=pictureX(px)-7,top=pictureY(py)-39;
   ellipse(px,py+1,7,1,'#000000');
-  for(let row=0;row<40;row++)for(let col=0;col<14;col++)if(rows[row][col]!=='.'){x.fillStyle=rosellaColors[parseInt(rows[row][col],16)];x.fillRect(left+col,top+row,1,1)}
+  for(let row=0;row<40;row++)for(let col=0;col<14;col++)if(rows[row][col]!=='.'){x.fillStyle=elaraColors[parseInt(rows[row][col],16)];x.fillRect(left+col,top+row,1,1)}
   return true;
  }
  if(storyAction?.kind!=='mirrorBow')return false;
- const facing=rosellaWalkSprites[player.facing]?player.facing:'front';
- const rows=rosellaWalkSprites[facing][1],left=pictureX(px)-4,top=pictureY(py)-39;
+ const facing=elaraWalkSprites[player.facing]?player.facing:'front';
+ const rows=elaraWalkSprites[facing][1],left=pictureX(px)-4,top=pictureY(py)-39;
  ellipse(px,py+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
   const offset=playfulBowOffset(facing,row,storyAction.frame);
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+offset.x,top+row+offset.y,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+offset.x,top+row+offset.y,1,1);
  }
  return true;
 }
-function rosellaCurtsySprite(frame,reflected=false){
+function elaraCurtsySprite(frame,reflected=false){
  const dip=playfulBowAmount(frame,reflected),facing=reflected?({front:'back',back:'front',left:'left',right:'right'}[player.facing]||'front'):player.facing;
- const rows=rosellaWalkSprites[facing]?.[1]||rosellaWalkSprites.front[1],out=Array.from({length:40},()=>Array(14).fill('.'));
+ const rows=elaraWalkSprites[facing]?.[1]||elaraWalkSprites.front[1],out=Array.from({length:40},()=>Array(14).fill('.'));
  const dot=(x,y,ink)=>{if(x>=0&&x<14&&y>=0&&y<40)out[y][x]=ink};
  if(!dip){rows.forEach((row,y)=>[...row].forEach((ink,x)=>dot(x+3,y,ink)));return out.map(row=>row.join(''))}
  // The torso and head lower together; the skirt compresses over bent knees
  // while the crossed feet retain the same ground baseline.
- const body=rosellaWalkSprites[facing==='back'?'back':'front'][1];
+ const body=elaraWalkSprites[facing==='back'?'back':'front'][1];
  for(let y=0;y<24;y++)for(let x=0;x<8;x++){
   let ink=body[y][x];
   if(y>=15){if(x<2||x>5)continue;ink=y<17?'f':y<20?'1':'9'}
@@ -157,17 +157,17 @@ function drawMerrinKissDance(px,py){
  for(let row=0;row<38;row++)for(let col=0;col<8;col++){
   const ink=merrinSprite[row][col];if(ink==='.')continue;
   const heel=row>=29&&(pose.kick<0?col<4:col>=4)?pose.kick:0;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+heel,top+row-(heel?Math.floor((row-28)/3):0),1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+heel,top+row-(heel?Math.floor((row-28)/3):0),1,1);
  }
  drawMerrinRose(px+pose.side*2,py-pose.hop*240/168);
  return true;
 }
 
-function drawRosellaKiss(px,py){
+function drawElaraKiss(px,py){
  const f=storyAction.frame,stand=storyAction.kissStand||{x:px,y:py},t=f<7?f/6:f<10?1:f<16?(15-f)/5:0;
  const cx=px+(stand.x-px)*t,cy=py+(stand.y-py)*t,facing=f<16?(px<60?'right':'left'):player.facing;
- const rows=rosellaWalkSprites[facing][f<6?Math.floor(f/2)%4:1],left=pictureX(cx)-4,top=pictureY(cy)-39;
+ const rows=elaraWalkSprites[facing][f<6?Math.floor(f/2)%4:1],left=pictureX(cx)-4,top=pictureY(cy)-39;
  ellipse(cx,cy+1,7,1,'#000000');
- for(let y=0;y<40;y++)for(let col=0;col<8;col++){const ink=rows[y][col];if(ink==='.')continue;const lean=f>=5&&f<=10?Math.sin((f-4)/7*Math.PI)*3:0,shift=Math.round(lean*Math.max(0,1-y/28))*(facing==='left'?-1:1);x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+shift,top+y,1,1)}
+ for(let y=0;y<40;y++)for(let col=0;col<8;col++){const ink=rows[y][col];if(ink==='.')continue;const lean=f>=5&&f<=10?Math.sin((f-4)/7*Math.PI)*3:0,shift=Math.round(lean*Math.max(0,1-y/28))*(facing==='left'?-1:1);x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+shift,top+y,1,1)}
  if(f>=7&&f<=10){const hx=pictureX(60)+(px<60?-3:4),hy=103-(f-7);for(const [dx,dy]of [[0,0],[2,0],[0,1],[1,1],[2,1],[1,2]]){x.fillStyle='#ff5555';x.fillRect(hx+dx,hy+dy,1,1)}}
 }

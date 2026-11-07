@@ -103,7 +103,7 @@ def trace_cell(rgb,sy,frame):
   while i<len(xs):
    start=xs[i];c=out[(start,y)];end=start+1;i+=1
    while i<len(xs) and xs[i]==end and out[(xs[i],y)]==c:end+=1;i+=1
-   runs.append([start,y,end-start,c])
+   runs.append([start,y,end-start,{14:6}.get(c,c)])
  points=list(out);floor=max((y for x,y in points),default=102)
  return dict(frame=frame,stage=STAGES[frame//5],runs=runs,head=None,arms=[],legs=[],inside=False,anchorX=124,floor=floor,sourceRegistration=[round(cx,2),rim,sy])
 

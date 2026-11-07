@@ -1,5 +1,5 @@
 const fs=require('fs'),assert=require('assert/strict'),make=require('./trace-barrel-prank.cjs');
-const cels=make(),bodyColors=new Set([0,1,6,7,9,12,14,15]);assert.equal(cels.length,28);
+const cels=make(),bodyColors=new Set([0,1,6,7,9,12,15]);assert.equal(cels.length,28);
 for(const [index,cel]of cels.entries()){
  assert.equal(cel.frame,index*5);const pixels=new Map();
  for(const [x,y,w,c]of cel.runs){assert([x,y,w,c].every(Number.isInteger));assert(x>=0&&x+w<=160&&y>=0&&y<168&&w>0);assert(bodyColors.has(c));for(let n=0;n<w;n++)pixels.set((x+n)+160*y,c)}

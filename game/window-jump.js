@@ -11,7 +11,7 @@ function handleWindowJump(text){
  if(!match||objectId(match[1])!=='window')return false;
  if(room!==7){say('That is not an open belfry window. You keep your feet where they are.');return true}
  const named=belfryJumpWindows.find(w=>match[1].includes(w.name)),target=named||belfryJumpWindows.reduce((a,b)=>Math.abs(player.x-a.x)<Math.abs(player.x-b.x)?a:b);
- if(Math.hypot(player.x-target.x,player.y-180)>40){say('Walk closer to the window first. Rosella prefers her leaps with less of a run-up.');return true}
+ if(Math.hypot(player.x-target.x,player.y-180)>40){say('Walk closer to the window first. Elara prefers her leaps with less of a run-up.');return true}
  startStoryEffect('windowJump','A heroic leap! A decidedly unheroic gust catches your skirts and deposits you back in the belfry. Apparently, the scenic route has a return policy.',{jumpWindow:target.name});return true;
 }
 function windowJumpPose(frame){
@@ -26,7 +26,7 @@ function windowJumpPose(frame){
 function drawWindowJumpHero(){
  if(storyAction?.kind!=='windowJump')return false;
  const frame=storyAction.frame,pose=windowJumpPose(frame),rows=windowJumpSprite(frame),left=pose.x-4,top=pose.feet-39;
- const dot=(xPos,y,color)=>{if(xPos<0||xPos>=160||y<0||y>=168||(pose.outside&&(!insidePolygon(xPos,y,pose.glass)||insideSolidFootprint(xPos,y,belfryJumpBell))))return;x.fillStyle=rosellaColors[color];x.fillRect(xPos,y,1,1)};
+ const dot=(xPos,y,color)=>{if(xPos<0||xPos>=160||y<0||y>=168||(pose.outside&&(!insidePolygon(xPos,y,pose.glass)||insideSolidFootprint(xPos,y,belfryJumpBell))))return;x.fillStyle=elaraColors[color];x.fillRect(xPos,y,1,1)};
  if(!pose.outside)ellipse(player.x,player.y+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   let ink=rows[row][col];
@@ -45,7 +45,7 @@ function drawWindowJumpHero(){
  return true;
 }
 function windowJumpSprite(frame){
- const rows=rosellaWalkSprites[frame<23?'back':'front'][Math.floor(frame/3)%4].map(row=>[...row]);
+ const rows=elaraWalkSprites[frame<23?'back':'front'][Math.floor(frame/3)%4].map(row=>[...row]);
  const flutter=frame>5&&frame<39?Math.max(Math.sin((frame-5)*Math.PI/34),frame>26?Math.sin((frame-26)*Math.PI/13):0):0;
  const lift=Math.round(flutter*9);
  if(lift){

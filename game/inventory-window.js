@@ -1,4 +1,4 @@
-// Sierra-style text selection first; an object's native cel appears on Enter.
+// classic text selection first; an object's native cel appears on Enter.
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.AgiInventoryWindow=factory()})(typeof globalThis==='object'?globalThis:this,function(){
  function displayName(name){return name.charAt(0).toUpperCase()+name.slice(1)}
  function writer(pixels,width,height,font){

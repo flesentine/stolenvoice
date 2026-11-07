@@ -60,7 +60,7 @@ for(const left of [40,89]){
  r(left-1,23,7,2,0);r(left-1,22,7,1,7);
  for(const yy of [49,77,103])l([[left,yy],[left+3,yy]],0);
 }
-// A separate far gallery pier remains behind Rosella, outside the window view.
+// A separate far gallery pier remains behind Elara, outside the window view.
 r(146,21,5,115,8,0);r(147,23,1,109,7);r(145,19,7,2,7,0);
 for(const yy of [49,77,103,127])l([[146,yy],[149,yy]],0);
 name='Window arch block joints';

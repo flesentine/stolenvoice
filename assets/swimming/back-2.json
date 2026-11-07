@@ -1,7 +1,7 @@
 {
   "format": "agi-picture-workshop",
   "version": 1,
-  "name": "Rosella swimming back 3",
+  "name": "Elara swimming back 3",
   "room": "swim-back-2",
   "width": 160,
   "height": 168,
@@ -29,11 +29,11 @@
     24,
     20
   ],
-  "reference": "Existing Rosella walking sprite, head rows 0-13",
+  "reference": "Existing Elara walking sprite, head rows 0-13",
   "commands": [
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -41,26 +41,14 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
-          67
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          77,
           67
         ]
       ],
@@ -69,7 +57,19 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
+      "points": [
+        [
+          77,
+          67
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -77,38 +77,14 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
-          68
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          76,
-          68
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          77,
           68
         ]
       ],
@@ -117,7 +93,31 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
+      "points": [
+        [
+          76,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          77,
+          68
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -125,50 +125,14 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
-          69
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          76,
-          69
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          77,
-          69
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          78,
           69
         ]
       ],
@@ -177,7 +141,43 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
+      "points": [
+        [
+          76,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          77,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          78,
+          69
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -185,11 +185,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -197,38 +197,14 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
-          70
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          77,
-          70
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          78,
           70
         ]
       ],
@@ -237,7 +213,31 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
+      "points": [
+        [
+          77,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          78,
+          70
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -249,7 +249,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -257,50 +257,14 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
-          71
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          76,
-          71
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          77,
-          71
-        ]
-      ],
-      "size": 1,
-      "color": 14
-    },
-    {
-      "type": "brush",
-      "name": "Original Rosella head",
-      "points": [
-        [
-          78,
           71
         ]
       ],
@@ -309,7 +273,43 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
+      "points": [
+        [
+          76,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          77,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
+      "points": [
+        [
+          78,
+          71
+        ]
+      ],
+      "size": 1,
+      "color": 6
+    },
+    {
+      "type": "brush",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -317,11 +317,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -329,11 +329,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -341,11 +341,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -353,11 +353,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -365,11 +365,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -381,7 +381,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -393,7 +393,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -405,7 +405,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -413,11 +413,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -425,11 +425,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -437,11 +437,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -449,11 +449,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -461,11 +461,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -473,11 +473,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -489,7 +489,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -501,7 +501,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -509,11 +509,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -521,11 +521,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -533,11 +533,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -545,11 +545,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -557,11 +557,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -569,11 +569,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -585,7 +585,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -597,7 +597,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -605,11 +605,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -617,11 +617,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -629,11 +629,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -641,11 +641,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -653,11 +653,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -665,11 +665,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -681,7 +681,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -689,11 +689,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -701,11 +701,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -713,11 +713,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -725,11 +725,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -737,11 +737,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -749,11 +749,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -761,11 +761,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -773,11 +773,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -785,11 +785,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -797,11 +797,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -809,11 +809,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -821,11 +821,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -833,11 +833,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -845,11 +845,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -857,11 +857,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -869,11 +869,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           72,
@@ -881,11 +881,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -893,11 +893,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -905,11 +905,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -917,11 +917,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -929,11 +929,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -941,11 +941,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -953,11 +953,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -965,11 +965,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -981,7 +981,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -989,11 +989,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -1001,11 +1001,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -1013,11 +1013,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -1025,11 +1025,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -1037,11 +1037,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,
@@ -1053,7 +1053,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           73,
@@ -1065,7 +1065,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           74,
@@ -1073,11 +1073,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           75,
@@ -1085,11 +1085,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           76,
@@ -1097,11 +1097,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           77,
@@ -1109,11 +1109,11 @@
         ]
       ],
       "size": 1,
-      "color": 14
+      "color": 6
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           78,
@@ -1125,7 +1125,7 @@
     },
     {
       "type": "brush",
-      "name": "Original Rosella head",
+      "name": "Original Elara head",
       "points": [
         [
           79,

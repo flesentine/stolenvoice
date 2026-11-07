@@ -7,7 +7,7 @@ assert(a.game.canStand(70,162,1),'walk behind gallery table');assert(!a.game.can
 a.game.closeMessage();a.game.changeRoom(5);a.game.openMillCabinet();assert.equal(a.game.cabinetStage,1);for(let i=0;i<10;i++)for(const fn of [...a.intervals.values()])fn();assert.equal(a.game.cabinetStage,6);
 const props=require('./build-object-priorities.cjs')();for(const x of [40,50,111,119])assert(props[4].some(p=>p.id.startsWith('Bridge post '+x+',')));
 // Compare every head pixel in all 16 cels with the walking source.
-const walk=JSON.parse(read('stolen-voice-short.html').match(/const rosellaWalkSprites=(\{[^\n]+\});/)[1]);const swim=vm.runInNewContext(read('game/swimming-pictures.js')+';swimmingPictures');
+const walk=JSON.parse(read('stolen-voice-short.html').match(/const elaraWalkSprites=(\{[^\n]+\});/)[1]);const swim=vm.runInNewContext(read('game/swimming-pictures.js')+';swimmingPictures');
 for(const [direction,cels]of Object.entries(swim))for(const cel of cels){const bytes=Buffer.from(cel,'base64'),pixels=[];for(let i=0;i<bytes.length;i+=2)for(let n=0;n<bytes[i];n++)pixels.push(bytes[i+1]);for(let y=0;y<14;y++)for(let x=0;x<8;x++){const ink=walk[direction][0][y][x];assert.equal(pixels[(y+3)*24+x+8],ink==='.'?16:parseInt(ink,16));}}
 // Exercise actual PCM construction/playback with an AudioContext stand-in.
 let started=0,stopped=0,buffers=[],created=0;

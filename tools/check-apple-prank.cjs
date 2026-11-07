@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 let h=fs.readFileSync('tools/check-expanded-adventure.cjs','utf8').split("check('Eight rooms")[0];
-h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=>heard.push(args);globalThis.game={get heard(){return heard},reachFrames:appleReachFrames,tickStoryEffect,drawApplePrankHero,applePrankPose,applePrankPixels,walkSprites:rosellaWalkSprites,get action(){return storyAction&&{...storyAction}},setFrame(n){storyAction.frame=n},place(r,x,y){room=r;player={x,y,step:1,facing:"front"}},reduced(){window.matchMedia=()=>({matches:true})},command,');
+h=h.replace('globalThis.game={command,','const heard=[];playGameSound=(...args)=>heard.push(args);globalThis.game={get heard(){return heard},reachFrames:appleReachFrames,tickStoryEffect,drawApplePrankHero,applePrankPose,applePrankPixels,walkSprites:elaraWalkSprites,get action(){return storyAction&&{...storyAction}},setFrame(n){storyAction.frame=n},place(r,x,y){room=r;player={x,y,step:1,facing:"front"}},reduced(){window.matchMedia=()=>({matches:true})},command,');
 const s={require,console,Buffer,__dirname};vm.createContext(s);vm.runInContext(h+';globalThis.bootQA=boot;',s);
 function at(r=3,x=118,y=205){const a=s.bootQA();a.start();while(a.game.state.popupOpen)a.game.closeMessage();a.game.place(r,x,y);return a}
 for(const text of ['take apple','take apples','pick an apple','pick up fruit','pluck apple from the tree','eat apple','bite into an apple','taste fruit','try apple']){

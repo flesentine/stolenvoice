@@ -28,5 +28,5 @@ for(const command of ['look broken boards','examine splinters','inspect bridge t
 check(4,'look broken ends',/merely resting/,{bridgePlank:true});check(4,'look broken boards',/hangs crookedly/,{bridgePlank:true,bridgePlankSlipped:true});check(4,'examine splinters',/Fresh twine/,{bridgePlank:true,bridgeFixed:true});
 check(0,'smell apples',/No apples.*here/);check(8,'knock workshop door',/closer/,{},[285,220]);check(4,'knock mill door',/closer/,{},[25,220]);
 check(0,'smell rose',/sweet perfume/,{},[273,201]);check(1,'touch mirror',/glass is cold/,{},[144,190]);
-for(const command of ['look at mountains','examine snowy peaks','look at mountain range'])check(3,command,/snow monster.*Alexander.*one member of the family/);
+for(const command of ['look at mountains','examine snowy peaks','look at mountain range'])check(3,command,/Snow crowns.*old ranger.*admire them from the orchard/);
 console.log('PASS '+count+' scenery reactions/aliases and puzzle states, locality/reach, existing rose/mirror responses, preserved memory/inventory/quest state and no automatic hazard.');

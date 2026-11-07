@@ -20,7 +20,7 @@ function tickChairRest(){
  storyAction.frame++;
  if(storyAction.stage==='sit'&&storyAction.frame===8)playChairCreak();
  if(storyAction.stage==='sit'&&storyAction.frame>=12){showChairRestMessage();return}
- if(storyAction.stage==='pace'&&storyAction.frame>=48){finishStoryEffect(false);say('"Ow! My royal back!" Rosella mutters. "Next time I shall sit on the floor. It has more padding."');return}
+ if(storyAction.stage==='pace'&&storyAction.frame>=48){finishStoryEffect(false);say('"Ow! My royal back!" Elara mutters. "Next time I shall sit on the floor. It has more padding."');return}
  draw();
 }
 function chairPaceOffset(frame){
@@ -33,25 +33,25 @@ function drawChairRestHero(px,py){
  if(storyAction?.kind!=='chairRest')return false;
  const {stage,frame}=storyAction;
  if(stage!=='pace'||frame<8){
-  const sit=stage==='pace'?1-frame/8:Math.min(1,frame/8),rows=rosellaWalkSprites.front[1];
+  const sit=stage==='pace'?1-frame/8:Math.min(1,frame/8),rows=elaraWalkSprites.front[1];
   const left=Math.round((pictureX(px)-4)*(1-sit)+107*sit),top=Math.round((pictureY(py)-39)*(1-sit)+78*sit);
   for(let row=0;row<40;row++)for(let col=0;col<8;col++){
    const ink=rows[row][col];if(ink==='.')continue;
    const knee=row>=25?Math.round(Math.sin((row-25)/14*Math.PI)*sit*2)*(col<4?-1:1):0;
    const y=top+(row<25?row:25+Math.round((row-25)*(1-.4*sit)));
-   x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+knee,y,1,1);
+   x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+knee,y,1,1);
   }
   return true;
  }
  const offset=chairPaceOffset(frame),previous=chairPaceOffset(frame-1),direction=offset===previous?(frame%20<10?1:-1):Math.sign(offset-previous);
- const facing=direction>0?'right':'left',rows=rosellaWalkSprites[facing][Math.floor(frame/3)%4],left=pictureX(px+offset)-4,top=pictureY(py)-39;
+ const facing=direction>0?'right':'left',rows=elaraWalkSprites[facing][Math.floor(frame/3)%4],left=pictureX(px+offset)-4,top=pictureY(py)-39;
  ellipse(px+offset,py+1,7,1,'#000000');
  // Repaint the cloth underneath the resting arm before moving it to her back.
  const torso=facing==='left'?3:2;
- for(let row=14;row<=24;row++)for(let col=torso;col<torso+3;col++){x.fillStyle=rosellaColors[row<16?15:row<20?1:9];x.fillRect(left+col+direction,top+row+1,1,1)}
+ for(let row=14;row<=24;row++)for(let col=torso;col<torso+3;col++){x.fillStyle=elaraColors[row<16?15:row<20?1:9];x.fillRect(left+col+direction,top+row+1,1,1)}
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.'||(row>=14&&row<=24&&ink==='c'))continue;
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(left+col+(row<25?direction:0),top+row+(row<25?1:0),1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(left+col+(row<25?direction:0),top+row+(row<25?1:0),1,1);
  }
  const shoulder=[left+(direction>0?4:3)+direction,top+15],elbow=[shoulder[0]-direction*3,top+21],hand=[left+(direction>0?1:6),top+23];
  galleryInk([shoulder,elbow],'#ffffff');galleryInk([elbow,hand],'#ff5555');x.fillStyle='#ff5555';x.fillRect(hand[0],hand[1],2,2);

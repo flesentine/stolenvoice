@@ -36,4 +36,4 @@ for(const side of ['west','east']){
  assert.equal(a.game.riverBankSide(a.game.state.player.x,a.game.state.player.y),side);
  assert(a.game.state.flags.bridgePlank);assert(!a.game.state.flags.bridgeFixed);
 }
-console.log('PASS unsecured plank drops Rosella from either bank and permits same-bank recovery without losing the repair.');
+console.log('PASS unsecured plank drops Elara from either bank and permits same-bank recovery without losing the repair.');

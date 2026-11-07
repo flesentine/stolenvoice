@@ -12,7 +12,7 @@ function approachPickup(){
  else{storyAction.stage='reach';player.facing=storyAction.pickupDirection>0?'right':'left';player.step=0;return false}
  player.step++;player.facing=dx<0?'left':dx>0?'right':dy<0?'back':'front';draw();return true;
 }
-// Repose Rosella's original pixels: head/hair retain their exact colors and shape.
+// Repose Elara's original pixels: head/hair retain their exact colors and shape.
 // Ground items use a brief crouch; bench/shelf items use a smaller forward reach.
 const pickupObjects={
  rose:{pickup:'rose',pickupLevel:'ground',pickupTarget:'rose'},
@@ -59,7 +59,7 @@ function pickupPose(px,py){
 function drawPickupHero(px,py){
  if(!storyAction||!['pickup','bellTaken'].includes(storyAction.kind)||storyAction.stage==='approach')return false;
  const pose=pickupPose(px,py),{amount,ground,direction,left,top,shoulder}=pose;
- const rows=rosellaWalkSprites[player.facing][0];
+ const rows=elaraWalkSprites[player.facing][0];
  ellipse(px,py+1,7,1,'#000000');
  for(let row=0;row<40;row++)for(let col=0;col<8;col++){
   const ink=rows[row][col];if(ink==='.')continue;
@@ -67,7 +67,7 @@ function drawPickupHero(px,py){
   // and must remain: deleting every skin pixel cut the body in two.
   if(amount>0&&row>=15&&row<=24&&ink==='c'&&(direction>0?col>=5:col<=2))continue;
   const p=pose.pixel(col,row);
-  x.fillStyle=rosellaColors[parseInt(ink,16)];x.fillRect(p.x,p.y,1,1);
+  x.fillStyle=elaraColors[parseInt(ink,16)];x.fillRect(p.x,p.y,1,1);
  }
  if(amount>0){
   galleryInk([[shoulder.x,shoulder.y],[shoulder.x+direction*2,Math.round((shoulder.y+pose.hand.y)/2)],[pose.hand.x,pose.hand.y]],'#ff5555');

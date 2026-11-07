@@ -30,7 +30,7 @@ for(let f=0;f<=64;f++){
  art.game.setFrame(f);const hero=[];
  ctx.fillRect=function(x,y,w,h){assert(palette.has(this.fillStyle),'every sprite ink resolves to a real EGA color');hero.push([x,y,w,h,this.fillStyle])};
  ctx.fillStyle='#aa5500';art.game.drawHiveKickHero();
- assert(hero.filter(dot=>dot[4]==='#ffff55').length>=8,'blonde hair remains visible in every hero frame');
+ assert(hero.filter(dot=>dot[4]==='#aa5500').length>=8,'auburn hair remains visible in every hero frame');
  if(f>=48){const xs=hero.map(d=>d[0]),ys=hero.map(d=>d[1]);assert(Math.max(...xs)-Math.min(...xs)<=9,'collapse never rotates into a wide stretched body');assert(Math.max(...ys)<=140,'folded knees/shoes stay on the floor')}
  if(f===60)held=JSON.stringify(hero);if(f>=60)assert.equal(JSON.stringify(hero),held,'final slumped pose stays still');
  const bees=[];ctx.fillRect=function(x,y,w,h){bees.push([x,y,this.fillStyle])};art.game.drawHiveAttack();
@@ -41,4 +41,4 @@ for(let f=0;f<=64;f++){
   for(let j=0;j<5;j++){assert.equal(sample[j][0]-bx,expected[j][0]);assert.equal(sample[j][1]-by,expected[j][1]);assert.equal(sample[j][2],expected[j][2],'attack uses the exact normal orchard bee ink and wing phase')}
  }
 }
-console.log('PASS hive kick aliases/reach, shape-preserving AGI-aspect tip, 64-frame swarm/knee slump, blonde palette in all65 poses, normal scout-sized bees, death/retry/F7 restore, reduced motion, pause, save protection, unchanged quest and native painter bounds.');
+console.log('PASS hive kick aliases/reach, shape-preserving AGI-aspect tip, 64-frame swarm/knee slump, auburn palette in all65 poses, normal scout-sized bees, death/retry/F7 restore, reduced motion, pause, save protection, unchanged quest and native painter bounds.');

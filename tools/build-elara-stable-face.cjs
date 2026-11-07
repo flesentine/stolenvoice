@@ -1,7 +1,7 @@
 // Walking changes the limbs, never the shape/position of facial features.
 const fs=require('fs'),path=require('path'),root=path.resolve(__dirname,'..');
 module.exports=function(){
- const original=JSON.parse(fs.readFileSync(path.join(root,'stolen-voice-short.html'),'utf8').match(/const rosellaWalkSprites=(\{[^\n]+\});/)[1]);
+ const original=JSON.parse(fs.readFileSync(path.join(root,'stolen-voice-short.html'),'utf8').match(/const elaraWalkSprites=(\{[^\n]+\});/)[1]);
  const views={};
  for(const direction of ['front','back','left','right']){
   const head=original[direction][0].slice(0,12);
@@ -26,5 +26,5 @@ module.exports=function(){
   return out.map(r=>r.join(''));
  });
  const result={width:8,height:40,headRows:12,method:'Original first-cel head held steady in each direction; mirrored one-pixel profile eyes; original animated body rows preserved; boot pixels gain dark soles/heels and one warm highlight.',views};
- fs.writeFileSync(path.join(root,'assets/rosella-walk-stable-face-v2.json'),JSON.stringify(result,null,2)+'\n');return views;
+ fs.writeFileSync(path.join(root,'assets/elara-walk-stable-face-v2.json'),JSON.stringify(result,null,2)+'\n');return views;
 };

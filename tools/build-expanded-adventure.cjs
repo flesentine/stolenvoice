@@ -3,13 +3,24 @@ const fs=require('fs'),path=require('path');const root=path.resolve(__dirname,'.
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 require('./draw-prologue-closeup.cjs');
 let html=read('stolen-voice-short.html');
+// Register the native playtest dialog guard before all game keyboard handlers.
+html=html.replace("(()=>{'use strict';",()=>"(()=>{'use strict';\n"+`document.addEventListener('keydown',event=>{if(!playtestDialog)return;event.stopImmediatePropagation();if(event.key==='Escape'){event.preventDefault();closePlaytest()}},true);\n`);
+html=html.replace('</style>',()=>read('game/playtest.css')+'\n</style>');
+// Save-file input owns its native dialog before ordinary game key handlers.
+html=html.replace("(()=>{'use strict';",()=>"(()=>{'use strict';\n"+read('game/save-files.js'));
+html=html.replace('</style>',()=>read('game/save-files.css')+'\n</style>');
+html=html.replace("['Restore    F7',()=>restoreGame()]", "['Restore    F7',()=>restoreGame()],['Save files...',()=>showSaveFiles()]");
+html=html.replace('F5: save. F7: restore.','F5: quick save. F7: restore.\\nSAVE FILES: download/open a save.');
+
+html=html.replace(/data:font\/ttf;base64,[A-Za-z0-9+/=]+/,()=> 'data:font/ttf;base64,'+fs.readFileSync(path.join(root,'assets/fonts/alder-pixel.ttf')).toString('base64'));
+html=html.replace(/const agiFont=Uint8Array.from\(atob\('[^']+'\)/,()=> "const agiFont=Uint8Array.from(atob('"+fs.readFileSync(path.join(root,'assets/fonts/alder-pixel-8x8.bin')).toString('base64')+"')");
 // Static metadata is available to link-preview crawlers without running the game.
 html=html.replace('<head>',()=>'<head>\n'+read('game/share-metadata.html'));
 html=html.replace('</style>',()=>read('game/mobile-controls.css').replace('__MOBILE_KEYBOARD_BEZEL__','data:image/png;base64,'+fs.readFileSync(path.join(root,'assets/ui/keyboard-case-v1.png')).toString('base64'))+'\n</style>');
 html=html.replace('for(const left of [119,174])','for(const left of [118,174])');
-const stableRosella=require('./build-rosella-stable-face.cjs')();
-html=html.replace(/const rosellaWalkSprites=\{[^\n]+\};/,()=> 'const rosellaWalkSprites='+JSON.stringify(stableRosella)+';');
-html=html.replace(/const rosellaSprites=\{[^\n]+\};/,()=> 'const rosellaSprites='+JSON.stringify(Object.fromEntries(Object.entries(stableRosella).map(([direction,cels])=>[direction,cels[1]])))+';');
+const stableElara=require('./build-elara-stable-face.cjs')();
+html=html.replace(/const elaraWalkSprites=\{[^\n]+\};/,()=> 'const elaraWalkSprites='+JSON.stringify(stableElara)+';');
+html=html.replace(/const elaraSprites=\{[^\n]+\};/,()=> 'const elaraSprites='+JSON.stringify(Object.fromEntries(Object.entries(stableElara).map(([direction,cels])=>[direction,cels[1]])))+';');
 require('./render-opening-jingle.cjs');
 html=html.replace(/const openingJingleWave='[^']*';/,()=>"const openingJingleWave='"+fs.readFileSync(path.join(root,'assets/stolen-voice-opening-tandy.wav')).toString('base64')+"';");
 // A user gesture starts the score while the title art stays on screen.
@@ -64,7 +75,7 @@ start=html.indexOf('function changeRoom(nextRoom){');end=html.indexOf('function 
 if(start<0||end<0)throw Error('Short movement anchors missing');
 html=html.slice(0,start)+html.slice(end);
 start=html.indexOf('function norm(');end=html.indexOf('const history=[];',start);
-html=html.slice(0,start)+read('game/inventory-pictures.js')+'\n'+read('game/inventory-window.js')+'\n'+read('game/expanded-scenery.js')+'\n'+read('game/take-responses.js')+'\n'+read('game/climb-commands.js')+'\n'+read('game/parser-feedback.js')+'\n'+read('game/scenery-reactions.js')+'\n'+read('game/merrin-memory.js')+'\n'+read('game/optional-secret.js')+'\n'+read('game/apple-prank.js')+'\n'+read('game/bee-sting.js')+'\n'+read('game/window-jump.js')+'\n'+'const barrelPrankCels='+JSON.stringify(require('./trace-barrel-prank.cjs')())+';\n'+read('game/barrel-prank.js')+'\n'+read('game/chair-rest.js')+'\n'+'const workshopRatCels='+JSON.stringify(require('./trace-workshop-rats.cjs')())+';\n'+read('game/rosella-dance.js')+'\n'+read('game/rosella-footing.js')+read('game/royal-raspberry.js')+read('game/playful-intents.js')+'\n'+read('game/parser-intents.js')+'\n'+parser+html.slice(end);
+html=html.slice(0,start)+read('game/inventory-pictures.js')+'\n'+read('game/inventory-window.js')+'\n'+read('game/expanded-scenery.js')+'\n'+read('game/take-responses.js')+'\n'+read('game/climb-commands.js')+'\n'+read('game/parser-feedback.js')+'\n'+read('game/scenery-reactions.js')+'\n'+read('game/merrin-memory.js')+'\n'+read('game/optional-secret.js')+'\n'+read('game/apple-prank.js')+'\n'+read('game/bee-sting.js')+'\n'+read('game/window-jump.js')+'\n'+'const barrelPrankCels='+JSON.stringify(require('./trace-barrel-prank.cjs')())+';\n'+read('game/barrel-prank.js')+'\n'+read('game/chair-rest.js')+'\n'+'const workshopRatCels='+JSON.stringify(require('./trace-workshop-rats.cjs')())+';\n'+read('game/elara-dance.js')+'\n'+read('game/elara-footing.js')+read('game/royal-raspberry.js')+read('game/playful-intents.js')+'\n'+read('game/parser-intents.js')+'\n'+parser+html.slice(end);
 html=html.replace('if(room===0)garden();else gallery();','if(room===0)garden();else if(room===1)gallery();else drawExpandedRoom();queueRoomObjects();drawWorldLife();');
 html=html.replace('scoreText=`SCORE ${score}/20`','scoreText=`SCORE ${score}/${MAX_SCORE}`');
 html=html.replace("'Score: '+score+' of 20'","'Score: '+score+' of '+MAX_SCORE");
@@ -117,9 +128,9 @@ html=html.slice(0,start)+read('game/agi-message-window.js')+'\n'+read('game/agi-
 html=html.replace('popupOpen=true;msg.textContent=text;',"popupOpen=true;msg.textContent=Array.isArray(text)?text.join('\\n'):text;");
 html=html.replace('if(!popupOpen)return;\n if(introSequence', 'if(!popupOpen)return;\n if(restoreFocus&&agiMessagePages.length){showMessagePage(agiMessagePages.shift());return}\n if(!restoreFocus)agiMessagePages=[];\n if(introSequence');
 // Ground the ordinary standing/walking sprite with per-shoe contact shadows.
-html=html.replace(" ellipse(px,py+1,7,1,'#000000');\n const facing=rosellaSprites", " const facing=rosellaSprites");
-html=html.replace(' const rows=rosellaWalkSprites[facing][player.step%4];\n const left=pictureX(px)-4,top=pictureY(py)-39;', ' const rows=rosellaWalkSprites[facing][player.step%4];\n drawRosellaContactShadow(px,py,rows);\n const left=pictureX(px)-4,top=pictureY(py)-39;');
-// Swimming shares existing keyboard controls, modal pause and the Sierra popup.
+html=html.replace(" ellipse(px,py+1,7,1,'#000000');\n const facing=elaraSprites", " const facing=elaraSprites");
+html=html.replace(' const rows=elaraWalkSprites[facing][player.step%4];\n const left=pictureX(px)-4,top=pictureY(py)-39;', ' const rows=elaraWalkSprites[facing][player.step%4];\n drawElaraContactShadow(px,py,rows);\n const left=pictureX(px)-4,top=pictureY(py)-39;');
+// Swimming shares existing keyboard controls, modal pause and the bitmap popup.
 html=html.replace('function hero(px,py){','function hero(px,py){\n if(drawBridgeFallHero())return;\n if(swimState.active||swimState.dead){drawSwimming(px,py);return}\n if(drawBellPullHero(px,py))return;\n if(drawStoryHero(px,py))return;');
 html=html.replace('if(!popupOpen)return;\n if(restoreFocus', 'if(hiveDisaster?.dead&&restoreFocus&&!agiMessagePages.length){retryHiveDisaster();return}\n if(swimState.dead){retryAfterDrowning();return}\n if(!popupOpen)return;\n if(restoreFocus');
 html=html.replace(" if(!popupOpen||event.isComposing)return;", " if((swimState.dead||hiveDisaster?.dead)&&['F7','r','R'].includes(event.key)){event.preventDefault();event.stopImmediatePropagation();if(!event.repeat){if(event.key==='F7'){if(hiveDisaster?.dead)retryHiveDisaster();else retryAfterDrowning();restoreGame()}else location.reload()}return}\n if(!popupOpen||event.isComposing)return;");
@@ -144,7 +155,7 @@ html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMe
 html=html.replace(' if(!popupOpen||event.isComposing)return;', ' if(inventoryOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();inventoryKey(event);return}\n if(!popupOpen||event.isComposing)return;');
 html=html.replace("else if(introSequence||document.querySelector('#intro'))","else if(prologueActive)resumePrologueScore();\n else if(introSequence||document.querySelector('#intro'))");
 html=html.replace("if(!soundEnabled)stopOpeningJingle();","if(!soundEnabled){stopOpeningJingle();stopGameSound()}");
-const titleStart=html.indexOf("paintTextWindow('ROSELLA AND THE STOLEN VOICE");
+const titleStart=html.indexOf("paintTextWindow('ELARA AND THE STOLEN VOICE");
 const titleEnd=html.indexOf('\n',titleStart);
 if(titleStart<0||titleEnd<0)throw Error('Short title anchors missing');
 html=html.slice(0,titleStart)+read('game/opening-picture.js')+read('game/opening-screen.js')+read('game/prologue-score.js')+read('game/prologue-closeup-picture.js')+'const prologueCandlePatch='+JSON.stringify(prologueCandlePatch)+';\n'+read('game/opening-prologue.js')+'\nstartOpening();'+html.slice(titleEnd);
@@ -166,9 +177,15 @@ html=html.replace(' if(harmonyOpen&&!event.isComposing)', ' if(hiveOpen&&!event.
 html=html.replace("textPopup.addEventListener('click',event=>{", "textPopup.addEventListener('click',event=>{if(inventoryTouchTap(event))return;");
 html=html.replace('function walkTick(){','function walkTick(){\n if(touchWalkTick())return;');
 html=html.replace('startOpening();',()=>read('game/browser-interactions.js')+'\n'+read('game/mobile-autocomplete.js')+'\n'+read('game/mobile-key-hit-test.js')+'\n'+read('game/mobile-keyboard.js')+'\n'+read('game/mobile-controls.js')+'\ninstallMobileControls();\nstartOpening();');
+// Hash the complete authored build before inserting the recorder itself.
+const playtestSource=read('game/playtest.js');
+const playtestBuild=require('crypto').createHash('sha256').update(html).update(playtestSource).digest('hex').slice(0,16);
+html=html.replace('\nstartOpening();',()=>"\nconst PLAYTEST_BUILD='"+playtestBuild+"';\n"+playtestSource+'\nstartOpening();');
 require('./lib/write-standalone.cjs')(path.join(root,'stolen-voice.html'),html,[
- 'command','saveGame','restoreGame','showHive','showMillSluice',
+ 'command','saveGame','restoreGame','portableSaveText','importGameSave','showSaveFiles','showHive','showMillSluice',
  'swimmingShoreRoute','startPrologue','finishGame'
 ]);
 
 console.log('Built '+map.rooms.length+'-room adventure with courtyard and connected doorways.');
+
+fs.copyFileSync(path.join(root,'stolen-voice.html'),path.join(root,'index.html'));

@@ -15,15 +15,23 @@ module.exports=function figurePixels(){
  // twice as wide as it is tall). A taller palm avoids the old flat mitten.
  // Four stepped fingertip lobes descend along the right edge; the thumb
  // rises independently on the left and joins the heel below the knuckles.
- // The forearm rises diagonally from the lower-left sleeve into the heel
- // of the palm. Paint it first so the wrist sits inside the cuff opening.
+ // The bent forearm is clothed in the same blue tunic as the upper arm.
+ // A short linen cuff wraps the wrist; the hand overlaps its upper edge.
+ // The sleeve broadens below the wrist into a full, rounded bent elbow.
  spans('Merrin resting forearm',149,[
-  [17,21],[15,22],[14,22],[13,22],[12,21],[11,20],
-  [10,19],[9,18],[8,17],[7,16],[6,15],[5,14],
-  [4,13],[3,12],[2,11],[1,10],[0,9],[0,8],[0,7]
- ],7);
- stamp('Merrin wrist cuff',12,151,[
-  '....ff7', '...ff77','..ff77.','.ff77..','ff77...'
+  [17,22],[15,23],[13,23],[11,24],[9,24],[7,24],
+  [5,23],[3,23],[1,22],[0,22],[0,21],[0,20],
+  [0,19],[0,18],[0,17],[0,16],[0,15],[0,14],[0,12]
+ ],1);
+ spans('Merrin forearm sleeve light',154,[
+  [7,14],[5,13],[3,12],[1,11],[0,10],[0,9],
+  [0,8],[0,7],[0,6],[0,5],[0,4],[0,3],[0,2]
+ ],9,false);
+ spans('Merrin wrist cuff',150,[
+  [16,22],[15,22],[14,21],[13,20]
+ ],7,false);
+ stamp('Merrin cuff linen edge',13,150,[
+  '...ff.....','..ff......','.ff.......','ff........'
  ]);
  spans('Merrin resting hand silhouette',118,[
   [30,31],[29,32],[28,32],[27,32],[26,31],[25,30],
@@ -47,9 +55,9 @@ module.exports=function figurePixels(){
  stamp('Merrin thumb web',20,133,[
   '4....','.4...','..4..','.....'
  ]);
- // Rosella's waist is at y122, not y131. The skirt occupies the lower half
+ // Elara's waist is at y122, not y131. The skirt occupies the lower half
  // of her figure, matching the generated reference's adult proportions.
- spans('Rosella pixel skirt',122,[
+ spans('Elara pixel skirt',122,[
   [136,142],[136,143],[136,143],[135,144],[135,144],[135,145],
   [135,145],[135,145],[134,146],[134,146],[134,146],[134,147],
   [134,147],[134,148],[133,148],[133,148],[133,149],[133,149],
@@ -61,7 +69,7 @@ module.exports=function figurePixels(){
  ],1);
  // Thin brush folds follow the skirt's weight and flare. They never cross
  // into the bodice, so there is one clear waist and no detached torso.
- stamp('Rosella skirt near fold',134,125,[
+ stamp('Elara skirt near fold',134,125,[
   '..99','..99','..99','..99','..99','..99','..99','..99',
   '..99','..99','..99','..99','..999','..999','...99','...99',
   '...99','...99','...999','....99','....99','....999','.....99','.....99',
@@ -70,7 +78,7 @@ module.exports=function figurePixels(){
   '...........99','...........999','............99','............999',
   '.............99','.............999','..............99'
  ]);
- stamp('Rosella underskirt glimpse',131,137,[
+ stamp('Elara underskirt glimpse',131,137,[
   '..f','..f','..f','..f','.ff','.ff','.ff','.ff','.ff','.ff',
   '.ff','.ff','.ff','.ff','.ff','.ff','.ff','.ff','..f','..f',
   '..ff','..ff','..ff','..ff','...f','...ff','...ff','...ff',
@@ -78,11 +86,11 @@ module.exports=function figurePixels(){
  ]);
  // A joined palm and three-pixel forearm touch the frame;
  // the forearm has one elbow, ending inside the puffed linen sleeve.
- stamp('Rosella reaching hand',122,98,[
+ stamp('Elara reaching hand',122,98,[
   '.ccc','ccccc','ccccc','.cccc','.cccc','..ccc','..cccc','...ccc',
   '...cccc','....ccc','.....ccc','......cc','.......cc'
  ]);
- stamp('Rosella shoulders and bodice',126,105,[
+ stamp('Elara shoulders and bodice',126,105,[
   '...00000......',
   '..0ff777000...',
   '.0fffffff110..',
@@ -102,18 +110,18 @@ module.exports=function figurePixels(){
   '.........11110',
   '..........1110'
  ]);
- stamp('Rosella far cuff and hand',139,118,[
+ stamp('Elara far cuff and hand',139,118,[
   '00.......','0ff0.....','0fff0....','0ffff0...',
   '.0fff0...','..0fff0..','...cccc..','...cccc..',
   '....ccc..','....cccc.','.....ccc.','.....ccc.',
   '......ccc','......ccc','.......cc'
  ]);
- stamp('Rosella profile and neck',131,94,[
+ stamp('Elara profile and neck',131,94,[
   '..cccc..','.cccccc.','.cccccc.','ccccccc.','.cccccc.',
   '.c0cccc.','ccccccc.','.cccccc.','..ccccc.','...cccc.',
   '...ccc..','...ccc..','...ccc..','....cc..'
  ]);
- stamp('Rosella hair clusters',131,89,[
+ stamp('Elara hair clusters',131,89,[
   '..6666..........',
   '.6eeeee6........',
   '6eeeeeee6.......',
@@ -144,5 +152,5 @@ module.exports=function figurePixels(){
   '.........6eee6..',
   '..........666...'
  ]);
- return commands;
+ return commands.map(c=>c.name.startsWith('Elara')?{...c,color:({14:6}[c.color]??c.color)}:c);
 };

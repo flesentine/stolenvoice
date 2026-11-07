@@ -11,4 +11,4 @@ for(let frame=0;frame<28;frame++){
  const order=Array.from(a.game.checkPoolPriority(frame));
  assert.deepEqual(order,['ripple','sparks','hero'],'pool animation stays below actor on frame '+frame);
 }
-console.log('PASS built game draw order: all 28 ECHO answer frames paint ripples and sparks before Rosella, with no second foreground pass.');
+console.log('PASS built game draw order: all 28 ECHO answer frames paint ripples and sparks before Elara, with no second foreground pass.');

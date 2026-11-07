@@ -4,7 +4,7 @@ const details=project.commands.filter(c=>['Apple clusters','Bark forks'].include
 for(const tree of trees)for(const [x,y,n]of tree.mask)for(let i=x;i<x+n;i++)owned.add(y*160+i);
 let checked=0;for(let i=0;i<coverage.length;i++)if(coverage[i]===0){assert(owned.has(i),'tree detail must be opaque at '+i%160+','+Math.floor(i/160));checked++}
 assert(checked>100,'apple stems, fruit, highlights, leaves and bark exercised');
-const base=A.render(project.commands),views=require('../assets/rosella-walk-stable-face-v2.json').views;
+const base=A.render(project.commands),views=require('../assets/elara-walk-stable-face-v2.json').views;
 function composite(y){const pixels=base.slice(),queue=objects.map(o=>({depth:o.depth,paint(){for(const [x,sy,n]of o.mask)for(let i=x;i<x+n;i++)pixels[sy*160+i]=base[sy*160+i]}})),actor=[];
  const rows=views.back[1],left=71,top=Math.round(y*.7)-39;for(let row=0;row<40;row++)for(let col=0;col<8;col++)if(rows[row][col]!=='.')actor.push([(top+row)*160+left+col,parseInt(rows[row][col],16)]);
  queue.push({depth:y,paint(){for(const [i,c]of actor)pixels[i]=c}});queue.sort((a,b)=>a.depth-b.depth).forEach(o=>o.paint());return{pixels,actor};}

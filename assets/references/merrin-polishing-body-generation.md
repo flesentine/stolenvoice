@@ -8,7 +8,7 @@ The reference provides a clear bent elbow, connected forearm/wrist/cuff, grouped
 
 ## Prompt used
 
-Create ONE clean BODY AND ARM POSE REFERENCE for manual tracing into a 1980s Sierra AGI adventure game. Landscape composition.
+Create ONE clean BODY AND ARM POSE REFERENCE for manual tracing into a 1980s Alder Pixel adventure game. Landscape composition.
 
 SUBJECT AND CROP
 The torso and one visible working arm of Merrin, a kindly older medieval castle gardener. Show from the base of the neck/linen collar down to the hips. Do not draw a head, face, hair or hat: those are already designed. Entire shoulder, bent elbow, forearm, wrist, hand and cloth must be visible with a generous magenta margin. One character only.
