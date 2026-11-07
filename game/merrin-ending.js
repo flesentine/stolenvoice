@@ -78,13 +78,14 @@ function startMerrinEnding(canvas,reward=false){
  merrinEndingCanvas=canvas;canvas.width=320;canvas.height=200;merrinEndingFrame=0;
  playGameSound('merrinSong',reward);paintMerrinEnding();
  if(merrinEndingTimer)clearInterval(merrinEndingTimer);
- merrinEndingTimer=setInterval(()=>{if(document.hidden||!merrinEndingFocused)return;merrinEndingFrame++;paintMerrinEnding();if(merrinEndingFrame>=merrinEndingTotal){clearInterval(merrinEndingTimer);merrinEndingTimer=0}},160);
+ merrinEndingTimer=setInterval(()=>{if(document.hidden||!merrinEndingFocused)return;merrinEndingFrame++;paintMerrinEnding();if(merrinEndingFrame>=merrinEndingTotal){clearInterval(merrinEndingTimer);merrinEndingTimer=0;if(typeof offerCompletedPlaytest==='function')offerCompletedPlaytest()}},160);
 }
 window.addEventListener('blur',()=>{merrinEndingFocused=false});window.addEventListener('focus',()=>{merrinEndingFocused=true;resumeMerrinSong()});
 function resumeMerrinSong(){if(merrinEndingTimer&&!document.hidden&&merrinEndingFocused)playGameSound('merrinSong',merrinEndingReward,merrinEndingFrame*.16)}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)resumeMerrinSong()});
 
 function advanceMerrinEnding(){
- if(merrinEndingTimer){clearInterval(merrinEndingTimer);merrinEndingTimer=0;merrinEndingFrame=merrinEndingTotal;stopGameSound();paintMerrinEnding();return}
+ if(merrinEndingTimer){clearInterval(merrinEndingTimer);merrinEndingTimer=0;merrinEndingFrame=merrinEndingTotal;stopGameSound();paintMerrinEnding();if(typeof offerCompletedPlaytest==='function')offerCompletedPlaytest();return}
+ if(typeof offerCompletedPlaytest==='function'&&offerCompletedPlaytest())return;
  location.reload();
 }

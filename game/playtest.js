@@ -1,5 +1,5 @@
 // Opt-in, local-only event recording. Never observes keyboard text or media.
-const PLAYTEST_KEY='elara-playtest-v1',PLAYTEST_LIMIT=10000;
+const PLAYTEST_KEY='elara-playtest-v1',PLAYTEST_BACKUP_KEY='elara-playtest-previous-v1',PLAYTEST_LIMIT=10000;
 let playtestTimer=0,playtest=null,playtestDialog=null,playtestPopupBefore=false,playtestLast=Date.now(),playtestFocused=true,playtestWasActive=false,playtestLastMilestone=0,playtestStall=false,playtestLastCommand='',playtestRepeats=0;
 function playtestActive(){return playing&&!popupOpen&&!menuOpen&&!playtestDialog&&!document.hidden&&playtestFocused}
 function playtestTick(){
@@ -16,12 +16,22 @@ function playtestTick(){
 function playtestPersist(){if(!playtest)return;try{localStorage.setItem(PLAYTEST_KEY,JSON.stringify(playtest));playtest.storageAvailable=true}catch{playtest.storageAvailable=false}}
 function playtestRecord(type,data={}){
  if(!playtest||playtest.endedAt)return;
- if(playtest.events.length>=PLAYTEST_LIMIT){playtest.truncated=true;return}
  playtest.lastState={room,score,completed:flags.complete};
+ if(playtest.events.length>=PLAYTEST_LIMIT){playtest.truncated=true;playtestPersist();return}
  playtest.events.push({sequence:playtest.events.length+1,at:new Date().toISOString(),activeMs:Math.round(playtest.activeMs),room,roomName:rooms[room],type,...data});
  playtestPersist();
 }
+function storedPlaytest(key=PLAYTEST_KEY){
+ try{const report=JSON.parse(localStorage.getItem(key));return report?.format==='elara-playtest'&&report.formatVersion===1&&Array.isArray(report.events)&&report.events.length<=PLAYTEST_LIMIT?report:null}catch{return null}
+}
+function offerCompletedPlaytest(){
+ if(!playtest||(!playtest.lastState?.completed&&(!flags.complete||playtest.endedAt)))return false;
+ playtestTick();playtestPersist();showPlaytest('complete');return true;
+}
 function startPlaytest(){
+ // Keep the previous draft before a new recording can replace the active slot.
+ const previous=playtest||storedPlaytest();
+ if(previous){try{localStorage.setItem(PLAYTEST_BACKUP_KEY,JSON.stringify(previous))}catch{playtest=previous;showPlaytest();return false}}
  playtest={format:'elara-playtest',formatVersion:1,build:PLAYTEST_BUILD,startedAt:new Date().toISOString(),activeMs:0,events:[],feedback:{},truncated:false};
  playtestLast=Date.now();playtestWasActive=playtestActive();playtestLastMilestone=0;playtestStall=false;playtestRepeats=0;playtestLastCommand='';
  if(playtestTimer)clearInterval(playtestTimer);playtestTimer=setInterval(()=>{playtestTick();playtestPersist()},1000);
@@ -37,36 +47,39 @@ function downloadPlaytest(){
 function updatePlaytestControls(){if(!playtestControls)return;playtestControls.textContent=playtest&&!playtest.endedAt?'Playtest recording • Notes / Finish':'Playtest / Reports'}
 function closePlaytest(){if(!playtestDialog)return;playtestTick();const d=playtestDialog;playtestDialog=null;popupOpen=playtestPopupBefore;d.close();d.remove();playtestTick();c.focus()}
 function showPlaytest(mode='panel'){
+ const finishing=mode==='finish'||mode==='complete';
  if(playtestDialog)return;
  stopWalking();playtestTick();
  const d=document.createElement('dialog');playtestPopupBefore=popupOpen;popupOpen=true;playtestDialog=d;d.className='save-file-dialog playtest-dialog';d.setAttribute('aria-labelledby','playtest-title');
- const heading=document.createElement('h2');heading.id='playtest-title';heading.textContent='Playtest recording';d.append(heading);
- const p=document.createElement('p');p.textContent='Optional: record submitted commands, game responses, room changes, progress, active time, saves, retries and errors. Notes and feedback are included. No video, microphone or keystroke recording. Nothing is uploaded. Download the report and send it to the organizer. A local draft is kept in this browser when storage is available; it is separate from your game save.';d.append(p);
+ const heading=document.createElement('h2');heading.id='playtest-title';heading.textContent=mode==='complete'?'Adventure complete — save your report':'Playtest recording';d.append(heading);
+ const p=document.createElement('p');p.textContent=mode==='complete'?'Your adventure is complete. Finish your report and download it before playing again. Your commands, responses and notes are still here. A copy stays in this browser when storage is available.':'Optional: record submitted commands, game responses, room changes, progress, active time, saves, retries and errors. Notes and feedback are included. No video, microphone or keystroke recording. Nothing is uploaded. Download the report and send it to the organizer. A local draft is kept in this browser when storage is available; it is separate from your game save.';d.append(p);
  const button=(label,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);d.append(b);return b};
  let first;
  if(!playtest){
   first=button('Start recording',()=>{closePlaytest();startPlaytest()});
-  let previous;try{previous=JSON.parse(localStorage.getItem(PLAYTEST_KEY));if(previous?.format!=='elara-playtest'||previous.formatVersion!==1||!Array.isArray(previous.events)||previous.events.length>PLAYTEST_LIMIT)previous=null}catch{}
-  if(previous)button('Recover previous report',()=>{playtest=previous;if(!playtest.endedAt)playtest.endedAt=new Date().toISOString();closePlaytest();updatePlaytestControls();showPlaytest()});
+  const previous=storedPlaytest();
+  if(previous)button('Recover previous report',()=>{playtest=previous;if(!playtest.endedAt)playtest.endedAt=new Date().toISOString();closePlaytest();playtestPersist();updatePlaytestControls();showPlaytest()});
  }else{
   const status=document.createElement('p');status.textContent=(playtest.endedAt?'Recording stopped. ':'Recording is on. ')+(playtest.storageAvailable===false?'Browser storage is unavailable: download before closing. ':'A draft is saved locally. ')+(playtest.truncated?'Event limit reached; later events were omitted. ':'');d.append(status);
   if(!playtest.endedAt){
-   const label=document.createElement('label');label.textContent=mode==='finish'?'What was confusing? Where did you get stuck? What worked well? (optional)':'Add a note about this moment (optional)';
+   const label=document.createElement('label');label.textContent=finishing?'What was confusing? Where did you get stuck? What worked well? (optional)':'Add a note about this moment (optional)';
    const note=document.createElement('textarea');note.rows=5;note.maxLength=4000;note.setAttribute('aria-label',label.textContent);label.append(note);d.append(label);
-   first=button(mode==='finish'?'Finish and download report':'Save note and return',()=>{
-    if(mode==='finish'){
+   first=button(finishing?'Finish and download report':'Save note and return',()=>{
+    if(finishing){
      playtest.feedback={review:note.value.trim()};playtestRecord('finish',{score,completed:flags.complete});playtest.endedAt=new Date().toISOString();clearInterval(playtestTimer);playtestTimer=0;playtestPersist();
      if(!downloadPlaytest()){status.textContent='Download failed. Your report is retained; try Download report again.';updatePlaytestControls();return}
     }else if(note.value.trim())playtestRecord('note',{text:note.value.trim()});
-    closePlaytest();updatePlaytestControls();
+    closePlaytest();updatePlaytestControls();if(mode==='complete')showPlaytest('complete');
    });
-   if(mode!=='finish')button('Finish playtest…',()=>{if(note.value.trim())playtestRecord('note',{text:note.value.trim()});closePlaytest();showPlaytest('finish')});
+   if(!finishing)button('Finish playtest…',()=>{if(note.value.trim())playtestRecord('note',{text:note.value.trim()});closePlaytest();showPlaytest('finish')});
   }
   button('Download report',()=>{if(!downloadPlaytest())status.textContent='Download failed. Please try again; the report is still available.'});
-  if(playtest.endedAt)button('Start a new recording',()=>{closePlaytest();startPlaytest()});
-  button('Delete local report',()=>{clearInterval(playtestTimer);playtestTimer=0;playtest=null;try{localStorage.removeItem(PLAYTEST_KEY)}catch{}closePlaytest();updatePlaytestControls()});
+  if(playtest.endedAt)button(mode==='complete'?'Play again':'Start a new recording',()=>{closePlaytest();if(mode==='complete')location.reload();else startPlaytest()});
+  if(mode!=='complete')button('Delete local report',()=>{clearInterval(playtestTimer);playtestTimer=0;playtest=null;try{localStorage.removeItem(PLAYTEST_KEY)}catch{}closePlaytest();updatePlaytestControls()});
  }
- button('Return to game',closePlaytest);d.addEventListener('cancel',event=>{event.preventDefault();closePlaytest()});document.body.append(d);
+ const backup=storedPlaytest(PLAYTEST_BACKUP_KEY);
+ if(backup&&(!playtest||playtest.endedAt)&&backup.startedAt!==playtest?.startedAt)button('Recover earlier report',()=>{closePlaytest();playtest=backup;if(!playtest.endedAt)playtest.endedAt=new Date().toISOString();updatePlaytestControls();showPlaytest()});
+ button(mode==='complete'?'Return to ending':'Return to game',closePlaytest);d.addEventListener('cancel',event=>{event.preventDefault();closePlaytest()});document.body.append(d);
  try{d.showModal();(first||d).focus();playtestTick()}catch{closePlaytest()}
 }
 const playtestControls=document.createElement('button');playtestControls.type='button';playtestControls.className='playtest-controls';playtestControls.addEventListener('click',()=>showPlaytest());(window.matchMedia('(hover: none) and (pointer: coarse)').matches?document.querySelector('.mobile-controls')||document.body:document.body).append(playtestControls);updatePlaytestControls();
