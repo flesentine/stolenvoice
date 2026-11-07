@@ -106,7 +106,7 @@ html=html.replace('function garden(){',()=>read('game/garden-rose.js')+'\nfuncti
 // The small handbell can be lifted from its peg and tilted by hand.
 const handBellStart=html.indexOf('prop(165,()=>{'),handBellEnd=html.indexOf('});',handBellStart)+3;
 if(handBellStart<0)throw Error('Garden bell drawing anchor missing');
-html=html.slice(0,handBellStart)+'prop(188,drawGardenGateBack);prop(216,drawGardenBell);'+html.slice(handBellEnd);
+html=html.slice(0,handBellStart)+'prop(188,drawGardenGateBack);prop(188,drawGardenHandbell);prop(216,drawGardenBell);'+html.slice(handBellEnd);
 // Visible side paths and the right-hand stairway match their exit zones.
 html=html.replace(' // Merrin and the two garden puzzle objects remain in their original places.',
 ` poly([[267,190],[320,190],[320,211],[269,204]],'#aa5500');poly([[275,194],[320,194],[320,207],[275,201]],'#ffff55');

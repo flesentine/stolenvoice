@@ -84,6 +84,10 @@ function drawGardenBell(){
  stroke([[150,154],[158,152]],'#aa5500');
  drawGardenGatePost(147,144,15);
  for(const yy of [145,153]){chip(149,yy,2,1,'#555555');chip(149,yy,1,1,'#aaaaaa')}
+}
+function drawGardenHandbell(){
+ const chip=(xx,yy,w,h,color)=>{x.fillStyle=color;x.fillRect(xx,yy,w,h)};
+ // The handbell shares the rear gatepost depth, above the orchard path.
  // A short wooden peg carries the existing handbell handle.
  chip(146,124,4,1,'#aa5500');chip(146,124,1,1,'#aaaaaa');
  if(!pickupStillInScene('bell'))return;

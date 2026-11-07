@@ -20,6 +20,7 @@ const {chromium}=require('playwright'),assert=require('assert/strict');
      const detail=await page.locator('#agi-message-picture').boundingBox();await page.touchscreen.tap(detail.x+detail.width/2,detail.y+detail.height/2);assert.equal(await page.locator('#agi-message').getAttribute('aria-label'),'Inventory');
     }
    }
+   const synthetic=await rowPoint(0);await page.locator('#agi-message-picture').evaluate((el,p)=>el.dispatchEvent(new PointerEvent('click',{bubbles:true,clientX:p.x,clientY:p.y,pointerType:'mouse'})),synthetic);assert.equal(await page.locator('#agi-message').getAttribute('aria-label'),'Inventory object','mobile Safari-style compatibility click also examines');await page.keyboard.press('Escape');
    const footer=await page.locator('#agi-message-picture').boundingBox();await page.touchscreen.tap(footer.x+footer.width/2,footer.y+footer.height-10);assert(!(await page.locator('#agi-message').isVisible()),'footer still returns to game');
   }else{
    const point=await rowPoint(2);await page.mouse.click(point.x,point.y);assert(!(await page.locator('#agi-message').isVisible()),'desktop click behavior unchanged');await open();await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');assert((await page.locator('#message').textContent()).startsWith(names[1]+'\n\n'),'desktop keyboard still examines');await page.keyboard.press('Escape');await page.keyboard.press('Escape');

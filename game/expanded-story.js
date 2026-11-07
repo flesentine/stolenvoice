@@ -56,7 +56,7 @@ function roomHintChoices(){
  }else if(room===3){
   if(!flags.waxTaken)add('orchard-wax','Pale flakes lie below the hive entrance, where the bees are less interested.',
    (flags.hiveWaxOne||flags.hiveWaxTwo?'Your gathered flakes are safe. ':'')+'Watch for a break in the low bees\' flight before reaching for more wax.',
-   'Near the hive, TAKE WAX opens the close-up. Watch the bees and use Space or click to reach during a gap.');
+   mobilePuzzleUI()?'Near the hive, TAKE WAX opens the close-up. Watch the bees and tap to reach during a gap.':'Near the hive, TAKE WAX opens the close-up. Watch the bees and use Space or click to reach during a gap.');
   if(!flags.thornsCut)add('orchard-thorns','The eastern path is blocked by woody stems, not just leaves.',
    flags.shearsReady?'Your working shears look suited to those stems.':flags.shearsTaken?'The shears are the right sort of tool, but their pivot still seizes.':shedSupplies,
    flags.shearsReady?'Near the blackthorn, CUT THORNS WITH SHEARS.':flags.oilTaken&&flags.shearsTaken?'OIL SHEARS first; then return to the blackthorn and CUT THORNS WITH SHEARS.':'Find the oil and shears in the potting shed before working on the blackthorn.');

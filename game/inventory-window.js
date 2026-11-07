@@ -17,7 +17,7 @@
    if(row===index)for(let yy=y-1;yy<y+9;yy++)for(let xx=20;xx<width-20;xx++)dot(xx,yy,0);
    text(displayName(name),28,y,row===index?15:0);
   });
-  const help=touch?'TAP: examine  ESC: return':'ENTER: examine  ESC: return';
+  const help=touch?'TAP item; outside: back':'ENTER: examine  ESC: return';
   text(help,Math.floor((width-help.length*8)/2),height-18,0);
   return{width,height,pixels,left:16,top:Math.floor((200-height)/2)};
  }
@@ -53,12 +53,12 @@ function paintInventory(){
  const touch=window.matchMedia('(hover: none) and (pointer: coarse)').matches;
  const drawing=inventoryView==='item'?(AgiInventoryWindow.renderDescription(name,description,agiFont,inventoryPictures,AgiMessageWindow,{showHelp:false})||AgiInventoryWindow.renderItem(name,agiFont,inventoryPictures,AgiMessageWindow)):AgiInventoryWindow.renderList(inv,agiFont,inventoryIndex,{touch});
  paintInventoryDrawing(drawing);
- msg.textContent=inventoryView==='item'?AgiInventoryWindow.displayName(name)+'\n\n'+description:'You are carrying:\n'+inv.map(AgiInventoryWindow.displayName).join('\n')+'\nSelected: '+AgiInventoryWindow.displayName(inv[inventoryIndex])+'. Use Up and Down to select, Enter to examine, Escape to return.';
+ msg.textContent=inventoryView==='item'?AgiInventoryWindow.displayName(name)+'\n\n'+description:'You are carrying:\n'+inv.map(AgiInventoryWindow.displayName).join('\n')+'\nSelected: '+AgiInventoryWindow.displayName(inv[inventoryIndex])+(touch?'. Tap an item to examine it. Tap outside to return.':'. Use Up and Down to select, Enter to examine, Escape to return.');
  textPopup.setAttribute('aria-label',inventoryView==='item'?'Inventory object':'Inventory');
- document.querySelector('#agi-message-help').textContent=inventoryView==='item'?'Tap, Enter or Escape returns to the list.':touch?'Tap an item to examine it. Escape returns to the game.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
+ document.querySelector('#agi-message-help').textContent=inventoryView==='item'?'Tap, Enter or Escape returns to the list.':touch?'Tap an item to examine it. Tap outside to return.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
 }
 function inventoryTouchTap(event){
- if(!inventoryOpen||inventoryView!=='list'||!window.matchMedia('(hover: none) and (pointer: coarse)').matches||event.pointerType==='mouse')return false;
+ if(!inventoryOpen||inventoryView!=='list'||!window.matchMedia('(hover: none) and (pointer: coarse)').matches)return false;
  const bitmap=document.querySelector('#agi-message-picture'),rect=bitmap.getBoundingClientRect();
  const x=(event.clientX-rect.left)*bitmap.width/rect.width,y=(event.clientY-rect.top)*bitmap.height/rect.height;
  const row=Math.floor((y-35)/12);

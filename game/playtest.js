@@ -69,7 +69,7 @@ function showPlaytest(mode='panel'){
  button('Return to game',closePlaytest);d.addEventListener('cancel',event=>{event.preventDefault();closePlaytest()});document.body.append(d);
  try{d.showModal();(first||d).focus();playtestTick()}catch{closePlaytest()}
 }
-const playtestControls=document.createElement('button');playtestControls.type='button';playtestControls.className='playtest-controls';playtestControls.addEventListener('click',()=>showPlaytest());document.body.append(playtestControls);updatePlaytestControls();
+const playtestControls=document.createElement('button');playtestControls.type='button';playtestControls.className='playtest-controls';playtestControls.addEventListener('click',()=>showPlaytest());(window.matchMedia('(hover: none) and (pointer: coarse)').matches?document.querySelector('.mobile-controls')||document.body:document.body).append(playtestControls);updatePlaytestControls();
 // Hook central game functions, including actions invoked by menus and hotkeys.
 const playtestSay=say;say=function(text){playtestRecord('response',{text:String(text)});return playtestSay(text)};
 const playtestCommand=command;command=function(raw){
