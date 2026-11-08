@@ -62,6 +62,11 @@ const candlePatches=galleryProject.commands.filter(c=>c.name==='Small flame').ma
  for(let y=top;y<top+height;y++)for(let x=left;x<left+width;x++)pixels.push(candleUnderlay[y*160+x]);
  return{left,top,width,pixels,wick:bottom};
 });
+// Restore the authored wall/body beneath the closed lid, rather than a flat fill.
+const barrelProject=JSON.parse(read('assets/rooms/potting-workshop-v1.json'));
+const barrelUnderlay=AgiPicture.render(barrelProject.commands.filter(c=>!['Barrel top','Barrel top light','Lid plank seam'].includes(c.name)));
+const barrelLidPatch={left:131,top:97,width:14,height:8,pixels:[]};
+for(let y=97;y<105;y++)for(let x=131;x<145;x++)barrelLidPatch.pixels.push(barrelUnderlay[y*160+x]);
 const candles='const galleryCandlePatches='+JSON.stringify(candlePatches)+';\n'+read('game/gallery-candlelight.js');
 const storyHeader=story.slice(0,story.indexOf('function carriedItems'));
 html=html.replace(/let room=0,inv=\[\],score=0,scored=\{\},flags=\{[^\n]+?\},player=/,storyHeader+"let room=0,inv=[],score=0,scored={},flags={...flagDefaults},player=");
@@ -75,7 +80,7 @@ start=html.indexOf('function changeRoom(nextRoom){');end=html.indexOf('function 
 if(start<0||end<0)throw Error('Short movement anchors missing');
 html=html.slice(0,start)+html.slice(end);
 start=html.indexOf('function norm(');end=html.indexOf('const history=[];',start);
-html=html.slice(0,start)+read('game/inventory-pictures.js')+'\n'+read('game/inventory-window.js')+'\n'+read('game/expanded-scenery.js')+'\n'+read('game/take-responses.js')+'\n'+read('game/climb-commands.js')+'\n'+read('game/parser-feedback.js')+'\n'+read('game/scenery-reactions.js')+'\n'+read('game/merrin-memory.js')+'\n'+read('game/optional-secret.js')+'\n'+read('game/apple-prank.js')+'\n'+read('game/bee-sting.js')+'\n'+read('game/window-jump.js')+'\n'+'const barrelPrankCels='+JSON.stringify(require('./trace-barrel-prank.cjs')())+';\n'+read('game/barrel-prank.js')+'\n'+read('game/chair-rest.js')+'\n'+'const workshopRatCels='+JSON.stringify(require('./trace-workshop-rats.cjs')())+';\n'+read('game/elara-dance.js')+'\n'+read('game/elara-footing.js')+read('game/royal-raspberry.js')+read('game/playful-intents.js')+'\n'+read('game/parser-intents.js')+'\n'+parser+html.slice(end);
+html=html.slice(0,start)+read('game/inventory-pictures.js')+'\n'+read('game/inventory-window.js')+'\n'+read('game/expanded-scenery.js')+'\n'+read('game/take-responses.js')+'\n'+read('game/climb-commands.js')+'\n'+read('game/parser-feedback.js')+'\n'+read('game/scenery-reactions.js')+'\n'+read('game/merrin-memory.js')+'\n'+read('game/optional-secret.js')+'\n'+read('game/apple-prank.js')+'\n'+read('game/bee-sting.js')+'\n'+read('game/window-jump.js')+'\n'+'const barrelPrankCels='+JSON.stringify(require('./trace-barrel-prank.cjs')())+';\n'+'const barrelLidPatch='+JSON.stringify(barrelLidPatch)+';\n'+read('game/barrel-prank.js')+'\n'+read('game/chair-rest.js')+'\n'+'const workshopRatCels='+JSON.stringify(require('./trace-workshop-rats.cjs')())+';\n'+read('game/elara-dance.js')+'\n'+read('game/elara-footing.js')+read('game/royal-raspberry.js')+read('game/playful-intents.js')+'\n'+read('game/parser-intents.js')+'\n'+parser+html.slice(end);
 html=html.replace('if(room===0)garden();else gallery();','if(room===0)garden();else if(room===1)gallery();else drawExpandedRoom();queueRoomObjects();drawWorldLife();');
 html=html.replace('scoreText=`SCORE ${score}/20`','scoreText=`SCORE ${score}/${MAX_SCORE}`');
 html=html.replace("'Score: '+score+' of 20'","'Score: '+score+' of '+MAX_SCORE");

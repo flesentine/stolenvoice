@@ -30,9 +30,13 @@ function drawBarrelEmergence(frame){
  }
  if(frame>=66&&frame%2===0)for(let n=0;n<3;n++){x.fillStyle='#aa5500';x.fillRect(130+n*7+(frame%3),88+(n*3+frame)%12,1,1)}
 }
+function restoreBarrelLidBackground(){
+ const {left,top,width,pixels}=barrelLidPatch;
+ for(let n=0;n<pixels.length;n++){x.fillStyle=elaraColors[pixels[n]];x.fillRect(left+n%width,top+Math.floor(n/width),1,1)}
+}
 function drawBarrelPrank(){
  if(room!==2||!flags.barrelOpen)return;
- x.fillStyle='#555555';x.fillRect(131,97,14,8);
+ restoreBarrelLidBackground();
  barrelShape([[132,102],[135,100],[141,100],[144,102],[141,105],[134,105]],'#aa5500','#000000');
  x.fillStyle='#000000';x.fillRect(134,102,8,2);
  barrelShape([[145,102],[147,99],[148,88],[146,87],[144,98]],'#aa5500','#000000');
