@@ -1,5 +1,6 @@
 {
   "names": [
+    "apple",
     "workshop key",
     "rose",
     "silver bell",
@@ -17,6 +18,7 @@
   "reference": "inventory-reference-v1.png",
   "method": "Authored AGI drawer commands; 32x28 native object cels",
   "projects": [
+    "apple-workshop-v1.json",
     "workshop-key-workshop-v1.json",
     "rose-workshop-v1.json",
     "silver-bell-workshop-v1.json",

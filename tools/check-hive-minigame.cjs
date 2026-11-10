@@ -29,7 +29,7 @@ popupContext.fillRect=function(...rect){popupRects.push([...rect,this.fillStyle]
 a.game.paintHive();popupContext.fillRect=oldFill;
 assert(popupRects.some(r=>JSON.stringify(r)===JSON.stringify([20,62,280,80,'#ffffff'])),'white reward popup');
 assert(popupRects.some(r=>JSON.stringify(r)===JSON.stringify([22,64,276,76,'#aa0000'])),'red inset matches other minigames');
-assert.match(a.message,/Enough wax!.*Enter, Escape or click to continue/);
+assert.match(a.message,/Enough wax!.*Enter or Escape to continue/);
 assert.doesNotMatch(a.message,/Space or click to reach/,'victory no longer advertises reaching');
 for(const voice of a.game.hiveVictory)assert(Math.abs(voice.reduce((n,p)=>n+p[1],0)-3)<1e-8,'three-second ending on all PSG voices');
 assert.deepEqual(Array.from(a.game.hiveVictory[0].slice(0,4),n=>Array.from(n)),Array.from(a.game.hiveDance[0].slice(0,4),n=>Array.from(n)),'ending reprises bee-song call');
@@ -101,5 +101,5 @@ const calm=boot(new Map([[base.game.key,JSON.stringify(calmSave)]]));calm.start(
 for(let i=0;calm.game.state.popupOpen&&i<20;i++)calm.game.closeMessage();
 calm.game.movePlayer(0,-5);
 assert(!calm.game.state.popupOpen,'walking near hive after wax collection has no sting popup');
-assert(!calm.game.hiveHeard.some(c=>c[0]==='beeSting'),'no walk-by sting sound after collection');
-console.log('PASS collected beeswax prevents further walk-by stings, including restored games.');
+assert(calm.game.hiveHeard.some(c=>c[0]==='beeSting'),'walk-by stings still occur after collection');assert(calm.game.state.flags.waxTaken,'ordinary stings preserve collected wax');
+console.log('PASS collected beeswax leaves walk-by stings active, including restored games.');

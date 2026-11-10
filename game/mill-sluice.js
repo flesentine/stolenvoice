@@ -171,16 +171,16 @@ function paintMillSluice(){
    blitText(ctx,'The current has found its way!',40,76,'#000000');
    blitText(ctx,'The bucket fills and the brake',40,92,'#000000');
    blitText(ctx,'lifts clear. The wheel is free.',40,100,'#000000');
-   blitText(ctx,mobilePuzzleUI()?'TAP to continue':'ENTER / ESC / CLICK: continue',48,192,'#ffff55');
-   msg.textContent='The current has found its way! The bucket fills and the brake lifts clear. The wheel is free. '+(mobilePuzzleUI()?'Tap to continue.':'Enter, Escape or click to continue.');
+   blitText(ctx,mobilePuzzleUI()?'TAP to continue':'ENTER / ESC: continue',48,192,'#ffff55');
+   msg.textContent='The current has found its way! The bucket fills and the brake lifts clear. The wheel is free. '+(mobilePuzzleUI()?'Tap to continue.':'Enter or Escape to continue.');
   }else msg.textContent=millSluiceStatus;
   syncMobilePuzzleControls();return;
  }
- blitText(ctx,mobilePuzzleUI()?'TAP trough, then empty socket':'CLICK: trough, then empty socket',8,176,'#ffffff');
- blitText(ctx,mobilePuzzleUI()?'Undo / Reset: change the tray':'ARROWS: choose/move  ENTER: hold/drop',8,184,'#ffffff');
+ blitText(ctx,mobilePuzzleUI()?'TAP trough, then empty socket':'ARROWS: choose a trough',8,176,'#ffffff');
+ blitText(ctx,mobilePuzzleUI()?'Undo / Reset: change the tray':'ENTER: hold/drop  ARROWS: slide',8,184,'#ffffff');
  blitText(ctx,mobilePuzzleUI()?'Back: return':'U: undo     R: reset     ESC: return',8,192,'#aaaaaa');
  const panel=document.querySelector('#agi-message-window');panel.style.left='0%';panel.style.top='0%';panel.style.width='100%';panel.style.maxWidth='100%';panel.style.aspectRatio='320/240';
- msg.textContent=millSluiceStatus+' Slot '+(millSluiceSelected+1)+'. '+(millSluiceHeld?'Holding trough; arrows slide it into an adjacent empty socket. Enter releases it. Escape returns.':'Click a trough to select it, then click an adjacent empty socket to slide it. Arrow keys choose a block; Enter holds it. Escape returns.')+' U undoes a slide. R resets the tray. Connect the inlet to the bucket; troughs cannot rotate, and the stone is fixed.';
+ msg.textContent=millSluiceStatus+' Slot '+(millSluiceSelected+1)+'. '+(millSluiceHeld?'Holding trough; arrows slide it into an adjacent empty socket. Enter releases it. Escape returns.':'Arrow keys choose a block; Enter holds it. Escape returns.')+' U undoes a slide. R resets the tray. Connect the inlet to the bucket; troughs cannot rotate, and the stone is fixed.';
  if(mobilePuzzleUI())msg.textContent=millSluiceStatus+' Tap a trough, then an adjacent empty socket to slide it. Undo reverses a slide. Reset restores the tray. Back returns. Connect the inlet to the bucket; troughs cannot rotate, and the stone is fixed.';
  syncMobilePuzzleControls();
 }

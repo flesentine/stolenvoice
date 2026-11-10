@@ -1,7 +1,7 @@
 // Authored AGI line/fill redraws from inventory-reference-v1.png; no sampling.
 const fs=require('fs'),path=require('path'),Agi=require('../editor/agi-picture.js');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'assets/inventory');
-const names=['workshop key','rose','silver bell','oil flask','twine','wooden plank','rusty shears','pruning shears','beeswax','glass jar','echo jar','sealed echo','voice jar'];
+const names=['apple','workshop key','rose','silver bell','oil flask','twine','wooden plank','rusty shears','pruning shears','beeswax','glass jar','echo jar','sealed echo','voice jar'];
 const art={};
 function draw(name){
  const commands=[];
@@ -13,6 +13,12 @@ function draw(name){
   p('Bow opening',[[8,5],[12,5],[12,9],[8,9]],15,6);
   p('Brass shaft and teeth',[[13,11],[16,10],[27,21],[27,26],[24,26],[24,23],[21,23],[21,20]],6,8);
   l('Key glint',[[7,4],[11,3],[13,5]],14);l('Shaft light',[[15,12],[25,22]],14);
+ }else if(name==='apple'){
+  p('Red apple',[[7,10],[11,7],[16,8],[21,7],[26,11],[27,18],[24,25],[18,27],[15,26],[10,27],[5,22],[4,16]],4);
+  p('Lit apple cheek',[[8,11],[12,9],[16,10],[15,20],[10,24],[7,20],[6,15]],12);
+  l('Apple glint',[[9,12],[8,14],[8,16]],15);
+  l('Short stem',[[16,9],[16,5],[18,3]],6);
+  p('Green leaf',[[17,5],[21,2],[25,3],[22,6]],2);
  }else if(name==='rose'){
   l('Long stiff stem',[[15,10],[15,21],[17,26]],2);
   p('Left leaf',[[14,18],[10,13],[6,13],[8,17],[13,19]],2);l('Leaf light',[[8,14],[11,16]],10);

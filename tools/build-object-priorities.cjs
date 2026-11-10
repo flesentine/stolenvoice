@@ -9,7 +9,7 @@ module.exports=function(){
    if(!/^(Rock|Bank stone|Fir|Apple tree) /.test(name))continue;
    const group=cmds.filter(c=>c.name===name),points=group.flatMap(c=>c.points),xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),left=Math.min(...xs),right=Math.max(...xs),base=Math.max(...ys);
    let foot;
-   if(/^(Fir|Apple tree)/.test(name)){const [x,y]=name.match(/(\d+),(\d+)/).slice(1).map(Number);foot=[[x-3,y-2],[x+4,y-2],[x+4,base],[x-3,base]]}
+   if(/^(Fir|Apple tree)/.test(name)){const [x,y]=name.match(/(\d+),(\d+)/).slice(1).map(Number);foot=name.startsWith('Apple tree ')?[[x-7,y-10],[x+9,y-10],[x+9,base+1],[x-7,base+1]]:[[x-3,y-2],[x+4,y-2],[x+4,base],[x-3,base]]}
    else foot=[[left+2,base-4],[right-2,base-4],[right-1,base-1],[right-4,base],[left+3,base]];
    add(room,project,name,group,foot,base);
   }

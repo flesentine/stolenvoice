@@ -3,10 +3,16 @@ const appleReachFrames=14;
 function handleAppleIntent(text){
  const match=text.match(/^(take|get|collect|pick(?: up)?|pluck|eat|bite(?: into)?|taste|try) (.+?)(?: from (?:the )?(?:apple )?tree)?$/);
  if(!match||objectId(match[2])!=='apple')return false;
- if(room!==3){say('There are no apples here to try.');return true}
+ const eating=/^(eat|bite|taste|try)/.test(match[1]);
+ if(!eating&&flags.appleCarried){say('You already have an apple in your satchel.');return true}
+ const carried=eating&&flags.appleCarried;
+ if(!carried&&room!==3){say('There are no apples here to pick.');return true}
  const trees=[38,118,238],tree=trees.reduce((a,b)=>Math.abs(player.x-a)<Math.abs(player.x-b)?a:b);
- if(Math.hypot(player.x-tree,player.y-180)>58){say('Walk closer to an apple tree first. Even royal arms have their limits.');return true}
- startStoryEffect('applePrank','You nibble the apple down to its core. Your lips nearly meet behind your ears. "How clever," Elara wheezes. "Merrin grows his vinegar on trees."',{appleTaste:true,appleDirection:tree<player.x?-1:1});return true;
+ if(!carried&&Math.hypot(player.x-tree,player.y-180)>58){say('Walk closer to an apple tree first. Even royal arms have their limits.');return true}
+ if(!eating){flags.appleCarried=true;syncInventory();say('You pick a red apple and tuck it into your satchel.');return true}
+ if(carried){flags.appleCarried=false;syncInventory()}
+ startStoryEffect('applePrank','You nibble the apple down to its core. Your lips nearly meet behind your ears. "How clever," Elara wheezes. "Merrin grows his vinegar on trees."',{appleTaste:true,appleCarried:carried,appleDirection:carried?(player.facing==='left'?-1:1):tree<player.x?-1:1});
+ return true;
 }
 function applePrankPose(px,py,frame=storyAction.frame,taste=storyAction.appleTaste,direction=storyAction.appleDirection){
  if(frame<appleReachFrames){

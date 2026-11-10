@@ -220,7 +220,7 @@ function playGameSound(event,reward=false,offsetSeconds=0,gain=1){
   // Resume offsets need their own attack, rather than the buffer's first one.
   const offset=Math.max(0,Math.min(duration-.001,Number.isFinite(offsetSeconds)?offsetSeconds:0)),first=Math.floor(offset*rate),edge=Math.min(Math.round(rate*.005),Math.floor((out.length-first)/2));
   for(let i=0;i<edge;i++){const scale=i/edge;out[first+i]*=scale;out[out.length-1-i]*=scale}
-  const source=jingleContext.createBufferSource();source.buffer=buffer;source.loop=['grottoSong','sluiceSong'].includes(event);source.connect(jingleContext.destination);effectSource=source;source.onended=()=>{source.disconnect();if(effectSource===source)effectSource=null};jingleContext.resume().catch(()=>{if(effectSource===source)stopGameSound()});source.start(0,offset);
+  const source=jingleContext.createBufferSource();source.buffer=buffer;source.loop=['grottoSong','sluiceSong','prologueStory'].includes(event);source.connect(jingleContext.destination);effectSource=source;source.onended=()=>{source.disconnect();if(effectSource===source)effectSource=null};jingleContext.resume().catch(()=>{if(effectSource===source)stopGameSound()});source.start(0,offset);
  }catch{stopGameSound()}
 }
-window.addEventListener('blur',stopGameSound);document.addEventListener('visibilitychange',()=>{if(document.hidden)stopGameSound()});
+window.addEventListener('blur',()=>{if(!document.querySelector('#intro'))stopGameSound()});document.addEventListener('visibilitychange',()=>{if(document.hidden&&!document.querySelector('#intro'))stopGameSound()});

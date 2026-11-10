@@ -70,7 +70,7 @@ console.log('PASS east/e/go east: garden route, thorn refusal and cleared orchar
 // including a saved position already against the right boundary.
 const gift=at(0,{rose:true},85,185);run(gift,'give rose to merrin');
 assert(gift.game.state.flags.roseGiven,'gift fixture follows the real parser action');
-for(const y of [183,201,218,219,225,232,237])for(const stride of [1,3])for(const x of [280,308]){
+for(const y of [195,198,201])for(const stride of [1,3])for(const x of [280,308]){
  const a=at(0,gift.game.state.flags,x,y);
  assert(a.game.canStand(x,y),'right-edge fixture is walkable');
  for(let step=0;step<40&&a.game.state.room===0;step++)a.game.movePlayer(stride,0);
@@ -78,7 +78,7 @@ for(const y of [183,201,218,219,225,232,237])for(const stride of [1,3])for(const
  assert(a.game.canStand(a.game.state.player.x,a.game.state.player.y),'safe orchard landing');
  assert(a.game.state.flags.roseGiven&&a.game.state.flags.workshopKey,'gift and key persist across crossing');
 }
-console.log('PASS post-gift lower/right boundary at seven heights, two strides, normal approaches/restored edge positions, safe landings and retained key.');
+console.log('PASS post-gift lower/right boundary along the clear path at three heights, two strides, normal approaches/restored edge positions, safe landings and retained key.');
 
 // ArrowRight actually takes five-unit steps. A phase ending at x304 used
 // to stop before the exit when its next endpoint (x309) left the floor.
@@ -86,14 +86,14 @@ const sequence=at(0,{},273,184);run(sequence,'take rose');run(sequence,'take bel
 assert(sequence.game.state.flags.rose&&sequence.game.state.flags.bell,'rose and bell collected');
 s.qa.approach(sequence,'man');run(sequence,'give rose to merrin');
 assert(sequence.game.state.flags.roseGiven,'full reported sequence reaches gift');
-for(const y of [183,201,218,225,237])for(const x of [279,280,281,282,283,304,308]){
+for(const y of [195,198,201])for(const x of [279,280,281,282,283,304,308]){
  const a=at(0,sequence.game.state.flags,x,y);
  a.key('ArrowRight');
  for(let tick=0;tick<20&&a.game.state.room===0;tick++)for(const fn of [...a.intervals.values()])fn();
  assert.equal(a.game.state.room,3,'real ArrowRight from x='+x+', y='+y);
  assert(a.game.state.flags.workshopKey&&a.game.state.flags.bell,'key and bell survive');
 }
-console.log('PASS actual ArrowRight/timer input after rose, bell and gift, across five heights, all five step phases and stranded edge positions.');
+console.log('PASS actual ArrowRight/timer input after rose, bell and gift, along the clear path at three heights, all five step phases and stranded edge positions.');
 
 const courtyardEntry=boot();courtyardEntry.start();drain(courtyardEntry);s.qa.travel(courtyardEntry,'courtyard');
 assert.equal(courtyardEntry.game.state.room,8);assert.equal(courtyardEntry.game.state.player.y,232,'garden arrival is just inside bottom courtyard gate');assert.equal(courtyardEntry.game.state.player.facing,'back');

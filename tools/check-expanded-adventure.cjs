@@ -56,6 +56,8 @@ function walkWhere(a,goal,allowExit=null){
    if(nx<0||nx>=w||ny<0||ny>=h)continue;const next=ny*w+nx;if(previous[next]!==-1)continue;
    const portal=portalAt(nx,ny);if(portal&&portal.id!==allowExit&&portal!==startingPortal)continue;
    if(!a.game.canStand(nx,ny,room))continue;
+   // Route around the live hive hazard, including after collecting its wax.
+   if(room===3&&((nx-206)/23)**2+((ny-194)/14)**2<1)continue;
    previous[next]=p;queue[tail++]=next;
   }
  }

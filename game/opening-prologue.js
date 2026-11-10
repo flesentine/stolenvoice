@@ -13,7 +13,7 @@ function paintPrologueCandle(ctx,frame,reduced=false){
  [...cel].forEach((ink,y)=>{if(ink!=='.'){ctx.fillStyle=elaraColors[parseInt(ink,16)];ctx.fillRect(12,8+30+y,2,1)}});
 }
 // Six short, native-pixel scenes establish the mirror's motive before play.
-let prologueActive=false,prologueFrame=0,prologueTimer=0,prologueFocused=true;
+let prologueActive=false,prologueFrame=0,prologueTimer=0,prologueAnchor=0,prologuePosition=0,prologueMusicStarted=0,prologueMusicSource=null;
 const prologueArrival={x:102,y:206,step:1,facing:'left'};
 const prologueCaptions=[
  ['Each morning, Merrin polished the glass','and sang the old songs of Alderwick.'],
@@ -26,7 +26,7 @@ const prologueCaptions=[
 function prologueBeat(){return Math.min(5,Math.floor(prologueFrame/prologueScore.sceneFrames))}
 function finishPrologue(){
  if(prologueTimer)clearInterval(prologueTimer);prologueTimer=0;prologueActive=false;
- stopGameSound();
+ stopGameSound();prologueMusicSource=null;
  stopWalking();player={...prologueArrival};
  // Paint the arrival before revealing the game canvas beneath the messages.
  // Ambient animation is paused while those messages are open.
@@ -38,23 +38,35 @@ function finishPrologue(){
   'F1: instructions. TAB: inventory. F2: sound. F5: save. F7: restore. ESC: menus and speed.'
  ];say(introPages.shift());
 }
+function prologueMusicDuration(){return prologueScore.sceneFrames*6*prologueScore.frameSeconds}
 function resumePrologueScore(){
- if(prologueActive&&!document.hidden&&prologueFocused)playGameSound('prologueStory',false,prologueFrame*prologueScore.frameSeconds);
+ if(!prologueActive||!soundEnabled)return;
+ if(prologueMusicSource&&effectSource===prologueMusicSource){
+  if(jingleContext?.state==='suspended')jingleContext.resume().catch(()=>{});
+  return;
+ }
+ const offset=((Date.now()-prologueMusicStarted)/1000)%prologueMusicDuration();
+ playGameSound('prologueStory',false,Math.max(0,offset));prologueMusicSource=effectSource;
 }
 function prologueSound(){resumePrologueScore()}
+function syncPrologueClock(now=Date.now()){
+ if(!prologueActive)return;
+ prologuePosition+=Math.max(0,now-prologueAnchor)/(1000*prologueScore.frameSeconds*captionDuration);
+ prologueAnchor=now;prologueFrame=Math.floor(prologuePosition+1e-7);
+ if(prologueFrame>=prologueScore.sceneFrames*6){finishPrologue();return}
+ paintPrologue();
+}
 function advancePrologue(){
+ syncPrologueClock();if(!prologueActive)return;
  if(prologueBeat()===5){finishPrologue();return}
- prologueFrame=(prologueBeat()+1)*prologueScore.sceneFrames;prologueSound(prologueBeat());paintPrologue();
+ prologuePosition=prologueFrame=(prologueBeat()+1)*prologueScore.sceneFrames;
+ prologueAnchor=Date.now();paintPrologue();
 }
 function startPrologue(){
  if(titleTimer)clearInterval(titleTimer);titleTimer=0;stopOpeningJingle();
- prologueActive=true;prologueFrame=0;prologueCandleState={phase:0,last:-1,next:0};prologueSound(0);paintPrologue();
- prologueTimer=setInterval(()=>{
-  if(!prologueActive||document.hidden||!prologueFocused)return;
-  prologueFrame++;
-  if(prologueFrame>=prologueScore.sceneFrames*6){finishPrologue();return}
-  paintPrologue();
- },prologueScore.frameSeconds*1000);
+ prologueActive=true;prologuePosition=prologueFrame=0;prologueAnchor=prologueMusicStarted=Date.now();
+ prologueMusicSource=null;prologueCandleState={phase:0,last:-1,next:0};prologueSound();paintPrologue();
+ prologueTimer=setInterval(syncPrologueClock,prologueScore.frameSeconds*1000);
 }
 const prologueCloseupCache=new Map();
 function paintDedicatedPrologue(ctx,stage,phase,reduced){
@@ -99,6 +111,13 @@ function paintPrologue(){
  blitText(ctx,'ENTER: next   F2: sound   ESC: skip',28,192,'#aaaaaa');
  document.querySelector('#start').setAttribute('aria-label',prologueCaptions[stage].join(' ')+'. Enter: next. Escape: skip.');
 }
-window.addEventListener('blur',()=>{prologueFocused=false;if(prologueActive)stopGameSound()});
-window.addEventListener('focus',()=>{prologueFocused=true;resumePrologueScore()});
-document.addEventListener('visibilitychange',()=>{if(!prologueActive)return;if(document.hidden)stopGameSound();else resumePrologueScore()});
+// Keep the score running in the background; recover a browser-suspended context
+// on return or a trusted input without creating a second source.
+function recoverIntro(){
+ if(prologueActive){syncPrologueClock();resumePrologueScore()}
+ else if(document.querySelector('#intro')&&soundEnabled&&jingleSource&&jingleContext?.state==='suspended')jingleContext.resume().catch(()=>{});
+}
+window.addEventListener('focus',recoverIntro);
+document.addEventListener('visibilitychange',recoverIntro);
+document.addEventListener('pointerdown',recoverIntro);
+document.addEventListener('keydown',recoverIntro,true);

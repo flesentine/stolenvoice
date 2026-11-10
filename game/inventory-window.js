@@ -55,7 +55,7 @@ function paintInventory(){
  paintInventoryDrawing(drawing);
  msg.textContent=inventoryView==='item'?AgiInventoryWindow.displayName(name)+'\n\n'+description:'You are carrying:\n'+inv.map(AgiInventoryWindow.displayName).join('\n')+'\nSelected: '+AgiInventoryWindow.displayName(inv[inventoryIndex])+(touch?'. Tap an item to examine it. Tap outside to return.':'. Use Up and Down to select, Enter to examine, Escape to return.');
  textPopup.setAttribute('aria-label',inventoryView==='item'?'Inventory object':'Inventory');
- document.querySelector('#agi-message-help').textContent=inventoryView==='item'?'Tap, Enter or Escape returns to the list.':touch?'Tap an item to examine it. Tap outside to return.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
+ document.querySelector('#agi-message-help').textContent=inventoryView==='item'?touch?'Tap to return to the list.':'Enter or Escape returns to the list.':touch?'Tap an item to examine it. Tap outside to return.':'Use Up and Down to select. Enter examines. Escape returns to the game.';
 }
 function inventoryTouchTap(event){
  if(!inventoryOpen||inventoryView!=='list'||!window.matchMedia('(hover: none) and (pointer: coarse)').matches)return false;

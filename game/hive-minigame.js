@@ -56,7 +56,8 @@ function hiveWrap(text,columns=34){
   for(const word of paragraph.split(/\s+/)){if(line&&(line+' '+word).length>columns){lines.push(line);line=word}else line+=(line?' ':'')+word}if(line)lines.push(line);return lines;
  });
 }
-const hiveHelpLines=hiveWrap(['Bees weave around the hive.','Loose wax lies below the entrance.','','Watch the wax below the entrance.','Reach when its flight path clears.','3 stings: retreat. Drop your wax.','','SPACE / click: reach   ESC: back','ENTER: begin watching.'].join('\n'));
+const hiveHelpText="Look at the wax below the entrance and reach when the bees clear the flight path. If you get stung 3 times you'll drop all the wax!";
+const hiveHelpLines=hiveWrap(hiveHelpText+'\n\nSPACE: reach   ESC: back\nENTER: begin watching.');
 let hiveStatus='Watch their flight before reaching.';
 function hiveGap(){
   return hiveClear(hiveFrame);
@@ -192,8 +193,8 @@ function hivePixels(){
   const [bx,by]=bee;
   hiveBeePixels.forEach(([dx,dy,color])=>rect(bx+dx,by+dy,1,1,color));
  }
- if(hiveReach>=0){
-  const y=hiveHandY(hiveReach);
+ {
+  const y=hiveReach>=0?hiveHandY(hiveReach):144;
   // Draw a complete hand cel: staggered rounded fingertips, a cupped palm,
   // an opposing thumb and a narrow wrist inside Elara's white cuff.
   // Each character is one native picture pixel; no stretched body parts.
@@ -232,14 +233,14 @@ function paintHive(){
   blitText(ctx,'Enough wax!',116,76,'#000000');
   blitText(ctx,'The bees are unharmed.',76,96,'#000000');
   blitText(ctx,'You tuck the flakes away.',64,112,'#000000');
-  blitText(ctx,mobilePuzzleUI()?'TAP anywhere: continue':'ENTER / ESC / CLICK: continue',48,187,'#ffff55');
+  blitText(ctx,mobilePuzzleUI()?'TAP anywhere: continue':'ENTER / ESC: continue',48,187,'#ffff55');
  }else{
   blitText(ctx,hiveStatus,4,169,'#ffffff');
   blitText(ctx,mobilePuzzleUI()?'TAP anywhere: reach   Back: leave':'SPACE: reach  F2: sound  ESC: back',24,187,'#ffff55');
  }
- if(hiveHelp){ctx.fillStyle='#ffffff';ctx.fillRect(8,42,304,104);ctx.fillStyle='#aa0000';ctx.fillRect(10,44,300,100);ctx.fillStyle='#ffffff';ctx.fillRect(11,45,298,98);(mobilePuzzleUI()?hiveHelpLines.map(line=>line.includes('SPACE /')?'TAP anywhere: reach.':line.includes('ENTER:')?'TAP to begin. Back: return.':line):hiveHelpLines).forEach((line,i)=>blitText(ctx,line,20,51+i*10,'#000000'))}
+ if(hiveHelp){ctx.fillStyle='#ffffff';ctx.fillRect(8,42,304,104);ctx.fillStyle='#aa0000';ctx.fillRect(10,44,300,100);ctx.fillStyle='#ffffff';ctx.fillRect(11,45,298,98);(mobilePuzzleUI()?hiveHelpLines.map(line=>line.includes('SPACE:')?'TAP anywhere: reach.':line.includes('ENTER:')?'TAP to begin. Back: return.':line):hiveHelpLines).forEach((line,i)=>blitText(ctx,line,20,51+i*10,'#000000'))}
  const panel=document.querySelector('#agi-message-window');panel.style.left='0%';panel.style.top='0%';panel.style.width='100%';panel.style.maxWidth='100%';panel.style.aspectRatio='320/240';
- msg.textContent=hiveWon?'Enough wax! The bees are unharmed. You tuck the flakes away. Enter, Escape or click to continue.':hiveHelp?'Watch the bees loop around the hive. Reach for the loose wax when the space below the entrance clears. Space, Enter or click to begin. Three stings send you back and make you drop any gathered flakes. Escape returns.':hiveStatus+(hiveGap()?' The reaching path is briefly clear.':' The bees sweep past the entrance.')+' Space or click to reach. Escape returns.';
+ msg.textContent=hiveWon?'Enough wax! The bees are unharmed. You tuck the flakes away. Enter or Escape to continue.':hiveHelp?hiveHelpText+' Enter to begin. Escape returns.':hiveStatus+(hiveGap()?' The reaching path is briefly clear.':' The bees sweep past the entrance.')+' Space to reach. Escape returns.';
  if(mobilePuzzleUI())msg.textContent=hiveWon?'Enough wax! The bees are unharmed. You tuck the flakes away. Tap anywhere to continue.':hiveHelp?'Watch the bees. Reach for loose wax when the path clears. Tap anywhere to begin, then tap to reach. Three stings send you back and drop your gathered flakes. Back returns.':hiveStatus+' Tap anywhere to reach. Back returns.';
  syncMobilePuzzleControls();
 }

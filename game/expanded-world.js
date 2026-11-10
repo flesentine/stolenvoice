@@ -10,6 +10,7 @@ function insidePolygon(px,py,polygon){
  }
  return inside;
 }
+const gardenGroundObstacles=[[[0,166],[30,166],[34,205],[0,205]],[[292,169],[320,169],[320,193],[292,193]],[[292,203],[302,203],[320,213],[320,233],[300,224],[292,227]]];
 function canStand(px,py,atRoom=room){
  const layout=roomLayouts[atRoom];
  const areas=layout.areas.slice();
@@ -18,6 +19,10 @@ function canStand(px,py,atRoom=room){
  // The closed workshop door is a wall at ground level. Stop the feet
  // below its sill, even after the silent approach exit has latched.
  if(atRoom===8&&!flags.workshopOpen&&px>=47&&px<=83&&py<145)return false;
+ // Left framing bush and both gate sections use their visible ground edges.
+ if(atRoom===0){
+   if(gardenGroundObstacles.some(poly=>[-3,0,3].some(dx=>insideSolidFootprint(px+dx,py,poly))))return false;
+ }
  if(objectBlocksActor(px,py,atRoom))return false;
  if(atRoom===3&&!flags.thornsCut&&px>288&&py<219)return false;
  for(const sample of [px-3,px,px+3]){
@@ -210,7 +215,7 @@ function drawShedTools(){
 // Only crowding the hive mouth provokes a sting; the path and wax approach
 // remain usable. Moving away from an overlapping restored position is safe.
 function orchardBeeSting(nx,ny){
- if(room!==3||flags.waxTaken)return false;
+ if(room!==3)return false;
  const distance=(a,b)=>((a-206)/23)**2+((b-194)/14)**2;
  if(distance(nx,ny)>=1||distance(nx,ny)>=distance(player.x,player.y))return false;
  startBeeStingReaction();

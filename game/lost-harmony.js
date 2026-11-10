@@ -13,10 +13,9 @@ const harmonyHelpLines=[
  "Solid COLOR tabs show your notes.",
  '',
  'L: hear JAR. ENTER: hear YOUR notes.',
- 'Or click a rail to move its weight.',
  'Bring each tab into its WHITE frame.',
  '',
- 'ENTER or click: begin. H: help.'
+ 'ENTER: begin. H: help.'
 ];
 let harmonyStatus='The three strings share their tension.';
 function harmonyPitches(weights=harmonyWeights){return[(weights[0]+weights[1])%7,(weights[0]+weights[1]+weights[2])%7,(weights[1]+weights[2])%7]}
@@ -160,19 +159,19 @@ function paintHarmony(){
   ctx.fillRect(30,20,260,1);ctx.fillRect(30,39,260,1);ctx.fillRect(30,20,1,20);ctx.fillRect(289,20,1,20);
   blitText(ctx,'Three voices sing as one!',64,26,'#000000');
   blitText(ctx,'The bridge hums; the pulleys turn.',24,176,'#ffffff');
-  blitText(ctx,mobilePuzzleUI()?'TAP to continue':'ENTER / ESC / CLICK: continue',48,188,'#ffff55');
+  blitText(ctx,mobilePuzzleUI()?'TAP to continue':'ENTER / ESC: continue',48,188,'#ffff55');
  }else{
   blitText(ctx,mobilePuzzleUI()?'TAP rail: slide a brass weight':'ARROWS:adjust L:jar ENTER:hear',16,176,'#ffffff');
-  blitText(ctx,mobilePuzzleUI()?'Jar / Notes: hear   Back: return':'H:help R:reset ESC:back CLICK:weight',16,188,'#ffff55');
+  blitText(ctx,mobilePuzzleUI()?'Jar / Notes: hear   Back: return':'H: help   R: reset   ESC: back',16,188,'#ffff55');
  }
  if(harmonyHelp){
   ctx.fillStyle='#ffffff';ctx.fillRect(8,30,304,136);
   ctx.fillStyle='#aa0000';ctx.fillRect(10,32,300,132);
   ctx.fillStyle='#ffffff';ctx.fillRect(11,33,298,130);
-  (mobilePuzzleUI()?harmonyHelpLines.map(text=>text.startsWith('LEFT/RIGHT:')?'TAP a rail to place its weight.':text.startsWith('UP/DOWN:')?'Tap higher or lower along the rail.':text.startsWith('L: hear')?'Jar: hear JAR. Notes: hear YOURS.':text.startsWith('Or click')?'Or tap a string to hear your notes.':text.startsWith('ENTER or')?'TAP to begin. Help: these rules.':text):harmonyHelpLines).forEach((text,i)=>blitText(ctx,text,20,38+i*8,'#000000'));
+  (mobilePuzzleUI()?harmonyHelpLines.map(text=>text.startsWith('LEFT/RIGHT:')?'TAP a rail to place its weight.':text.startsWith('UP/DOWN:')?'Tap higher or lower along the rail.':text.startsWith('L: hear')?'Jar: hear JAR. Notes: hear YOURS.':text.startsWith('ENTER: begin.')?'TAP to begin. Help: these rules.':text):harmonyHelpLines).forEach((text,i)=>blitText(ctx,text,20,38+i*8,'#000000'));
  }
  const panel=document.querySelector('#agi-message-window');panel.style.left='0%';panel.style.top='0%';panel.style.width='100%';panel.style.maxWidth='100%';panel.style.aspectRatio='320/240';
- msg.textContent=harmonySolved?'The lost harmony is restored. Three voices sing as one. The shared bridge hums and the pulleys turn. Enter, Escape or click to continue.':harmonyHelp?harmonyHelpLines.join(' '):'The Lost Harmony. '+harmonyStatus+' The echo jar rests beside an oak psaltery. White frames mark the jar\'s notes beside the brass strings. Solid colored tabs show each answering string. Bring each tab inside its white frame. Left and right choose a weight; up and down slide it. Strings share tension, so one weight changes several notes. L repeats the jar; Enter plays your strings. Click a rail to move its weight. R resets. Escape returns.';
+ msg.textContent=harmonySolved?'The lost harmony is restored. Three voices sing as one. The shared bridge hums and the pulleys turn. Enter or Escape to continue.':harmonyHelp?harmonyHelpLines.join(' '):'The Lost Harmony. '+harmonyStatus+' The echo jar rests beside an oak psaltery. White frames mark the jar\'s notes beside the brass strings. Solid colored tabs show each answering string. Bring each tab inside its white frame. Left and right choose a weight; up and down slide it. Strings share tension, so one weight changes several notes. L repeats the jar; Enter plays your strings. Click a rail to move its weight. R resets. Escape returns.';
  if(mobilePuzzleUI())msg.textContent=harmonySolved?'The lost harmony is restored. Three voices sing as one. Tap to continue.':harmonyHelp?'The jar holds the tune to match. Tap a rail to slide its weight. One weight changes several notes. Bring each colored tab into its white frame. Jar repeats the jar; Notes plays your strings. Tap to begin.':harmonyStatus+' Tap a rail to move its weight, or a string to hear your notes. Jar repeats the jar. Notes plays your strings. Help shows the rules. Reset starts again. Back returns.';
  syncMobilePuzzleControls();
 }

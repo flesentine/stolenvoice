@@ -72,7 +72,7 @@ const storyHeader=story.slice(0,story.indexOf('function carriedItems'));
 html=html.replace(/let room=0,inv=\[\],score=0,scored=\{\},flags=\{[^\n]+?\},player=/,storyHeader+"let room=0,inv=[],score=0,scored={},flags={...flagDefaults},player=");
 const map=JSON.parse(read('assets/stolen-voice-map.json'));
 html=html.replace(/const rooms=\[[^\n]+?\];/, 'const rooms='+JSON.stringify(map.rooms.map(room=>room.name))+';');
-html=html.replace(/const walkFloors=\[[^\n]+?\],inventoryNames=\[[^\n]+?\];/,'const inventoryNames=["rose","silver bell","oil flask","twine","wooden plank","rusty shears","pruning shears","beeswax","glass jar","echo jar","sealed echo","voice jar"];');
+html=html.replace(/const walkFloors=\[[^\n]+?\],inventoryNames=\[[^\n]+?\];/,'const inventoryNames=["apple","rose","silver bell","oil flask","twine","wooden plank","rusty shears","pruning shears","beeswax","glass jar","echo jar","sealed echo","voice jar"];');
 let start=html.indexOf('function helpText(){'),end=html.indexOf('function renderItems(){',start);
 html=html.slice(0,start)+pictures+read('game/wheel-pictures.js')+read('game/water-pictures.js')+read('game/river-water.js')+read('game/human-puzzles.js')+priority+read('game/swimming-pictures.js')+read('game/swimming.js')+read('game/mill-cabinet.js')+read('game/tandy-sound.js')+read('game/world-life.js')+world+story.slice(story.indexOf('function carriedItems'))+html.slice(end);
 // Remove the short adventure's movement functions (the world module owns them).
@@ -108,6 +108,9 @@ const roseEnd=html.indexOf('prop(165,()=>{',roseStart);
 if(roseStart<0||roseEnd<0)throw Error('Garden rose drawing anchors missing');
 html=html.slice(0,roseStart)+'prop(201,drawGardenRose);\n'+html.slice(roseEnd);
 html=html.replace('function garden(){',()=>read('game/garden-rose.js')+'\nfunction garden(){');
+// The framing bush ends at its lowest visible root, so actors in front
+// are never hidden above feet that extend beneath its foliage.
+html=html.replace('prop(212,()=>{','prop(204,()=>{');
 // The small handbell can be lifted from its peg and tilted by hand.
 const handBellStart=html.indexOf('prop(165,()=>{'),handBellEnd=html.indexOf('});',handBellStart)+3;
 if(handBellStart<0)throw Error('Garden bell drawing anchor missing');
@@ -160,6 +163,11 @@ html=html.replace('function closeMessage(restoreFocus=true){', 'function closeMe
 html=html.replace(' if(!popupOpen||event.isComposing)return;', ' if(inventoryOpen&&!event.isComposing){event.preventDefault();event.stopImmediatePropagation();inventoryKey(event);return}\n if(!popupOpen||event.isComposing)return;');
 html=html.replace("else if(introSequence||document.querySelector('#intro'))","else if(prologueActive)resumePrologueScore();\n else if(introSequence||document.querySelector('#intro'))");
 html=html.replace("if(!soundEnabled)stopOpeningJingle();","if(!soundEnabled){stopOpeningJingle();stopGameSound()}");
+html=html.replace('const textPopup=',read('game/player-preferences.js')+'\nconst textPopup=');
+html=html.replaceAll('source.connect(jingleContext.destination)','source.connect(gameAudioOutput())');
+html=html.replace("window.addEventListener('blur',stopOpeningJingle);", "window.addEventListener('blur',()=>{if(!document.querySelector('#intro'))stopOpeningJingle()});");
+html=html.replace("if(document.hidden)stopOpeningJingle()", "if(document.hidden&&!document.querySelector('#intro'))stopOpeningJingle()");
+html=html.replace('F3: repeat your last command.', 'F3: repeat your last command.\\nALT+UP/DOWN: volume.\\nALT+LEFT/RIGHT: intro text duration.');
 const titleStart=html.indexOf("paintTextWindow('ELARA AND THE STOLEN VOICE");
 const titleEnd=html.indexOf('\n',titleStart);
 if(titleStart<0||titleEnd<0)throw Error('Short title anchors missing');

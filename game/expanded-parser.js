@@ -66,10 +66,10 @@ function ropeRepairIntent(text){
  if(short&&objectId(short[1])==='rope')return true;
  return room===7&&/^(?:use|tie|wrap|attach) (.+)$/.test(text)&&isTwine(text.replace(/^(?:use|tie|wrap|attach) /,''));
 }
-function own(id){return({key:hasWorkshopKey(),rose:flags.rose&&!flags.roseGiven,clapper:flags.bell,oil:flags.oilTaken,twine:flags.twineTaken,plank:flags.plankTaken&&!flags.bridgePlank,shears:flags.shearsTaken,wax:flags.waxTaken&&!flags.jarSealed,jar:flags.jarTaken})[id]===true}
+function own(id){return({apple:flags.appleCarried,key:hasWorkshopKey(),rose:flags.rose&&!flags.roseGiven,clapper:flags.bell,oil:flags.oilTaken,twine:flags.twineTaken,plank:flags.plankTaken&&!flags.bridgePlank,shears:flags.shearsTaken,wax:flags.waxTaken&&!flags.jarSealed,jar:flags.jarTaken})[id]===true}
 function describeRoom(){
  return[
-  (flags.voiceArrivalSeen?'Merrin hums happily beside the winding path. ':'Merrin waits beside the winding path. ')+(flags.rose?'':'A red rose grows beside the path. ')+(flags.bell?'An empty bell peg remains on the orchard gatepost. ':'A little silver bell hangs from the orchard gatepost. ')+'Red roofs and fluttering pennants rise above the castle moat.',
+  (flags.voiceArrivalSeen?'Merrin hums happily beside the winding path. ':'Merrin waits beside the winding path. ')+(flags.rose?(flags.roseGiven?'The red rose brightens Merrin\'s coat. ':'The red rose you picked is in your satchel. '):'A red rose grows beside the path. ')+(flags.bell?'An empty bell peg remains on the orchard gatepost. ':'A little silver bell hangs from the orchard gatepost. ')+'Red roofs and fluttering pennants rise above the castle moat.',
   'Blue and gold banners frame '+(flags.voiceReturned?'a quiet silver mirror. ':flags.mirrorAwake?'a softly murmuring mirror. ':'an elaborate mirror. ')+'The Book of Enchantments rests '+(flags.bookOpen?'open':'closed')+' on a carved table beside the purple carpet.',
   shedBenchContents()+' '+shedBoardsDescription()+' Pots and hanging tools fill Merrin\'s little workshop.',
   'Red apples brighten the old trees. Bees circle a straw hive on a stump. '+(flags.waxTaken?'': 'Loose beeswax rests on its landing shelf. ')+(flags.thornsCut?'Freshly cut blackthorn lies beside the path.':'A thick tangle of blackthorn chokes the path.'),
