@@ -3,7 +3,7 @@
 const fs=require('fs'),os=require('os'),path=require('path'),cp=require('child_process');
 const root=path.resolve(__dirname,'..');
 const suites=[
- 'standalone-build','first-playtest','original-branding','save-files','playtest-recording',
+ 'standalone-build','playtest-parser','pool-intentions','first-playtest','original-branding','save-files','playtest-recording',
  'mobile-controls',
  'mobile-autocomplete',
  'mobile-key-hit-test',

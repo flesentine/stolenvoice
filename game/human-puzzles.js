@@ -19,16 +19,21 @@ function handleHumanIntent(text){
  }
 
  if(room===0&&/^(?:use|hook|retrieve|get|grab).*?(?:rose|stem).*?clapper|^(?:hook|retrieve|get|grab).*?clapper.*?(?:rose|stem)/.test(text)){useObject('rose','bell');return true}
- // Water is a physical attempt, distinct from holding glass over an echo.
- if(room===6&&(
-  /^(?:put|pour|scoop|collect|take|get|catch)(?: up)? (?:the )?(?:pool water|water) (?:in|into|with|using) (?:the )?(?:empty |glass |measuring )?jar$/.test(text)||
-  /^fill (?:the )?(?:empty |glass |measuring )?jar (?:with|from) (?:the )?(?:pool water|water)$/.test(text)||
-  /^(?:dip|dunk|lower|immerse|put|place) (?:the )?(?:empty |glass |measuring )?jar (?:in|into|under) (?:the )?(?:pool|water)$/.test(text))){
+ // Explicit water collection gets physical feedback; moving the jar toward
+ // a named echo uses the same guarded capture as USE JAR ON POOL.
+ const waterTransfer=text.match(/^(?:put|pour|scoop|collect|take|get|catch)(?: up)? (.+?) (?:in|into|with|using) (.+)$/);
+ const waterFill=text.match(/^fill (.+?) (?:with|from) (.+)$/);
+ const dipping=text.match(/^(?:dip|dunk|lower|immerse|put|place) (.+?) (?:in|into|under) (.+)$/);
+ const waterName=value=>['water','pool water'].includes(noun(value));
+ const waterAttempt=(waterTransfer&&waterName(waterTransfer[1])&&objectId(waterTransfer[2])==='jar')||(waterFill&&objectId(waterFill[1])==='jar'&&waterName(waterFill[2]));
+ const jarApproach=dipping&&objectId(dipping[1])==='jar'&&objectId(dipping[2])==='pool';
+ if(room===6&&(waterAttempt||jarApproach)){
   if(!flags.jarTaken){say('You have no jar with you.');return true}
   if(!nearObject('pool'))return true;
   if(flags.jarSealed){say('The wax seal covers the mouth of the jar. You keep it above the water.');return true}
   if(flags.echoCaught){say('A whisper stirs inside the jar. You draw it back before the water can wash away the sound.');return true}
-  say('You dip the jar into the pool. Water seems to fill it, then slips away like a reflection as you lift it. The glass comes up dry. Not a ripple marks the surface.');return true;
+  if(jarApproach&&flags.echoNamed){useObject('jar','pool');return true}
+  say('You dip the jar into the pool. Water seems to fill it, then slips away like a reflection as you lift it. The glass comes up dry. Not a ripple marks the surface.'+(flags.echoNamed?' Merrin\'s repeating name hangs above the water. Bring the open jar near the sound, rather than trying to carry the water.':''));return true;
  }
  const clapperAttempt=text.replace(/ with (?:a |my |your )?fingernail$/, '');
  let sound=clapperAttempt.match(/^(?:use|ring|sound|tap|strike|hit|chime|play|shake|flick) (.+?)(?: (?:next to|beside|by|near|at|over|above|on|against) (.+))?$/);

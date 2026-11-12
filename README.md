@@ -7,7 +7,7 @@ A browser adventure with a text parser, nine connected rooms, native EGA-style a
 Download the repository and open **[stolen-voice.html](stolen-voice.html)** in a desktop browser. The current game is self-contained; no installation or server is required.
 
 - Arrow keys: walk; hold a horizontal and vertical arrow for diagonal walking.
-- Type commands such as `look`, `inventory`, or `look rose`, then press Enter.
+- Type commands such as `look`, `inventory`, or `look rose`, then press Enter. `x rose` and `l rose` are shortcuts for `examine rose`, including special puzzle objects.
 - F1: instructions. F2: sound. F3: repeat the last command. F5: save. F7: restore. Escape: menu.
 - Alt+Up/Down: volume. Alt+Left/Right: intro caption duration (short, normal, long). These preferences are kept in this browser separately from quest saves.
 - The intro continues when unfocused. Browsers may suspend background audio; returning or pressing a key attempts to resume it. F5/F7 are suppressed until gameplay begins.

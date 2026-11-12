@@ -202,7 +202,8 @@ function harmonyClick(event){
  else paintHarmony();
 }
 function handleHarmonyIntent(text){
- if(/^(?:look(?: at)?|examine|inspect|listen(?: to)?|tune|adjust|use|play|touch|open) (?:the )?(?:resonators?|brass resonators?|strings?|weights?|harmony|mechanism|bell mechanism|tuning mechanism|tuning weights?|bell strings?|psaltery|instrument|bell instrument)$/.test(text)){showHarmony();return true}
+ if(room!==7)return false;
+ if(/^(?:look(?: at)?|examine|inspect|listen(?: to)?|tune|adjust|use|play|touch|open) (?:the )?(?:resonators?|brass resonators?|strings?|brass strings?|weights?|brass weights?|shared bridge|wooden bridge|bridge|harmony|mechanism|bell mechanism|tuning mechanism|tuning weights?|bell strings?|psaltery|oak psaltery|instrument|oak string instrument|string instrument|bell instrument)$/.test(text)){showHarmony();return true}
  return false;
 }
 function drawHarmonyResonators(){

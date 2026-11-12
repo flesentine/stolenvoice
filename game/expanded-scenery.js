@@ -17,7 +17,7 @@ const sceneryAliases={
  shelf:['shelf','shelves'],herbs:['herb','herbs','seedling','seedlings','plants'],
  tools:['tools','garden tools','trowel','rake','pruning hook','peg','pegs'],
  soil:['soil','potting soil','dirt','earth','old roots'],bees:['bee','bees'],honey:['honey'],
- barrel:['barrel','cask','hoops','lid','barrel lid','wooden lid','lid of barrel','lid of the barrel','cask lid'],drawer:['drawer','tool drawer'],sack:['sack','sacks','grain sack','grain bag','bag','seed sack','seeds'],
+ barrel:['barrel','cask','hoops','lid','barrel lid','wooden lid','lid of barrel','lid of the barrel','cask lid'],drawer:['drawer','tool drawer'],sack:['sack','sacks','grain sack','grain bag','bag','seed sack','seeds','grain'],
  stream:['stream','river','brook','current','mill race','millrace'],
  rock:['rock','rocks','stone','stones','loose stone','pebble','pebbles','boulder','boulders','bank stones'],
  stalagmites:['stalagmite','stalagmites','stalactite','stalactites','formations'],
@@ -41,6 +41,8 @@ const sceneryAliases={
  linkage:['linkage','rod','iron rod','pull rod','crank','crank pin','guide','cabinet mechanism'],
  frame:['frame','mirror frame','gold frame','golden frame'],
  seams:['seam','seams','mineral seams','minerals','mineral deposits','mineral seam'],
+ bucket:['bucket','counterweight bucket','hanging bucket','empty bucket','full bucket'],
+ bin:['bin','red bin','grain bin'],stores:['stores','smaller stores','grain stores'],lock:['lock','iron lock','escutcheon','brass escutcheon'],
  reflection:['reflection','my reflection'],jewel:['jewel','gem','blue jewel']
 };
 function sceneryId(text){return Object.keys(sceneryAliases).find(id=>sceneryAliases[id].includes(text))||text}
@@ -53,6 +55,10 @@ function shedBenchContents(){
 function shedBoardsDescription(){return flags.plankTaken?'Only split spare boards remain beside the bench.':'Sound planks lean beside the bench.'}
 function describeShedBench(){return 'The oak bench has a small drawer and a lower shelf. '+(secretSnailFound()?'A little crowned snail trophy is fixed beneath the lower rail. ':'A tiny spiral is just visible beneath the lower rail. ')+shedBenchContents()+' '+shedBoardsDescription()}
 function sceneryDescription(id){
+ if(room===8&&id==='lock')return workshopDoorDescription();
+ if(room===5&&id==='bucket')return flags.wheelUnlocked?'The full counterweight bucket hangs from its chain, holding the wheel brake clear.':'An empty bucket hangs from a chain linked to the wheel brake. The sliding trough panel can guide water into it; its weight will lift the brake.';
+ if(room===5&&id==='bin')return 'A red wooden bin holds spare grain beside the stored sacks. It is part of the miller\'s stores, rather than the wheel controls.';
+ if(room===5&&id==='stores')return 'Smaller sacks of dry grain stand beside the red bin. The large sack in the hoist is the one that blocks the cupboard.';
  if(room===5&&['hoist','linkage','rope'].includes(id))return flags.wheelTurned?'The drive rope turns a winding drum. Overhead, a pulley and cleat hold the heavy grain sack safely above the cupboard.':'A drive rope runs from the wheel to a winding drum and overhead pulley. Its sling holds the heavy sack that blocks the cupboard door.';
  if(id==='grass')return {
   0:'Soft green grass borders the winding garden path. Merrin keeps the lawn neatly trimmed.',

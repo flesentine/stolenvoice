@@ -483,16 +483,21 @@ function handleHumanIntent(text){
  }
 
  if(room===0&&/^(?:use|hook|retrieve|get|grab).*?(?:rose|stem).*?clapper|^(?:hook|retrieve|get|grab).*?clapper.*?(?:rose|stem)/.test(text)){useObject('rose','bell');return true}
- // Water is a physical attempt, distinct from holding glass over an echo.
- if(room===6&&(
-  /^(?:put|pour|scoop|collect|take|get|catch)(?: up)? (?:the )?(?:pool water|water) (?:in|into|with|using) (?:the )?(?:empty |glass |measuring )?jar$/.test(text)||
-  /^fill (?:the )?(?:empty |glass |measuring )?jar (?:with|from) (?:the )?(?:pool water|water)$/.test(text)||
-  /^(?:dip|dunk|lower|immerse|put|place) (?:the )?(?:empty |glass |measuring )?jar (?:in|into|under) (?:the )?(?:pool|water)$/.test(text))){
+ // Explicit water collection gets physical feedback; moving the jar toward
+ // a named echo uses the same guarded capture as USE JAR ON POOL.
+ const waterTransfer=text.match(/^(?:put|pour|scoop|collect|take|get|catch)(?: up)? (.+?) (?:in|into|with|using) (.+)$/);
+ const waterFill=text.match(/^fill (.+?) (?:with|from) (.+)$/);
+ const dipping=text.match(/^(?:dip|dunk|lower|immerse|put|place) (.+?) (?:in|into|under) (.+)$/);
+ const waterName=value=>['water','pool water'].includes(noun(value));
+ const waterAttempt=(waterTransfer&&waterName(waterTransfer[1])&&objectId(waterTransfer[2])==='jar')||(waterFill&&objectId(waterFill[1])==='jar'&&waterName(waterFill[2]));
+ const jarApproach=dipping&&objectId(dipping[1])==='jar'&&objectId(dipping[2])==='pool';
+ if(room===6&&(waterAttempt||jarApproach)){
   if(!flags.jarTaken){say('You have no jar with you.');return true}
   if(!nearObject('pool'))return true;
   if(flags.jarSealed){say('The wax seal covers the mouth of the jar. You keep it above the water.');return true}
   if(flags.echoCaught){say('A whisper stirs inside the jar. You draw it back before the water can wash away the sound.');return true}
-  say('You dip the jar into the pool. Water seems to fill it, then slips away like a reflection as you lift it. The glass comes up dry. Not a ripple marks the surface.');return true;
+  if(jarApproach&&flags.echoNamed){useObject('jar','pool');return true}
+  say('You dip the jar into the pool. Water seems to fill it, then slips away like a reflection as you lift it. The glass comes up dry. Not a ripple marks the surface.'+(flags.echoNamed?' Merrin\'s repeating name hangs above the water. Bring the open jar near the sound, rather than trying to carry the water.':''));return true;
  }
  const clapperAttempt=text.replace(/ with (?:a |my |your )?fingernail$/, '');
  let sound=clapperAttempt.match(/^(?:use|ring|sound|tap|strike|hit|chime|play|shake|flick) (.+?)(?: (?:next to|beside|by|near|at|over|above|on|against) (.+))?$/);
@@ -894,7 +899,7 @@ function millSluiceKey(event){
 }
 function handleMillSluiceIntent(text){
  if(room===7)return false;
- if(/^(?:look(?: at)?|examine|inspect|adjust|turn|rotate|align|use|work|repair|fix|unlock|open) (?:the )?(?:tray|water tray|sluice tray|sluice|sluice panel|sluice board|panel|control panel|controls|water panel|water puzzle|puzzle|trough panel|blocks|wooden blocks|trough blocks|troughs?|water channels|channels?|balance panel|balance|counterweight|brake|wheel lock|wheel mechanism|mechanism)$/.test(text)||/^(?:unlock|repair|fix|adjust|use|operate) (?:the )?(?:wheel|mill wheel|waterwheel)$/.test(text)){showMillSluice();return true}
+ if(/^(?:look(?: at)?|examine|inspect|adjust|turn|rotate|align|use|work|repair|fix|unlock|open) (?:the )?(?:tray|water tray|sluice tray|sluice|sluice panel|sluice board|panel|control panel|controls|water panel|water puzzle|puzzle|trough panel|blocks?|wooden blocks?|trough blocks?|troughs?|channel blocks?|water channels?|channels?|finger grips|grips|guide pegs|fixed stone|balance panel|balance|counterweight|brake|wheel lock|wheel mechanism|mechanism)$/.test(text)||/^(?:unlock|repair|fix|adjust|use|operate) (?:the )?(?:wheel|mill wheel|waterwheel)$/.test(text)){showMillSluice();return true}
  if(/^(?:move|slide|arrange|rearrange|shift) (?:the )?(?:blocks|troughs|tiles|channels|wooden blocks|trough blocks)$/.test(text)){showMillSluice();return true}
  return false;
 }
@@ -1122,7 +1127,8 @@ function harmonyClick(event){
  else paintHarmony();
 }
 function handleHarmonyIntent(text){
- if(/^(?:look(?: at)?|examine|inspect|listen(?: to)?|tune|adjust|use|play|touch|open) (?:the )?(?:resonators?|brass resonators?|strings?|weights?|harmony|mechanism|bell mechanism|tuning mechanism|tuning weights?|bell strings?|psaltery|instrument|bell instrument)$/.test(text)){showHarmony();return true}
+ if(room!==7)return false;
+ if(/^(?:look(?: at)?|examine|inspect|listen(?: to)?|tune|adjust|use|play|touch|open) (?:the )?(?:resonators?|brass resonators?|strings?|brass strings?|weights?|brass weights?|shared bridge|wooden bridge|bridge|harmony|mechanism|bell mechanism|tuning mechanism|tuning weights?|bell strings?|psaltery|oak psaltery|instrument|oak string instrument|string instrument|bell instrument)$/.test(text)){showHarmony();return true}
  return false;
 }
 function drawHarmonyResonators(){
@@ -4393,7 +4399,7 @@ const sceneryAliases={
  shelf:['shelf','shelves'],herbs:['herb','herbs','seedling','seedlings','plants'],
  tools:['tools','garden tools','trowel','rake','pruning hook','peg','pegs'],
  soil:['soil','potting soil','dirt','earth','old roots'],bees:['bee','bees'],honey:['honey'],
- barrel:['barrel','cask','hoops','lid','barrel lid','wooden lid','lid of barrel','lid of the barrel','cask lid'],drawer:['drawer','tool drawer'],sack:['sack','sacks','grain sack','grain bag','bag','seed sack','seeds'],
+ barrel:['barrel','cask','hoops','lid','barrel lid','wooden lid','lid of barrel','lid of the barrel','cask lid'],drawer:['drawer','tool drawer'],sack:['sack','sacks','grain sack','grain bag','bag','seed sack','seeds','grain'],
  stream:['stream','river','brook','current','mill race','millrace'],
  rock:['rock','rocks','stone','stones','loose stone','pebble','pebbles','boulder','boulders','bank stones'],
  stalagmites:['stalagmite','stalagmites','stalactite','stalactites','formations'],
@@ -4417,6 +4423,8 @@ const sceneryAliases={
  linkage:['linkage','rod','iron rod','pull rod','crank','crank pin','guide','cabinet mechanism'],
  frame:['frame','mirror frame','gold frame','golden frame'],
  seams:['seam','seams','mineral seams','minerals','mineral deposits','mineral seam'],
+ bucket:['bucket','counterweight bucket','hanging bucket','empty bucket','full bucket'],
+ bin:['bin','red bin','grain bin'],stores:['stores','smaller stores','grain stores'],lock:['lock','iron lock','escutcheon','brass escutcheon'],
  reflection:['reflection','my reflection'],jewel:['jewel','gem','blue jewel']
 };
 function sceneryId(text){return Object.keys(sceneryAliases).find(id=>sceneryAliases[id].includes(text))||text}
@@ -4429,6 +4437,10 @@ function shedBenchContents(){
 function shedBoardsDescription(){return flags.plankTaken?'Only split spare boards remain beside the bench.':'Sound planks lean beside the bench.'}
 function describeShedBench(){return 'The oak bench has a small drawer and a lower shelf. '+(secretSnailFound()?'A little crowned snail trophy is fixed beneath the lower rail. ':'A tiny spiral is just visible beneath the lower rail. ')+shedBenchContents()+' '+shedBoardsDescription()}
 function sceneryDescription(id){
+ if(room===8&&id==='lock')return workshopDoorDescription();
+ if(room===5&&id==='bucket')return flags.wheelUnlocked?'The full counterweight bucket hangs from its chain, holding the wheel brake clear.':'An empty bucket hangs from a chain linked to the wheel brake. The sliding trough panel can guide water into it; its weight will lift the brake.';
+ if(room===5&&id==='bin')return 'A red wooden bin holds spare grain beside the stored sacks. It is part of the miller\'s stores, rather than the wheel controls.';
+ if(room===5&&id==='stores')return 'Smaller sacks of dry grain stand beside the red bin. The large sack in the hoist is the one that blocks the cupboard.';
  if(room===5&&['hoist','linkage','rope'].includes(id))return flags.wheelTurned?'The drive rope turns a winding drum. Overhead, a pulley and cleat hold the heavy grain sack safely above the cupboard.':'A drive rope runs from the wheel to a winding drum and overhead pulley. Its sling holds the heavy sack that blocks the cupboard door.';
  if(id==='grass')return {
   0:'Soft green grass borders the winding garden path. Merrin keeps the lawn neatly trimmed.',
@@ -4781,7 +4793,7 @@ function secretSnailText(){
 function handleOptionalSecret(text){
  const under=text.match(/^(?:look|peek|peer|search|check|examine|inspect) (?:under|underneath|beneath) (.+)$/);
  const underside=text.match(/^(?:look(?: at)?|examine|inspect|search) (?:the )?(?:underside|bottom|low crosspiece|lower rail) of (.+)$/);
- const spiral=/^(?:look(?: at)?|examine|inspect|read) (?:the )?(?:tiny )?(?:spiral|carving|spiral carving)(?: (?:on|under|beneath) (?:the )?(?:bench|workbench))?$/.test(text);
+ const spiral=/^(?:look(?: at)?|examine|inspect|read) (?:the )?(?:tiny )?(?:spiral|carving|spiral carving|lower rail|low crosspiece|lower shelf)(?: (?:on|under|beneath) (?:the )?(?:bench|workbench))?$/.test(text);
  if(spiral||((under||underside)&&['bench','workbench','work bench','worktop'].includes(noun((under||underside)[1])))){
   if(room!==2){say('There is no workbench here to look beneath.');return true}
   if(Math.hypot(player.x-160,player.y-191)>46){say('Walk closer to the workbench to see beneath it.');return true}
@@ -5569,7 +5581,7 @@ function handleAcceptedIntent(text){
  m=text.match(/^(?:catch|capture|collect|trap|bottle|scoop)(?: up)? (.+?)(?: (?:with|using|in|into) (.+))?$/);
  let capture=m&&objectId(m[1])==='pool'&&(!m[2]||objectId(m[2])==='jar');
  if(!capture){m=text.match(/^fill (.+?)(?: (?:with|from|at) (.+))?$/);capture=m&&objectId(m[1])==='jar'&&(!m[2]||objectId(m[2])==='pool')}
- if(!capture){m=text.match(/^(?:hold|raise|put|place) (.+?) (?:over|above|beside|near|against) (.+)$/);capture=m&&objectId(m[1])==='jar'&&objectId(m[2])==='pool'}
+ if(!capture){m=text.match(/^(?:hold|raise|put|place) (.+?) (?:over|above|beside|near|against|at|on|in|into) (.+)$/);capture=m&&objectId(m[1])==='jar'&&objectId(m[2])==='pool'}
  if(capture){
   if(room!==6){say('There is no echo hanging in the air here.');return true}
   if(!flags.jarTaken){say('Your fingers close on empty air. The sound slips between them.');return true}
@@ -5659,10 +5671,10 @@ const objectAliases={
  jar:['jar','glass jar','measuring jar','glass measure','glass measuring jar','empty jar','echo jar','sealed jar','sealed echo','voice jar','bottled echo','vessel','voice','borrowed voice','merrins voice'],
  thorns:['thorns','thorn','blackthorn','brambles','thorn bush','bush'],bridge:['bridge','gap','broken bridge','footbridge','hole','bridge gap','gap in bridge','hole in bridge','missing boards','broken part of bridge'],
  wheel:['wheel','gear','gears','waterwheel','mill wheel','wooden wheel','mechanism'],cabinet:['cabinet','cupboard','catch','latch','cabinet door','cupboard door'],
- pool:['pool','water','still water','echo','echo pool','still pool','pool rim','rim of pool','rim of the pool','stone rim'],rope:['rope','bell rope','frayed rope','broken rope','sling','frayed bell rope','broken bell rope','damaged rope','bell pull','end of rope']
+ pool:['pool','water','pool water','still water','echo','echo pool','still pool','pool rim','rim of pool','rim of the pool','stone rim'],rope:['rope','bell rope','frayed rope','broken rope','sling','frayed bell rope','broken bell rope','damaged rope','bell pull','end of rope']
 };
 const noun=text=>text.replace(/\b(?:the|a|an)\s+/g,'').trim();
-function objectId(text,preferVisible=false){const target=noun(text);if(room===0&&!flags.bell&&['handbell','hand bell','little silver bell','small bell','small silver bell','portable bell'].includes(target))return 'bell';if(['bell','little bell','garden bell','silver bell'].includes(target)&&flags.bell&&!(room===7&&target==='bell'))return 'clapper';if(['voice','borrowed voice','merrins voice'].includes(target))return flags.jarTaken&&!flags.voiceReturned?'jar':'voice';if(preferVisible&&target==='bottle'&&room===5&&flags.wheelTurned&&!flags.jarTaken)return 'jar';if(room===2&&['roots','root'].includes(target))return 'soil';if(room===8&&target==='left door')return 'shed';if(room===8&&target==='right door')return 'gallery';if(target==='rim')return room===6?'pool':room===0?'bell':target;if(['flower','flowers','garden flowers','flower bed','flowers in garden'].includes(target))return room===0?'rose':'flowers';if(room===0&&['roses','garden rose'].includes(target))return 'rose';return Object.keys(objectAliases).find(key=>objectAliases[key].includes(target))||sceneryId(target)}
+function objectId(text,preferVisible=false){const target=noun(text);if(room===6&&['glass','hollow glass'].includes(target))return 'jar';if(room===0&&!flags.bell&&['handbell','hand bell','little silver bell','small bell','small silver bell','portable bell'].includes(target))return 'bell';if(['bell','little bell','garden bell','silver bell'].includes(target)&&flags.bell&&!(room===7&&target==='bell'))return 'clapper';if(['voice','borrowed voice','merrins voice'].includes(target))return flags.jarTaken&&!flags.voiceReturned?'jar':'voice';if(preferVisible&&target==='bottle'&&room===5&&flags.wheelTurned&&!flags.jarTaken)return 'jar';if(room===2&&['roots','root'].includes(target))return 'soil';if(room===8&&target==='left door')return 'shed';if(room===8&&target==='right door')return 'gallery';if(target==='rim')return room===6?'pool':room===0?'bell':target;if(['flower','flowers','garden flowers','flower bed','flowers in garden'].includes(target))return room===0?'rose':'flowers';if(room===0&&['roses','garden rose'].includes(target))return 'rose';return Object.keys(objectAliases).find(key=>objectAliases[key].includes(target))||sceneryId(target)}
 function bridgePlankIntent(text){
  const isPlank=value=>objectId(value.replace(/\s+down$/,''))==='plank';
  const isBridge=value=>objectId(value)==='bridge';
@@ -5750,7 +5762,7 @@ function describeObject(id,requested=''){
   {wax:flags.waxTaken?'Rounded coils of woven straw form an old dome-shaped hive. Bees come and go through its little entrance. You have gathered the loose wax beneath it.':'A straw skep rests on the stump, its tightly bound coils sheltering the bees. They weave separate circuits past its little entrance. Loose wax rests on the landing shelf.',thorns:flags.thornsCut?'A clean cut opens the path to the bridge.':'A dense tangle of woody blackthorn bars the path. Long hooked thorns catch at your sleeves.'},
   {wheel:exteriorWheelDescription(),bridge:flags.bridgeFixed?'The new plank is firmly lashed to the old timbers. It no longer shifts under your weight.':flags.bridgePlankSlipped?'The plank hangs crookedly from one timber. Its other end swings loose over the stream.':flags.bridgePlank?'The new plank rests across the gap. It rocks against the surviving timbers; the old lashings hang loose.':'Two center boards are missing. The surviving timbers are weathered but solid, with old lashings still wound around them.'},
   {wheel:flags.wheelTurned?'The wheel turns freely. A drive rope runs from its winding drum to the grain-hoist pulley.':flags.wheelUnlocked?'The counterweight has lifted the brake. The wheel gives a little when you lean against a spoke.':'A brake grips the wooden wheel. Beside it, wooden trough blocks sit in a sliding tray with two empty sockets and a fixed stone. Guide pegs keep each channel facing the same way. Water spills before reaching the hanging counterweight bucket. The trough blocks have worn finger grips.',cabinet:cabinetTimer?'The hoist or cupboard door is still moving.':flags.cabinetOpen?(flags.jarTaken?'The cupboard stands open. Its measuring shelf is empty.':'An ordinary oak cupboard stands open. A glass measuring jar waits on its shelf.'):flags.wheelTurned?'The raised sack leaves room for the cupboard door to swing open.':'A loaded grain sack presses against the cupboard door. The door is not locked, but it cannot swing past the sack.',jar:flags.cabinetOpen?'An empty glass measuring jar waits on the shelf. Pale marks record the miller\'s measures.':'The closed cupboard hides its contents.'},
-  {pool:flags.echoCaught?(flags.voiceReturned?'The pool is still again. The borrowed voice has returned to Merrin.':'The pool is still again. Merrin\'s named echo has been gathered into glass.'):flags.echoNamed?'Merrin\'s name hangs over the water, returning again and again from no visible mouth.':flags.poolAwake&&!flags.poolRiddleSolved?'Silver letters float on the still water. A question waits for an answer. READ QUESTION or LISTEN.':flags.poolAwake?'The pool repeats your breath. Silver words ask: \"Whose voice is lost? Call that person by name.\"':'The water is perfectly still. Ordinary sounds fall strangely flat beneath the vault.'},
+  {pool:flags.echoCaught?(flags.voiceReturned?'The pool is still again. The borrowed voice has returned to Merrin.':'The pool is still again. Merrin\'s named echo has been gathered into glass.'):flags.echoNamed?'Merrin\'s name hangs over the water, returning again and again from no visible mouth. The sound lingers above the surface; there is no need to carry the water itself.':flags.poolAwake&&!flags.poolRiddleSolved?'Silver letters float on the still water. A question waits for an answer. READ QUESTION or LISTEN.':flags.poolAwake?'The pool repeats your breath. Silver words ask: \"Whose voice is lost? Call that person by name.\"':'The water is perfectly still. Ordinary sounds fall strangely flat beneath the vault.'},
   {rope:flags.ropeFixed?'Fresh twine binds the frayed rope. The bell can be rung safely.':'The short bell rope has almost worn through. Pale fibers part under the slightest strain.',bell:flags.voiceReturned?'The brass is quiet now. Its work is done.':flags.bellRung?'The brass still trembles with a fading note. Something in your satchel answers in a familiar voice.':'A great brass bell hangs from the oak head beam. Beside it hangs the bell-keeper\'s oak psaltery. Three weighted strings share a wooden bridge; when the bell trembles, they answer.'},
   {}
  ];
@@ -5765,7 +5777,8 @@ function command(raw){
  if(bridgeFall||storyAction?.kind==='hiveKick')return;
  if(storyAction?.kind==='voiceReturned')return;
  if(storyAction&&storyAction.kind!=='voiceFollow')finishStoryEffect(false);
- const t=norm(raw);if(!t||!playing||popupOpen||menuOpen||bellAction||workshopDoorMotion)return;
+ // Expand examination shortcuts before any specialized puzzle handler runs.
+ const t=norm(raw).replace(/^(?:x|l)(?=\s)/,'examine');if(!t||!playing||popupOpen||menuOpen||bellAction||workshopDoorMotion)return;
  if(speedCommand(t))return;
  if(t==='xyzzy inventory'){testingInventory();return}
  if(t==='xyzzy puzzles'||t==='skip puzzle'){testingPuzzleSkip();return}
@@ -6678,7 +6691,7 @@ function installMobileControls(){
 }
 
 installMobileControls();
-const PLAYTEST_BUILD='96f067b3ba735f6d';
+const PLAYTEST_BUILD='df536cc7e7878707';
 // Opt-in, local-only event recording. Never observes keyboard text or media.
 const PLAYTEST_KEY='elara-playtest-v1',PLAYTEST_BACKUP_KEY='elara-playtest-previous-v1',PLAYTEST_LIMIT=10000;
 let playtestTimer=0,playtest=null,playtestDialog=null,playtestPopupBefore=false,playtestLast=Date.now(),playtestFocused=true,playtestWasActive=false,playtestLastMilestone=0,playtestStall=false,playtestLastCommand='',playtestRepeats=0;

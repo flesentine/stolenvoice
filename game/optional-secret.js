@@ -6,7 +6,7 @@ function secretSnailText(){
 function handleOptionalSecret(text){
  const under=text.match(/^(?:look|peek|peer|search|check|examine|inspect) (?:under|underneath|beneath) (.+)$/);
  const underside=text.match(/^(?:look(?: at)?|examine|inspect|search) (?:the )?(?:underside|bottom|low crosspiece|lower rail) of (.+)$/);
- const spiral=/^(?:look(?: at)?|examine|inspect|read) (?:the )?(?:tiny )?(?:spiral|carving|spiral carving)(?: (?:on|under|beneath) (?:the )?(?:bench|workbench))?$/.test(text);
+ const spiral=/^(?:look(?: at)?|examine|inspect|read) (?:the )?(?:tiny )?(?:spiral|carving|spiral carving|lower rail|low crosspiece|lower shelf)(?: (?:on|under|beneath) (?:the )?(?:bench|workbench))?$/.test(text);
  if(spiral||((under||underside)&&['bench','workbench','work bench','worktop'].includes(noun((under||underside)[1])))){
   if(room!==2){say('There is no workbench here to look beneath.');return true}
   if(Math.hypot(player.x-160,player.y-191)>46){say('Walk closer to the workbench to see beneath it.');return true}

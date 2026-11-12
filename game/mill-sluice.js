@@ -239,7 +239,7 @@ function millSluiceKey(event){
 }
 function handleMillSluiceIntent(text){
  if(room===7)return false;
- if(/^(?:look(?: at)?|examine|inspect|adjust|turn|rotate|align|use|work|repair|fix|unlock|open) (?:the )?(?:tray|water tray|sluice tray|sluice|sluice panel|sluice board|panel|control panel|controls|water panel|water puzzle|puzzle|trough panel|blocks|wooden blocks|trough blocks|troughs?|water channels|channels?|balance panel|balance|counterweight|brake|wheel lock|wheel mechanism|mechanism)$/.test(text)||/^(?:unlock|repair|fix|adjust|use|operate) (?:the )?(?:wheel|mill wheel|waterwheel)$/.test(text)){showMillSluice();return true}
+ if(/^(?:look(?: at)?|examine|inspect|adjust|turn|rotate|align|use|work|repair|fix|unlock|open) (?:the )?(?:tray|water tray|sluice tray|sluice|sluice panel|sluice board|panel|control panel|controls|water panel|water puzzle|puzzle|trough panel|blocks?|wooden blocks?|trough blocks?|troughs?|channel blocks?|water channels?|channels?|finger grips|grips|guide pegs|fixed stone|balance panel|balance|counterweight|brake|wheel lock|wheel mechanism|mechanism)$/.test(text)||/^(?:unlock|repair|fix|adjust|use|operate) (?:the )?(?:wheel|mill wheel|waterwheel)$/.test(text)){showMillSluice();return true}
  if(/^(?:move|slide|arrange|rearrange|shift) (?:the )?(?:blocks|troughs|tiles|channels|wooden blocks|trough blocks)$/.test(text)){showMillSluice();return true}
  return false;
 }

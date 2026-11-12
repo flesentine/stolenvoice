@@ -75,7 +75,7 @@ function handleAcceptedIntent(text){
  m=text.match(/^(?:catch|capture|collect|trap|bottle|scoop)(?: up)? (.+?)(?: (?:with|using|in|into) (.+))?$/);
  let capture=m&&objectId(m[1])==='pool'&&(!m[2]||objectId(m[2])==='jar');
  if(!capture){m=text.match(/^fill (.+?)(?: (?:with|from|at) (.+))?$/);capture=m&&objectId(m[1])==='jar'&&(!m[2]||objectId(m[2])==='pool')}
- if(!capture){m=text.match(/^(?:hold|raise|put|place) (.+?) (?:over|above|beside|near|against) (.+)$/);capture=m&&objectId(m[1])==='jar'&&objectId(m[2])==='pool'}
+ if(!capture){m=text.match(/^(?:hold|raise|put|place) (.+?) (?:over|above|beside|near|against|at|on|in|into) (.+)$/);capture=m&&objectId(m[1])==='jar'&&objectId(m[2])==='pool'}
  if(capture){
   if(room!==6){say('There is no echo hanging in the air here.');return true}
   if(!flags.jarTaken){say('Your fingers close on empty air. The sound slips between them.');return true}
